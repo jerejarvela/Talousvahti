@@ -7,7 +7,7 @@
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
+      font-family: 'Arial', sans-serif;
       background-color: #000;
       color: #fff;
     }
@@ -48,27 +48,9 @@
       color: #f39c12;
     }
 
-    /* Hero / pääalue */
-    .hero {
-      background-color: #000;
-      padding: 50px 30px;
-      text-align: center;
-    }
-
-    .hero h1 {
-      font-size: 48px;
-      margin-bottom: 20px;
-    }
-
-    .hero p {
-      font-size: 24px;
-      line-height: 1.5;
-    }
-
     /* RSS Feedit */
     .feed-section {
       padding: 30px;
-      border-top: 1px solid #333;
     }
 
     .feed-section h2 {
@@ -76,28 +58,53 @@
       color: #f39c12;
     }
 
-    .feed-section ul {
-      list-style: none;
-      padding-left: 0;
+    .feed-box {
+      background-color: #1a1a1a; /* tummanharmaa */
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 0.6s forwards;
     }
 
-    .feed-section ul li {
+    .feed-box h3 {
       margin-bottom: 10px;
-    }
-
-    .feed-section ul li a {
-      color: #fff;
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .feed-section ul li a:hover {
+      font-size: 20px;
       color: #f39c12;
+    }
+
+    .feed-box p {
+      margin-bottom: 10px;
+      font-size: 16px;
+      line-height: 1.4;
+    }
+
+    .feed-box .source {
+      font-size: 14px;
+      color: #ccc;
+      text-align: right;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsiivisuus */
+    @media (max-width: 768px) {
+      .navbar ul {
+        flex-direction: column;
+        gap: 10px;
+      }
     }
   </style>
 </head>
 <body>
 
+  <!-- Navbar -->
   <nav class="navbar">
     <div class="brand">Talousvahti</div>
     <ul>
@@ -106,11 +113,6 @@
       <li><a href="#tietoa">Tietoa</a></li>
     </ul>
   </nav>
-
-  <section class="hero">
-    <h1>Tervetuloa Talousvahdin sivuille!</h1>
-    <p>Täältä löydät ajankohtaiset talousuutiset ja muuta hyödyllistä tietoa.</p>
-  </section>
 
   <!-- RSS Feedit -->
   <section class="feed-section" id="talousuutiset">
@@ -128,32 +130,41 @@
 
     const feedsContainer = document.getElementById('feeds');
 
-    feeds.forEach(feed => {
-      const feedDiv = document.createElement('div');
-      feedDiv.innerHTML = `<h3>${feed.name}</h3><ul id="feed-${feed.name.replace(/\s+/g,'')}"></ul>`;
-      feedsContainer.appendChild(feedDiv);
+    function createFeedBox(title, description, source) {
+      const box = document.createElement('div');
+      box.className = 'feed-box';
+      box.innerHTML = `
+        <h3>${title}</h3>
+        <p>${description || ''}</p>
+        <div class="source">${source}</div>
+      `;
+      return box;
+    }
 
-      // Käytetään rss2json-palvelua (CORS ongelmien takia)
-      const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feed.url)}`;
-
-      fetch(apiUrl)
-        .then(res => res.json())
-        .then(data => {
-          const ul = document.getElementById(`feed-${feed.name.replace(/\s+/g,'')}`);
-          data.items.slice(0, 5).forEach(item => {
-            const li = document.createElement('li');
-            li.innerHTML = `<a href="${item.link}" target="_blank">${item.title}</a>`;
-            ul.appendChild(li);
+    async function loadFeeds() {
+      for (const feed of feeds) {
+        try {
+          const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feed.url)}`;
+          const response = await fetch(apiUrl);
+          const data = await response.json();
+          // Järjestä uusimmasta vanhimpaan
+          const sortedItems = data.items.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
+          sortedItems.slice(0,5).forEach(item => {
+            const box = createFeedBox(item.title, item.description, feed.name);
+            feedsContainer.appendChild(box);
           });
-        })
-        .catch(err => {
-          const ul = document.getElementById(`feed-${feed.name.replace(/\s+/g,'')}`);
-          ul.innerHTML = `<li>Uutisten haku epäonnistui.</li>`;
+        } catch(err) {
           console.error(`Virhe haettaessa feediä ${feed.name}:`, err);
-        });
-    });
+          const box = createFeedBox('Uutisten haku epäonnistui', '', feed.name);
+          feedsContainer.appendChild(box);
+        }
+      }
+    }
+
+    loadFeeds();
   </script>
 
 </body>
 </html>
+
 
