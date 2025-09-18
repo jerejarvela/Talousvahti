@@ -2,10 +2,109 @@
 <html lang="fi">
 <head>
   <meta charset="UTF-8">
-  <title>Tervetuloa sivuilleni</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Talousvahti</title>
+  <style>
+    /* Reset ja perusasetukset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: #000; /* Musta tausta */
+      color: #fff; /* Valkoinen teksti */
+    }
+
+    /* Yläpalkki */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #000;
+      padding: 15px 30px;
+      border-bottom: 2px solid #333;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar .brand {
+      font-size: 24px;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    .navbar ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .navbar ul li a {
+      text-decoration: none;
+      color: #fff;
+      font-size: 18px;
+      transition: color 0.3s;
+    }
+
+    .navbar ul li a:hover {
+      color: #f39c12; /* Hover-keltainen */
+    }
+
+    /* Pääalue */
+    .hero {
+      background-color: #000;
+      padding: 100px 30px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 24px;
+      line-height: 1.5;
+    }
+
+    /* Responsiivisuus */
+    @media (max-width: 768px) {
+      .navbar ul {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .hero h1 {
+        font-size: 36px;
+      }
+
+      .hero p {
+        font-size: 18px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>Hei maailma!</h1>
-  <p>Tämä on minun ensimmäinen GitHub Pages -sivuni 🚀</p>
+
+  <!-- Yläpalkki -->
+  <nav class="navbar">
+    <div class="brand">Talousvahti</div>
+    <ul>
+      <li><a href="#talousuutiset">Talousuutiset</a></li>
+      <li><a href="#blogi">Blogi</a></li>
+      <li><a href="#tietoa">Tietoa</a></li>
+    </ul>
+  </nav>
+
+  <!-- Pääalue -->
+  <section class="hero">
+    <h1>Tervetuloa Talousvahdin sivuille!</h1>
+    <p>Täältä löydät ajankohtaiset talousuutiset, blogikirjoituksia ja muuta hyödyllistä tietoa.</p>
+  </section>
+
 </body>
 </html>
