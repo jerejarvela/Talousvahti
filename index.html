@@ -5,20 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Talousvahti</title>
   <style>
-    /* Reset ja perusasetukset */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
-
     body {
-      background-color: #000; /* Musta tausta */
-      color: #fff; /* Valkoinen teksti */
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #000;
+      color: #fff;
     }
 
-    /* Yläpalkki */
+    /* Navbar */
     .navbar {
       display: flex;
       justify-content: space-between;
@@ -51,13 +45,13 @@
     }
 
     .navbar ul li a:hover {
-      color: #f39c12; /* Hover-keltainen */
+      color: #f39c12;
     }
 
-    /* Pääalue */
+    /* Hero / pääalue */
     .hero {
       background-color: #000;
-      padding: 100px 30px;
+      padding: 50px 30px;
       text-align: center;
     }
 
@@ -71,26 +65,39 @@
       line-height: 1.5;
     }
 
-    /* Responsiivisuus */
-    @media (max-width: 768px) {
-      .navbar ul {
-        flex-direction: column;
-        gap: 10px;
-      }
+    /* RSS Feedit */
+    .feed-section {
+      padding: 30px;
+      border-top: 1px solid #333;
+    }
 
-      .hero h1 {
-        font-size: 36px;
-      }
+    .feed-section h2 {
+      margin-bottom: 15px;
+      color: #f39c12;
+    }
 
-      .hero p {
-        font-size: 18px;
-      }
+    .feed-section ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .feed-section ul li {
+      margin-bottom: 10px;
+    }
+
+    .feed-section ul li a {
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .feed-section ul li a:hover {
+      color: #f39c12;
     }
   </style>
 </head>
 <body>
 
-  <!-- Yläpalkki -->
   <nav class="navbar">
     <div class="brand">Talousvahti</div>
     <ul>
@@ -100,11 +107,53 @@
     </ul>
   </nav>
 
-  <!-- Pääalue -->
   <section class="hero">
     <h1>Tervetuloa Talousvahdin sivuille!</h1>
-    <p>Täältä löydät ajankohtaiset talousuutiset, blogikirjoituksia ja muuta hyödyllistä tietoa.</p>
+    <p>Täältä löydät ajankohtaiset talousuutiset ja muuta hyödyllistä tietoa.</p>
   </section>
+
+  <!-- RSS Feedit -->
+  <section class="feed-section" id="talousuutiset">
+    <h2>Talousuutiset</h2>
+    <div id="feeds"></div>
+  </section>
+
+  <script>
+    const feeds = [
+      { url: "https://feeds.kauppalehti.fi/rss/topic/sijoittaminen", name: "Kauppalehti" },
+      { url: "https://www.arvopaperi.fi/api/feed/v2/rss/ap",       name: "Arvopaperi" },
+      { url: "https://www.salkunrakentaja.fi/feed/",                name: "SalkunRakentaja" },
+      { url: "https://www.hs.fi/rss/talous.xml",                    name: "Helsingin Sanomat" }
+    ];
+
+    const feedsContainer = document.getElementById('feeds');
+
+    feeds.forEach(feed => {
+      const feedDiv = document.createElement('div');
+      feedDiv.innerHTML = `<h3>${feed.name}</h3><ul id="feed-${feed.name.replace(/\s+/g,'')}"></ul>`;
+      feedsContainer.appendChild(feedDiv);
+
+      // Käytetään rss2json-palvelua (CORS ongelmien takia)
+      const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feed.url)}`;
+
+      fetch(apiUrl)
+        .then(res => res.json())
+        .then(data => {
+          const ul = document.getElementById(`feed-${feed.name.replace(/\s+/g,'')}`);
+          data.items.slice(0, 5).forEach(item => {
+            const li = document.createElement('li');
+            li.innerHTML = `<a href="${item.link}" target="_blank">${item.title}</a>`;
+            ul.appendChild(li);
+          });
+        })
+        .catch(err => {
+          const ul = document.getElementById(`feed-${feed.name.replace(/\s+/g,'')}`);
+          ul.innerHTML = `<li>Uutisten haku epäonnistui.</li>`;
+          console.error(`Virhe haettaessa feediä ${feed.name}:`, err);
+        });
+    });
+  </script>
 
 </body>
 </html>
+
