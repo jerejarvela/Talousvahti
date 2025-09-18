@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fi">
 <head>
@@ -6,109 +5,127 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Talousvahti</title>
   <style>
+    /* --- Perusasetukset --- */
     body {
       margin: 0;
       font-family: 'Arial', sans-serif;
-      background-color: #000;
+      background-color: #0f0f0f;
       color: #fff;
     }
 
-    /* Navbar */
+    a { text-decoration: none; }
+
+    /* --- Navbar --- */
     .navbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
       background-color: #000;
       padding: 15px 30px;
-      border-bottom: 2px solid #333;
+      border-bottom: 2px solid #222;
       position: sticky;
       top: 0;
       z-index: 1000;
     }
 
     .navbar .brand {
-      font-size: 24px;
+      font-size: 26px;
       font-weight: bold;
       color: #fff;
+      letter-spacing: 1px;
     }
 
     .navbar ul {
       list-style: none;
       display: flex;
-      gap: 20px;
+      gap: 25px;
     }
 
     .navbar ul li a {
-      text-decoration: none;
       color: #fff;
       font-size: 18px;
-      transition: color 0.3s;
+      transition: all 0.3s;
+      padding: 5px 10px;
+      border-radius: 5px;
     }
 
-    .navbar ul li a:hover {
+    .navbar ul li a:hover,
+    .navbar ul li a.active {
+      background-color: #1a1a1a;
       color: #ccc;
     }
 
-    /* RSS Feedit */
+    /* --- Feed section --- */
     .feed-section {
-      padding: 30px;
+      padding: 40px 30px;
+      max-width: 1000px;
+      margin: auto;
     }
 
     .feed-section h2 {
-      margin-bottom: 15px;
+      margin-bottom: 25px;
       color: #ccc;
+      font-size: 28px;
+      border-bottom: 1px solid #222;
+      padding-bottom: 10px;
     }
 
+    /* --- Feed box --- */
     .feed-box {
-      background-color: #1a1a1a; /* tummanharmaa */
-      border-radius: 10px;
-      padding: 20px;
-      margin-bottom: 20px;
+      background: #1a1a1a;
+      border-radius: 12px;
+      padding: 25px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+      transition: transform 0.3s, box-shadow 0.3s;
       opacity: 0;
-      transform: translateY(20px);
+      transform: translateY(25px);
       animation: fadeIn 0.6s forwards;
     }
 
+    .feed-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.7);
+    }
+
     .feed-box h3 {
-      margin-bottom: 10px;
-      font-size: 20px;
+      margin-bottom: 12px;
+      font-size: 22px;
       color: #ccc;
     }
 
     .feed-box h3 a {
       color: #ccc;
-      text-decoration: none;
+      transition: color 0.3s;
     }
 
     .feed-box h3 a:hover {
+      color: #fff;
       text-decoration: underline;
     }
 
     .feed-box p {
-      margin-bottom: 10px;
       font-size: 16px;
-      line-height: 1.4;
+      line-height: 1.6;
+      margin-bottom: 12px;
+      color: #ddd;
     }
 
     .feed-box .source {
       font-size: 14px;
-      color: #ccc;
+      color: #aaa;
       text-align: left;
+      font-weight: bold;
     }
 
     @keyframes fadeIn {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Responsiivisuus */
+    /* --- Responsiivisuus --- */
     @media (max-width: 768px) {
-      .navbar ul {
-        flex-direction: column;
-        gap: 10px;
-      }
+      .navbar ul { flex-direction: column; gap: 10px; }
+      .feed-section { padding: 30px 20px; }
     }
   </style>
 </head>
@@ -118,7 +135,7 @@
   <nav class="navbar">
     <div class="brand">Talousvahti</div>
     <ul>
-      <li><a href="#talousuutiset">Talousuutiset</a></li>
+      <li><a href="index.html" class="active">Etusivu</a></li>
       <li><a href="Blogi.html">Blogi</a></li>
       <li><a href="#tietoa">Tietoa</a></li>
     </ul>
@@ -173,7 +190,7 @@
       }
       // Järjestä kokonaisuutena aikajärjestykseen uusimmasta vanhimpaan
       allItems.sort((a,b) => b.pubDate - a.pubDate);
-      allItems.slice(0,20).forEach(item => { // näytetään 20 uusinta uutista
+      allItems.slice(0,20).forEach(item => {
         const box = createFeedBox(item.title, item.description, item.source, item.link);
         feedsContainer.appendChild(box);
       });
