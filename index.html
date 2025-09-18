@@ -161,7 +161,7 @@
     const box = document.createElement('div');
     box.className = 'feed-box';
     box.innerHTML = `
-      <h3><a href="${link}" target="_blank">${title}</a></h3>
+      <h3><a href="${link}" target="_blank" rel="noopener">${title}</a></h3>
       <p>${description || ''}</p>
       <div class="source">${source}</div>
     `;
@@ -169,22 +169,18 @@
   }
 
   async function loadFeeds() {
+    feedsContainer.innerHTML = ''; // Tyhjennä vanhat artikkelit aina sivun päivityksellä
     let allItems = [];
+
     for (const feed of feeds) {
       try {
         // Lisätään uniikki parametri välimuistin kiertämiseksi
         const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feed.url)}&_=${Date.now()}`;
-        const response = await fetch(apiUrl);
-        if (!response.ok) {
-          console.error(`RSS fetch failed for ${feed.name}:`, response.status, response.statusText);
-          continue;
-        }
-        const data = await response.json();
+        const response = await fetch(apiUrl, { cache: "no-store" }); // "no-store" estää selaimen välimuistin
+        if (!response.ok) continue;
 
-        if(!data.items) {
-          console.warn(`No items found for feed: ${feed.name}`);
-          continue;
-        }
+        const data = await response.json();
+        if (!data.items) continue;
 
         data.items.forEach(item => {
           allItems.push({
@@ -195,7 +191,7 @@
             pubDate: new Date(item.pubDate)
           });
         });
-      } catch(err) {
+      } catch (err) {
         console.error(`Fetch error for feed ${feed.name}:`, err);
       }
     }
@@ -203,15 +199,16 @@
     // Järjestä uusimmasta vanhimpaan
     allItems.sort((a,b) => b.pubDate - a.pubDate);
 
-    // Näytä esim. 20 uusinta uutista
-    allItems.slice(0,20).forEach(item => {
+    allItems.slice(0, 20).forEach(item => {
       const box = createFeedBox(item.title, item.description, item.source, item.link);
       feedsContainer.appendChild(box);
     });
   }
 
-  loadFeeds();
+  // Lataa feedit aina kun sivu ladataan
+  window.addEventListener('load', loadFeeds);
 </script>
+
 
 
 </body>
