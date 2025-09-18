@@ -51,7 +51,7 @@
     .navbar ul li a:hover,
     .navbar ul li a.active {
       background-color: #1a1a1a;
-      color: #ccc;
+      color: #33ccff;
     }
 
     /* Blog section */
@@ -77,12 +77,12 @@
       box-shadow: 0 4px 15px rgba(0,0,0,0.5);
       transition: transform 0.3s, box-shadow 0.3s;
       opacity: 0;
-      transform: translateY(25px);
-      animation: fadeIn 0.6s forwards;
+      transform: translateY(25px) scale(0.95);
+      animation: fadeInBox 0.6s forwards;
     }
 
     .blog-box:hover {
-      transform: translateY(-5px);
+      transform: translateY(-5px) scale(1.02);
       box-shadow: 0 8px 25px rgba(0,0,0,0.7);
     }
 
@@ -98,7 +98,7 @@
     }
 
     .blog-box h3 a:hover {
-      color: #fff;
+      color: #33ccff;
       text-decoration: underline;
     }
 
@@ -116,8 +116,9 @@
       font-weight: bold;
     }
 
-    @keyframes fadeIn {
-      to { opacity: 1; transform: translateY(0); }
+    /* Fade-in animaatio boksille */
+    @keyframes fadeInBox {
+      to { opacity: 1; transform: translateY(0) scale(1); }
     }
 
     /* Responsiivisuus */
@@ -142,9 +143,7 @@
   <!-- Blogit -->
   <section class="blog-section">
     <h2>Blogi</h2>
-    <div id="blogs">
-      <!-- Blogiartikkelit lisätään tähän -->
-    </div>
+    <div id="blogs"></div>
   </section>
 
   <script>
@@ -171,9 +170,10 @@
 
     const blogsContainer = document.getElementById('blogs');
 
-    function createBlogBox(title, description, source, link) {
+    function createBlogBox(title, description, source, link, delay) {
       const box = document.createElement('div');
       box.className = 'blog-box';
+      box.style.animationDelay = `${delay}s`; // viive animaatioon
       box.innerHTML = `
         <h3><a href="${link}" target="_blank">${title}</a></h3>
         <p>${description}</p>
@@ -182,8 +182,8 @@
       return box;
     }
 
-    blogs.forEach(blog => {
-      const box = createBlogBox(blog.title, blog.description, blog.source, blog.link);
+    blogs.forEach((blog, index) => {
+      const box = createBlogBox(blog.title, blog.description, blog.source, blog.link, index * 0.2);
       blogsContainer.appendChild(box);
     });
   </script>
