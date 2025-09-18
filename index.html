@@ -24,7 +24,7 @@
       border-bottom: 2px solid #222;
       position: sticky;
       top: 0;
-      z-index: 1000;
+      z-index: 3000;
     }
     .navbar .brand {
       font-size: 26px;
@@ -32,8 +32,6 @@
       letter-spacing: 1px;
       color: #fff;
     }
-
-    /* Desktop menu */
     .navbar ul {
       list-style: none;
       display: flex;
@@ -52,45 +50,54 @@
       color: #ccc;
     }
 
-    /* Hamburger icon */
+    /* Hamburger (mobiilissa) */
     .hamburger {
       display: none;
       flex-direction: column;
-      cursor: pointer;
       gap: 5px;
+      cursor: pointer;
     }
     .hamburger span {
       width: 25px;
       height: 3px;
       background: #fff;
       border-radius: 2px;
-      transition: 0.3s;
     }
 
-    /* Mobile menu (hidden by default) */
+    /* Mobile menu */
     .mobile-menu {
       display: none;
       flex-direction: column;
       background-color: #111;
       position: absolute;
-      top: 60px;
+      top: 70px;
       right: 20px;
-      width: 200px;
+      width: 220px;
       border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.6);
       overflow: hidden;
+      z-index: 4000;
       animation: slideDown 0.3s ease forwards;
     }
     .mobile-menu a {
       padding: 15px;
-      color: #fff;
-      font-size: 16px;
       border-bottom: 1px solid #222;
+      color: #fff;
       transition: background 0.3s;
     }
     .mobile-menu a:hover {
-      background-color: #222;
+      background: #222;
       color: #33aaff;
+    }
+
+    /* Overlay tausta kun menu auki */
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      z-index: 3500;
     }
 
     @keyframes slideDown {
@@ -175,22 +182,17 @@
       font-weight: bold;
     }
 
-    .feed-box:nth-child(1) { animation-delay: 0.1s; }
-    .feed-box:nth-child(2) { animation-delay: 0.2s; }
-    .feed-box:nth-child(3) { animation-delay: 0.3s; }
-
     @keyframes fadeInBox {
-      to { opacity: 1; transform: translateY(0) scale(1); }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
     }
 
     /* --- Responsiivisuus --- */
     @media (max-width: 768px) {
-      .navbar ul {
-        display: none; /* hide desktop menu */
-      }
-      .hamburger {
-        display: flex; /* show hamburger */
-      }
+      .navbar ul { display: none; }
+      .hamburger { display: flex; }
     }
   </style>
 </head>
@@ -199,8 +201,6 @@
   <!-- Navbar -->
   <nav class="navbar">
     <div class="brand">Talousvahti</div>
-
-    <!-- Desktop menu -->
     <ul>
       <li><a href="index.html" class="active">Talousuutiset</a></li>
       <li><a href="Blogi.html">Blogi</a></li>
@@ -222,6 +222,9 @@
     <a href="#tietoa">Tietoa</a>
   </div>
 
+  <!-- Overlay -->
+  <div class="overlay" id="overlay"></div>
+
   <!-- RSS Feedit -->
   <section class="feed-section" id="talousuutiset">
     <h2>Talousuutiset</h2>
@@ -236,17 +239,8 @@
   <!-- Google Apps Script fetch -->
   <script>
     const feedsContainer = document.getElementById('feeds');
-    const rssUrl = 'https://script.google.com/macros/s/AKfycbyDAFHdkTFuO575Ye-io7_mHPFROH3w75_9YXAJ5z9_MeKHvPzhhtG-kN4eZOXcOL9-/exec'; // korvaa omalla GAS URL:lläsi
+    const rssUrl = 'YOUR_GOOGLE_APPS_SCRIPT_URL'; // korvaa omalla GAS URL:lläsi
 
-    // Toggle mobile menu
-    const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobileMenu');
-
-    hamburger.addEventListener('click', () => {
-      mobileMenu.style.display = mobileMenu.style.display === 'flex' ? 'none' : 'flex';
-    });
-
-    // Fetch news
     fetch(rssUrl)
       .then(res => res.text())
       .then(html => {
@@ -256,8 +250,28 @@
         feedsContainer.innerHTML = "<p>Uutisia ei voitu ladata.</p>";
         console.error('RSS fetch error:', err);
       });
+
+    // Hamburger menu toggle
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const overlay = document.getElementById('overlay');
+
+    hamburger.addEventListener('click', () => {
+      const isOpen = mobileMenu.style.display === 'flex';
+      if (isOpen) {
+        mobileMenu.style.display = 'none';
+        overlay.style.display = 'none';
+      } else {
+        mobileMenu.style.display = 'flex';
+        overlay.style.display = 'block';
+      }
+    });
+
+    overlay.addEventListener('click', () => {
+      mobileMenu.style.display = 'none';
+      overlay.style.display = 'none';
+    });
   </script>
 
 </body>
 </html>
-
