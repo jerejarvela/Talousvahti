@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fi">
 <head>
@@ -45,7 +46,7 @@
     }
 
     .navbar ul li a:hover {
-      color: #f39c12;
+      color: #ccc;
     }
 
     /* RSS Feedit */
@@ -55,7 +56,7 @@
 
     .feed-section h2 {
       margin-bottom: 15px;
-      color: #f39c12;
+      color: #ccc;
     }
 
     .feed-box {
@@ -71,7 +72,16 @@
     .feed-box h3 {
       margin-bottom: 10px;
       font-size: 20px;
-      color: #f39c12;
+      color: #ccc;
+    }
+
+    .feed-box h3 a {
+      color: #ccc;
+      text-decoration: none;
+    }
+
+    .feed-box h3 a:hover {
+      text-decoration: underline;
     }
 
     .feed-box p {
@@ -83,7 +93,7 @@
     .feed-box .source {
       font-size: 14px;
       color: #ccc;
-      text-align: right;
+      text-align: left;
     }
 
     @keyframes fadeIn {
@@ -130,11 +140,11 @@
 
     const feedsContainer = document.getElementById('feeds');
 
-    function createFeedBox(title, description, source) {
+    function createFeedBox(title, description, source, link) {
       const box = document.createElement('div');
       box.className = 'feed-box';
       box.innerHTML = `
-        <h3>${title}</h3>
+        <h3><a href="${link}" target="_blank">${title}</a></h3>
         <p>${description || ''}</p>
         <div class="source">${source}</div>
       `;
@@ -142,23 +152,31 @@
     }
 
     async function loadFeeds() {
+      let allItems = [];
       for (const feed of feeds) {
         try {
           const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feed.url)}`;
           const response = await fetch(apiUrl);
           const data = await response.json();
-          // Järjestä uusimmasta vanhimpaan
-          const sortedItems = data.items.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
-          sortedItems.slice(0,5).forEach(item => {
-            const box = createFeedBox(item.title, item.description, feed.name);
-            feedsContainer.appendChild(box);
+          data.items.forEach(item => {
+            allItems.push({
+              title: item.title,
+              description: item.description,
+              source: feed.name,
+              link: item.link,
+              pubDate: new Date(item.pubDate)
+            });
           });
         } catch(err) {
           console.error(`Virhe haettaessa feediä ${feed.name}:`, err);
-          const box = createFeedBox('Uutisten haku epäonnistui', '', feed.name);
-          feedsContainer.appendChild(box);
         }
       }
+      // Järjestä kokonaisuutena aikajärjestykseen uusimmasta vanhimpaan
+      allItems.sort((a,b) => b.pubDate - a.pubDate);
+      allItems.slice(0,20).forEach(item => { // näytetään 20 uusinta uutista
+        const box = createFeedBox(item.title, item.description, item.source, item.link);
+        feedsContainer.appendChild(box);
+      });
     }
 
     loadFeeds();
@@ -166,5 +184,3 @@
 
 </body>
 </html>
-
-
