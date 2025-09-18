@@ -32,6 +32,8 @@
       letter-spacing: 1px;
       color: #fff;
     }
+
+    /* Desktop menu */
     .navbar ul {
       list-style: none;
       display: flex;
@@ -48,6 +50,52 @@
     .navbar ul li a.active {
       background-color: #1a1a1a;
       color: #ccc;
+    }
+
+    /* Hamburger icon */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background: #fff;
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+
+    /* Mobile menu (hidden by default) */
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      background-color: #111;
+      position: absolute;
+      top: 60px;
+      right: 20px;
+      width: 200px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+      overflow: hidden;
+      animation: slideDown 0.3s ease forwards;
+    }
+    .mobile-menu a {
+      padding: 15px;
+      color: #fff;
+      font-size: 16px;
+      border-bottom: 1px solid #222;
+      transition: background 0.3s;
+    }
+    .mobile-menu a:hover {
+      background-color: #222;
+      color: #33aaff;
+    }
+
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     /* --- Feed section --- */
@@ -94,8 +142,8 @@
       box-shadow: 0 4px 15px rgba(0,0,0,0.5);
       transition: transform 0.3s, box-shadow 0.3s;
       opacity: 0;
-      transform: translateY(25px);
-      animation: fadeIn 0.6s forwards;
+      transform: translateY(25px) scale(0.95);
+      animation: fadeInBox 0.6s forwards;
     }
     .feed-box:hover {
       transform: translateY(-5px);
@@ -127,28 +175,22 @@
       font-weight: bold;
     }
 
-.feed-box {
-  opacity: 0;
-  transform: translateY(25px) scale(0.95);
-  animation: fadeInBox 0.6s forwards;
-}
+    .feed-box:nth-child(1) { animation-delay: 0.1s; }
+    .feed-box:nth-child(2) { animation-delay: 0.2s; }
+    .feed-box:nth-child(3) { animation-delay: 0.3s; }
 
-.feed-box:nth-child(1) { animation-delay: 0.1s; }
-.feed-box:nth-child(2) { animation-delay: 0.2s; }
-.feed-box:nth-child(3) { animation-delay: 0.3s; }
-/* lisää delayja niin monta kuin laatikoita tulee */
-
-@keyframes fadeInBox {
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
+    @keyframes fadeInBox {
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
 
     /* --- Responsiivisuus --- */
     @media (max-width: 768px) {
-      .navbar ul { flex-direction: column; gap: 10px; }
-      .feed-section { padding: 30px 20px; }
+      .navbar ul {
+        display: none; /* hide desktop menu */
+      }
+      .hamburger {
+        display: flex; /* show hamburger */
+      }
     }
   </style>
 </head>
@@ -157,11 +199,28 @@
   <!-- Navbar -->
   <nav class="navbar">
     <div class="brand">Talousvahti</div>
+
+    <!-- Desktop menu -->
     <ul>
       <li><a href="index.html" class="active">Talousuutiset</a></li>
       <li><a href="Blogi.html">Blogi</a></li>
+      <li><a href="#tietoa">Tietoa</a></li>
     </ul>
+
+    <!-- Hamburger -->
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
   </nav>
+
+  <!-- Mobile dropdown -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html" class="active">Talousuutiset</a>
+    <a href="Blogi.html">Blogi</a>
+    <a href="#tietoa">Tietoa</a>
+  </div>
 
   <!-- RSS Feedit -->
   <section class="feed-section" id="talousuutiset">
@@ -179,6 +238,15 @@
     const feedsContainer = document.getElementById('feeds');
     const rssUrl = 'https://script.google.com/macros/s/AKfycbyDAFHdkTFuO575Ye-io7_mHPFROH3w75_9YXAJ5z9_MeKHvPzhhtG-kN4eZOXcOL9-/exec'; // korvaa omalla GAS URL:lläsi
 
+    // Toggle mobile menu
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', () => {
+      mobileMenu.style.display = mobileMenu.style.display === 'flex' ? 'none' : 'flex';
+    });
+
+    // Fetch news
     fetch(rssUrl)
       .then(res => res.text())
       .then(html => {
@@ -192,3 +260,4 @@
 
 </body>
 </html>
+
