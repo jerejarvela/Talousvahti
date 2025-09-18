@@ -147,57 +147,72 @@
     <div id="feeds"></div>
   </section>
 
-  <script>
-    const feeds = [
-      { url: "https://feeds.kauppalehti.fi/rss/topic/sijoittaminen", name: "Kauppalehti" },
-      { url: "https://www.arvopaperi.fi/api/feed/v2/rss/ap",       name: "Arvopaperi" },
-      { url: "https://www.salkunrakentaja.fi/feed/",                name: "SalkunRakentaja" },
-      { url: "https://www.hs.fi/rss/talous.xml",                    name: "Helsingin Sanomat" }
-    ];
+<script>
+  const feeds = [
+    { url: "https://feeds.kauppalehti.fi/rss/topic/sijoittaminen", name: "Kauppalehti" },
+    { url: "https://www.arvopaperi.fi/api/feed/v2/rss/ap",       name: "Arvopaperi" },
+    { url: "https://www.salkunrakentaja.fi/feed/",                name: "SalkunRakentaja" },
+    { url: "https://www.hs.fi/rss/talous.xml",                    name: "Helsingin Sanomat" }
+  ];
 
-    const feedsContainer = document.getElementById('feeds');
+  const feedsContainer = document.getElementById('feeds');
 
-    function createFeedBox(title, description, source, link) {
-      const box = document.createElement('div');
-      box.className = 'feed-box';
-      box.innerHTML = `
-        <h3><a href="${link}" target="_blank">${title}</a></h3>
-        <p>${description || ''}</p>
-        <div class="source">${source}</div>
-      `;
-      return box;
-    }
+  function createFeedBox(title, description, source, link) {
+    const box = document.createElement('div');
+    box.className = 'feed-box';
+    box.innerHTML = `
+      <h3><a href="${link}" target="_blank">${title}</a></h3>
+      <p>${description || ''}</p>
+      <div class="source">${source}</div>
+    `;
+    return box;
+  }
 
-    async function loadFeeds() {
-      let allItems = [];
-      for (const feed of feeds) {
-        try {
-          const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feed.url)}`;
-          const response = await fetch(apiUrl);
-          const data = await response.json();
-          data.items.forEach(item => {
-            allItems.push({
-              title: item.title,
-              description: item.description,
-              source: feed.name,
-              link: item.link,
-              pubDate: new Date(item.pubDate)
-            });
-          });
-        } catch(err) {
-          console.error(`Virhe haettaessa feediä ${feed.name}:`, err);
+  async function loadFeeds() {
+    let allItems = [];
+    for (const feed of feeds) {
+      try {
+        // Lisätään uniikki parametri välimuistin kiertämiseksi
+        const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feed.url)}&_=${Date.now()}`;
+        const response = await fetch(apiUrl);
+        if (!response.ok) {
+          console.error(`RSS fetch failed for ${feed.name}:`, response.status, response.statusText);
+          continue;
         }
+        const data = await response.json();
+
+        if(!data.items) {
+          console.warn(`No items found for feed: ${feed.name}`);
+          continue;
+        }
+
+        data.items.forEach(item => {
+          allItems.push({
+            title: item.title,
+            description: item.description,
+            source: feed.name,
+            link: item.link,
+            pubDate: new Date(item.pubDate)
+          });
+        });
+      } catch(err) {
+        console.error(`Fetch error for feed ${feed.name}:`, err);
       }
-      // Järjestä kokonaisuutena aikajärjestykseen uusimmasta vanhimpaan
-      allItems.sort((a,b) => b.pubDate - a.pubDate);
-      allItems.slice(0,20).forEach(item => {
-        const box = createFeedBox(item.title, item.description, item.source, item.link);
-        feedsContainer.appendChild(box);
-      });
     }
 
-    loadFeeds();
-  </script>
+    // Järjestä uusimmasta vanhimpaan
+    allItems.sort((a,b) => b.pubDate - a.pubDate);
+
+    // Näytä esim. 20 uusinta uutista
+    allItems.slice(0,20).forEach(item => {
+      const box = createFeedBox(item.title, item.description, item.source, item.link);
+      feedsContainer.appendChild(box);
+    });
+  }
+
+  loadFeeds();
+</script>
+
 
 </body>
 </html>
