@@ -12,7 +12,6 @@
       background-color: #0f0f0f;
       color: #fff;
     }
-
     a { text-decoration: none; }
 
     /* --- Navbar --- */
@@ -27,20 +26,17 @@
       top: 0;
       z-index: 1000;
     }
-
     .navbar .brand {
       font-size: 26px;
       font-weight: bold;
       color: #fff;
       letter-spacing: 1px;
     }
-
     .navbar ul {
       list-style: none;
       display: flex;
       gap: 25px;
     }
-
     .navbar ul li a {
       color: #fff;
       font-size: 18px;
@@ -48,7 +44,6 @@
       padding: 5px 10px;
       border-radius: 5px;
     }
-
     .navbar ul li a:hover,
     .navbar ul li a.active {
       background-color: #1a1a1a;
@@ -61,13 +56,27 @@
       max-width: 1000px;
       margin: auto;
     }
-
     .feed-section h2 {
       margin-bottom: 25px;
       color: #ccc;
       font-size: 28px;
       border-bottom: 1px solid #222;
       padding-bottom: 10px;
+    }
+
+    /* --- Loader --- */
+    .loader {
+      border: 5px solid #1a1a1a;
+      border-top: 5px solid #ff9900;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      margin: 30px auto;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
 
     /* --- Feed box --- */
@@ -77,49 +86,42 @@
       padding: 25px;
       margin-bottom: 25px;
       box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-      transition: transform 0.3s, box-shadow 0.3s;
+      transition: transform 0.3s, box-shadow 0.3s, opacity 0.5s;
       opacity: 0;
       transform: translateY(25px);
-      animation: fadeIn 0.6s forwards;
     }
-
+    .feed-box.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
     .feed-box:hover {
       transform: translateY(-5px);
       box-shadow: 0 8px 25px rgba(0,0,0,0.7);
     }
-
     .feed-box h3 {
       margin-bottom: 12px;
       font-size: 22px;
       color: #ccc;
     }
-
     .feed-box h3 a {
       color: #ccc;
       transition: color 0.3s;
     }
-
     .feed-box h3 a:hover {
       color: #fff;
       text-decoration: underline;
     }
-
     .feed-box p {
       font-size: 16px;
       line-height: 1.6;
       margin-bottom: 12px;
       color: #ddd;
     }
-
     .feed-box .source {
       font-size: 14px;
       color: #aaa;
       text-align: left;
       font-weight: bold;
-    }
-
-    @keyframes fadeIn {
-      to { opacity: 1; transform: translateY(0); }
     }
 
     /* --- Responsiivisuus --- */
@@ -144,72 +146,77 @@
   <!-- RSS Feedit -->
   <section class="feed-section" id="talousuutiset">
     <h2>Talousuutiset</h2>
+    <div id="loader" class="loader"></div>
     <div id="feeds"></div>
   </section>
 
-<script>
-  const feeds = [
-    { url: "https://feeds.kauppalehti.fi/rss/topic/sijoittaminen", name: "Kauppalehti" },
-    { url: "https://www.arvopaperi.fi/api/feed/v2/rss/ap",       name: "Arvopaperi" },
-    { url: "https://www.salkunrakentaja.fi/feed/",                name: "SalkunRakentaja" },
-    { url: "https://www.hs.fi/rss/talous.xml",                    name: "Helsingin Sanomat" }
-  ];
+  <script>
+    const feeds = [
+      { url: "https://feeds.kauppalehti.fi/rss/topic/sijoittaminen", name: "Kauppalehti" },
+      { url: "https://www.arvopaperi.fi/api/feed/v2/rss/ap",       name: "Arvopaperi" },
+      { url: "https://www.salkunrakentaja.fi/feed/",                name: "SalkunRakentaja" },
+      { url: "https://www.hs.fi/rss/talous.xml",                    name: "Helsingin Sanomat" }
+    ];
 
-  const feedsContainer = document.getElementById('feeds');
+    const feedsContainer = document.getElementById('feeds');
+    const loader = document.getElementById('loader');
 
-  function createFeedBox(title, description, source, link) {
-    const box = document.createElement('div');
-    box.className = 'feed-box';
-    box.innerHTML = `
-      <h3><a href="${link}" target="_blank" rel="noopener">${title}</a></h3>
-      <p>${description || ''}</p>
-      <div class="source">${source}</div>
-    `;
-    return box;
-  }
-
-  async function loadFeeds() {
-    feedsContainer.innerHTML = ''; // Tyhjennä vanhat artikkelit aina sivun päivityksellä
-    let allItems = [];
-
-    for (const feed of feeds) {
-      try {
-        // Lisätään uniikki parametri välimuistin kiertämiseksi
-        const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feed.url)}&_=${Date.now()}`;
-        const response = await fetch(apiUrl, { cache: "no-store" }); // "no-store" estää selaimen välimuistin
-        if (!response.ok) continue;
-
-        const data = await response.json();
-        if (!data.items) continue;
-
-        data.items.forEach(item => {
-          allItems.push({
-            title: item.title,
-            description: item.description,
-            source: feed.name,
-            link: item.link,
-            pubDate: new Date(item.pubDate)
-          });
-        });
-      } catch (err) {
-        console.error(`Fetch error for feed ${feed.name}:`, err);
-      }
+    function createFeedBox(title, description, source, link) {
+      const box = document.createElement('div');
+      box.className = 'feed-box';
+      box.innerHTML = `
+        <h3><a href="${link}" target="_blank" rel="noopener">${title}</a></h3>
+        <p>${description || ''}</p>
+        <div class="source">${source}</div>
+      `;
+      return box;
     }
 
-    // Järjestä uusimmasta vanhimpaan
-    allItems.sort((a,b) => b.pubDate - a.pubDate);
+    async function loadFeeds() {
+      feedsContainer.innerHTML = '';
+      loader.style.display = 'block'; // Näytä loader
 
-    allItems.slice(0, 20).forEach(item => {
-      const box = createFeedBox(item.title, item.description, item.source, item.link);
-      feedsContainer.appendChild(box);
-    });
-  }
+      let allItems = [];
 
-  // Lataa feedit aina kun sivu ladataan
-  window.addEventListener('load', loadFeeds);
-</script>
+      for (const feed of feeds) {
+        try {
+          const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feed.url)}&_=${Date.now()}`;
+          const response = await fetch(apiUrl, { cache: "no-store" });
+          if (!response.ok) continue;
 
+          const data = await response.json();
+          if (!data.items) continue;
 
+          data.items.forEach(item => {
+            allItems.push({
+              title: item.title,
+              description: item.description,
+              source: feed.name,
+              link: item.link,
+              pubDate: new Date(item.pubDate)
+            });
+          });
+        } catch (err) {
+          console.error(`Fetch error for feed ${feed.name}:`, err);
+        }
+      }
+
+      // Järjestä uusimmasta vanhimpaan
+      allItems.sort((a,b) => b.pubDate - a.pubDate);
+
+      allItems.slice(0, 20).forEach(item => {
+        const box = createFeedBox(item.title, item.description, item.source, item.link);
+        feedsContainer.appendChild(box);
+        // Trigger fade-in animaatio
+        setTimeout(() => box.classList.add('show'), 50);
+      });
+
+      loader.style.display = 'none'; // Piilota loader
+    }
+
+    window.addEventListener('load', loadFeeds);
+  </script>
 
 </body>
 </html>
+
