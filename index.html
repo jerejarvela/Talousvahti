@@ -64,12 +64,12 @@
       border-radius: 2px;
     }
 
-    /* Mobile menu */
+    /* Mobile menu (nyt fixed eli aina näkyy scrollissa) */
     .mobile-menu {
       display: none;
       flex-direction: column;
       background-color: #111;
-      position: absolute;
+      position: fixed;
       top: 70px;
       right: 20px;
       width: 220px;
@@ -244,7 +244,7 @@
     fetch(rssUrl)
       .then(res => res.text())
       .then(html => {
-        feedsContainer.innerHTML = html; // korvaa loaderin artikkeleilla
+        feedsContainer.innerHTML = html;
       })
       .catch(err => {
         feedsContainer.innerHTML = "<p>Uutisia ei voitu ladata.</p>";
@@ -275,3 +275,4 @@
 
 </body>
 </html>
+
