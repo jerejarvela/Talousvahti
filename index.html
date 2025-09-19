@@ -70,12 +70,33 @@
 
   @keyframes fadeInBox { to { opacity: 1; transform: translateY(0) scale(1); } }
 
-  /* Kit form sidebar */
+  /* Kit form box */
   .kit-sidebar {
-    flex: 1; background: #111; border-radius: 12px; padding: 20px;
-    height: fit-content; position: sticky; top: 100px; max-width: 280px;
-    display: flex; justify-content: center;
+    flex: 1; background: #111; border-radius: 12px; padding: 25px;
+    height: fit-content; position: sticky; top: 100px; max-width: 300px;
+    display: flex; flex-direction: column; gap: 15px;
   }
+  .kit-sidebar h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #fff;
+    text-align: center;
+  }
+  .kit-sidebar p {
+    font-size: 14px;
+    color: #ccc;
+    line-height: 1.4;
+    text-align: center;
+  }
+  .kit-sidebar form { display: flex; flex-direction: column; gap: 10px; }
+  .kit-sidebar input[type="email"] {
+    padding: 10px; border-radius: 6px; border: none; font-size: 14px;
+  }
+  .kit-sidebar button {
+    padding: 10px; border-radius: 6px; border: none; background-color: #5386f5; color: #fff;
+    font-size: 16px; cursor: pointer; transition: background 0.3s;
+  }
+  .kit-sidebar button:hover { background-color: #3f66c1; }
 
   @media (max-width: 768px) {
     .navbar ul { display: none; }
@@ -83,15 +104,9 @@
     .main-container { flex-direction: column; }
     .kit-sidebar {
       width: 100%; max-width: 100%; position: relative; top: auto; margin: 20px 0;
-      justify-content: center;  /* keskitetään form */
+      align-items: center;
     }
-    /* Keskitetään form itse sisällä */
-    .kit-sidebar > * {
-      display: block;
-      margin: 0 auto;
-      width: 90%;
-      max-width: 400px;
-    }
+    .kit-sidebar > * { width: 90%; max-width: 400px; margin: 0 auto; }
   }
 
   /* Loader */
@@ -135,7 +150,12 @@
   </section>
 
   <aside class="kit-sidebar">
-    <script async data-uid="722673f8d4" src="https://talousvahti.kit.com/722673f8d4/index.js"></script>
+    <h3>Liity sähköpostilistalle</h3>
+    <p>Saat joka aamu päivän tärkeimmät talousuutiset, markkinaluvut ja talouskalenterin tapahtumat suoraan sähköpostiisi.</p>
+    <form>
+      <input type="email" placeholder="Sähköpostisi" required>
+      <button type="submit">Liity</button>
+    </form>
   </aside>
 </div>
 
