@@ -73,6 +73,7 @@
   /* Kit form box */
   .kit-sidebar {
     flex: 1; background: #1a1a1a; border-radius: 12px; padding: 25px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
     height: fit-content; position: sticky; top: 100px; max-width: 300px;
     display: flex; flex-direction: column; gap: 15px;
   }
@@ -103,10 +104,10 @@
     .hamburger { display: flex; }
     .main-container { flex-direction: column; }
     .kit-sidebar {
-      width: 100%; max-width: 100%; position: relative; top: auto; margin: 20px 0;
+      width: 90%; max-width: 350px; position: relative; top: auto; margin: 20px auto;
       align-items: center;
     }
-    .kit-sidebar > * { width: 90%; max-width: 400px; margin: 0 auto; }
+    .kit-sidebar > * { width: 100%; max-width: 100%; margin: 0 auto; }
   }
 
   /* Loader */
