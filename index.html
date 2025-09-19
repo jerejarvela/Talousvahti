@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Talousvahti</title>
   <style>
-    /* --- Perusasetukset --- */
     body {
       margin: 0;
       font-family: 'Arial', sans-serif;
@@ -14,7 +13,7 @@
     }
     a { text-decoration: none; }
 
-    /* --- Navbar --- */
+    /* Navbar */
     .navbar {
       display: flex;
       justify-content: space-between;
@@ -64,7 +63,7 @@
       border-radius: 2px;
     }
 
-    /* Mobile menu (nyt fixed eli aina näkyy scrollissa) */
+    /* Mobile menu */
     .mobile-menu {
       display: none;
       flex-direction: column;
@@ -90,7 +89,6 @@
       color: #33aaff;
     }
 
-    /* Overlay tausta kun menu auki */
     .overlay {
       display: none;
       position: fixed;
@@ -105,11 +103,17 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* --- Feed section --- */
+    /* --- Main content --- */
+    .main-container {
+      display: flex;
+      max-width: 1200px;
+      margin: 40px auto;
+      gap: 20px;
+      padding: 0 20px;
+    }
+
     .feed-section {
-      padding: 40px 30px;
-      max-width: 1000px;
-      margin: auto;
+      flex: 3;
     }
     .feed-section h2 {
       margin-bottom: 25px;
@@ -119,7 +123,50 @@
       padding-bottom: 10px;
     }
 
-    /* --- Loader --- */
+    .feed-box {
+      background: #1a1a1a;
+      border-radius: 12px;
+      padding: 25px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+      transition: transform 0.3s, box-shadow 0.3s;
+      opacity: 0;
+      transform: translateY(25px) scale(0.95);
+      animation: fadeInBox 0.6s forwards;
+    }
+    .feed-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.7);
+    }
+    .feed-box h3 { margin-bottom: 12px; font-size: 22px; color: #fff; }
+    .feed-box h3 a { color: #ccc; transition: color 0.3s; }
+    .feed-box h3 a:hover { color: #fff; text-decoration: underline; }
+    .feed-box p { font-size: 16px; line-height: 1.6; margin-bottom: 12px; color: #ddd; }
+    .feed-box .source { font-size: 14px; color: #5386f5; font-weight: bold; }
+
+    @keyframes fadeInBox {
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    /* Kit form sidebar */
+    .kit-sidebar {
+      flex: 1;
+      background: #111;
+      border-radius: 12px;
+      padding: 20px;
+      height: fit-content;
+      position: sticky;
+      top: 100px;
+    }
+
+    @media (max-width: 768px) {
+      .navbar ul { display: none; }
+      .hamburger { display: flex; }
+      .main-container { flex-direction: column; }
+      .kit-sidebar { width: 100%; position: relative; top: auto; margin-top: 20px; }
+    }
+
+    /* Loader */
     #loader {
       display: flex;
       align-items: center;
@@ -136,64 +183,7 @@
       border-radius: 50%;
       animation: spin 1s linear infinite;
     }
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-
-    /* --- Feed box --- */
-    .feed-box {
-      background: #1a1a1a;
-      border-radius: 12px;
-      padding: 25px;
-      margin-bottom: 25px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-      transition: transform 0.3s, box-shadow 0.3s;
-      opacity: 0;
-      transform: translateY(25px) scale(0.95);
-      animation: fadeInBox 0.6s forwards;
-    }
-    .feed-box:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.7);
-    }
-    .feed-box h3 {
-      margin-bottom: 12px;
-      font-size: 22px;
-      color: #ffffff;
-    }
-    .feed-box h3 a {
-      color: #ccc;
-      transition: color 0.3s;
-    }
-    .feed-box h3 a:hover {
-      color: #fff;
-      text-decoration: underline;
-    }
-    .feed-box p {
-      font-size: 16px;
-      line-height: 1.6;
-      margin-bottom: 12px;
-      color: #ddd;
-    }
-    .feed-box .source {
-      font-size: 14px;
-      color: #5386f5;
-      text-align: left;
-      font-weight: bold;
-    }
-
-    @keyframes fadeInBox {
-      to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-    }
-
-    /* --- Responsiivisuus --- */
-    @media (max-width: 768px) {
-      .navbar ul { display: none; }
-      .hamburger { display: flex; }
-    }
+    @keyframes spin { to { transform: rotate(360deg); } }
   </style>
 </head>
 <body>
@@ -207,7 +197,6 @@
       <li><a href="#tietoa">Tietoa</a></li>
     </ul>
 
-    <!-- Hamburger -->
     <div class="hamburger" id="hamburger">
       <span></span>
       <span></span>
@@ -215,31 +204,34 @@
     </div>
   </nav>
 
-  <!-- Mobile dropdown -->
   <div class="mobile-menu" id="mobileMenu">
     <a href="index.html" class="active">Talousuutiset</a>
     <a href="Blogi.html">Blogi</a>
     <a href="#tietoa">Tietoa</a>
   </div>
-
-  <!-- Overlay -->
   <div class="overlay" id="overlay"></div>
 
-  <!-- RSS Feedit -->
-  <section class="feed-section" id="talousuutiset">
-    <h2>Talousuutiset</h2>
-    <div id="feeds">
-      <div id="loader">
-        <div class="spinner"></div>
-        <span>Ladataan uutisia...</span>
+  <!-- Main content -->
+  <div class="main-container">
+    <section class="feed-section" id="talousuutiset">
+      <h2>Talousuutiset</h2>
+      <div id="feeds">
+        <div id="loader">
+          <div class="spinner"></div>
+          <span>Ladataan uutisia...</span>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Google Apps Script fetch -->
+    <aside class="kit-sidebar">
+      <script async data-uid="3b58cf866a" src="https://talousvahti.kit.com/3b58cf866a/index.js"></script>
+    </aside>
+  </div>
+
+  <!-- Fetch feeds -->
   <script>
     const feedsContainer = document.getElementById('feeds');
-    const rssUrl = 'https://script.google.com/macros/s/AKfycbyDAFHdkTFuO575Ye-io7_mHPFROH3w75_9YXAJ5z9_MeKHvPzhhtG-kN4eZOXcOL9-/exec'; // korvaa omalla GAS URL:lläsi
+    const rssUrl = 'https://script.google.com/macros/s/AKfycbyDAFHdkTFuO575Ye-io7_mHPFROH3w75_9YXAJ5z9_MeKHvPzhhtG-kN4eZOXcOL9-/exec';
 
     fetch(rssUrl)
       .then(res => res.text())
@@ -251,22 +243,16 @@
         console.error('RSS fetch error:', err);
       });
 
-    // Hamburger menu toggle
+    // Hamburger menu
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobileMenu');
     const overlay = document.getElementById('overlay');
 
     hamburger.addEventListener('click', () => {
       const isOpen = mobileMenu.style.display === 'flex';
-      if (isOpen) {
-        mobileMenu.style.display = 'none';
-        overlay.style.display = 'none';
-      } else {
-        mobileMenu.style.display = 'flex';
-        overlay.style.display = 'block';
-      }
+      mobileMenu.style.display = isOpen ? 'none' : 'flex';
+      overlay.style.display = isOpen ? 'none' : 'block';
     });
-
     overlay.addEventListener('click', () => {
       mobileMenu.style.display = 'none';
       overlay.style.display = 'none';
@@ -275,4 +261,3 @@
 
 </body>
 </html>
-
