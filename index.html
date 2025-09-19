@@ -52,7 +52,7 @@
 
   /* Main content */
   .main-container { display: flex; max-width: 1200px; margin: 40px auto; gap: 20px; padding: 0 20px; }
-  .feed-section { flex: 1; }
+  .feed-section { flex: 3; }
   .feed-section h2 { margin-bottom: 25px; color: #ccc; font-size: 28px; border-bottom: 1px solid #222; padding-bottom: 10px; }
 
   .feed-box {
@@ -70,10 +70,34 @@
 
   @keyframes fadeInBox { to { opacity: 1; transform: translateY(0) scale(1); } }
 
+  /* Kit form box */
+  .kit-sidebar {
+    flex: 1; background: #1a1a1a; border-radius: 12px; padding: 25px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    height: fit-content; position: sticky; top: 100px; max-width: 280px;
+    display: flex; flex-direction: column; gap: 15px;
+    opacity: 0; transform: translateY(30px); animation: fadeSlideIn 0.8s ease forwards 0.3s;
+  }
+  @keyframes fadeSlideIn {
+    0% { opacity: 0; transform: translateY(30px) scale(0.97); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  .kit-sidebar h3 {
+    font-size: 20px; margin-bottom: 10px; color: #fff; text-align: center;
+  }
+  .kit-sidebar p {
+    font-size: 14px; color: #ccc; line-height: 1.4; text-align: center;
+  }
+
   @media (max-width: 768px) {
     .navbar ul { display: none; }
     .hamburger { display: flex; }
     .main-container { flex-direction: column; }
+    .kit-sidebar {
+      width: 80%; max-width: 300px; position: relative; top: auto; margin: 20px auto;
+      align-items: center;
+    }
+    .kit-sidebar > * { width: 100%; max-width: 100%; margin: 0 auto; }
   }
 
   /* Loader */
@@ -115,6 +139,13 @@
       </div>
     </div>
   </section>
+
+  <aside class="kit-sidebar">
+    <h3>Liity sähköpostilistalle</h3>
+    <p>Saat joka aamu päivän tärkeimmät talousuutiset, markkinaluvut ja talouskalenterin tapahtumat suoraan sähköpostiisi.</p>
+    <!-- Kit upotettu lomake -->
+    <script async data-uid="722673f8d4" src="https://talousvahti.kit.com/722673f8d4/index.js"></script>
+  </aside>
 </div>
 
 <script>
