@@ -74,13 +74,18 @@
     .kit-sidebar {
       flex: 1; background: #111; border-radius: 12px; padding: 20px;
       height: fit-content; position: sticky; top: 100px; max-width: 280px;
+      display: flex; justify-content: center; align-items: flex-start;
     }
 
     @media (max-width: 768px) {
       .navbar ul { display: none; }
       .hamburger { display: flex; }
       .main-container { flex-direction: column; }
-      .kit-sidebar { width: 100%; max-width: 100%; position: relative; top: auto; margin: 20px 0; }
+      .kit-sidebar {
+        width: 100%; max-width: 100%; position: relative; top: auto; margin: 20px 0;
+        justify-content: center; /* keskitetään form */
+      }
+      .kit-sidebar > * { width: 90%; max-width: 400px; } /* form sopivaksi keskelle */
     }
 
     /* Loader */
@@ -127,6 +132,7 @@
     </section>
 
     <aside class="kit-sidebar">
+      <!-- Kit form tulee tähän ja keskitetty mobiilissa -->
       <script async data-uid="c099461f0a" src="https://talousvahti.kit.com/c099461f0a/index.js"></script>
     </aside>
   </div>
@@ -160,3 +166,4 @@
 
 </body>
 </html>
+
