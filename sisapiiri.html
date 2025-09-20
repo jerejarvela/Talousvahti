@@ -56,17 +56,23 @@
   .feed-section h2 { margin-bottom: 25px; color: #ccc; font-size: 28px; border-bottom: 1px solid #222; padding-bottom: 10px; }
 
   .feed-box {
-    background: #1a1a1a; border-radius: 12px; padding: 25px; margin-bottom: 25px;
+    background: #1a1a1a;
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 25px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.5);
     transition: transform 0.3s, box-shadow 0.3s;
-    opacity: 0; transform: translateY(25px) scale(0.95); animation: fadeInBox 0.6s forwards;
+    opacity: 0;
+    transform: translateY(25px) scale(0.95);
+    animation: fadeInBox 0.6s forwards;
   }
-  .feed-box:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.7); }
+  .feed-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.7);
+  }
   .feed-box h3 { margin-bottom: 12px; font-size: 22px; color: #fff; }
-  .feed-box h3 a { color: #ccc; transition: color 0.3s; }
-  .feed-box h3 a:hover { color: #fff; text-decoration: underline; }
-  .feed-box p { font-size: 16px; line-height: 1.6; margin-bottom: 12px; color: #ddd; }
-  .feed-box .source { font-size: 14px; color: #5386f5; font-weight: bold; }
+  .feed-box p { font-size: 16px; line-height: 1.6; margin-bottom: 8px; color: #ddd; }
+  .feed-box .type { font-weight: bold; color: #5386f5; }
 
   @keyframes fadeInBox { to { opacity: 1; transform: translateY(0) scale(1); } }
 
@@ -76,7 +82,7 @@
     .main-container { flex-direction: column; }
   }
 
-  /* Loader (kuva) */
+  /* Loader */
   #loader {
     display: flex;
     align-items: center;
@@ -110,7 +116,6 @@
     from { clip-path: inset(0 100% 0 0); }
     to   { clip-path: inset(0 0 0 0); }
   }
-  /* Fade alareunaan */
   .image-loader::after {
     content: "";
     position: absolute;
@@ -151,7 +156,6 @@
   <section class="feed-section" id="insider-transactions">
     <h2>Sisäpiirikaupat</h2>
     <div id="feeds">
-      <!-- Uusi kuva-loader -->
       <div id="loader">
         <div class="image-loader">
           <img src="https://storage.mlcdn.com/account_image/1738913/3UJwhclPvl7P8Z56KrJYVAXUe6dwuVPNN5TfLsfT.png" class="bw" alt="Ladataan">
@@ -164,11 +168,13 @@
 
 <script>
   const feedsContainer = document.getElementById('feeds');
+  const loader = document.getElementById('loader');
   const apiUrl = 'https://script.google.com/macros/s/AKfycbzO4gx3proEbMUzayv5nMT3nEHlq9s48lHiGuxsgJRMQWiPUTu-vk3uFCzzvcfMFFTD/exec';
 
   fetch(apiUrl)
     .then(res => res.json())
     .then(data => {
+      loader.style.display = 'none'; // piilota loader
       const transactions = data.insiderTransactions;
       if (!transactions || transactions.length === 0) {
         feedsContainer.innerHTML = "<p>Ei sisäpiirikauppoja.</p>";
@@ -178,18 +184,20 @@
       let html = "";
       transactions.forEach(t => {
         html += `
-          <div class="feed-box show">
+          <div class="feed-box">
             <h3>${t.company}</h3>
             <p>Päivämäärä: ${t.date}</p>
             <p>Suorittaja: ${t.executive}</p>
-            <p>Osto/Myynti: ${t.type}</p>
+            <p class="type">Osto/Myynti: ${t.type}</p>
             <p>Arvo yhteensä: ${t.totalValue.toLocaleString()} USD</p>
           </div>
         `;
       });
+
       feedsContainer.innerHTML = html;
     })
     .catch(err => {
+      loader.style.display = 'none';
       feedsContainer.innerHTML = "<p>Sisäpiirikauppoja ei voitu ladata.</p>";
       console.error('Fetch error:', err);
     });
@@ -212,4 +220,3 @@
 
 </body>
 </html>
-
