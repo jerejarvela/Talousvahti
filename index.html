@@ -64,15 +64,16 @@
     opacity: 0; transform: translateY(25px) scale(0.95); animation: fadeInBox 0.6s forwards;
   }
   .feed-box:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.7); }
-  .feed-box h3 { margin-bottom: 12px; font-size: 22px; color: #fff; } /* otsikot valkoiset */
+  .feed-box h3 { margin-bottom: 12px; font-size: 22px; color: #fff !important; } /* otsikot valkoisiksi */
+  .feed-box h3 a { color: #fff !important; transition: color 0.3s; }
   .feed-box p { font-size: 16px; line-height: 1.6; margin-bottom: 8px; color: #ddd; }
-  .feed-box .source { font-size: 14px; color: #0384fc; font-weight: bold; } /* lähteet siniseksi */
+  .feed-box .source { font-size: 14px; color: #0384fc !important; font-weight: bold; }
 
   @keyframes fadeInBox { to { opacity: 1; transform: translateY(0) scale(1); } }
 
   /* Kit form box */
   .kit-sidebar {
-    flex: 1; background: #1a1a1a; border-radius: 12px; padding: 45px 25px 25px 25px; /* enemmän tilaa ylhäällä */
+    flex: 1; background: #1a1a1a; border-radius: 12px; padding: 55px 25px 25px 25px; /* enemmän tilaa ylhäällä */
     box-shadow: 0 4px 15px rgba(0,0,0,0.5);
     height: fit-content; position: sticky; top: 100px; max-width: 280px;
     display: flex; flex-direction: column; gap: 20px;
@@ -83,7 +84,7 @@
     100% { opacity: 1; transform: translateY(0) scale(1); }
   }
   .kit-sidebar h3 { font-size: 20px; margin-bottom: 15px; color: #fff; text-align: center; }
-  .kit-sidebar p { font-size: 14px; color: #ccc; line-height: 1.4; text-align: center; margin-top: -15px; } /* menee form-laatikon päälle */
+  .kit-sidebar p { font-size: 14px; color: #ccc; line-height: 1.4; text-align: center; margin-top: -20px; } /* menee form-laatikon päälle */
 
   @media (max-width: 768px) {
     .navbar ul { display: none; }
@@ -120,19 +121,9 @@
     height: 100%;
     object-fit: cover;
   }
-  .image-loader .gray {
-    filter: grayscale(100%);
-    z-index: 1;
-  }
-  .image-loader .color {
-    z-index: 2;
-    clip-path: inset(0 100% 0 0);
-    animation: revealMask 3s linear forwards;
-  }
-  @keyframes revealMask {
-    from { clip-path: inset(0 100% 0 0); }
-    to   { clip-path: inset(0 0 0 0); }
-  }
+  .image-loader .gray { filter: grayscale(100%); z-index: 1; }
+  .image-loader .color { z-index: 2; clip-path: inset(0 100% 0 0); animation: revealMask 3s linear forwards; }
+  @keyframes revealMask { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
   .image-loader::after {
     content: "";
     position: absolute;
@@ -144,6 +135,7 @@
     z-index: 3;
     pointer-events: none;
   }
+
 </style>
 </head>
 <body>
@@ -198,8 +190,8 @@
 <script>
   // Näytä tämän päivän päivämäärä
   const today = new Date();
-  const dd = String(today.getDate()).padStart(2, '0');
-  const mm = String(today.getMonth() + 1).padStart(2, '0');
+  const dd = String(today.getDate()).padStart(2,'0');
+  const mm = String(today.getMonth()+1).padStart(2,'0');
   document.getElementById('today-date').textContent = `${dd}.${mm}`;
 
   // RSS/feed fetch
@@ -213,10 +205,10 @@
       loader.style.display = 'none';
       feedsContainer.innerHTML = html;
     })
-    .catch(err => { 
+    .catch(err => {
       loader.style.display = 'none';
-      feedsContainer.innerHTML = "<p>Uutisia ei voitu ladata.</p>"; 
-      console.error('RSS fetch error:', err); 
+      feedsContainer.innerHTML = "<p>Uutisia ei voitu ladata.</p>";
+      console.error('RSS fetch error:', err);
     });
 
   // Hamburger-menu
