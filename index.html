@@ -101,8 +101,7 @@
     .kit-sidebar > * { width: 100%; max-width: 100%; margin: 0 auto; }
   }
 
-  /* Uusi Loader (kuva täyttyy vasemmalta oikealle) */
- /* Loader */
+  /* Uusi kuva-loader */
   #loader {
     display: flex;
     flex-direction: column;
@@ -110,18 +109,16 @@
     gap: 12px;
     font-size: 18px;
     color: #ffffff;
-    margin: 40px auto;
+    margin-bottom: 20px;
   }
-
   .image-loader {
     position: relative;
-    width: 160px;
-    height: 160px;
+    width: 140px;
+    height: 140px;
     overflow: hidden;
     border-radius: 12px;
   }
-
-  /* Harmaa kuva taustalla */
+  /* Harmaa taustakuva */
   .image-loader img {
     width: 100%;
     height: 100%;
@@ -129,18 +126,15 @@
     filter: grayscale(100%);
     display: block;
   }
-
-  /* Värillinen kuva päällä, paljastuu vasemmalta oikealle */
+  /* Värillinen kuva paljastuu vasemmalta oikealle */
   .image-loader::after {
     content: "";
     position: absolute;
     top: 0; left: 0;
-    height: 100%; 
-    width: 0;
+    height: 100%; width: 0;
     background: url("https://storage.mlcdn.com/account_image/1738913/3UJwhclPvl7P8Z56KrJYVAXUe6dwuVPNN5TfLsfT.png") center/cover no-repeat;
     animation: reveal 3s linear forwards;
   }
-
   @keyframes reveal {
     from { width: 0; }
     to   { width: 100%; }
@@ -148,13 +142,6 @@
 </style>
 </head>
 <body>
-
-<div id="loader">
-  <div class="image-loader">
-    <img src="https://storage.mlcdn.com/account_image/1738913/3UJwhclPvl7P8Z56KrJYVAXUe6dwuVPNN5TfLsfT.png" alt="Latauskuva">
-  </div>
-  <span>Ladataan uutisia...</span>
-</div>
 
 <nav class="navbar">
   <div class="brand">Talousvahti</div>
@@ -229,4 +216,5 @@
 
 </body>
 </html>
+
 
