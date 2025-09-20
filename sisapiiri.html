@@ -76,10 +76,52 @@
     .main-container { flex-direction: column; }
   }
 
-  /* Loader */
-  #loader { display: flex; align-items: center; gap: 10px; font-size: 18px; color: #ffffff; margin-bottom: 20px; }
-  #loader .spinner { width: 20px; height: 20px; border: 3px solid #0045b5; border-top: 3px solid transparent; border-radius: 50%; animation: spin 1s linear infinite; }
-  @keyframes spin { to { transform: rotate(360deg); } }
+  /* Loader (kuva) */
+  #loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 40px 0;
+  }
+  .image-loader {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .image-loader img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0; left: 0;
+  }
+  .image-loader .bw {
+    filter: grayscale(100%);
+    z-index: 1;
+  }
+  .image-loader .color {
+    z-index: 2;
+    clip-path: inset(0 100% 0 0);
+    animation: revealMask 3s linear forwards;
+  }
+  @keyframes revealMask {
+    from { clip-path: inset(0 100% 0 0); }
+    to   { clip-path: inset(0 0 0 0); }
+  }
+  /* Fade alareunaan */
+  .image-loader::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, #0f0f0f 100%);
+    z-index: 3;
+    pointer-events: none;
+  }
 </style>
 </head>
 <body>
@@ -109,9 +151,12 @@
   <section class="feed-section" id="insider-transactions">
     <h2>Sisäpiirikaupat</h2>
     <div id="feeds">
+      <!-- Uusi kuva-loader -->
       <div id="loader">
-        <div class="spinner"></div>
-        <span>Ladataan sisäpiirikauppoja...</span>
+        <div class="image-loader">
+          <img src="https://storage.mlcdn.com/account_image/1738913/3UJwhclPvl7P8Z56KrJYVAXUe6dwuVPNN5TfLsfT.png" class="bw" alt="Ladataan">
+          <img src="https://storage.mlcdn.com/account_image/1738913/3UJwhclPvl7P8Z56KrJYVAXUe6dwuVPNN5TfLsfT.png" class="color" alt="Ladataan">
+        </div>
       </div>
     </div>
   </section>
