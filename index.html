@@ -118,21 +118,21 @@
     overflow: hidden;
     border-radius: 12px;
   }
-  /* Harmaa taustakuva */
-  .image-loader img {
+  /* Harmaa kuva taustalla */
+  .image-loader img.gray {
     width: 100%;
     height: 100%;
     object-fit: cover;
     filter: grayscale(100%);
     display: block;
   }
-  /* Värillinen kuva paljastuu vasemmalta oikealle */
-  .image-loader::after {
-    content: "";
+  /* Värillinen kuva päälle, paljastuu leveydellä */
+  .image-loader img.color {
     position: absolute;
     top: 0; left: 0;
-    height: 100%; width: 100%;
-    background: url("https://storage.mlcdn.com/account_image/1738913/3UJwhclPvl7P8Z56KrJYVAXUe6dwuVPNN5TfLsfT.png") center/cover no-repeat;
+    width: 0;
+    height: 100%;
+    object-fit: cover;
     animation: reveal 3s linear forwards;
   }
   @keyframes reveal {
@@ -172,7 +172,8 @@
     <div id="feeds">
       <div id="loader">
         <div class="image-loader">
-          <img src="https://storage.mlcdn.com/account_image/1738913/3UJwhclPvl7P8Z56KrJYVAXUe6dwuVPNN5TfLsfT.png" alt="Latauskuva">
+          <img class="gray" src="https://storage.mlcdn.com/account_image/1738913/3UJwhclPvl7P8Z56KrJYVAXUe6dwuVPNN5TfLsfT.png" alt="Latauskuva">
+          <img class="color" src="https://storage.mlcdn.com/account_image/1738913/3UJwhclPvl7P8Z56KrJYVAXUe6dwuVPNN5TfLsfT.png" alt="Latauskuva">
         </div>
         <span>Ladataan uutisia...</span>
       </div>
@@ -216,4 +217,3 @@
 
 </body>
 </html>
-
