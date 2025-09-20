@@ -54,7 +54,7 @@
   .main-container { display: flex; max-width: 1200px; margin: 40px auto; gap: 20px; padding: 0 20px; }
   .feed-section { flex: 3; position: relative; }
   .feed-section h2 { 
-    margin-bottom: 25px; color: #ccc; font-size: 28px; 
+    margin-bottom: 25px; color: #fff; font-size: 28px; 
     border-bottom: 1px solid #222; padding-bottom: 10px; 
     display: flex; justify-content: space-between; align-items: center; 
   }
@@ -77,7 +77,7 @@
 
   /* Kit form box */
   .kit-sidebar {
-    flex: 1; background: #1a1a1a; border-radius: 12px; padding: 55px 25px 25px 25px; 
+    flex: 1; background: #1a1a1a; border-radius: 12px; padding: 25px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.5);
     height: fit-content; position: sticky; top: 100px; max-width: 280px;
     display: flex; flex-direction: column; gap: 20px;
@@ -87,8 +87,10 @@
     0% { opacity: 0; transform: translateY(30px) scale(0.97); }
     100% { opacity: 1; transform: translateY(0) scale(1); }
   }
-  .kit-sidebar h3 { font-size: 20px; margin-bottom: 15px; color: #fff; text-align: center; }
-  .kit-sidebar p { font-size: 14px; color: #ccc; line-height: 1.4; text-align: center; margin-top: -20px; }
+  .kit-sidebar h3 { font-size: 20px; margin-bottom: 10px; color: #fff; text-align: center; }
+  .kit-sidebar .sidebar-text {
+    font-size: 14px; color: #ccc; line-height: 1.4; text-align: center; margin-bottom: -15px;
+  }
 
   @media (max-width: 768px) {
     .navbar ul { display: none; }
@@ -139,7 +141,6 @@
     z-index: 3;
     pointer-events: none;
   }
-
 </style>
 </head>
 <body>
@@ -179,12 +180,16 @@
           <img class="gray" src="https://storage.mlcdn.com/account_image/1738913/3UJwhclPvl7P8Z56KrJYVAXUe6dwuVPNN5TfLsfT.png" alt="Latauskuva">
           <img class="color" src="https://storage.mlcdn.com/account_image/1738913/3UJwhclPvl7P8Z56KrJYVAXUe6dwuVPNN5TfLsfT.png" alt="Latauskuva">
         </div>
+        <span>Ladataan uutisia...</span>
+      </div>
     </div>
   </section>
 
   <aside class="kit-sidebar">
     <h3>Liity sähköpostilistalle</h3>
-    <p>Saat joka aamu päivän tärkeimmät talousuutiset, markkinaluvut ja talouskalenterin tapahtumat suoraan sähköpostiisi.</p>
+    <div class="sidebar-text">
+      Saat joka aamu päivän tärkeimmät talousuutiset, markkinaluvut ja talouskalenterin tapahtumat suoraan sähköpostiisi.
+    </div>
     <script async data-uid="722673f8d4" src="https://talousvahti.kit.com/722673f8d4/index.js"></script>
   </aside>
 </div>
