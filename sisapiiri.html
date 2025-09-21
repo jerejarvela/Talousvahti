@@ -87,39 +87,37 @@
   const feedsContainer = document.getElementById('feeds');
   const loader = document.getElementById('loader');
 
-  // Web API data (antamasi JSON)
-  const apiData = {
-    "updated":"2025-09-21T06:41:59.808Z",
-    "insiderTransactions":[
-      {"company":"Google","date":"17.09.","executive":"PICHAI, SUNDAR (Director, Chief Executive Officer)","type":"Myynti","totalValue":6833368},
-      {"company":"Microsoft","date":"03.09.","executive":"NADELLA, SATYA (Director, Chief Executive Officer)","type":"Myynti","totalValue":75061342},
-      {"company":"Google","date":"03.09.","executive":"PICHAI, SUNDAR (Director, Chief Executive Officer)","type":"Myynti","totalValue":6459531},
-      {"company":"Microsoft","date":"02.09.","executive":"SMITH, BRADFORD L (Vice Chair and President)","type":"Myynti","totalValue":12663314},
-      {"company":"Microsoft","date":"02.09.","executive":"NUMOTO, TAKESHI (EVP, Chief Marketing Officer)","type":"Myynti","totalValue":4704944},
-      {"company":"Microsoft","date":"02.09.","executive":"NADELLA, SATYA (Director, Chief Executive Officer)","type":"Myynti","totalValue":62000041}
-    ]
-  };
+  // API URL, joka palauttaa JSON-datan
+  const apiUrl = 'https://script.google.com/macros/s/AKfycbytVUskLjlZ7DtSJ1NAXNKBj__zpb4yFR5_-7gI3sA1khbx_mtR5IXWTPAWA1xr5du3/exec';
 
-  // Näytetään data
-  const transactions = apiData.insiderTransactions;
-  loader.style.display = 'none';
-  if(!transactions || transactions.length === 0){
-    feedsContainer.innerHTML = "<p>Ei sisäpiirikauppoja.</p>";
-  } else {
-    let html = '';
-    transactions.forEach(t => {
-      html += `
-        <div class="feed-box">
-          <h3>${t.company}</h3>
-          <p>Päivämäärä: ${t.date}</p>
-          <p>Suorittaja: ${t.executive}</p>
-          <p class="type">Osto/Myynti: ${t.type}</p>
-          <p>Arvo yhteensä: ${t.totalValue.toLocaleString()} USD</p>
-        </div>
-      `;
+  fetch(apiUrl)
+    .then(res => res.json())
+    .then(data => {
+      loader.style.display = 'none';
+      const transactions = data.insiderTransactions;
+      if(!transactions || transactions.length === 0){
+        feedsContainer.innerHTML = "<p>Ei sisäpiirikauppoja.</p>";
+        return;
+      }
+      let html = '';
+      transactions.forEach(t => {
+        html += `
+          <div class="feed-box">
+            <h3>${t.company}</h3>
+            <p>Päivämäärä: ${t.date}</p>
+            <p>Suorittaja: ${t.executive}</p>
+            <p class="type">Osto/Myynti: ${t.type}</p>
+            <p>Arvo yhteensä: ${t.totalValue.toLocaleString()} USD</p>
+          </div>
+        `;
+      });
+      feedsContainer.innerHTML = html;
+    })
+    .catch(err => {
+      loader.style.display = 'none';
+      feedsContainer.innerHTML = "<p>Sisäpiirikauppoja ei voitu ladata.</p>";
+      console.error('Fetch error:', err);
     });
-    feedsContainer.innerHTML = html;
-  }
 
   // Hamburger-menu
   const hamburger = document.getElementById('hamburger');
