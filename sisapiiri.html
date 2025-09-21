@@ -30,15 +30,21 @@
   .feed-section { flex: 3; }
   .feed-section h2 { margin-bottom: 25px; color: #ccc; font-size: 28px; border-bottom: 1px solid #222; padding-bottom: 10px; }
 
-  .feed-box { background: #1a1a1a; border-radius: 12px; padding: 25px; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); transition: transform 0.3s, box-shadow 0.3s; opacity: 0; transform: translateY(25px) scale(0.95); animation: fadeInBox 0.6s forwards; }
+  .feed-box { background: #1a1a1a; border-radius: 12px; padding: 20px; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); display: flex; justify-content: space-between; align-items: flex-start; transition: transform 0.3s, box-shadow 0.3s; opacity: 0; transform: translateY(25px) scale(0.95); animation: fadeInBox 0.6s forwards; }
   .feed-box:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.7); }
-  .feed-box h3 { margin-bottom: 12px; font-size: 22px; color: #fff; }
-  .feed-box p { font-size: 16px; line-height: 1.6; margin-bottom: 8px; color: #ddd; }
-  .feed-box .type { font-weight: bold; color: #5386f5; }
+
+  .feed-left { display: flex; flex-direction: column; gap: 5px; }
+  .feed-left .date { background: #5386f5; color: #fff; padding: 3px 8px; border-radius: 4px; display: inline-block; font-size: 14px; font-weight: bold; }
+  .feed-left .company { font-size: 18px; font-weight: bold; color: #fff; }
+  .feed-left .executive { font-size: 16px; color: #ddd; }
+
+  .feed-right { display: flex; flex-direction: column; align-items: flex-end; gap: 5px; }
+  .feed-right .type { font-size: 16px; font-weight: bold; color: #5386f5; }
+  .feed-right .total { font-size: 16px; color: #ddd; }
 
   @keyframes fadeInBox { to { opacity: 1; transform: translateY(0) scale(1); } }
 
-  @media (max-width: 768px) { .navbar ul { display: none; } .hamburger { display: flex; } .main-container { flex-direction: column; } }
+  @media (max-width: 768px) { .navbar ul { display: none; } .hamburger { display: flex; } .main-container { flex-direction: column; } .feed-box { flex-direction: column; align-items: flex-start; } .feed-right { align-items: flex-start; margin-top: 10px; } }
 
   /* Loader */
   #loader { display: flex; align-items: center; justify-content: center; margin: 40px 0; }
@@ -86,8 +92,6 @@
 <script>
   const feedsContainer = document.getElementById('feeds');
   const loader = document.getElementById('loader');
-
-  // API URL, joka palauttaa JSON-datan
   const apiUrl = 'https://script.google.com/macros/s/AKfycbytVUskLjlZ7DtSJ1NAXNKBj__zpb4yFR5_-7gI3sA1khbx_mtR5IXWTPAWA1xr5du3/exec';
 
   fetch(apiUrl)
@@ -99,18 +103,29 @@
         feedsContainer.innerHTML = "<p>Ei sisäpiirikauppoja.</p>";
         return;
       }
-      let html = '';
-      transactions.forEach(t => {
-        html += `
+
+      const html = transactions.map(t => {
+        const dateObj = new Date(t.date.length === 5 ? `${t.date}2025` : t.date); // pp.mm. -> pp.mm.yyyy
+        const day = String(dateObj.getDate()).padStart(2,'0');
+        const month = String(dateObj.getMonth()+1).padStart(2,'0');
+        const year = dateObj.getFullYear();
+        const formattedDate = `${day}.${month}.${year}`;
+
+        return `
           <div class="feed-box">
-            <h3>${t.company}</h3>
-            <p>Päivämäärä: ${t.date}</p>
-            <p>Suorittaja: ${t.executive}</p>
-            <p class="type">Osto/Myynti: ${t.type}</p>
-            <p>Arvo yhteensä: ${t.totalValue.toLocaleString()} USD</p>
+            <div class="feed-left">
+              <span class="date">${formattedDate}</span>
+              <span class="company">${t.company}</span>
+              <span class="executive">${t.executive}</span>
+            </div>
+            <div class="feed-right">
+              <span class="type">${t.type}</span>
+              <span class="total">${t.totalValue.toLocaleString()}</span>
+            </div>
           </div>
         `;
-      });
+      }).join('');
+
       feedsContainer.innerHTML = html;
     })
     .catch(err => {
