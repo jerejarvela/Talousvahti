@@ -20,7 +20,7 @@
     background-color: #000; padding: 15px 30px; border-bottom: 2px solid #222;
     position: sticky; top: 0; z-index: 3000;
   }
-  .navbar .brand { font-size: 26px; font-weight: bold; letter-spacing: 1px; color: #fff; }
+  .navbar .brand { font-size: 26px; font-weight: bold; color: #fff; }
   .navbar ul { list-style: none; display: flex; gap: 25px; }
   .navbar ul li a {
     color: #fff; font-size: 18px; transition: all 0.3s; padding: 5px 10px; border-radius: 5px;
@@ -37,7 +37,7 @@
     box-shadow: 0 4px 12px rgba(0,0,0,0.6); overflow: hidden; z-index: 4000;
     animation: slideDown 0.3s ease forwards;
   }
-  .mobile-menu a { padding: 15px; border-bottom: 1px solid #222; color: #fff; transition: background 0.3s; }
+  .mobile-menu a { padding: 15px; border-bottom: 1px solid #222; color: #fff; }
   .mobile-menu a:hover { background: #222; color: #0384fc; }
   .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 3500; }
   @keyframes slideDown { from { opacity:0; transform:translateY(-10px);} to {opacity:1; transform:translateY(0);} }
@@ -87,11 +87,17 @@
   .results h3 { font-size: 24px; margin-bottom: 15px; color: #fff; }
   .results .highlight { font-size: 28px; font-weight: bold; color: #0384fc; }
 
-  canvas { margin-top: 30px; }
-
+  /* Chart container */
+  .chart-container {
+    margin-top: 30px;
+    width: 100%;
+    height: 400px; /* desktop default */
+  }
   @media (max-width: 768px) {
-    .navbar ul { display: none; }
-    .hamburger { display: flex; }
+    .chart-container {
+      height: 500px; /* korkeampi mobiilissa */
+      aspect-ratio: 1 / 1; /* tekee kaaviosta neliön */
+    }
   }
 </style>
 </head>
@@ -161,7 +167,9 @@
     <h3>Kertynyt pääoma</h3>
     <div class="highlight" id="total">0 €</div>
     <p><span id="duration">0</span> vuodessa</p>
-    <canvas id="growthChart"></canvas>
+    <div class="chart-container">
+      <canvas id="growthChart"></canvas>
+    </div>
   </div>
 </div>
 
@@ -216,7 +224,7 @@
           borderColor: 'gray',
           backgroundColor: 'transparent',
           borderWidth: 2,
-          tension: 0, // suora viiva
+          tension: 0,
         },
         {
           label: 'Sijoitusten tuotto',
@@ -224,12 +232,13 @@
           borderColor: '#0384fc',
           backgroundColor: 'transparent',
           borderWidth: 2,
-          tension: 0.4, // aaltoileva
+          tension: 0.4,
         }
       ]
     },
     options: {
       responsive: true,
+      maintainAspectRatio: false,
       plugins: { legend: { labels: { color: '#fff' } } },
       scales: {
         x: { ticks: { color: '#fff' } },
@@ -244,7 +253,6 @@
     let n = parseInt(years.value) * 12;
     let contrib = parseFloat(monthly.value);
 
-    // Lopullinen summa
     let total = P * Math.pow(1 + r, n);
     for (let i = 1; i <= n; i++) {
       total += contrib * Math.pow(1 + r, n - i);
@@ -252,7 +260,6 @@
     totalEl.textContent = total.toLocaleString('fi-FI', { style: 'currency', currency: 'EUR' });
     durationEl.textContent = years.value;
 
-    // Kuvaajan data
     let labels = [];
     let savedData = [];
     let investedData = [];
@@ -261,13 +268,10 @@
 
     for (let year = 1; year <= parseInt(years.value); year++) {
       labels.push(year);
-
-      // vain säästetty
       currentSaved = P + (contrib * 12 * year);
       savedData.push(currentSaved);
 
-      // sijoitusten tuotto (aaltoileva randomilla)
-      currentTotal *= (1 + (r * 12) + ((Math.random() - 0.5) * 0.1)); // pientä vaihtelua
+      currentTotal *= (1 + (r * 12) + ((Math.random() - 0.5) * 0.1));
       currentTotal += contrib * 12;
       investedData.push(currentTotal);
     }
