@@ -5,49 +5,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Talousvahti - Sisäpiirikaupat</title>
 <style>
-  body {
-    margin: 0;
-    font-family: 'Arial', sans-serif;
-    background-color: #0f0f0f;
-    color: #fff;
-  }
+  body { margin: 0; font-family: 'Arial', sans-serif; background-color: #0f0f0f; color: #fff; }
   a { text-decoration: none; }
 
   /* Navbar */
-  .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #000;
-    padding: 15px 30px;
-    border-bottom: 2px solid #222;
-    position: sticky;
-    top: 0;
-    z-index: 3000;
-  }
+  .navbar { display: flex; justify-content: space-between; align-items: center; background-color: #000; padding: 15px 30px; border-bottom: 2px solid #222; position: sticky; top: 0; z-index: 3000; }
   .navbar .brand { font-size: 26px; font-weight: bold; letter-spacing: 1px; color: #fff; }
   .navbar ul { list-style: none; display: flex; gap: 25px; }
-  .navbar ul li a {
-    color: #fff; font-size: 18px; transition: all 0.3s; padding: 5px 10px; border-radius: 5px;
-  }
-  .navbar ul li a:hover,
-  .navbar ul li a.active { background-color: #1a1a1a; color: #ccc; }
+  .navbar ul li a { color: #fff; font-size: 18px; transition: all 0.3s; padding: 5px 10px; border-radius: 5px; }
+  .navbar ul li a:hover, .navbar ul li a.active { background-color: #1a1a1a; color: #ccc; }
 
   .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
   .hamburger span { width: 25px; height: 3px; background: #fff; border-radius: 2px; }
 
-  .mobile-menu {
-    display: none; flex-direction: column; background-color: #111;
-    position: fixed; top: 70px; right: 20px; width: 220px; border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.6); overflow: hidden; z-index: 4000;
-    animation: slideDown 0.3s ease forwards;
-  }
+  .mobile-menu { display: none; flex-direction: column; background-color: #111; position: fixed; top: 70px; right: 20px; width: 220px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.6); overflow: hidden; z-index: 4000; animation: slideDown 0.3s ease forwards; }
   .mobile-menu a { padding: 15px; border-bottom: 1px solid #222; color: #fff; transition: background 0.3s; }
   .mobile-menu a:hover { background: #222; color: #33aaff; }
-  .overlay {
-    display: none; position: fixed; top: 0; left: 0;
-    width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 3500;
-  }
+  .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 3500; }
+
   @keyframes slideDown { from { opacity:0; transform:translateY(-10px);} to {opacity:1; transform:translateY(0);} }
 
   /* Main content */
@@ -55,78 +30,24 @@
   .feed-section { flex: 3; }
   .feed-section h2 { margin-bottom: 25px; color: #ccc; font-size: 28px; border-bottom: 1px solid #222; padding-bottom: 10px; }
 
-  .feed-box {
-    background: #1a1a1a;
-    border-radius: 12px;
-    padding: 25px;
-    margin-bottom: 25px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-    transition: transform 0.3s, box-shadow 0.3s;
-    opacity: 0;
-    transform: translateY(25px) scale(0.95);
-    animation: fadeInBox 0.6s forwards;
-  }
-  .feed-box:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.7);
-  }
+  .feed-box { background: #1a1a1a; border-radius: 12px; padding: 25px; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); transition: transform 0.3s, box-shadow 0.3s; opacity: 0; transform: translateY(25px) scale(0.95); animation: fadeInBox 0.6s forwards; }
+  .feed-box:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.7); }
   .feed-box h3 { margin-bottom: 12px; font-size: 22px; color: #fff; }
   .feed-box p { font-size: 16px; line-height: 1.6; margin-bottom: 8px; color: #ddd; }
   .feed-box .type { font-weight: bold; color: #5386f5; }
 
   @keyframes fadeInBox { to { opacity: 1; transform: translateY(0) scale(1); } }
 
-  @media (max-width: 768px) {
-    .navbar ul { display: none; }
-    .hamburger { display: flex; }
-    .main-container { flex-direction: column; }
-  }
+  @media (max-width: 768px) { .navbar ul { display: none; } .hamburger { display: flex; } .main-container { flex-direction: column; } }
 
   /* Loader */
-  #loader {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 40px 0;
-  }
-  .image-loader {
-    position: relative;
-    width: 140px;
-    height: 140px;
-    border-radius: 12px;
-    overflow: hidden;
-  }
-  .image-loader img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    position: absolute;
-    top: 0; left: 0;
-  }
-  .image-loader .bw {
-    filter: grayscale(100%);
-    z-index: 1;
-  }
-  .image-loader .color {
-    z-index: 2;
-    clip-path: inset(0 100% 0 0);
-    animation: revealMask 3s linear forwards;
-  }
-  @keyframes revealMask {
-    from { clip-path: inset(0 100% 0 0); }
-    to   { clip-path: inset(0 0 0 0); }
-  }
-  .image-loader::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 40%;
-    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, #0f0f0f 100%);
-    z-index: 3;
-    pointer-events: none;
-  }
+  #loader { display: flex; align-items: center; justify-content: center; margin: 40px 0; }
+  .image-loader { position: relative; width: 140px; height: 140px; border-radius: 12px; overflow: hidden; }
+  .image-loader img { width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; }
+  .image-loader .bw { filter: grayscale(100%); z-index: 1; }
+  .image-loader .color { z-index: 2; clip-path: inset(0 100% 0 0); animation: revealMask 3s linear forwards; }
+  @keyframes revealMask { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+  .image-loader::after { content: ""; position: absolute; bottom: 0; left: 0; width: 100%; height: 40%; background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, #0f0f0f 100%); z-index: 3; pointer-events: none; }
 </style>
 </head>
 <body>
@@ -138,11 +59,7 @@
     <li><a href="insider.html" class="active">Sisäpiirikaupat</a></li>
     <li><a href="Blogi.html">Blogi</a></li>
   </ul>
-  <div class="hamburger" id="hamburger">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
+  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
 </nav>
 
 <div class="mobile-menu" id="mobileMenu">
@@ -169,38 +86,40 @@
 <script>
   const feedsContainer = document.getElementById('feeds');
   const loader = document.getElementById('loader');
-  const apiUrl = 'https://script.google.com/macros/s/AKfycbytVUskLjlZ7DtSJ1NAXNKBj__zpb4yFR5_-7gI3sA1khbx_mtR5IXWTPAWA1xr5du3/exec';
 
-  fetch(apiUrl)
-    .then(res => res.json())
-    .then(data => {
-      loader.style.display = 'none'; // piilota loader
-      const transactions = data.insiderTransactions;
-      if (!transactions || transactions.length === 0) {
-        feedsContainer.innerHTML = "<p>Ei sisäpiirikauppoja.</p>";
-        return;
-      }
+  // Web API data (antamasi JSON)
+  const apiData = {
+    "updated":"2025-09-21T06:41:59.808Z",
+    "insiderTransactions":[
+      {"company":"Google","date":"17.09.","executive":"PICHAI, SUNDAR (Director, Chief Executive Officer)","type":"Myynti","totalValue":6833368},
+      {"company":"Microsoft","date":"03.09.","executive":"NADELLA, SATYA (Director, Chief Executive Officer)","type":"Myynti","totalValue":75061342},
+      {"company":"Google","date":"03.09.","executive":"PICHAI, SUNDAR (Director, Chief Executive Officer)","type":"Myynti","totalValue":6459531},
+      {"company":"Microsoft","date":"02.09.","executive":"SMITH, BRADFORD L (Vice Chair and President)","type":"Myynti","totalValue":12663314},
+      {"company":"Microsoft","date":"02.09.","executive":"NUMOTO, TAKESHI (EVP, Chief Marketing Officer)","type":"Myynti","totalValue":4704944},
+      {"company":"Microsoft","date":"02.09.","executive":"NADELLA, SATYA (Director, Chief Executive Officer)","type":"Myynti","totalValue":62000041}
+    ]
+  };
 
-      let html = "";
-      transactions.forEach(t => {
-        html += `
-          <div class="feed-box">
-            <h3>${t.company}</h3>
-            <p>Päivämäärä: ${t.date}</p>
-            <p>Suorittaja: ${t.executive}</p>
-            <p class="type">Osto/Myynti: ${t.type}</p>
-            <p>Arvo yhteensä: ${t.totalValue.toLocaleString()} USD</p>
-          </div>
-        `;
-      });
-
-      feedsContainer.innerHTML = html;
-    })
-    .catch(err => {
-      loader.style.display = 'none';
-      feedsContainer.innerHTML = "<p>Sisäpiirikauppoja ei voitu ladata.</p>";
-      console.error('Fetch error:', err);
+  // Näytetään data
+  const transactions = apiData.insiderTransactions;
+  loader.style.display = 'none';
+  if(!transactions || transactions.length === 0){
+    feedsContainer.innerHTML = "<p>Ei sisäpiirikauppoja.</p>";
+  } else {
+    let html = '';
+    transactions.forEach(t => {
+      html += `
+        <div class="feed-box">
+          <h3>${t.company}</h3>
+          <p>Päivämäärä: ${t.date}</p>
+          <p>Suorittaja: ${t.executive}</p>
+          <p class="type">Osto/Myynti: ${t.type}</p>
+          <p>Arvo yhteensä: ${t.totalValue.toLocaleString()} USD</p>
+        </div>
+      `;
     });
+    feedsContainer.innerHTML = html;
+  }
 
   // Hamburger-menu
   const hamburger = document.getElementById('hamburger');
