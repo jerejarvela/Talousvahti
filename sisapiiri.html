@@ -5,55 +5,60 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Talousvahti - Sisäpiirikaupat</title>
 <style>
-  body { margin: 0; font-family: 'Arial', sans-serif; background-color: #0f0f0f; color: #fff; }
+  body { margin:0; font-family: 'Arial', sans-serif; background:#0f0f0f; color:#fff; }
   a { text-decoration: none; }
 
   /* Navbar */
-  .navbar { display: flex; justify-content: space-between; align-items: center; background-color: #000; padding: 15px 30px; border-bottom: 2px solid #222; position: sticky; top: 0; z-index: 3000; }
-  .navbar .brand { font-size: 26px; font-weight: bold; letter-spacing: 1px; color: #fff; }
-  .navbar ul { list-style: none; display: flex; gap: 25px; }
-  .navbar ul li a { color: #fff; font-size: 18px; transition: all 0.3s; padding: 5px 10px; border-radius: 5px; }
-  .navbar ul li a:hover, .navbar ul li a.active { background-color: #1a1a1a; color: #ccc; }
+  .navbar { display:flex; justify-content:space-between; align-items:center; background:#000; padding:15px 30px; border-bottom:2px solid #222; position:sticky; top:0; z-index:3000; }
+  .navbar .brand { font-size:26px; font-weight:bold; letter-spacing:1px; color:#fff; }
+  .navbar ul { list-style:none; display:flex; gap:25px; margin:0; padding:0; }
+  .navbar ul li a { color:#fff; font-size:18px; padding:5px 10px; border-radius:5px; transition: all 0.3s; }
+  .navbar ul li a:hover, .navbar ul li a.active { background:#1a1a1a; color:#ccc; }
 
-  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
-  .hamburger span { width: 25px; height: 3px; background: #fff; border-radius: 2px; }
+  .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; }
+  .hamburger span { width:25px; height:3px; background:#fff; border-radius:2px; }
 
-  .mobile-menu { display: none; flex-direction: column; background-color: #111; position: fixed; top: 70px; right: 20px; width: 220px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.6); overflow: hidden; z-index: 4000; animation: slideDown 0.3s ease forwards; }
-  .mobile-menu a { padding: 15px; border-bottom: 1px solid #222; color: #fff; transition: background 0.3s; }
-  .mobile-menu a:hover { background: #222; color: #33aaff; }
-  .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 3500; }
+  .mobile-menu { display:none; flex-direction:column; background:#111; position:fixed; top:70px; right:20px; width:220px; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.6); overflow:hidden; z-index:4000; animation:slideDown 0.3s ease forwards; }
+  .mobile-menu a { padding:15px; border-bottom:1px solid #222; color:#fff; transition:background 0.3s; }
+  .mobile-menu a:hover { background:#222; color:#33aaff; }
+  .overlay { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:3500; }
 
-  @keyframes slideDown { from { opacity:0; transform:translateY(-10px);} to {opacity:1; transform:translateY(0);} }
+  @keyframes slideDown { from{opacity:0; transform:translateY(-10px);} to{opacity:1; transform:translateY(0);} }
 
   /* Main content */
-  .main-container { display: flex; max-width: 1200px; margin: 40px auto; gap: 20px; padding: 0 20px; }
-  .feed-section { flex: 3; }
-  .feed-section h2 { margin-bottom: 25px; color: #ccc; font-size: 28px; border-bottom: 1px solid #222; padding-bottom: 10px; }
+  .main-container { max-width:1200px; margin:40px auto; padding:0 20px; }
+  .feed-section h2 { font-size:28px; color:#ccc; border-bottom:1px solid #222; padding-bottom:10px; margin-bottom:25px; }
 
-  .feed-box { background: #1a1a1a; border-radius: 12px; padding: 20px; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); display: flex; justify-content: space-between; align-items: flex-start; transition: transform 0.3s, box-shadow 0.3s; opacity: 0; transform: translateY(25px) scale(0.95); animation: fadeInBox 0.6s forwards; }
-  .feed-box:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.7); }
+  /* Feed box */
+  .feed-box { display:flex; justify-content:space-between; align-items:flex-start; background:#1a1a1a; border-radius:12px; padding:20px; margin-bottom:20px; box-shadow:0 4px 15px rgba(0,0,0,0.5); transition:transform 0.3s, box-shadow 0.3s; opacity:0; transform:translateY(25px) scale(0.95); animation:fadeInBox 0.6s forwards; }
+  .feed-box:hover { transform:translateY(-5px); box-shadow:0 8px 25px rgba(0,0,0,0.7); }
 
-  .feed-left { display: flex; flex-direction: column; gap: 5px; }
-  .feed-left .date { background: #5386f5; color: #fff; padding: 3px 8px; border-radius: 4px; display: inline-block; font-size: 14px; font-weight: bold; }
-  .feed-left .company { font-size: 18px; font-weight: bold; color: #fff; }
-  .feed-left .executive { font-size: 16px; color: #ddd; }
+  .feed-left { display:flex; flex-direction:column; gap:5px; }
+  .feed-left .date { background:#5386f5; color:#fff; padding:4px 10px; border-radius:4px; font-size:14px; font-weight:bold; width:max-content; }
+  .feed-left .company { font-size:18px; font-weight:bold; color:#fff; }
+  .feed-left .executive { font-size:16px; color:#ddd; }
 
-  .feed-right { display: flex; flex-direction: column; align-items: flex-end; gap: 5px; }
-  .feed-right .type { font-size: 16px; font-weight: bold; color: #5386f5; }
-  .feed-right .total { font-size: 16px; color: #ddd; }
+  .feed-right { display:flex; flex-direction:column; align-items:flex-end; gap:5px; }
+  .feed-right .type { font-size:16px; font-weight:bold; color:#5386f5; }
+  .feed-right .total { font-size:16px; color:#ddd; }
 
-  @keyframes fadeInBox { to { opacity: 1; transform: translateY(0) scale(1); } }
+  @keyframes fadeInBox { to { opacity:1; transform:translateY(0) scale(1); } }
 
-  @media (max-width: 768px) { .navbar ul { display: none; } .hamburger { display: flex; } .main-container { flex-direction: column; } .feed-box { flex-direction: column; align-items: flex-start; } .feed-right { align-items: flex-start; margin-top: 10px; } }
+  @media (max-width:768px) {
+    .navbar ul { display:none; }
+    .hamburger { display:flex; }
+    .feed-box { flex-direction:column; align-items:flex-start; }
+    .feed-right { align-items:flex-start; margin-top:10px; }
+  }
 
   /* Loader */
-  #loader { display: flex; align-items: center; justify-content: center; margin: 40px 0; }
-  .image-loader { position: relative; width: 140px; height: 140px; border-radius: 12px; overflow: hidden; }
-  .image-loader img { width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; }
-  .image-loader .bw { filter: grayscale(100%); z-index: 1; }
-  .image-loader .color { z-index: 2; clip-path: inset(0 100% 0 0); animation: revealMask 3s linear forwards; }
-  @keyframes revealMask { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
-  .image-loader::after { content: ""; position: absolute; bottom: 0; left: 0; width: 100%; height: 40%; background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, #0f0f0f 100%); z-index: 3; pointer-events: none; }
+  #loader { display:flex; align-items:center; justify-content:center; margin:40px 0; }
+  .image-loader { position:relative; width:140px; height:140px; border-radius:12px; overflow:hidden; }
+  .image-loader img { width:100%; height:100%; object-fit:cover; position:absolute; top:0; left:0; }
+  .image-loader .bw { filter:grayscale(100%); z-index:1; }
+  .image-loader .color { z-index:2; clip-path: inset(0 100% 0 0); animation:revealMask 3s linear forwards; }
+  @keyframes revealMask { from{clip-path:inset(0 100% 0 0);} to{clip-path:inset(0 0 0 0);} }
+  .image-loader::after { content:""; position:absolute; bottom:0; left:0; width:100%; height:40%; background:linear-gradient(to bottom, rgba(0,0,0,0) 0%, #0f0f0f 100%); z-index:3; pointer-events:none; }
 </style>
 </head>
 <body>
@@ -90,64 +95,63 @@
 </div>
 
 <script>
-  const feedsContainer = document.getElementById('feeds');
-  const loader = document.getElementById('loader');
-  const apiUrl = 'https://script.google.com/macros/s/AKfycbytVUskLjlZ7DtSJ1NAXNKBj__zpb4yFR5_-7gI3sA1khbx_mtR5IXWTPAWA1xr5du3/exec';
+const feedsContainer = document.getElementById('feeds');
+const loader = document.getElementById('loader');
+const apiUrl = 'https://script.google.com/macros/s/AKfycbytVUskLjlZ7DtSJ1NAXNKBj__zpb4yFR5_-7gI3sA1khbx_mtR5IXWTPAWA1xr5du3/exec';
 
-  fetch(apiUrl)
-    .then(res => res.json())
-    .then(data => {
-      loader.style.display = 'none';
-      const transactions = data.insiderTransactions;
-      if(!transactions || transactions.length === 0){
-        feedsContainer.innerHTML = "<p>Ei sisäpiirikauppoja.</p>";
-        return;
-      }
+function formatDate(dateStr) {
+  // Päivämäärä muodossa pp.mm. -> pp.mm.yyyy
+  const parts = dateStr.split('.');
+  const day = parts[0].padStart(2,'0');
+  const month = parts[1].padStart(2,'0');
+  const year = new Date().getFullYear(); // käytetään nykyvuotta
+  return `${day}.${month}.${year}`;
+}
 
-      const html = transactions.map(t => {
-        const dateObj = new Date(t.date.length === 5 ? `${t.date}2025` : t.date); // pp.mm. -> pp.mm.yyyy
-        const day = String(dateObj.getDate()).padStart(2,'0');
-        const month = String(dateObj.getMonth()+1).padStart(2,'0');
-        const year = dateObj.getFullYear();
-        const formattedDate = `${day}.${month}.${year}`;
-
-        return `
-          <div class="feed-box">
-            <div class="feed-left">
-              <span class="date">${formattedDate}</span>
-              <span class="company">${t.company}</span>
-              <span class="executive">${t.executive}</span>
-            </div>
-            <div class="feed-right">
-              <span class="type">${t.type}</span>
-              <span class="total">${t.totalValue.toLocaleString()}</span>
-            </div>
-          </div>
-        `;
-      }).join('');
-
-      feedsContainer.innerHTML = html;
-    })
-    .catch(err => {
-      loader.style.display = 'none';
-      feedsContainer.innerHTML = "<p>Sisäpiirikauppoja ei voitu ladata.</p>";
-      console.error('Fetch error:', err);
-    });
-
-  // Hamburger-menu
-  const hamburger = document.getElementById('hamburger');
-  const mobileMenu = document.getElementById('mobileMenu');
-  const overlay = document.getElementById('overlay');
-
-  hamburger.addEventListener('click', () => {
-    const isOpen = mobileMenu.style.display === 'flex';
-    mobileMenu.style.display = isOpen ? 'none' : 'flex';
-    overlay.style.display = isOpen ? 'none' : 'block';
+fetch(apiUrl)
+  .then(res => res.json())
+  .then(data => {
+    loader.style.display = 'none';
+    const transactions = data.insiderTransactions;
+    if(!transactions || transactions.length===0){
+      feedsContainer.innerHTML = "<p>Ei sisäpiirikauppoja.</p>";
+      return;
+    }
+    const html = transactions.map(t => `
+      <div class="feed-box">
+        <div class="feed-left">
+          <span class="date">${formatDate(t.date)}</span>
+          <span class="company">${t.company}</span>
+          <span class="executive">${t.executive}</span>
+        </div>
+        <div class="feed-right">
+          <span class="type">${t.type}</span>
+          <span class="total">${t.totalValue.toLocaleString()}</span>
+        </div>
+      </div>
+    `).join('');
+    feedsContainer.innerHTML = html;
+  })
+  .catch(err => {
+    loader.style.display='none';
+    feedsContainer.innerHTML = "<p>Sisäpiirikauppoja ei voitu ladata.</p>";
+    console.error(err);
   });
-  overlay.addEventListener('click', () => {
-    mobileMenu.style.display = 'none';
-    overlay.style.display = 'none';
-  });
+
+// Hamburger menu
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+const overlay = document.getElementById('overlay');
+
+hamburger.addEventListener('click',()=>{
+  const open = mobileMenu.style.display==='flex';
+  mobileMenu.style.display = open ? 'none' : 'flex';
+  overlay.style.display = open ? 'none' : 'block';
+});
+overlay.addEventListener('click',()=>{
+  mobileMenu.style.display='none';
+  overlay.style.display='none';
+});
 </script>
 
 </body>
