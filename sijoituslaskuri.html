@@ -1,164 +1,117 @@
 <!DOCTYPE html>
 <html lang="fi">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Sijoitustuottolaskuri — Talousvahti</title>
-
-<!-- Chart.js CDN -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sijoitustuottolaskuri - Talousvahti</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <style>
-  :root {
-    --blue: #0384fc;
-    --bg: #0f0f0f;
-    --card: #1a1a1a;
-    --card-2: #141414;
-    --muted: #aaa;
-  }
-
   body {
     margin: 0;
-    background: var(--bg);
+    font-family: 'Arial', sans-serif;
+    background-color: #0f0f0f;
     color: #fff;
-    font-family: Arial, Helvetica, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden; /* estää leveyden leviämisen */
   }
+  a { text-decoration: none; }
 
-  a { color: inherit; text-decoration: none }
-
-  /* NAVBAR */
+  /* Navbar */
   .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #000;
-    padding: 15px 24px;
-    border-bottom: 2px solid #222;
-    position: sticky;
-    top: 0;
-    z-index: 3000;
+    display: flex; justify-content: space-between; align-items: center;
+    background-color: #000; padding: 15px 30px; border-bottom: 2px solid #222;
+    position: sticky; top: 0; z-index: 3000;
   }
-  .brand { font-size: 26px; font-weight: 700; letter-spacing: 1px; color: #fff }
-  .nav-links { display: flex; gap: 20px; list-style: none; margin: 0; padding: 0 }
-  .nav-links a { color: #fff; font-size: 16px; padding: 6px 10px; border-radius: 6px; transition: all .18s }
-  .nav-links a.active, .nav-links a:hover { background: #1a1a1a; color: #ccc }
+  .navbar .brand { font-size: 26px; font-weight: bold; letter-spacing: 1px; color: #fff; }
+  .navbar ul { list-style: none; display: flex; gap: 25px; }
+  .navbar ul li a {
+    color: #fff; font-size: 18px; transition: all 0.3s; padding: 5px 10px; border-radius: 5px;
+  }
+  .navbar ul li a:hover,
+  .navbar ul li a.active { background-color: #1a1a1a; color: #ccc; }
 
-  /* Hamburger */
-  .hamburger { display: none; flex-direction: column; gap: 6px; cursor: pointer }
-  .hamburger span { width: 26px; height: 3px; background: #fff; border-radius: 3px; transition: .2s }
-  .hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg) }
-  .hamburger.open span:nth-child(2) { opacity: 0 }
-  .hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg) }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .hamburger span { width: 25px; height: 3px; background: #fff; border-radius: 2px; }
 
-  /* Mobile menu */
   .mobile-menu {
-    display: none;
-    position: fixed; top: 64px; right: 16px;
-    width: 240px; max-width: 80%;
-    background: #111;
-    border-radius: 10px;
-    box-shadow: 0 8px 30px rgba(0,0,0,.6);
-    flex-direction: column;
-    z-index: 4000;
+    display: none; flex-direction: column; background-color: #111;
+    position: fixed; top: 70px; right: 20px; width: 220px; border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.6); overflow: hidden; z-index: 4000;
+    animation: slideDown 0.3s ease forwards;
   }
-  .mobile-menu a { padding: 14px 16px; border-bottom: 1px solid #222; color: #fff }
-  .mobile-menu a:hover { background: #222; color: var(--blue) }
-  .mobile-menu.open { display: flex }
-  .overlay {
-    display: none;
-    position: fixed; inset: 0;
-    background: rgba(0,0,0,0.55);
-    z-index: 3500;
-  }
-  .overlay.show { display: block }
+  .mobile-menu a { padding: 15px; border-bottom: 1px solid #222; color: #fff; transition: background 0.3s; }
+  .mobile-menu a:hover { background: #222; color: #0384fc; }
+  .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 3500; }
+  @keyframes slideDown { from { opacity:0; transform:translateY(-10px);} to {opacity:1; transform:translateY(0);} }
 
   /* Calculator */
   .calculator-container {
-    max-width: 980px;
-    margin: 36px auto;
-    padding: 28px;
-    background: var(--card);
-    border-radius: 14px;
-    box-shadow: 0 10px 30px rgba(0,0,0,.6);
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+    background: #1a1a1a;
+    border-radius: 16px;
+    box-shadow: 0 6px 25px rgba(0,0,0,0.6);
   }
-  .calculator-container h1 {
-    margin: 0 0 18px 0;
-    font-size: 22px;
+  .calculator-container h2 {
+    font-size: 28px;
+    margin-bottom: 25px;
     text-align: center;
-    padding-bottom: 8px;
-    border-bottom: 1px solid #222;
-  }
-
-  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px }
-  .col-full { grid-column: 1/-1 }
-
-  .input-group {
-    background: linear-gradient(180deg,#171717,#141414);
-    padding: 14px;
-    border-radius: 10px;
-    border: 1px solid #212121;
-  }
-  .input-group label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 14px }
-  .input-row { display: flex; gap: 12px; align-items: center }
-  input[type="number"] {
-    width: 120px; padding: 8px;
-    border-radius: 8px;
-    border: 1px solid #2a2a2a;
-    background: var(--bg);
     color: #fff;
-    font-size: 15px;
+    border-bottom: 1px solid #222;
+    padding-bottom: 15px;
   }
-  input[type="range"] { flex: 1; appearance: none; height: 6px; background: #2b2b2b; border-radius: 6px }
-  input[type="range"]::-webkit-slider-thumb {
-    appearance: none;
-    width: 16px; height: 16px; border-radius: 50%;
-    background: var(--blue);
-    cursor: pointer;
+
+  .input-group { margin-bottom: 25px; }
+  .input-group label { display: block; margin-bottom: 8px; font-size: 16px; font-weight: 500; }
+  .input-wrapper { display: flex; align-items: center; gap: 15px; }
+  .input-wrapper input[type="number"] {
+    width: 120px; padding: 8px; border: 1px solid #333; border-radius: 6px;
+    background: #0f0f0f; color: #fff; font-size: 16px;
   }
-  .muted { color: var(--muted); font-size: 13px; margin-top: 8px }
+  .input-wrapper input[type="range"] {
+    flex: 1; height: 6px; background: #333; border-radius: 5px; -webkit-appearance: none;
+  }
+  .input-wrapper input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px; height: 16px; background: #0384fc; border-radius: 50%; cursor: pointer;
+  }
 
   /* Results */
-  .results { margin-top: 20px; padding: 18px; border-radius: 12px; background: linear-gradient(180deg,var(--card-2),#0f0f0f); border: 1px solid #222; text-align: center }
-  .results h3 { margin: 0; font-size: 18px }
-  .total { font-size: 28px; font-weight: 700; color: var(--blue); margin-top: 6px }
-  .sub { color: #ddd; margin-top: 6px; font-size: 14px }
-
-  .chart-container {
-    margin-top: 18px;
-    width: 100%;
-    height: 420px;
-    border-radius: 10px;
-    padding: 6px;
-    background: linear-gradient(180deg,#0f0f0f,#0b0b0b);
-    overflow: hidden; /* estää leviämisen */
+  .results {
+    margin-top: 30px;
+    padding: 25px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #141414, #101010);
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.7);
+    text-align: center;
   }
+  .results h3 { font-size: 24px; margin-bottom: 15px; color: #fff; }
+  .results .highlight { font-size: 28px; font-weight: bold; color: #0384fc; }
+
+  canvas { margin-top: 30px; }
 
   @media (max-width: 768px) {
-    .nav-links { display: none }
-    .hamburger { display: flex }
-    .grid { grid-template-columns: 1fr; gap: 12px }
-    .chart-container { height: 520px }
+    .navbar ul { display: none; }
+    .hamburger { display: flex; }
   }
 </style>
 </head>
 <body>
 
-<!-- NAVBAR -->
+<!-- Navbar -->
 <nav class="navbar">
   <div class="brand">Talousvahti</div>
-  <ul class="nav-links">
+  <ul>
     <li><a href="index.html">Talousuutiset</a></li>
     <li><a href="Blogi.html">Blogi</a></li>
     <li><a href="sisapiiri.html">Sisäpiirikaupat</a></li>
     <li><a href="laskuri.html" class="active">Sijoitustuottolaskuri</a></li>
     <li><a href="#tietoa">Tietoa</a></li>
   </ul>
-  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
 </nav>
 
-<!-- Mobile menu -->
 <div class="mobile-menu" id="mobileMenu">
   <a href="index.html">Talousuutiset</a>
   <a href="Blogi.html">Blogi</a>
@@ -169,118 +122,165 @@
 <div class="overlay" id="overlay"></div>
 
 <!-- Calculator -->
-<main class="calculator-container">
-  <h1>Sijoitustuottolaskuri</h1>
-  <div class="grid">
-    <div class="input-group">
-      <label>Aloitussumma (€)</label>
-      <div class="input-row">
-        <input type="number" id="initial" value="1000" min="0" step="100" />
-        <input type="range" id="initialRange" min="0" max="1000000" step="100" value="1000" />
-      </div>
-    </div>
+<div class="calculator-container">
+  <h2>Sijoitustuottolaskuri</h2>
 
-    <div class="input-group">
-      <label>Tuotto per vuosi (%)</label>
-      <div class="input-row">
-        <input type="number" id="return" value="7" min="-50" max="100" step="0.1" />
-        <input type="range" id="returnRange" min="-50" max="100" step="0.1" value="7" />
-      </div>
-    </div>
-
-    <div class="input-group">
-      <label>Säästöaika (vuosina)</label>
-      <div class="input-row">
-        <input type="number" id="years" value="20" min="1" max="80" step="1" />
-        <input type="range" id="yearsRange" min="1" max="80" step="1" value="20" />
-      </div>
-    </div>
-
-    <div class="input-group">
-      <label>Kuukausittainen säästösumma (€)</label>
-      <div class="input-row">
-        <input type="number" id="monthly" value="200" min="0" max="10000" step="10" />
-        <input type="range" id="monthlyRange" min="0" max="10000" step="10" value="200" />
-      </div>
-    </div>
-
-    <div class="col-full results">
-      <h3>Kertynyt pääoma</h3>
-      <div class="total" id="total">0 €</div>
-      <div class="sub"><span id="duration">0</span> vuotta</div>
-      <div class="chart-container"><canvas id="growthChart"></canvas></div>
+  <div class="input-group">
+    <label for="initial">Aloitussumma (€)</label>
+    <div class="input-wrapper">
+      <input type="number" id="initial" value="1000" min="0" max="1000000" step="100">
+      <input type="range" id="initialRange" value="1000" min="0" max="1000000" step="100">
     </div>
   </div>
-</main>
+
+  <div class="input-group">
+    <label for="return">Tuotto per vuosi (%)</label>
+    <div class="input-wrapper">
+      <input type="number" id="return" value="7" min="0" max="20" step="0.1">
+      <input type="range" id="returnRange" value="7" min="0" max="20" step="0.1">
+    </div>
+  </div>
+
+  <div class="input-group">
+    <label for="years">Säästöaika (vuosina)</label>
+    <div class="input-wrapper">
+      <input type="number" id="years" value="20" min="1" max="50" step="1">
+      <input type="range" id="yearsRange" value="20" min="1" max="50" step="1">
+    </div>
+  </div>
+
+  <div class="input-group">
+    <label for="monthly">Kuukausittainen säästösumma (€)</label>
+    <div class="input-wrapper">
+      <input type="number" id="monthly" value="200" min="0" max="10000" step="10">
+      <input type="range" id="monthlyRange" value="200" min="0" max="10000" step="10">
+    </div>
+  </div>
+
+  <div class="results">
+    <h3>Kertynyt pääoma</h3>
+    <div class="highlight" id="total">0 €</div>
+    <p><span id="duration">0</span> vuodessa</p>
+    <canvas id="growthChart"></canvas>
+  </div>
+</div>
 
 <script>
-/* Hamburger */
-const hamburger = document.getElementById('hamburger');
-const mobileMenu = document.getElementById('mobileMenu');
-const overlay = document.getElementById('overlay');
+  // Hamburger
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const overlay = document.getElementById('overlay');
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileMenu.style.display === 'flex';
+    mobileMenu.style.display = isOpen ? 'none' : 'flex';
+    overlay.style.display = isOpen ? 'none' : 'block';
+  });
+  overlay.addEventListener('click', () => {
+    mobileMenu.style.display = 'none';
+    overlay.style.display = 'none';
+  });
 
-function toggleMenu() {
-  mobileMenu.classList.toggle('open');
-  overlay.classList.toggle('show');
-  hamburger.classList.toggle('open');
-  document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
-}
-hamburger.addEventListener('click', toggleMenu);
-overlay.addEventListener('click', toggleMenu);
-mobileMenu.addEventListener('click', e => { if (e.target.tagName === 'A') toggleMenu(); });
+  // Inputs
+  const initial = document.getElementById('initial');
+  const initialRange = document.getElementById('initialRange');
+  const yearlyReturn = document.getElementById('return');
+  const returnRange = document.getElementById('returnRange');
+  const years = document.getElementById('years');
+  const yearsRange = document.getElementById('yearsRange');
+  const monthly = document.getElementById('monthly');
+  const monthlyRange = document.getElementById('monthlyRange');
 
-/* Input sync */
-function sync(input, range) {
-  input.addEventListener('input', () => { range.value = input.value; calculate(); });
-  range.addEventListener('input', () => { input.value = range.value; calculate(); });
-}
-const initial = document.getElementById('initial'), initialRange = document.getElementById('initialRange');
-const yearlyReturn = document.getElementById('return'), returnRange = document.getElementById('returnRange');
-const years = document.getElementById('years'), yearsRange = document.getElementById('yearsRange');
-const monthly = document.getElementById('monthly'), monthlyRange = document.getElementById('monthlyRange');
-sync(initial, initialRange); sync(yearlyReturn, returnRange); sync(years, yearsRange); sync(monthly, monthlyRange);
+  const totalEl = document.getElementById('total');
+  const durationEl = document.getElementById('duration');
 
-const totalEl = document.getElementById('total'), durationEl = document.getElementById('duration');
+  const sync = (input, range) => {
+    input.addEventListener('input', () => { range.value = input.value; calculate(); });
+    range.addEventListener('input', () => { input.value = range.value; calculate(); });
+  };
 
-/* Chart */
-const ctx = document.getElementById('growthChart').getContext('2d');
-const growthChart = new Chart(ctx, {
-  type: 'line',
-  data: { labels: [], datasets: [
-    { label:'Säästetty summa', data:[], borderColor:'#888', borderWidth:2, tension:0, pointRadius:0 },
-    { label:'Kokonaissaldo', data:[], borderColor:'#0384fc', borderWidth:2, tension:0.35, pointRadius:0 }
-  ]},
-  options: { responsive:true, maintainAspectRatio:false,
-    plugins:{ legend:{ labels:{ color:'#fff' }} },
-    scales:{
-      x:{ ticks:{ color:'#fff' }, grid:{ color:'rgba(255,255,255,0.05)' }},
-      y:{ ticks:{ color:'#fff' }, grid:{ color:'rgba(255,255,255,0.05)' }}
+  sync(initial, initialRange);
+  sync(yearlyReturn, returnRange);
+  sync(years, yearsRange);
+  sync(monthly, monthlyRange);
+
+  // Chart
+  const ctx = document.getElementById('growthChart').getContext('2d');
+  let growthChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: [],
+      datasets: [
+        {
+          label: 'Säästetty summa',
+          data: [],
+          borderColor: 'gray',
+          backgroundColor: 'transparent',
+          borderWidth: 2,
+          tension: 0, // suora viiva
+        },
+        {
+          label: 'Sijoitusten tuotto',
+          data: [],
+          borderColor: '#0384fc',
+          backgroundColor: 'transparent',
+          borderWidth: 2,
+          tension: 0.4, // aaltoileva
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      plugins: { legend: { labels: { color: '#fff' } } },
+      scales: {
+        x: { ticks: { color: '#fff' } },
+        y: { ticks: { color: '#fff' } }
+      }
     }
-  }
-});
+  });
 
-/* Calculation */
-function calculate() {
-  const P = +initial.value || 0, r = (+yearlyReturn.value||0)/100, n = +years.value||1, m = +monthly.value||0;
-  const months = n*12, monthlyRate = r/12;
-  let total = P*Math.pow(1+monthlyRate,months);
-  for(let i=1;i<=months;i++) total += m*Math.pow(1+monthlyRate,months-i);
-  totalEl.textContent = total.toLocaleString('fi-FI',{style:'currency',currency:'EUR'});
-  durationEl.textContent = n;
+  function calculate() {
+    let P = parseFloat(initial.value);
+    let r = parseFloat(yearlyReturn.value) / 100 / 12;
+    let n = parseInt(years.value) * 12;
+    let contrib = parseFloat(monthly.value);
 
-  const labels=[], saved=[], invested=[]; let cur=P;
-  for(let y=1;y<=n;y++){ labels.push(y);
-    saved.push(P+m*12*y);
-    cur=cur*(1+r)+m*12;
-    invested.push(cur);
+    // Lopullinen summa
+    let total = P * Math.pow(1 + r, n);
+    for (let i = 1; i <= n; i++) {
+      total += contrib * Math.pow(1 + r, n - i);
+    }
+    totalEl.textContent = total.toLocaleString('fi-FI', { style: 'currency', currency: 'EUR' });
+    durationEl.textContent = years.value;
+
+    // Kuvaajan data
+    let labels = [];
+    let savedData = [];
+    let investedData = [];
+    let currentSaved = P;
+    let currentTotal = P;
+
+    for (let year = 1; year <= parseInt(years.value); year++) {
+      labels.push(year);
+
+      // vain säästetty
+      currentSaved = P + (contrib * 12 * year);
+      savedData.push(currentSaved);
+
+      // sijoitusten tuotto (aaltoileva randomilla)
+      currentTotal *= (1 + (r * 12) + ((Math.random() - 0.5) * 0.1)); // pientä vaihtelua
+      currentTotal += contrib * 12;
+      investedData.push(currentTotal);
+    }
+
+    growthChart.data.labels = labels;
+    growthChart.data.datasets[0].data = savedData;
+    growthChart.data.datasets[1].data = investedData;
+    growthChart.update();
   }
-  growthChart.data.labels=labels;
-  growthChart.data.datasets[0].data=saved;
-  growthChart.data.datasets[1].data=invested;
-  growthChart.update();
-}
-calculate();
+
+  calculate();
 </script>
+
 </body>
 </html>
 
