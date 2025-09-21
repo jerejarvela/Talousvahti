@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sijoitustuottolaskuri - Talousvahti</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <style>
   body {
     margin: 0;
@@ -41,7 +42,7 @@
   .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 3500; }
   @keyframes slideDown { from { opacity:0; transform:translateY(-10px);} to {opacity:1; transform:translateY(0);} }
 
-  /* Container */
+  /* Calculator */
   .calculator-container {
     max-width: 900px;
     margin: 40px auto;
@@ -59,35 +60,15 @@
     padding-bottom: 15px;
   }
 
-  .input-group {
-    margin-bottom: 25px;
-  }
-  .input-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-size: 16px;
-    font-weight: 500;
-  }
-  .input-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-  }
+  .input-group { margin-bottom: 25px; }
+  .input-group label { display: block; margin-bottom: 8px; font-size: 16px; font-weight: 500; }
+  .input-wrapper { display: flex; align-items: center; gap: 15px; }
   .input-wrapper input[type="number"] {
-    width: 120px;
-    padding: 8px;
-    border: 1px solid #333;
-    border-radius: 6px;
-    background: #0f0f0f;
-    color: #fff;
-    font-size: 16px;
+    width: 120px; padding: 8px; border: 1px solid #333; border-radius: 6px;
+    background: #0f0f0f; color: #fff; font-size: 16px;
   }
   .input-wrapper input[type="range"] {
-    flex: 1;
-    height: 6px;
-    background: #333;
-    border-radius: 5px;
-    -webkit-appearance: none;
+    flex: 1; height: 6px; background: #333; border-radius: 5px; -webkit-appearance: none;
   }
   .input-wrapper input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
@@ -103,16 +84,10 @@
     box-shadow: inset 0 0 10px rgba(0,0,0,0.7);
     text-align: center;
   }
-  .results h3 {
-    font-size: 24px;
-    margin-bottom: 15px;
-    color: #fff;
-  }
-  .results .highlight {
-    font-size: 28px;
-    font-weight: bold;
-    color: #0384fc;
-  }
+  .results h3 { font-size: 24px; margin-bottom: 15px; color: #fff; }
+  .results .highlight { font-size: 28px; font-weight: bold; color: #0384fc; }
+
+  canvas { margin-top: 30px; }
 
   @media (max-width: 768px) {
     .navbar ul { display: none; }
@@ -186,6 +161,7 @@
     <h3>Kertynyt pääoma</h3>
     <div class="highlight" id="total">0 €</div>
     <p><span id="duration">0</span> vuodessa</p>
+    <canvas id="growthChart"></canvas>
   </div>
 </div>
 
@@ -227,19 +203,79 @@
   sync(years, yearsRange);
   sync(monthly, monthlyRange);
 
+  // Chart
+  const ctx = document.getElementById('growthChart').getContext('2d');
+  let growthChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: [],
+      datasets: [
+        {
+          label: 'Säästetty summa',
+          data: [],
+          borderColor: 'gray',
+          backgroundColor: 'transparent',
+          borderWidth: 2,
+          tension: 0, // suora viiva
+        },
+        {
+          label: 'Sijoitusten tuotto',
+          data: [],
+          borderColor: '#0384fc',
+          backgroundColor: 'transparent',
+          borderWidth: 2,
+          tension: 0.4, // aaltoileva
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      plugins: { legend: { labels: { color: '#fff' } } },
+      scales: {
+        x: { ticks: { color: '#fff' } },
+        y: { ticks: { color: '#fff' } }
+      }
+    }
+  });
+
   function calculate() {
     let P = parseFloat(initial.value);
     let r = parseFloat(yearlyReturn.value) / 100 / 12;
     let n = parseInt(years.value) * 12;
     let contrib = parseFloat(monthly.value);
 
+    // Lopullinen summa
     let total = P * Math.pow(1 + r, n);
     for (let i = 1; i <= n; i++) {
       total += contrib * Math.pow(1 + r, n - i);
     }
-
     totalEl.textContent = total.toLocaleString('fi-FI', { style: 'currency', currency: 'EUR' });
     durationEl.textContent = years.value;
+
+    // Kuvaajan data
+    let labels = [];
+    let savedData = [];
+    let investedData = [];
+    let currentSaved = P;
+    let currentTotal = P;
+
+    for (let year = 1; year <= parseInt(years.value); year++) {
+      labels.push(year);
+
+      // vain säästetty
+      currentSaved = P + (contrib * 12 * year);
+      savedData.push(currentSaved);
+
+      // sijoitusten tuotto (aaltoileva randomilla)
+      currentTotal *= (1 + (r * 12) + ((Math.random() - 0.5) * 0.1)); // pientä vaihtelua
+      currentTotal += contrib * 12;
+      investedData.push(currentTotal);
+    }
+
+    growthChart.data.labels = labels;
+    growthChart.data.datasets[0].data = savedData;
+    growthChart.data.datasets[1].data = investedData;
+    growthChart.update();
   }
 
   calculate();
