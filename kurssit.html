@@ -1,45 +1,85 @@
 <!DOCTYPE html>
 <html lang="fi">
 <head>
-  <meta charset="UTF-8">
-  <title>Pörssigraafit – SPY, QQQ & OMXH25</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      background: #f5f5f5;
-      margin: 0;
-      padding: 20px;
-    }
-    h1 {
-      margin-bottom: 40px;
-    }
-    .chart-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 40px;
-    }
-    .chart-box {
-      background: white;
-      border-radius: 12px;
-      padding: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      text-align: center;
-    }
-    .chart-box h2 {
-      margin-top: 0;
-      margin-bottom: 10px;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pörssikurssit – Talousvahti</title>
+<meta name="description" content="Seuraa tärkeimpiä pörssikursseja: indeksit, osakkeet ja kryptot. Päivitetyt graafit ja ETF:t.">
+<meta name="keywords" content="pörssi, kurssit, indeksit, osakkeet, kryptot, sijoittaminen">
+<meta name="author" content="Talousvahti">
+
+<style>
+  body { margin:0; font-family:'Arial', sans-serif; background-color:#0f0f0f; color:#fff; }
+  a { text-decoration:none; }
+  /* Navbar */
+  .navbar { display:flex; justify-content:space-between; align-items:center; background-color:#000; padding:15px 30px; border-bottom:2px solid #222; position:sticky; top:0; z-index:3000; }
+  .navbar .brand { font-size:26px; font-weight:bold; letter-spacing:1px; color:#fff; }
+  .navbar ul { list-style:none; display:flex; gap:25px; }
+  .navbar ul li a { color:#fff; font-size:18px; transition:all 0.3s; padding:5px 10px; border-radius:5px; }
+  .navbar ul li a:hover, .navbar ul li a.active { background-color:#1a1a1a; color:#ccc; }
+  .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; }
+  .hamburger span { width:25px; height:3px; background:#fff; border-radius:2px; }
+  .mobile-menu { display:none; flex-direction:column; background-color:#111; position:fixed; top:70px; right:20px; width:220px; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.6); overflow:hidden; z-index:4000; animation:slideDown 0.3s ease forwards; }
+  .mobile-menu a { padding:15px; border-bottom:1px solid #222; color:#fff; transition:background 0.3s; }
+  .mobile-menu a:hover { background:#222; color:#0384fc; }
+  .overlay { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:3500; }
+  @keyframes slideDown { from { opacity:0; transform:translateY(-10px);} to {opacity:1; transform:translateY(0);} }
+
+  /* Main content */
+  .main-container { display:flex; flex-direction:column; max-width:1200px; margin:40px auto; gap:20px; padding:0 20px; }
+  h1 { font-size:32px; margin-bottom:25px; text-align:center; }
+  .button-group { display:flex; justify-content:center; gap:15px; margin-bottom:30px; flex-wrap:wrap; }
+  .btn { padding:10px 20px; font-size:16px; font-weight:bold; border:none; border-radius:6px; cursor:pointer; background:#1a1a1a; color:#fff; transition:0.3s; }
+  .btn:hover, .btn.active { background:#0384fc; color:#fff; }
+
+  .charts { display:flex; flex-wrap:wrap; justify-content:center; gap:30px; }
+  .chart-box { background:#1a1a1a; border-radius:12px; padding:15px; box-shadow:0 4px 15px rgba(0,0,0,0.5); display:none; flex-direction:column; align-items:center; }
+  .chart-box h2 { margin-bottom:15px; font-size:20px; text-align:center; }
+
+  @media (max-width:768px) {
+    .navbar ul { display:none; }
+    .hamburger { display:flex; }
+    .charts { flex-direction:column; align-items:center; }
+    .chart-box { width:90%; }
+  }
+</style>
 </head>
 <body>
-  <h1>Pörssigraafit</h1>
-  <div class="chart-container">
 
-    <!-- S&P 500 ETF (SPY) -->
-    <div class="chart-box">
+<nav class="navbar">
+  <div class="brand">Talousvahti</div>
+  <ul>
+    <li><a href="index.html">Talousuutiset</a></li>
+    <li><a href="Blogi.html">Blogi</a></li>
+    <li><a href="sisapiiri.html">Sisäpiirikaupat</a></li>
+    <li><a href="sijoituslaskuri.html">Sijoituslaskuri</a></li>
+    <li><a href="#tietoa">Tietoa</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Talousuutiset</a>
+  <a href="Blogi.html">Blogi</a>
+  <a href="sisapiiri.html">Sisäpiirikaupat</a>
+  <a href="sijoituslaskuri.html">Sijoituslaskuri</a>
+  <a href="#tietoa">Tietoa</a>
+</div>
+<div class="overlay" id="overlay"></div>
+
+<div class="main-container">
+  <h1>Pörssikurssit</h1>
+  <div class="button-group">
+    <button class="btn active" data-target="indeksit">Indeksit</button>
+    <button class="btn" data-target="osakkeet">Osakkeet</button>
+    <button class="btn" data-target="kryptot">Kryptot</button>
+  </div>
+
+  <div class="charts">
+
+    <!-- Indeksit -->
+    <div class="chart-box" id="indeksit">
       <h2>S&P 500 (SPY ETF)</h2>
       <div class="tradingview-widget-container">
         <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
@@ -49,20 +89,12 @@
           "width": "500",
           "height": "350",
           "locale": "fi",
-          "colorTheme": "light",
+          "colorTheme": "dark",
           "autosize": false,
-          "showIntervalTabs": true,
-          "hideDateRanges": false,
-          "scalePosition": "right",
-          "scaleMode": "Normal",
-          "fontFamily": "-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif"
+          "showIntervalTabs": true
         }
         </script>
       </div>
-    </div>
-
-    <!-- Nasdaq 100 ETF (QQQ) -->
-    <div class="chart-box">
       <h2>Nasdaq 100 (QQQ ETF)</h2>
       <div class="tradingview-widget-container">
         <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
@@ -72,41 +104,144 @@
           "width": "500",
           "height": "350",
           "locale": "fi",
-          "colorTheme": "light",
+          "colorTheme": "dark",
           "autosize": false,
-          "showIntervalTabs": true,
-          "hideDateRanges": false,
-          "scalePosition": "right",
-          "scaleMode": "Normal",
-          "fontFamily": "-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif"
+          "showIntervalTabs": true
+        }
+        </script>
+      </div>
+      <h2>OMXH25 (XACT OMXH25 ETF)</h2>
+      <div class="tradingview-widget-container">
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
+        {
+          "symbols": [["STO:XACT25|1D"]],
+          "chartOnly": true,
+          "width": "500",
+          "height": "350",
+          "locale": "fi",
+          "colorTheme": "dark",
+          "autosize": false,
+          "showIntervalTabs": true
         }
         </script>
       </div>
     </div>
 
-    <!-- OMXH25 -->
-    <div class="chart-box">
-      <h2>OMXH25 (Helsinki)</h2>
+    <!-- Osakkeet -->
+    <div class="chart-box" id="osakkeet">
+      <h2>USA:n suurimmat yritykset</h2>
       <div class="tradingview-widget-container">
         <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
         {
-          "symbols": [["HEX:OMXH25|1D"]],
+          "symbols": [["NASDAQ:AAPL|1D"], ["NASDAQ:MSFT|1D"], ["NASDAQ:AMZN|1D"]],
           "chartOnly": true,
           "width": "500",
           "height": "350",
           "locale": "fi",
-          "colorTheme": "light",
+          "colorTheme": "dark",
           "autosize": false,
-          "showIntervalTabs": true,
-          "hideDateRanges": false,
-          "scalePosition": "right",
-          "scaleMode": "Normal",
-          "fontFamily": "-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif"
+          "showIntervalTabs": true
+        }
+        </script>
+      </div>
+      <h2>Suomen suurimmat yritykset</h2>
+      <div class="tradingview-widget-container">
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
+        {
+          "symbols": [["HEL:KNEBV|1D"], ["HEL:NOKIA|1D"], ["HEL:WRT1V|1D"]],
+          "chartOnly": true,
+          "width": "500",
+          "height": "350",
+          "locale": "fi",
+          "colorTheme": "dark",
+          "autosize": false,
+          "showIntervalTabs": true
+        }
+        </script>
+      </div>
+    </div>
+
+    <!-- Kryptot -->
+    <div class="chart-box" id="kryptot">
+      <h2>Bitcoin (BTC)</h2>
+      <div class="tradingview-widget-container">
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
+        {
+          "symbols": [["CRYPTOCAP:BTC|1D"]],
+          "chartOnly": true,
+          "width": "500",
+          "height": "350",
+          "locale": "fi",
+          "colorTheme": "dark",
+          "autosize": false,
+          "showIntervalTabs": true
+        }
+        </script>
+      </div>
+      <h2>Ethereum (ETH)</h2>
+      <div class="tradingview-widget-container">
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
+        {
+          "symbols": [["CRYPTOCAP:ETH|1D"]],
+          "chartOnly": true,
+          "width": "500",
+          "height": "350",
+          "locale": "fi",
+          "colorTheme": "dark",
+          "autosize": false,
+          "showIntervalTabs": true
+        }
+        </script>
+      </div>
+      <h2>XRP</h2>
+      <div class="tradingview-widget-container">
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
+        {
+          "symbols": [["CRYPTOCAP:XRP|1D"]],
+          "chartOnly": true,
+          "width": "500",
+          "height": "350",
+          "locale": "fi",
+          "colorTheme": "dark",
+          "autosize": false,
+          "showIntervalTabs": true
         }
         </script>
       </div>
     </div>
 
   </div>
+</div>
+
+<script>
+  // Hamburger menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const overlay = document.getElementById('overlay');
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileMenu.style.display === 'flex';
+    mobileMenu.style.display = isOpen ? 'none' : 'flex';
+    overlay.style.display = isOpen ? 'none' : 'block';
+  });
+  overlay.addEventListener('click', () => {
+    mobileMenu.style.display = 'none';
+    overlay.style.display = 'none';
+  });
+
+  // Button group toggle
+  const buttons = document.querySelectorAll('.btn');
+  const charts = document.querySelectorAll('.chart-box');
+  function hideAll() { charts.forEach(c => c.style.display='none'); buttons.forEach(b => b.classList.remove('active')); }
+  buttons.forEach(b => {
+    b.addEventListener('click', () => {
+      hideAll();
+      document.getElementById(b.dataset.target).style.display='flex';
+      b.classList.add('active');
+    });
+  });
+  // Show default
+  document.getElementById('indeksit').style.display='flex';
+</script>
+
 </body>
 </html>
