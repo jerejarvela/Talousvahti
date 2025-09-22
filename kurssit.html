@@ -35,50 +35,45 @@
 
     <!-- S&P 500 (ETF SPY) -->
     <div class="tradingview-widget-container">
-      <div id="tradingview_sp500"></div>
-      <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-      <script type="text/javascript">
-      new TradingView.widget({
-        "width": 600,
-        "height": 400,
-        "symbol": "AMEX:SPY",   // S&P 500 ETF
-        "interval": "D",        // Päivägraafi oletuksena
-        "timezone": "Etc/UTC",
-        "theme": "light",
-        "style": "1",
+      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
+      {
+        "symbols": [
+          ["AMEX:SPY|1D"]
+        ],
+        "chartOnly": true,
+        "width": "500",
+        "height": "350",
         "locale": "fi",
-        "toolbar_bg": "#f1f3f6",
-        "enable_publishing": false,
-        "hide_side_toolbar": false,
-        "allow_symbol_change": true,
-        "details": true,
-        "hotlist": false,
-        "calendar": false
-      });
+        "colorTheme": "light",
+        "autosize": false,
+        "showIntervalTabs": true,   // näyttää 1D / 1W / 1M -välilehdet
+        "hideDateRanges": false,
+        "scalePosition": "right",
+        "scaleMode": "Normal",
+        "fontFamily": "-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif"
+      }
       </script>
     </div>
 
     <!-- Nasdaq 100 (ETF QQQ) -->
     <div class="tradingview-widget-container">
-      <div id="tradingview_nasdaq"></div>
-      <script type="text/javascript">
-      new TradingView.widget({
-        "width": 600,
-        "height": 400,
-        "symbol": "NASDAQ:QQQ",   // Nasdaq 100 ETF
-        "interval": "D",          // Päivägraafi oletuksena
-        "timezone": "Etc/UTC",
-        "theme": "light",
-        "style": "1",
+      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
+      {
+        "symbols": [
+          ["NASDAQ:QQQ|1D"]
+        ],
+        "chartOnly": true,
+        "width": "500",
+        "height": "350",
         "locale": "fi",
-        "toolbar_bg": "#f1f3f6",
-        "enable_publishing": false,
-        "hide_side_toolbar": false,
-        "allow_symbol_change": true,
-        "details": true,
-        "hotlist": false,
-        "calendar": false
-      });
+        "colorTheme": "light",
+        "autosize": false,
+        "showIntervalTabs": true,
+        "hideDateRanges": false,
+        "scalePosition": "right",
+        "scaleMode": "Normal",
+        "fontFamily": "-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif"
+      }
       </script>
     </div>
 
