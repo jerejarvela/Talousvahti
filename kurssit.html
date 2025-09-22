@@ -2,7 +2,7 @@
 <html lang="fi">
 <head>
   <meta charset="UTF-8">
-  <title>Pörssigraafit – SPY & QQQ</title>
+  <title>Pörssigraafit – SPY, QQQ & OMXH25</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
@@ -13,7 +13,7 @@
       padding: 20px;
     }
     h1 {
-      margin-bottom: 30px;
+      margin-bottom: 40px;
     }
     .chart-container {
       display: flex;
@@ -21,60 +21,90 @@
       justify-content: center;
       gap: 40px;
     }
-    .tradingview-widget-container {
+    .chart-box {
       background: white;
       border-radius: 12px;
       padding: 10px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .chart-box h2 {
+      margin-top: 0;
+      margin-bottom: 10px;
     }
   </style>
 </head>
 <body>
-  <h1>Pörssigraafit – ETF-versio</h1>
+  <h1>Pörssigraafit</h1>
   <div class="chart-container">
 
     <!-- S&P 500 ETF (SPY) -->
-    <div class="tradingview-widget-container">
-      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
-      {
-        "symbols": [
-          ["AMEX:SPY|1D"]
-        ],
-        "chartOnly": true,
-        "width": "500",
-        "height": "350",
-        "locale": "fi",
-        "colorTheme": "light",
-        "autosize": false,
-        "showIntervalTabs": true,
-        "hideDateRanges": false,
-        "scalePosition": "right",
-        "scaleMode": "Normal",
-        "fontFamily": "-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif"
-      }
-      </script>
+    <div class="chart-box">
+      <h2>S&P 500 (SPY ETF)</h2>
+      <div class="tradingview-widget-container">
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
+        {
+          "symbols": [["AMEX:SPY|1D"]],
+          "chartOnly": true,
+          "width": "500",
+          "height": "350",
+          "locale": "fi",
+          "colorTheme": "light",
+          "autosize": false,
+          "showIntervalTabs": true,
+          "hideDateRanges": false,
+          "scalePosition": "right",
+          "scaleMode": "Normal",
+          "fontFamily": "-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif"
+        }
+        </script>
+      </div>
     </div>
 
     <!-- Nasdaq 100 ETF (QQQ) -->
-    <div class="tradingview-widget-container">
-      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
-      {
-        "symbols": [
-          ["NASDAQ:QQQ|1D"]
-        ],
-        "chartOnly": true,
-        "width": "500",
-        "height": "350",
-        "locale": "fi",
-        "colorTheme": "light",
-        "autosize": false,
-        "showIntervalTabs": true,
-        "hideDateRanges": false,
-        "scalePosition": "right",
-        "scaleMode": "Normal",
-        "fontFamily": "-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif"
-      }
-      </script>
+    <div class="chart-box">
+      <h2>Nasdaq 100 (QQQ ETF)</h2>
+      <div class="tradingview-widget-container">
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
+        {
+          "symbols": [["NASDAQ:QQQ|1D"]],
+          "chartOnly": true,
+          "width": "500",
+          "height": "350",
+          "locale": "fi",
+          "colorTheme": "light",
+          "autosize": false,
+          "showIntervalTabs": true,
+          "hideDateRanges": false,
+          "scalePosition": "right",
+          "scaleMode": "Normal",
+          "fontFamily": "-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif"
+        }
+        </script>
+      </div>
+    </div>
+
+    <!-- OMXH25 -->
+    <div class="chart-box">
+      <h2>OMXH25 (Helsinki)</h2>
+      <div class="tradingview-widget-container">
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
+        {
+          "symbols": [["HEX:OMXH25|1D"]],
+          "chartOnly": true,
+          "width": "500",
+          "height": "350",
+          "locale": "fi",
+          "colorTheme": "light",
+          "autosize": false,
+          "showIntervalTabs": true,
+          "hideDateRanges": false,
+          "scalePosition": "right",
+          "scaleMode": "Normal",
+          "fontFamily": "-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif"
+        }
+        </script>
+      </div>
     </div>
 
   </div>
