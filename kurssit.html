@@ -11,6 +11,7 @@
 <style>
   body { margin:0; font-family:'Arial', sans-serif; background-color:#0f0f0f; color:#fff; }
   a { text-decoration:none; }
+
   /* Navbar */
   .navbar { display:flex; justify-content:space-between; align-items:center; background-color:#000; padding:15px 30px; border-bottom:2px solid #222; position:sticky; top:0; z-index:3000; }
   .navbar .brand { font-size:26px; font-weight:bold; letter-spacing:1px; color:#fff; }
@@ -32,16 +33,14 @@
   .btn { padding:10px 20px; font-size:16px; font-weight:bold; border:none; border-radius:6px; cursor:pointer; background:#1a1a1a; color:#fff; transition:0.3s; }
   .btn:hover, .btn.active { background:#0384fc; color:#fff; }
 
-  .charts { display:flex; flex-wrap:wrap; justify-content:center; gap:30px; }
-  .chart-box { background:#1a1a1a; border-radius:12px; padding:15px; box-shadow:0 4px 15px rgba(0,0,0,0.5); display:none; flex-direction:column; align-items:center; }
-  .chart-box h2 { margin-bottom:15px; font-size:20px; text-align:center; }
+  .charts { display:flex; flex-wrap:wrap; justify-content:center; gap:20px; }
+  .chart-box { background:#1a1a1a; border-radius:12px; padding:15px; box-shadow:0 4px 15px rgba(0,0,0,0.5); display:none; flex-direction:column; align-items:center; width:calc(33% - 20px); }
+  .chart-box h2 { margin-bottom:10px; font-size:18px; text-align:center; }
 
-  @media (max-width:768px) {
-    .navbar ul { display:none; }
-    .hamburger { display:flex; }
-    .charts { flex-direction:column; align-items:center; }
-    .chart-box { width:90%; }
-  }
+  .tradingview-widget-container { width:100% !important; }
+
+  @media (max-width:1024px) { .chart-box { width:calc(50% - 20px); } }
+  @media (max-width:768px) { .chart-box { width:100%; } .navbar ul { display:none; } .hamburger { display:flex; } }
 </style>
 </head>
 <body>
@@ -77,86 +76,40 @@
   </div>
 
   <div class="charts">
-
     <!-- Indeksit -->
     <div class="chart-box" id="indeksit">
       <h2>S&P 500 (SPY ETF)</h2>
       <div class="tradingview-widget-container">
         <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
-        {
-          "symbols": [["AMEX:SPY|1D"]],
-          "chartOnly": true,
-          "width": "500",
-          "height": "350",
-          "locale": "fi",
-          "colorTheme": "dark",
-          "autosize": false,
-          "showIntervalTabs": true
-        }
+        { "symbols":[["AMEX:SPY|1D"]], "chartOnly":true, "width":"100%", "height":"350", "locale":"fi", "colorTheme":"dark", "autosize":true, "showIntervalTabs":true }
         </script>
       </div>
       <h2>Nasdaq 100 (QQQ ETF)</h2>
       <div class="tradingview-widget-container">
         <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
-        {
-          "symbols": [["NASDAQ:QQQ|1D"]],
-          "chartOnly": true,
-          "width": "500",
-          "height": "350",
-          "locale": "fi",
-          "colorTheme": "dark",
-          "autosize": false,
-          "showIntervalTabs": true
-        }
+        { "symbols":[["NASDAQ:QQQ|1D"]], "chartOnly":true, "width":"100%", "height":"350", "locale":"fi", "colorTheme":"dark", "autosize":true, "showIntervalTabs":true }
         </script>
       </div>
       <h2>OMXH25 (XACT OMXH25 ETF)</h2>
       <div class="tradingview-widget-container">
         <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
-        {
-          "symbols": [["STO:XACT25|1D"]],
-          "chartOnly": true,
-          "width": "500",
-          "height": "350",
-          "locale": "fi",
-          "colorTheme": "dark",
-          "autosize": false,
-          "showIntervalTabs": true
-        }
+        { "symbols":[["STO:XACT25|1D"]], "chartOnly":true, "width":"100%", "height":"350", "locale":"fi", "colorTheme":"dark", "autosize":true, "showIntervalTabs":true }
         </script>
       </div>
     </div>
 
     <!-- Osakkeet -->
     <div class="chart-box" id="osakkeet">
-      <h2>USA:n suurimmat yritykset</h2>
+      <h2>USA:n 10 suurinta yritystä</h2>
       <div class="tradingview-widget-container">
         <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
-        {
-          "symbols": [["NASDAQ:AAPL|1D"], ["NASDAQ:MSFT|1D"], ["NASDAQ:AMZN|1D"]],
-          "chartOnly": true,
-          "width": "500",
-          "height": "350",
-          "locale": "fi",
-          "colorTheme": "dark",
-          "autosize": false,
-          "showIntervalTabs": true
-        }
+        { "symbols":[["NASDAQ:AAPL|1D"],["NASDAQ:MSFT|1D"],["NASDAQ:AMZN|1D"],["NASDAQ:GOOGL|1D"],["NASDAQ:FB|1D"],["NASDAQ:TSLA|1D"],["NYSE:BRK.A|1D"],["NYSE:JNJ|1D"],["NASDAQ:NVDA|1D"],["NYSE:V|1D"]], "chartOnly":true, "width":"100%", "height":"350", "locale":"fi", "colorTheme":"dark", "autosize":true, "showIntervalTabs":true }
         </script>
       </div>
-      <h2>Suomen suurimmat yritykset</h2>
+      <h2>Suomen 3 suurinta yritystä (PIS)</h2>
       <div class="tradingview-widget-container">
         <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
-        {
-          "symbols": [["HEL:KNEBV|1D"], ["HEL:NOKIA|1D"], ["HEL:WRT1V|1D"]],
-          "chartOnly": true,
-          "width": "500",
-          "height": "350",
-          "locale": "fi",
-          "colorTheme": "dark",
-          "autosize": false,
-          "showIntervalTabs": true
-        }
+        { "symbols":[["HEL:NOKIA|1D"],["HEL:KNEBV|1D"],["HEL:WRT1V|1D"]], "chartOnly":true, "width":"100%", "height":"350", "locale":"fi", "colorTheme":"dark", "autosize":true, "showIntervalTabs":true }
         </script>
       </div>
     </div>
@@ -166,46 +119,19 @@
       <h2>Bitcoin (BTC)</h2>
       <div class="tradingview-widget-container">
         <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
-        {
-          "symbols": [["CRYPTOCAP:BTC|1D"]],
-          "chartOnly": true,
-          "width": "500",
-          "height": "350",
-          "locale": "fi",
-          "colorTheme": "dark",
-          "autosize": false,
-          "showIntervalTabs": true
-        }
+        { "symbols":[["CRYPTOCAP:BTC|1D"]], "chartOnly":true, "width":"100%", "height":"350", "locale":"fi", "colorTheme":"dark", "autosize":true, "showIntervalTabs":true }
         </script>
       </div>
       <h2>Ethereum (ETH)</h2>
       <div class="tradingview-widget-container">
         <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
-        {
-          "symbols": [["CRYPTOCAP:ETH|1D"]],
-          "chartOnly": true,
-          "width": "500",
-          "height": "350",
-          "locale": "fi",
-          "colorTheme": "dark",
-          "autosize": false,
-          "showIntervalTabs": true
-        }
+        { "symbols":[["CRYPTOCAP:ETH|1D"]], "chartOnly":true, "width":"100%", "height":"350", "locale":"fi", "colorTheme":"dark", "autosize":true, "showIntervalTabs":true }
         </script>
       </div>
       <h2>XRP</h2>
       <div class="tradingview-widget-container">
         <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
-        {
-          "symbols": [["CRYPTOCAP:XRP|1D"]],
-          "chartOnly": true,
-          "width": "500",
-          "height": "350",
-          "locale": "fi",
-          "colorTheme": "dark",
-          "autosize": false,
-          "showIntervalTabs": true
-        }
+        { "symbols":[["CRYPTOCAP:XRP|1D"]], "chartOnly":true, "width":"100%", "height":"350", "locale":"fi", "colorTheme":"dark", "autosize":true, "showIntervalTabs":true }
         </script>
       </div>
     </div>
