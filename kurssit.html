@@ -29,14 +29,11 @@
   /* Main content */
   .main-container { display:flex; flex-direction:column; max-width:1200px; margin:40px auto; gap:20px; padding:0 20px; }
   h1 { font-size:32px; margin-bottom:25px; text-align:center; }
-  .button-group { display:flex; justify-content:center; gap:15px; margin-bottom:30px; flex-wrap:wrap; }
-  .btn { padding:10px 20px; font-size:16px; font-weight:bold; border:none; border-radius:6px; cursor:pointer; background:#1a1a1a; color:#fff; transition:0.3s; }
-  .btn:hover, .btn.active { background:#0384fc; color:#fff; }
 
   .charts { display:flex; flex-wrap:wrap; justify-content:center; gap:20px; }
 
   /* Yksittäinen graafi-laatikko */
-  .chart-box { background:#1a1a1a; border-radius:12px; padding:15px; box-shadow:0 4px 15px rgba(0,0,0,0.5); display:none; flex-direction:column; align-items:center; width:calc(33% - 20px); margin-bottom:20px; }
+  .chart-box { background:#1a1a1a; border-radius:12px; padding:15px; box-shadow:0 4px 15px rgba(0,0,0,0.5); flex-direction:column; align-items:center; width:calc(33% - 20px); display:flex; }
   .chart-box h2 { margin-bottom:10px; font-size:18px; text-align:center; }
   .tradingview-widget-container { width:100% !important; }
 
@@ -70,166 +67,161 @@
 
 <div class="main-container">
   <h1>Pörssikurssit</h1>
-  <div class="button-group">
-    <button class="btn active" data-target="indeksit">Indeksit</button>
-    <button class="btn" data-target="osakkeet">Osakkeet</button>
-    <button class="btn" data-target="kryptot">Kryptot</button>
-  </div>
-
   <div class="charts">
+
     <!-- Indeksit -->
-    <div class="chart-box" id="indeksit">
+    <div class="chart-box">
       <h2>S&P 500 (SPY ETF)</h2>
       <div class="tradingview-widget-container">
         <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
-        { "symbols":[["AMEX:SPY|1D"]], "chartOnly":true, "width":"100%", "height":"350", "locale":"fi", "colorTheme":"dark", "autosize":true }
+        { "symbols":[["AMEX:SPY|1D"]], "chartOnly":true,"width":"100%","height":"350","locale":"fi","colorTheme":"dark","autosize":true }
         </script>
       </div>
     </div>
 
-    <div class="chart-box" id="indeksit-nasdaq">
+    <div class="chart-box">
       <h2>Nasdaq 100 (QQQ ETF)</h2>
       <div class="tradingview-widget-container">
         <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
-        { "symbols":[["NASDAQ:QQQ|1D"]], "chartOnly":true, "width":"100%", "height":"350", "locale":"fi", "colorTheme":"dark", "autosize":true }
+        { "symbols":[["NASDAQ:QQQ|1D"]], "chartOnly":true,"width":"100%","height":"350","locale":"fi","colorTheme":"dark","autosize":true }
         </script>
       </div>
     </div>
 
-    <div class="chart-box" id="indeksit-omxh25">
+    <div class="chart-box">
       <h2>OMXH25 (XACT OMXH25 ETF)</h2>
       <div class="tradingview-widget-container">
         <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
-        { "symbols":[["STO:XACT25|1D"]], "chartOnly":true, "width":"100%", "height":"350", "locale":"fi", "colorTheme":"dark", "autosize":true }
+        { "symbols":[["STO:XACT25|1D"]], "chartOnly":true,"width":"100%","height":"350","locale":"fi","colorTheme":"dark","autosize":true }
         </script>
       </div>
     </div>
 
     <!-- USA:n osakkeet -->
-    <div class="chart-box" id="osakkeet-aapl">
+    <div class="chart-box">
       <h2>Apple (AAPL)</h2>
       <div class="tradingview-widget-container">
         <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
-        { "symbols":[["NASDAQ:AAPL|1D"]], "chartOnly":true, "width":"100%", "height":"350","locale":"fi","colorTheme":"dark","autosize":true }
+        { "symbols":[["NASDAQ:AAPL|1D"]],"chartOnly":true,"width":"100%","height":"350","locale":"fi","colorTheme":"dark","autosize":true }
         </script>
       </div>
     </div>
 
-    <div class="chart-box" id="osakkeet-msft">
+    <div class="chart-box">
       <h2>Microsoft (MSFT)</h2>
       <div class="tradingview-widget-container">
         <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
-        { "symbols":[["NASDAQ:MSFT|1D"]], "chartOnly":true, "width":"100%", "height":"350","locale":"fi","colorTheme":"dark","autosize":true }
+        { "symbols":[["NASDAQ:MSFT|1D"]],"chartOnly":true,"width":"100%","height":"350","locale":"fi","colorTheme":"dark","autosize":true }
         </script>
       </div>
     </div>
 
-    <div class="chart-box" id="osakkeet-amzn">
+    <div class="chart-box">
       <h2>Amazon (AMZN)</h2>
       <div class="tradingview-widget-container">
         <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
-        { "symbols":[["NASDAQ:AMZN|1D"]], "chartOnly":true, "width":"100%", "height":"350","locale":"fi","colorTheme":"dark","autosize":true }
+        { "symbols":[["NASDAQ:AMZN|1D"]],"chartOnly":true,"width":"100%","height":"350","locale":"fi","colorTheme":"dark","autosize":true }
         </script>
       </div>
     </div>
 
-    <!-- Lisää muut USA:n osakkeet samalla kaavalla: GOOGL, NVDA, TSLA, BRK.A, JNJ, V, UNH -->
-    <div class="chart-box" id="osakkeet-googl">
+    <!-- Lisää muut USA:n osakkeet samoin: GOOGL, NVDA, TSLA, BRK.A, JNJ, V, UNH -->
+
+    <div class="chart-box">
       <h2>Alphabet (GOOGL)</h2>
       <div class="tradingview-widget-container">
         <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
-        { "symbols":[["NASDAQ:GOOGL|1D"]], "chartOnly":true, "width":"100%","height":"350","locale":"fi","colorTheme":"dark","autosize":true }
+        { "symbols":[["NASDAQ:GOOGL|1D"]],"chartOnly":true,"width":"100%","height":"350","locale":"fi","colorTheme":"dark","autosize":true }
         </script>
       </div>
     </div>
 
-    <div class="chart-box" id="osakkeet-nvda">
+    <div class="chart-box">
       <h2>NVIDIA (NVDA)</h2>
       <div class="tradingview-widget-container">
         <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
-        { "symbols":[["NASDAQ:NVDA|1D"]], "chartOnly":true, "width":"100%","height":"350","locale":"fi","colorTheme":"dark","autosize":true }
+        { "symbols":[["NASDAQ:NVDA|1D"]],"chartOnly":true,"width":"100%","height":"350","locale":"fi","colorTheme":"dark","autosize":true }
         </script>
       </div>
     </div>
 
-    <div class="chart-box" id="osakkeet-tsla">
+    <div class="chart-box">
       <h2>Tesla (TSLA)</h2>
       <div class="tradingview-widget-container">
         <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
-        { "symbols":[["NASDAQ:TSLA|1D"]], "chartOnly":true, "width":"100%","height":"350","locale":"fi","colorTheme":"dark","autosize":true }
+        { "symbols":[["NASDAQ:TSLA|1D"]],"chartOnly":true,"width":"100%","height":"350","locale":"fi","colorTheme":"dark","autosize":true }
         </script>
       </div>
     </div>
 
-    <div class="chart-box" id="osakkeet-brka">
+    <div class="chart-box">
       <h2>Berkshire Hathaway (BRK.A)</h2>
       <div class="tradingview-widget-container">
         <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
-        { "symbols":[["NYSE:BRK.A|1D"]], "chartOnly":true, "width":"100%","height":"350","locale":"fi","colorTheme":"dark","autosize":true }
+        { "symbols":[["NYSE:BRK.A|1D"]],"chartOnly":true,"width":"100%","height":"350","locale":"fi","colorTheme":"dark","autosize":true }
         </script>
       </div>
     </div>
 
-    <div class="chart-box" id="osakkeet-jnj">
+    <div class="chart-box">
       <h2>Johnson & Johnson (JNJ)</h2>
       <div class="tradingview-widget-container">
         <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
-        { "symbols":[["NYSE:JNJ|1D"]], "chartOnly":true, "width":"100%","height":"350","locale":"fi","colorTheme":"dark","autosize":true }
+        { "symbols":[["NYSE:JNJ|1D"]],"chartOnly":true,"width":"100%","height":"350","locale":"fi","colorTheme":"dark","autosize":true }
         </script>
       </div>
     </div>
 
-    <div class="chart-box" id="osakkeet-v">
+    <div class="chart-box">
       <h2>Visa (V)</h2>
       <div class="tradingview-widget-container">
         <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
-        { "symbols":[["NYSE:V|1D"]], "chartOnly":true, "width":"100%","height":"350","locale":"fi","colorTheme":"dark","autosize":true }
+        { "symbols":[["NYSE:V|1D"]],"chartOnly":true,"width":"100%","height":"350","locale":"fi","colorTheme":"dark","autosize":true }
         </script>
       </div>
     </div>
 
-    <div class="chart-box" id="osakkeet-unh">
+    <div class="chart-box">
       <h2>UnitedHealth (UNH)</h2>
       <div class="tradingview-widget-container">
         <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
-        { "symbols":[["NYSE:UNH|1D"]], "chartOnly":true, "width":"100%","height":"350","locale":"fi","colorTheme":"dark","autosize":true }
+        { "symbols":[["NYSE:UNH|1D"]],"chartOnly":true,"width":"100%","height":"350","locale":"fi","colorTheme":"dark","autosize":true }
         </script>
       </div>
     </div>
 
     <!-- Kryptot -->
-    <div class="chart-box" id="kryptot-btc">
+    <div class="chart-box">
       <h2>Bitcoin (BTC)</h2>
       <div class="tradingview-widget-container">
         <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
-        { "symbols":[["CRYPTOCAP:BTC|1D"]], "chartOnly":true, "width":"100%","height":"350","locale":"fi","colorTheme":"dark","autosize":true }
+        { "symbols":[["CRYPTOCAP:BTC|1D"]],"chartOnly":true,"width":"100%","height":"350","locale":"fi","colorTheme":"dark","autosize":true }
         </script>
       </div>
     </div>
 
-    <div class="chart-box" id="kryptot-eth">
+    <div class="chart-box">
       <h2>Ethereum (ETH)</h2>
       <div class="tradingview-widget-container">
         <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
-        { "symbols":[["CRYPTOCAP:ETH|1D"]], "chartOnly":true, "width":"100%","height":"350","locale":"fi","colorTheme":"dark","autosize":true }
+        { "symbols":[["CRYPTOCAP:ETH|1D"]],"chartOnly":true,"width":"100%","height":"350","locale":"fi","colorTheme":"dark","autosize":true }
         </script>
       </div>
     </div>
 
-    <div class="chart-box" id="kryptot-xrp">
+    <div class="chart-box">
       <h2>XRP</h2>
       <div class="tradingview-widget-container">
         <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
-        { "symbols":[["CRYPTOCAP:XRP|1D"]], "chartOnly":true, "width":"100%","height":"350","locale":"fi","colorTheme":"dark","autosize":true }
+        { "symbols":[["CRYPTOCAP:XRP|1D"]],"chartOnly":true,"width":"100%","height":"350","locale":"fi","colorTheme":"dark","autosize":true }
         </script>
       </div>
     </div>
-    
+
   </div>
 </div>
 
 <script>
-  // Hamburger menu
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
   const overlay = document.getElementById('overlay');
@@ -242,22 +234,6 @@
     mobileMenu.style.display = 'none';
     overlay.style.display = 'none';
   });
-
-  // Button group toggle
-  const buttons = document.querySelectorAll('.btn');
-  const charts = document.querySelectorAll('.chart-box');
-  function hideAll() { charts.forEach(c => c.style.display='none'); buttons.forEach(b => b.classList.remove('active')); }
-  buttons.forEach(b => {
-    b.addEventListener('click', () => {
-      hideAll();
-      const target = b.dataset.target;
-      document.querySelectorAll('#'+target).forEach(c => c.style.display='flex');
-      b.classList.add('active');
-    });
-  });
-
-  // Show default
-  document.querySelectorAll('#indeksit').forEach(c => c.style.display='flex');
 </script>
 
 </body>
