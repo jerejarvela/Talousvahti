@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8">
+  <title>Pörssikurssit – S&P 500 & Nasdaq</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #f5f5f5;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      margin-bottom: 40px;
+    }
+    .chart-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+    }
+    .tradingview-widget-container {
+      background: white;
+      border-radius: 12px;
+      padding: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <h1>Pörssikurssit</h1>
+  <div class="chart-container">
+    <!-- S&P 500 -->
+    <div class="tradingview-widget-container">
+      <div id="tradingview_sp500"></div>
+      <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+      <script type="text/javascript">
+      new TradingView.widget({
+        "width": 600,
+        "height": 400,
+        "symbol": "SP:SPX",   // S&P 500
+        "interval": "D",
+        "timezone": "Etc/UTC",
+        "theme": "light",
+        "style": "1",
+        "locale": "fi",
+        "toolbar_bg": "#f1f3f6",
+        "hide_side_toolbar": false,
+        "allow_symbol_change": true
+      });
+      </script>
+    </div>
+
+    <!-- Nasdaq Composite -->
+    <div class="tradingview-widget-container">
+      <div id="tradingview_nasdaq"></div>
+      <script type="text/javascript">
+      new TradingView.widget({
+        "width": 600,
+        "height": 400,
+        "symbol": "NASDAQ:IXIC",   // Nasdaq Composite
+        "interval": "D",
+        "timezone": "Etc/UTC",
+        "theme": "light",
+        "style": "1",
+        "locale": "fi",
+        "toolbar_bg": "#f1f3f6",
+        "hide_side_toolbar": false,
+        "allow_symbol_change": true
+      });
+      </script>
+    </div>
+  </div>
+</body>
+</html>
