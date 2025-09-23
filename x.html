@@ -3,56 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <title>Sijoitustwiitit</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      max-width: 1200px;
-      margin: auto;
-      background: #f9f9f9;
-      padding: 20px;
-    }
-    h1 {
-      text-align: center;
-      color: #333;
-    }
-    .feed-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 20px;
-      margin-top: 20px;
-    }
-    .feed {
-      background: white;
-      border-radius: 12px;
-      padding: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-  </style>
 </head>
 <body>
   <h1>📈 Sijoitustwiitit</h1>
-  <div class="feed-grid">
-    <div class="feed">
-      <a class="twitter-timeline" data-height="600" href="https://twitter.com/JukkaLepikko?ref_src=twsrc%5Etfw">Tweets by @JukkaLepikko</a>
-    </div>
-    <div class="feed">
-      <a class="twitter-timeline" data-height="600" href="https://twitter.com/Inderes?ref_src=twsrc%5Etfw">Tweets by @Inderes</a>
-    </div>
-    <div class="feed">
-      <a class="twitter-timeline" data-height="600" href="https://twitter.com/Sijoitustieto?ref_src=twsrc%5Etfw">Tweets by @Sijoitustieto</a>
-    </div>
-    <div class="feed">
-      <a class="twitter-timeline" data-height="600" href="https://twitter.com/RayDalio?ref_src=twsrc%5Etfw">Tweets by @RayDalio</a>
-    </div>
-    <div class="feed">
-      <a class="twitter-timeline" data-height="600" href="https://twitter.com/Porssihaukka?ref_src=twsrc%5Etfw">Tweets by @Porssihaukka</a>
-    </div>
-    <div class="feed">
-      <a class="twitter-timeline" data-height="600" href="https://twitter.com/BloombergMarkets?ref_src=twsrc%5Etfw">Tweets by @BloombergMarkets</a>
-    </div>
-  </div>
 
-  <!-- Tämä skripti muuttaa linkit oikeiksi embed-feedeiksi -->
+  <a class="twitter-timeline" 
+     data-height="600" 
+     href="https://twitter.com/JukkaLepikko">
+     Tweets by @JukkaLepikko
+  </a>
+
+  <a class="twitter-timeline" 
+     data-height="600" 
+     href="https://twitter.com/Inderes">
+     Tweets by @Inderes
+  </a>
+
   <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </body>
 </html>
