@@ -1,1 +1,225 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tietoa – Talousvahti</title>
+<meta name="description" content="Tietoa Talousvahdista – päivän tärkeimmät talousuutiset, pörssikurssit, sijoitustyökalut ja talousblogi.">
+<meta name="author" content="Jere Järvelä">
+
+<style>
+  body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #0f0f0f;
+    color: #fff;
+    scroll-behavior: smooth;
+  }
+  a { text-decoration: none; }
+
+  /* Navbar */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000;
+    padding: 15px 30px;
+    border-bottom: 2px solid #222;
+    position: sticky;
+    top: 0;
+    z-index: 3000;
+  }
+  .navbar .brand { font-size: 26px; font-weight: bold; letter-spacing: 1px; color: #fff; }
+  .navbar ul { list-style: none; display: flex; gap: 25px; }
+  .navbar ul li a {
+    color: #fff; font-size: 18px; transition: all 0.3s; padding: 5px 10px; border-radius: 5px;
+  }
+  .navbar ul li a:hover,
+  .navbar ul li a.active { background-color: #1a1a1a; color: #ccc; }
+
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .hamburger span { width: 25px; height: 3px; background: #fff; border-radius: 2px; }
+
+  .mobile-menu {
+    display: none; flex-direction: column; background-color: #111;
+    position: fixed; top: 70px; right: 20px; width: 220px; border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.6); overflow: hidden; z-index: 4000;
+    animation: slideDown 0.3s ease forwards;
+  }
+  .mobile-menu a { padding: 15px; border-bottom: 1px solid #222; color: #fff; transition: background 0.3s; }
+  .mobile-menu a:hover { background: #222; color: #0384fc; }
+  .overlay {
+    display: none; position: fixed; top: 0; left: 0;
+    width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 3500;
+  }
+  @keyframes slideDown { from { opacity:0; transform:translateY(-10px);} to {opacity:1; transform:translateY(0);} }
+
+  /* Content */
+  .container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+    line-height: 1.7;
+  }
+  h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #0384fc;
+  }
+  h2 {
+    font-size: 26px;
+    margin-top: 40px;
+    color: #fff;
+    border-left: 4px solid #0384fc;
+    padding-left: 12px;
+  }
+  p {
+    font-size: 17px;
+    color: #ddd;
+    margin-bottom: 20px;
+  }
+
+  /* Card style */
+  .info-card {
+    background: linear-gradient(135deg, #1a1a1a, #141414);
+    border-radius: 12px; padding: 25px; margin: 25px 0;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    transition: transform 0.3s, box-shadow 0.3s;
+    opacity: 0; transform: translateY(30px);
+    animation: fadeIn 0.8s forwards;
+  }
+  .info-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.7); }
+
+  @keyframes fadeIn {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 30px;
+    border-top: 1px solid #222;
+    font-size: 14px;
+    color: #aaa;
+    margin-top: 60px;
+  }
+
+  /* Back to top */
+  #backToTop {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background: #0384fc;
+    color: #fff;
+    border: none;
+    padding: 12px 16px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    font-size: 18px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    transition: all 0.3s;
+  }
+  #backToTop:hover {
+    background: #005bb5;
+  }
+
+  @media (max-width: 768px) {
+    .navbar ul { display: none; }
+    .hamburger { display: flex; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="brand">Talousvahti</div>
+  <ul>
+    <li><a href="index.html">Talousuutiset</a></li>
+    <li><a href="kurssit.html">Pörssikurssit</a></li>
+    <li><a href="Blogi.html">Blogi</a></li>
+    <li><a href="sisapiiri.html">Sisäpiirikaupat</a></li>
+    <li><a href="talouskalenteri.html">Talouskalenteri</a></li>
+    <li><a href="sijoituslaskuri.html">Sijoituslaskuri</a></li>
+    <li><a href="tietoa.html" class="active">Tietoa</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Talousuutiset</a>
+  <a href="kurssit.html">Pörssikurssit</a>
+  <a href="Blogi.html">Blogi</a>
+  <a href="sisapiiri.html">Sisäpiirikaupat</a>
+  <a href="talouskalenteri.html">Talouskalenteri</a>
+  <a href="sijoituslaskuri.html">Sijoituslaskuri</a>
+  <a href="tietoa.html" class="active">Tietoa</a>
+</div>
+<div class="overlay" id="overlay"></div>
+
+<div class="container">
+  <h1>Tietoa Talousvahdista</h1>
+  <p><strong>Talousvahti</strong> on digitaalinen alusta, joka kokoaa yhteen päivän tärkeimmät talousuutiset, pörssikurssit, talouskalenterin, blogin sekä sijoittajan laskurit. Sivusto on suunnattu sijoittajille, yrittäjille ja kaikille, joita talouden ilmiöt kiinnostavat.</p>
+
+  <div class="info-card">
+    <h2>Missio</h2>
+    <p>Tavoitteemme on tehdä taloudesta ymmärrettävää ja helposti seurattavaa. Tarjoamme ajankohtaisia uutisia ja työkaluja, joiden avulla voit tehdä parempia päätöksiä markkinoilla.</p>
+  </div>
+
+  <div class="info-card">
+    <h2>Sisältö</h2>
+    <p>✔ Päivän tärkeimmät talousuutiset <br>
+       ✔ Pörssikurssit ja markkinaluvut <br>
+       ✔ Talouskalenteri ja makrotalouden tapahtumat <br>
+       ✔ Blogi analyyseineen ja vinkkeineen <br>
+       ✔ Sijoituslaskuri ja muita hyödyllisiä työkaluja</p>
+  </div>
+
+  <div class="info-card">
+    <h2>Kuka on sivuston takana?</h2>
+    <p>Sivuston on perustanut <strong>Jere Järvelä</strong>, kauppatieteiden opiskelija, joka haluaa yhdistää ajankohtaisen talousinformaation ja helppokäyttöiset työkalut yhteen paikkaan.</p>
+  </div>
+</div>
+
+<footer>
+  &copy; 2025 Talousvahti – Sivuston ylläpitäjä Jere Järvelä
+</footer>
+
+<button id="backToTop">↑</button>
+
+<script>
+  // Hamburger-menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const overlay = document.getElementById('overlay');
+
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileMenu.style.display === 'flex';
+    mobileMenu.style.display = isOpen ? 'none' : 'flex';
+    overlay.style.display = isOpen ? 'none' : 'block';
+  });
+  overlay.addEventListener('click', () => {
+    mobileMenu.style.display = 'none';
+    overlay.style.display = 'none';
+  });
+
+  // Back to top
+  const backToTop = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+      backToTop.style.display = "block";
+    } else {
+      backToTop.style.display = "none";
+    }
+  });
+  backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+
+</body>
+</html>
 
