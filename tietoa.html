@@ -13,10 +13,11 @@
 <style>
   body {
     margin: 0;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Segoe UI', Roboto, Arial, sans-serif;
     background-color: #0f0f0f;
     color: #fff;
     scroll-behavior: smooth;
+    line-height: 1.7;
   }
   a { text-decoration: none; }
 
@@ -32,10 +33,10 @@
     top: 0;
     z-index: 3000;
   }
-  .navbar .brand { font-size: 26px; font-weight: bold; letter-spacing: 1px; color: #fff; }
+  .navbar .brand { font-size: 26px; font-weight: bold; color: #fff; }
   .navbar ul { list-style: none; display: flex; gap: 25px; }
   .navbar ul li a {
-    color: #fff; font-size: 18px; transition: all 0.3s; padding: 5px 10px; border-radius: 5px;
+    color: #fff; font-size: 16px; transition: all 0.3s; padding: 5px 10px; border-radius: 5px;
   }
   .navbar ul li a:hover,
   .navbar ul li a.active { background-color: #1a1a1a; color: #ccc; }
@@ -60,12 +61,12 @@
   /* Hero */
   .hero {
     text-align: center;
-    padding: 100px 20px;
+    padding: 100px 20px 70px;
     background: linear-gradient(135deg, #0a0a0a, #111);
     position: relative;
   }
   .hero h1 {
-    font-size: 52px;
+    font-size: 50px;
     margin: 0;
     background: linear-gradient(90deg, #0384fc, #00d4ff);
     -webkit-background-clip: text;
@@ -90,7 +91,6 @@
     max-width: 1100px;
     margin: 40px auto;
     padding: 0 20px;
-    line-height: 1.7;
   }
 
   /* Info cards */
@@ -111,6 +111,10 @@
   }
 
   /* FAQ */
+  .faq {
+    margin-top: 60px;
+  }
+  .faq h2 { margin-bottom: 20px; }
   .faq-item {
     border-bottom: 1px solid #222;
     padding: 15px 0;
@@ -122,7 +126,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: #fff;
   }
   .faq-item p {
     display: none;
@@ -137,22 +140,12 @@
     padding: 40px;
     border-radius: 12px;
     text-align: center;
-    margin: 60px 0;
+    margin: 80px 0;
     color: #fff;
     box-shadow: 0 4px 20px rgba(3,132,252,0.5);
   }
   .cta h2 { margin-bottom: 15px; font-size: 28px; }
-  .cta button {
-    background: #fff;
-    color: #0384fc;
-    border: none;
-    padding: 14px 24px;
-    font-size: 16px;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-  .cta button:hover { background: #ddd; }
+  .cta p { margin-bottom: 20px; }
 
   /* Footer */
   footer {
@@ -226,47 +219,57 @@
 
   <div class="info-card">
     <h2><i class="fas fa-newspaper"></i> Talousuutiset</h2>
-    <p>Päivän tärkeimmät talousuutiset kootaan yhdelle sivulle, jotta sinun ei tarvitse etsiä niitä eri lähteistä. Näet tiiviin yhteenvedon markkinoita ohjaavista uutisista ja artikkeleista.</p>
+    <p>Kokoamme yhteen päivän tärkeimmät talousuutiset useista lähteistä. Näin pysyt ajan tasalla markkinoiden liikkeistä ilman, että sinun tarvitsee etsiä tietoa eri medioista.</p>
   </div>
 
   <div class="info-card">
     <h2><i class="fas fa-chart-line"></i> Pörssikurssit</h2>
-    <p>Pörssikurssisivulta löydät reaaliaikaiset kurssit, tärkeimmät indeksit sekä osakkeiden kehityksen. Tämä auttaa sinua seuraamaan markkinoiden liikkeitä ja tekemään sijoituspäätöksiä.</p>
+    <p>Seuraa reaaliaikaisia pörssikursseja ja indeksejä. Näet, miten osakkeet ja markkinat kehittyvät, ja voit tehdä tietoisempia päätöksiä sijoituksissasi.</p>
   </div>
 
   <div class="info-card">
     <h2><i class="fas fa-calendar-alt"></i> Talouskalenteri</h2>
-    <p>Talouskalenteri näyttää tulevat talousraportit, keskuspankkien päätökset ja makrotalouden tilastot. Se on erinomainen työkalu sijoittajille, jotka haluavat ennakoida markkinoiden liikkeitä.</p>
+    <p>Talouskalenteri näyttää tulevat talousraportit, keskuspankkien päätökset ja makrotalouden tilastot. Kalenterin avulla voit ennakoida markkinoiden reaktioita.</p>
   </div>
 
   <div class="info-card">
     <h2><i class="fas fa-pen-nib"></i> Blogi</h2>
-    <p>Talousvahdin blogissa julkaistaan analyysejä, näkemyksiä ja vinkkejä talouteen sekä sijoittamiseen. Blogi auttaa sinua ymmärtämään ilmiöitä syvemmin.</p>
+    <p>Blogissa julkaistaan analyysejä, näkemyksiä ja vinkkejä taloudesta ja sijoittamisesta. Blogi syventää ymmärrystäsi ja antaa uusia näkökulmia.</p>
   </div>
 
   <div class="info-card">
     <h2><i class="fas fa-calculator"></i> Sijoituslaskuri</h2>
-    <p>Sijoituslaskurilla voit arvioida sijoitustesi tulevaa tuottoa. Syötä esimerkiksi sijoitussumma, tuottoprosentti ja sijoitusaika – laskuri antaa sinulle selkeän kuvan mahdollisesta tuotosta.</p>
+    <p>Sijoituslaskurilla voit laskea mahdollisia tuottoja eri skenaarioissa. Syötä esimerkiksi sijoitussumma, tuottoprosentti ja aikajakso – saat heti arvion.</p>
   </div>
 
-  <h2><i class="fas fa-question-circle"></i> Usein kysyttyä</h2>
-  <div class="faq-item">
-    <h3>Mikä on Talousvahti? <i class="fas fa-chevron-down"></i></h3>
-    <p>Talousvahti on digitaalinen alusta, joka kokoaa yhteen uutiset, kurssit, talouskalenterin, blogin ja sijoituslaskurin.</p>
-  </div>
-  <div class="faq-item">
-    <h3>Kuka voi hyötyä palvelusta? <i class="fas fa-chevron-down"></i></h3>
-    <p>Sijoittajat, yrittäjät ja kaikki taloudesta kiinnostuneet.</p>
-  </div>
-  <div class="faq-item">
-    <h3>Onko Talousvahti ilmainen? <i class="fas fa-chevron-down"></i></h3>
-    <p>Kyllä – palvelu on täysin maksuton käyttäjille.</p>
-  </div>
-
+  <!-- Kit form CTA -->
   <div class="cta">
     <h2>Liity sähköpostilistalle</h2>
     <p>Saat joka aamu päivän tärkeimmät talousuutiset ja markkinatiedot suoraan sähköpostiisi.</p>
-    <button>Liity nyt</button>
+    <script async data-uid="722673f8d4" src="https://talousvahti.kit.com/722673f8d4/index.js"></script>
+  </div>
+
+  <div class="faq">
+    <h2><i class="fas fa-question-circle"></i> Usein kysyttyä</h2>
+    <div class="faq-item">
+      <h3>Mikä on Talousvahti? <i class="fas fa-chevron-down"></i></h3>
+      <p>Talousvahti on digitaalinen alusta, joka kokoaa yhteen uutiset, pörssikurssit, talouskalenterin, blogin ja sijoituslaskurin.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Kuka voi hyötyä palvelusta? <i class="fas fa-chevron-down"></i></h3>
+      <p>Sijoittajat, yrittäjät ja kaikki taloudesta kiinnostuneet saavat Talousvahdista arvoa.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Onko Talousvahti maksuton? <i class="fas fa-chevron-down"></i></h3>
+      <p>Kyllä – palvelu on käyttäjille ilmainen.</p>
+    </div>
+  </div>
+
+  <div class="info-card">
+    <h2><i class="fas fa-user"></i> Sivuston ylläpitäjä</h2>
+    <p><strong>Jere Järvelä</strong>, kauppatieteiden opiskelija.  
+    Rakennan Talousvahtia intohimosta sijoittamiseen, talouteen ja digitaalisiin työkaluihin.  
+    Sivuston tarkoituksena on tarjota hyödyllistä ja helposti käytettävää tietoa kaikille taloudesta kiinnostuneille.</p>
   </div>
 </div>
 
