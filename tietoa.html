@@ -19,7 +19,8 @@
     scroll-behavior: smooth;
     line-height: 1.7;
   }
-  a { text-decoration: none; }
+  a { text-decoration: none; color: #ccc; }
+  a:hover { color: #fff; }
 
   /* Navbar */
   .navbar {
@@ -61,24 +62,17 @@
   /* Hero */
   .hero {
     text-align: center;
-    padding: 100px 20px 70px;
+    padding: 80px 20px 50px;
     background: linear-gradient(135deg, #0a0a0a, #111);
     position: relative;
   }
   .hero h1 {
-    font-size: 50px;
+    font-size: 36px;
     margin: 0;
-    background: linear-gradient(90deg, #0384fc, #00d4ff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: glow 3s infinite alternate;
-  }
-  @keyframes glow {
-    from { text-shadow: 0 0 10px #0384fc; }
-    to { text-shadow: 0 0 25px #00d4ff; }
+    color: #fff;
   }
   .hero p {
-    font-size: 20px;
+    font-size: 18px;
     color: #bbb;
     margin-top: 15px;
     max-width: 700px;
@@ -110,43 +104,6 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
-  /* FAQ */
-  .faq {
-    margin-top: 60px;
-  }
-  .faq h2 { margin-bottom: 20px; }
-  .faq-item {
-    border-bottom: 1px solid #222;
-    padding: 15px 0;
-    cursor: pointer;
-  }
-  .faq-item h3 {
-    margin: 0;
-    font-size: 18px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .faq-item p {
-    display: none;
-    margin-top: 10px;
-    font-size: 15px;
-    color: #ccc;
-  }
-
-  /* CTA */
-  .cta {
-    background: #0384fc;
-    padding: 40px;
-    border-radius: 12px;
-    text-align: center;
-    margin: 80px 0;
-    color: #fff;
-    box-shadow: 0 4px 20px rgba(3,132,252,0.5);
-  }
-  .cta h2 { margin-bottom: 15px; font-size: 28px; }
-  .cta p { margin-bottom: 20px; }
-
   /* Footer */
   footer {
     text-align: center;
@@ -155,6 +112,13 @@
     font-size: 14px;
     color: #aaa;
     margin-top: 60px;
+  }
+  .footer-links {
+    margin-top: 10px;
+  }
+  .footer-links a {
+    margin: 0 10px;
+    font-size: 14px;
   }
 
   /* Back to top */
@@ -242,27 +206,11 @@
     <p>Sijoituslaskurilla voit laskea mahdollisia tuottoja eri skenaarioissa. Syötä esimerkiksi sijoitussumma, tuottoprosentti ja aikajakso – saat heti arvion.</p>
   </div>
 
-  <!-- Kit form CTA -->
-  <div class="cta">
-    <h2>Liity sähköpostilistalle</h2>
+  <!-- Kit form dark card -->
+  <div class="info-card">
+    <h2><i class="fas fa-envelope"></i> Liity sähköpostilistalle</h2>
     <p>Saat joka aamu päivän tärkeimmät talousuutiset ja markkinatiedot suoraan sähköpostiisi.</p>
     <script async data-uid="722673f8d4" src="https://talousvahti.kit.com/722673f8d4/index.js"></script>
-  </div>
-
-  <div class="faq">
-    <h2><i class="fas fa-question-circle"></i> Usein kysyttyä</h2>
-    <div class="faq-item">
-      <h3>Mikä on Talousvahti? <i class="fas fa-chevron-down"></i></h3>
-      <p>Talousvahti on digitaalinen alusta, joka kokoaa yhteen uutiset, pörssikurssit, talouskalenterin, blogin ja sijoituslaskurin.</p>
-    </div>
-    <div class="faq-item">
-      <h3>Kuka voi hyötyä palvelusta? <i class="fas fa-chevron-down"></i></h3>
-      <p>Sijoittajat, yrittäjät ja kaikki taloudesta kiinnostuneet saavat Talousvahdista arvoa.</p>
-    </div>
-    <div class="faq-item">
-      <h3>Onko Talousvahti maksuton? <i class="fas fa-chevron-down"></i></h3>
-      <p>Kyllä – palvelu on käyttäjille ilmainen.</p>
-    </div>
   </div>
 
   <div class="info-card">
@@ -275,6 +223,11 @@
 
 <footer>
   &copy; 2025 Talousvahti – Sivuston ylläpitäjä Jere Järvelä
+  <div class="footer-links">
+    <a href="tietosuoja.html">Tietosuojakäytäntö</a> | 
+    <a href="evasteet.html">Evästekäytäntö</a> | 
+    <a href="kayttoehdot.html">Käyttöehdot</a>
+  </div>
 </footer>
 
 <button id="backToTop">↑</button>
@@ -303,19 +256,6 @@
     });
   }, { threshold: 0.2 });
   cards.forEach(card => observer.observe(card));
-
-  // FAQ toggle
-  const faqs = document.querySelectorAll('.faq-item');
-  faqs.forEach(faq => {
-    faq.addEventListener('click', () => {
-      const p = faq.querySelector('p');
-      const icon = faq.querySelector('i');
-      const isOpen = p.style.display === 'block';
-      p.style.display = isOpen ? 'none' : 'block';
-      icon.classList.toggle('fa-chevron-up');
-      icon.classList.toggle('fa-chevron-down');
-    });
-  });
 
   // Back to top
   const backToTop = document.getElementById('backToTop');
