@@ -43,26 +43,47 @@
 
   @media (max-width: 768px) { .navbar ul { display: none; } .hamburger { display: flex; } .main-container { flex-direction: column; } .kit-sidebar { width: 80%; max-width: 300px; position: relative; top: auto; margin: 20px auto; align-items: center; } .kit-sidebar > * { width: 100%; max-width: 100%; margin: 0 auto; } }
 
-  /* Loader */
+  /* Loader sama kuin etusivulla */
   #loader {
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex; flex-direction: column; align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     gap: 12px;
     font-size: 18px;
     color: #ffffff;
-    z-index: 5000;
+    margin-bottom: 20px;
+    justify-content: center;
+    height: 400px;
   }
-  .spinner {
-    border: 6px solid #1a1a1a;
-    border-top: 6px solid #0384fc;
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    animation: spin 1s linear infinite;
+  .image-loader {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    border-radius: 12px;
+    overflow: hidden;
   }
-  @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+  .image-loader img {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .image-loader .gray { filter: grayscale(100%); z-index: 1; }
+  .image-loader .color { z-index: 2; clip-path: inset(0 100% 0 0); animation: revealMask 3s linear forwards; }
+  @keyframes revealMask { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+  .image-loader::after {
+    content: "";
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 100%; height: 50%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, #0f0f0f 100%);
+    z-index: 3;
+    pointer-events: none;
+  }
+
+  /* Piilota kalenteri aluksi */
+  #calendarContainer { display: none; border-radius:12px; overflow:hidden; box-shadow:0 4px 15px rgba(0,0,0,0.5); }
 </style>
 </head>
 <body>
@@ -99,12 +120,15 @@
 
     <!-- Loader -->
     <div id="loader">
-      <div class="spinner"></div>
+      <div class="image-loader">
+        <img class="gray" src="https://storage.mlcdn.com/account_image/1738913/3UJwhclPvl7P8Z56KrJYVAXUe6dwuVPNN5TfLsfT.png" alt="Latauskuva">
+        <img class="color" src="https://storage.mlcdn.com/account_image/1738913/3UJwhclPvl7P8Z56KrJYVAXUe6dwuVPNN5TfLsfT.png" alt="Latauskuva">
+      </div>
       Ladataan talouskalenteria...
     </div>
 
     <!-- TradingView Widget -->
-    <div id="calendarContainer" style="border-radius:12px; overflow:hidden; box-shadow:0 4px 15px rgba(0,0,0,0.5);">
+    <div id="calendarContainer">
       <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-events.js">
       {
         "locale": "fi",
@@ -144,12 +168,12 @@
     overlay.style.display = 'none';
   });
 
-  // Hide loader after a delay to ensure widget loads
+  // Loader: piilota loader ja näytä kalenteri 3s jälkeen
   window.addEventListener('load', () => {
-    const loader = document.getElementById('loader');
     setTimeout(() => {
-      loader.style.display = 'none';
-    }, 1500); // 1.5 sekuntia (voi säätää)
+      document.getElementById('loader').style.display = 'none';
+      document.getElementById('calendarContainer').style.display = 'block';
+    }, 3000); // 3 sekuntia
   });
 </script>
 
