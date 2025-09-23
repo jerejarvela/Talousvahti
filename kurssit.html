@@ -10,7 +10,49 @@
 
 <style>
   body { margin:0; font-family:'Arial', sans-serif; background-color:#0f0f0f; color:#fff; }
-  a { text-decoration:none; }
+
+  /* Loader */
+  #loader {
+    position:fixed;
+    top:0; left:0;
+    width:100%;
+    height:100%;
+    background:#0f0f0f;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:12px;
+    font-size:18px;
+    color:#ffffff;
+    z-index:5000;
+  }
+  .image-loader {
+    position:relative;
+    width:140px;
+    height:140px;
+    border-radius:12px;
+    overflow:hidden;
+  }
+  .image-loader img {
+    position:absolute;
+    top:0; left:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+  }
+  .image-loader .gray { filter: grayscale(100%); z-index:1; }
+  .image-loader .color { z-index:2; clip-path: inset(0 100% 0 0); animation: revealMask 3s linear forwards; }
+  @keyframes revealMask { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+  .image-loader::after {
+    content:"";
+    position:absolute;
+    bottom:0; left:0;
+    width:100%; height:50%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, #0f0f0f 100%);
+    z-index:3;
+    pointer-events:none;
+  }
 
   /* Navbar */
   .navbar { display:flex; justify-content:space-between; align-items:center; background-color:#000; padding:15px 30px; border-bottom:2px solid #222; position:sticky; top:0; z-index:3000; }
@@ -27,7 +69,7 @@
   @keyframes slideDown { from { opacity:0; transform:translateY(-10px);} to {opacity:1; transform:translateY(0);} }
 
   /* Main content */
-  .main-container { display:flex; flex-direction:column; max-width:1200px; margin:40px auto; gap:20px; padding:0 20px; }
+  .main-container { display:flex; flex-direction:column; max-width:1200px; margin:40px auto; gap:20px; padding:0 20px; display:none; }
   h1 { font-size:32px; margin-bottom:25px; text-align:center; }
 
   .charts { display:flex; flex-wrap:wrap; justify-content:center; gap:20px; }
@@ -42,6 +84,15 @@
 </style>
 </head>
 <body>
+
+<!-- Loader -->
+<div id="loader">
+  <div class="image-loader">
+    <img src="logo-gray.png" alt="loader" class="gray">
+    <img src="logo-color.png" alt="loader" class="color">
+  </div>
+  Ladataan pörssikursseja...
+</div>
 
 <nav class="navbar">
   <div class="brand">Talousvahti</div>
@@ -65,7 +116,7 @@
 </div>
 <div class="overlay" id="overlay"></div>
 
-<div class="main-container">
+<div class="main-container" id="mainContent">
   <h1>Pörssikurssit</h1>
   <div class="charts">
 
@@ -124,8 +175,6 @@
         </script>
       </div>
     </div>
-
-    <!-- Lisää muut USA:n osakkeet samoin: GOOGL, NVDA, TSLA, BRK.A, JNJ, V, UNH -->
 
     <div class="chart-box">
       <h2>Alphabet (GOOGL)</h2>
@@ -222,6 +271,7 @@
 </div>
 
 <script>
+  // Hamburger menu
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
   const overlay = document.getElementById('overlay');
@@ -234,7 +284,18 @@
     mobileMenu.style.display = 'none';
     overlay.style.display = 'none';
   });
+
+  // Loader
+  window.addEventListener('load', () => {
+    const loader = document.getElementById('loader');
+    const mainContent = document.getElementById('mainContent');
+    setTimeout(() => {
+      loader.style.display = 'none';
+      mainContent.style.display = 'flex';
+    }, 3000); // 3 sekuntia
+  });
 </script>
 
 </body>
 </html>
+
