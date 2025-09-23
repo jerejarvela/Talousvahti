@@ -2,7 +2,7 @@
 <html lang="fi">
 <head>
   <meta charset="UTF-8">
-  <title>Talouskalenteri</title>
+  <title>Talouskalenteri EU & USA</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -16,6 +16,7 @@
     h1 {
       margin-top: 20px;
       color: #333;
+      text-align: center;
     }
     .calendar-container {
       width: 100%;
@@ -28,14 +29,23 @@
   </style>
 </head>
 <body>
-  <h1>📅 Talouskalenteri</h1>
+  <h1>📅 Talouskalenteri (EU & USA)</h1>
 
-  <div class="calendar-container">
-    <!-- TradingView Economic Calendar Widget -->
-    <iframe src="https://s.tradingview.com/embed-widget/events/?locale=fi" 
-            width="100%" height="600" frameborder="0" allowtransparency="true" 
-            scrolling="yes"></iframe>
-  </div>
+  <div class="calendar-container" id="tv-economic-calendar"></div>
+
+  <!-- TradingView Widget -->
+  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-events.js">
+  {
+    "locale": "fi",
+    "width": "100%",
+    "height": 600,
+    "colorTheme": "light",
+    "isTransparent": false,
+    "showUTCTime": false,
+    "countries": ["US","EU"]
+  }
+  </script>
 
 </body>
 </html>
+
