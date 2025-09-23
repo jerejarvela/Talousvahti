@@ -1,50 +1,161 @@
 <!DOCTYPE html>
 <html lang="fi">
 <head>
-  <meta charset="UTF-8">
-  <title>Talouskalenteri EU & USA</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f4f4f4;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Talouskalenteri – EU & USA</title>
+<meta name="description" content="Seuraa EU:n ja USA:n tärkeimpiä taloustapahtumia suoraan Talousvahdin talouskalenterista.">
+<meta name="keywords" content="talouskalenteri, EU, USA, pörssi, talous, sijoittaminen">
+<meta name="author" content="Talousvahti">
+
+<style>
+  body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #0f0f0f;
+    color: #fff;
+  }
+  a { text-decoration: none; }
+
+  /* Navbar sama kuin etusivulla */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000;
+    padding: 15px 30px;
+    border-bottom: 2px solid #222;
+    position: sticky;
+    top: 0;
+    z-index: 3000;
+  }
+  .navbar .brand { font-size: 26px; font-weight: bold; letter-spacing: 1px; color: #fff; }
+  .navbar ul { list-style: none; display: flex; gap: 25px; }
+  .navbar ul li a {
+    color: #fff; font-size: 18px; transition: all 0.3s; padding: 5px 10px; border-radius: 5px;
+  }
+  .navbar ul li a:hover,
+  .navbar ul li a.active { background-color: #1a1a1a; color: #ccc; }
+
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .hamburger span { width: 25px; height: 3px; background: #fff; border-radius: 2px; }
+
+  .mobile-menu {
+    display: none; flex-direction: column; background-color: #111;
+    position: fixed; top: 70px; right: 20px; width: 220px; border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.6); overflow: hidden; z-index: 4000;
+    animation: slideDown 0.3s ease forwards;
+  }
+  .mobile-menu a { padding: 15px; border-bottom: 1px solid #222; color: #fff; transition: background 0.3s; }
+  .mobile-menu a:hover { background: #222; color: #0384fc; }
+  .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 3500; }
+
+  @keyframes slideDown { from { opacity:0; transform:translateY(-10px);} to {opacity:1; transform:translateY(0);} }
+
+  /* Main content */
+  .main-container { display: flex; max-width: 1200px; margin: 40px auto; gap: 20px; padding: 0 20px; }
+  .calendar-section { flex: 3; }
+  .calendar-section h2 { 
+    margin-bottom: 25px; color: #fff; font-size: 28px; 
+    border-bottom: 1px solid #222; padding-bottom: 10px; 
+    display: flex; justify-content: space-between; align-items: center; 
+  }
+
+  .kit-sidebar {
+    flex: 1; background: #1a1a1a; border-radius: 12px; padding: 25px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    height: fit-content; position: sticky; top: 100px; max-width: 280px;
+    display: flex; flex-direction: column; gap: 20px;
+  }
+  .kit-sidebar h3 { font-size: 20px; margin-bottom: 10px; color: #fff; text-align: center; }
+  .kit-sidebar .sidebar-text {
+    font-size: 14px; color: #ccc; line-height: 1.4; text-align: center; margin-bottom: -15px;
+  }
+
+  @media (max-width: 768px) {
+    .navbar ul { display: none; }
+    .hamburger { display: flex; }
+    .main-container { flex-direction: column; }
+    .kit-sidebar {
+      width: 80%; max-width: 300px; position: relative; top: auto; margin: 20px auto;
       align-items: center;
     }
-    h1 {
-      margin-top: 20px;
-      color: #333;
-      text-align: center;
-    }
-    .calendar-container {
-      width: 100%;
-      max-width: 1000px;
-      margin: 20px;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
-  </style>
+    .kit-sidebar > * { width: 100%; max-width: 100%; margin: 0 auto; }
+  }
+</style>
 </head>
 <body>
-  <h1>📅 Talouskalenteri (EU & USA)</h1>
 
-  <div class="calendar-container">
-    <!-- TradingView Economic Calendar Widget -->
-    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-events.js">
-    {
-      "locale": "fi",          // Kieli suomeksi
-      "width": "100%",
-      "height": 600,
-      "colorTheme": "light",
-      "isTransparent": false,
-      "showUTCTime": false,
-      "countries": ["US","EU"] // Oletusalueet: USA & EU
-    }
-    </script>
+<nav class="navbar">
+  <div class="brand">Talousvahti</div>
+  <ul>
+    <li><a href="index.html">Talousuutiset</a></li>
+    <li><a href="kurssit.html">Pörssikurssit</a></li>
+    <li><a href="Blogi.html">Blogi</a></li>
+    <li><a href="sisapiiri.html">Sisäpiirikaupat</a></li>
+    <li><a href="sijoituslaskuri.html">Sijoituslaskuri</a></li>
+    <li><a href="#tietoa">Tietoa</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
   </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Talousuutiset</a>
+  <a href="Blogi.html">Blogi</a>
+  <a href="sisapiiri.html">Sisäpiirikaupat</a>
+  <a href="sijoituslaskuri.html">Sijoituslaskuri</a>
+  <a href="#tietoa">Tietoa</a>
+</div>
+<div class="overlay" id="overlay"></div>
+
+<div class="main-container">
+  <section class="calendar-section">
+    <h2>Talouskalenteri (EU & USA)</h2>
+    <!-- TradingView Economic Calendar Widget -->
+    <div style="border-radius:12px; overflow:hidden; box-shadow:0 4px 15px rgba(0,0,0,0.5);">
+      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-events.js">
+      {
+        "locale": "fi",
+        "width": "100%",
+        "height": 600,
+        "colorTheme": "dark",
+        "isTransparent": false,
+        "showUTCTime": false,
+        "countries": ["US","EU"]
+      }
+      </script>
+    </div>
+  </section>
+
+  <aside class="kit-sidebar">
+    <h3>Liity sähköpostilistalle</h3>
+    <div class="sidebar-text">
+      Saat joka aamu päivän tärkeimmät talousuutiset, markkinaluvut ja talouskalenterin tapahtumat suoraan sähköpostiisi.
+    </div>
+    <script async data-uid="722673f8d4" src="https://talousvahti.kit.com/722673f8d4/index.js"></script>
+  </aside>
+</div>
+
+<script>
+  // Hamburger-menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const overlay = document.getElementById('overlay');
+
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileMenu.style.display === 'flex';
+    mobileMenu.style.display = isOpen ? 'none' : 'flex';
+    overlay.style.display = isOpen ? 'none' : 'block';
+  });
+  overlay.addEventListener('click', () => {
+    mobileMenu.style.display = 'none';
+    overlay.style.display = 'none';
+  });
+</script>
 
 </body>
 </html>
