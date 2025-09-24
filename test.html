@@ -156,10 +156,29 @@ hamburger.addEventListener('click', () => {
 // Simuloitu RSS-feed fetch (voit korvata oman RSS-skriptisi URL:llä)
 const feedsContainer = document.getElementById('feedsContainer');
 
-const sampleNews = [
-  {title:"Markkina nousussa", link:"#", date:"24.9.2025", summary:"Osakemarkkinat nousivat voimakkaasti aamun avauksessa."},
-  {title:"Inflaatio yllätti", link:"#", date:"24.9.2025", summary:"Inflaatioluvut ylittivät odotukset, aiheuttaen markkinaliikkeitä."},
-  {title:"Sijoitusvinkkejä", link:"#", date:"23.9.2025", summary:"Analyytikot suosittelevat hajautettua salkkua."}
+<script>
+  // Päivämäärä
+  const today = new Date();
+  const dd = String(today.getDate()).padStart(2,'0');
+  const mm = String(today.getMonth()+1).padStart(2,'0');
+  document.getElementById('today-date').textContent = `${dd}.${mm}`;
+
+  // Feed fetch
+  const feedsContainer = document.getElementById('feeds');
+  const loader = document.getElementById('loader');
+  const rssUrl = 'https://script.google.com/macros/s/AKfycbzLi_oCwPh1BhH94s0vgy0DJUqLjrNCLwr6Zkr-iRBMRKDtyqPRck8LHZKdCq5Tl9Wp/exec';
+
+  fetch(rssUrl)
+    .then(res => res.text())
+    .then(html => {
+      loader.style.display = 'none';
+      feedsContainer.innerHTML = html;
+    })
+    .catch(err => {
+      loader.style.display = 'none';
+      feedsContainer.innerHTML = "<p>Uutisia ei voitu ladata.</p>";
+      console.error('RSS fetch error:', err);
+    });
 ];
 
 sampleNews.forEach(item=>{
