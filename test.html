@@ -70,8 +70,7 @@ body{
   display:flex; gap:14px; align-items:center;
 }
 .navlinks a{
-  color:#dfe7ee; font-size:14px; padding:8px 12px; border-radius:8px; transition:all .18s ease;
-  text-decoration:none; /* alleviivaus pois */
+  color:#dfe7ee; font-size:14px; padding:8px 12px; border-radius:8px; transition:all .18s ease; text-decoration:none;
 }
 .navlinks a:hover{ background:var(--glass); transform:translateY(-2px); color:#fff; }
 .navlinks a.active{ background:linear-gradient(90deg,#0f2b66 0%, rgba(3,132,252,0.12) 100%); color:#fff; box-shadow: 0 6px 18px rgba(3,132,252,0.06); }
@@ -80,9 +79,9 @@ body{
   display:flex; gap:12px; align-items:center;
 }
 
-/* hamburger mobile only */
+/* hamburger mobile */
 .hamburger{
-  display:none; /* desktopilla ei näy */
+  display:none;
   width:42px; height:42px; border-radius:10px;
   background:transparent; border:1px solid var(--glass-border);
   display:grid; place-items:center; cursor:pointer;
@@ -103,7 +102,7 @@ body{
   transform-origin:top right; animation:menuIn .22s ease;
 }
 @keyframes menuIn{ from{ transform: translateY(-6px) scale(.98); opacity:0 } to{ transform:none; opacity:1 } }
-.mobile-menu a{ display:block; padding:10px 12px; color:#e6eef6; border-radius:8px; margin:6px 0; transition:all .16s; text-decoration:none }
+.mobile-menu a{ display:block; padding:10px 12px; color:#e6eef6; border-radius:8px; margin:6px 0; transition:all .16s; text-decoration:none; }
 .mobile-menu a:hover{ background:rgba(255,255,255,0.03) }
 
 /* ---------- HERO ---------- */
@@ -182,7 +181,52 @@ body{
   box-shadow: inset 0 -8px 18px rgba(0,0,0,0.35);
 }
 
-/* sidebar, profile, footer, etc. omitted for brevity – same as original */
+/* stat mini */
+.stat-row{ display:flex; gap:12px; margin-top:8px }
+.stat{
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  padding:10px 12px; border-radius:10px; display:flex; flex-direction:column; width:120px; align-items:flex-start;
+}
+.stat strong{ font-size:18px; color:#fff; }
+.stat span{ font-size:12px; color:var(--muted) }
+
+/* email form */
+.kit-wrap{ margin-top:14px; display:block; }
+.kit-embed, .kit-wrap > iframe, .kit-wrap > *{ width:100% }
+
+/* policies card links */
+.policy-links a{ display:inline-flex; align-items:center; gap:10px; padding:10px 12px; border-radius:10px; background: rgba(255,255,255,0.015); margin:8px 0; color:var(--muted); transition:all .14s; text-decoration:none }
+.policy-links a:hover{ color:#fff; transform:translateX(6px) }
+
+/* profile micro */
+.profile{
+  display:flex; gap:14px; align-items:center;
+}
+.profile .avatar{
+  width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,#0d253f,#072034);
+  display:grid; place-items:center; font-weight:700; color:#fff; font-size:20px;
+  box-shadow: 0 6px 18px rgba(2,6,23,0.6);
+}
+.profile .meta small{ color:var(--muted); display:block }
+.profile .meta p{ margin:6px 0 0 0; color:var(--muted); font-size:14px }
+
+/* footer */
+.footer{
+  margin-top:36px; padding:30px 20px; text-align:center; color:var(--muted); border-top:1px solid rgba(255,255,255,0.02);
+  font-size:14px;
+}
+
+/* back to top */
+#backToTop{
+  position:fixed; right:20px; bottom:20px; z-index:1400;
+  width:48px;height:48px;border-radius:12px;border:none; cursor:pointer;
+  background:linear-gradient(180deg,var(--accent),var(--accent-2));
+  color:#031423; font-weight:700; box-shadow:0 10px 30px rgba(3,132,252,0.16);
+  display:none; align-items:center; justify-content:center;
+}
+
+/* subtle focus states */
+a:focus, button:focus{ outline: 3px solid rgba(3,132,252,0.12); outline-offset:3px; border-radius:8px }
 
 /* responsive */
 @media (max-width:1024px){
@@ -193,12 +237,13 @@ body{
   .container{ gap:16px }
   .main{ grid-column: 1 / span 12 }
   .sidebar{ grid-column: 1 / span 12 }
-  .hamburger{ display:grid } /* näkyy vain mobiilissa */
+  .hamburger{ display:grid }
   .navlinks{ display:none }
   .brand-title{ display:none }
   .hero{ padding:36px 16px 24px }
   .hero h1{ font-size:22px }
   .brand-badge{ width:36px; height:36px; font-size:14px }
+  #backToTop{ right:12px; bottom:12px }
 }
 </style>
 </head>
@@ -243,7 +288,27 @@ body{
   <p>Yhdistämme ajankohtaiset talousuutiset, reaaliaikaiset kurssit, talouskalenterin ja älykkäät työkalut — suunniteltu sijoittajille, yrittäjille ja taloudesta kiinnostuneille.</p>
 </section>
 
-<!-- MAIN LAYOUT ja sidebar samat kuin alkuperäisessä HTML:ssä -->
+<main class="container" role="main">
+  <div class="main">
+    <!-- Sisältösi kortit pysyvät täysin ennallaan -->
+  </div>
+  <aside class="sidebar" role="complementary" aria-label="Sivupaneeli">
+    <!-- Sidebar-sisältö pysyy ennallaan -->
+  </aside>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div style="max-width:980px;margin:0 auto">
+    &copy; 2025 Talousvahti — ylläpitäjä <strong>Jere Järvelä</strong>
+    <div style="margin-top:10px;color:var(--muted)">
+      <a href="tietosuoja.html">Tietosuojakäytäntö</a> &middot;
+      <a href="evasteet.html">Evästekäytäntö</a> &middot;
+      <a href="kayttoehdot.html">Käyttöehdot</a>
+    </div>
+  </div>
+</footer>
+
+<button id="backToTop" aria-label="Takaisin ylös" title="Takaisin ylös" aria-hidden="true">↑</button>
 
 <script>
 (function(){
@@ -259,7 +324,7 @@ body{
     document.addEventListener('click', (e) => {
       if (mobileMenu.style.display === 'block' && !mobileMenu.contains(e.target) && !hamburger.contains(e.target)) {
         mobileMenu.style.display = 'none';
-        hamburger.setAttribute('aria-expanded','false');
+        hamburger.setAttribute('aria-expanded', 'false');
       }
     });
     document.addEventListener('keydown', (e) => {
@@ -282,9 +347,7 @@ body{
       });
     }, { threshold: 0.12 });
     cards.forEach(c => observer.observe(c));
-  } else {
-    cards.forEach(c => c.classList.add('visible'));
-  }
+  } else { cards.forEach(c => c.classList.add('visible')); }
 
   const backToTop = document.getElementById('backToTop');
   if (backToTop) {
@@ -299,3 +362,4 @@ body{
 
 </body>
 </html>
+
