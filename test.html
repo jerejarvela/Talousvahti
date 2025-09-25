@@ -1,27 +1,15 @@
 <!DOCTYPE html>
 <html lang="fi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1, viewport-fit=cover" />
 <title>Talousuutiset – Päivän tärkeimmät talous- ja sijoittamisuutiset</title>
-<meta name="description" content="Päivän tärkeimmät talousuutiset ja sijoittamiseen liittyvät ajankohtaiset aiheet. Seuraa markkinoiden liikkeitä ja pysy ajan tasalla Talousvahdin kautta.">
+<meta name="description" content="Päivän tärkeimmät talousuutiset ja sijoittamiseen liittyvät ajankohtaiset aiheet. Seuraa markkinoiden liikkeitä ja pysy ajan tasalla Talousvahdin kautta." />
 <meta name="keywords" content="talousuutiset, sijoittaminen, pörssi, sisäpiirikaupat, markkinat, osakkeet, finanssiuutiset">
-<meta name="author" content="Talousvahti">
+<meta name="author" content="Talousvahti" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-<!-- Structured Data JSON-LD -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "NewsMediaOrganization",
-  "name": "Talousvahti",
-  "url": "https://talousvahti.com/",
-  "logo": "https://storage.mlcdn.com/account_image/1738913/F10sfe8bFAdBG18eXKylAp68FiK6Q4K6jv0e6T1g.png",
-  "sameAs": [
-    "https://www.instagram.com/talousvahti/"
-  ]
-}
-  </script>
-  
 <style>
 :root{
   --bg:#000;
@@ -99,22 +87,6 @@ html,body{height:100%; margin:0; background:#000; color:#eef2f5; font-family: "I
 
 .icon-circle{ width:44px; height:44px; border-radius:10px; display:grid; place-items:center; background:linear-gradient(135deg, rgba(3,132,252,0.12), rgba(0,194,255,0.06)); color:var(--accent); font-weight:700; box-shadow: inset 0 -8px 18px rgba(0,0,0,0.35); }
 
-.stat-row{ display:flex; gap:12px; margin-top:8px }
-.stat{ background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:10px 12px; border-radius:10px; display:flex; flex-direction:column; width:120px; align-items:flex-start; }
-.stat strong{ font-size:18px; color:#fff; }
-.stat span{ font-size:12px; color:var(--muted) }
-
-.kit-wrap{ margin-top:14px; display:block; }
-.kit-embed, .kit-wrap > iframe, .kit-wrap > *{ width:100% }
-
-.policy-links a{ display:inline-flex; align-items:center; gap:10px; padding:10px 12px; border-radius:10px; background: rgba(255,255,255,0.015); margin:8px 0; color:var(--muted); transition:all .14s; text-decoration:none }
-.policy-links a:hover{ color:#fff; transform:translateX(6px) }
-
-.profile{ display:flex; gap:14px; align-items:center; }
-.profile .avatar{ width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,#0d253f,#072034); display:grid; place-items:center; font-weight:700; color:#fff; font-size:20px; box-shadow:0 6px 18px rgba(2,6,23,0.6); }
-.profile .meta small{ color:var(--muted); display:block }
-.profile .meta p{ margin:6px 0 0 0; color:var(--muted); font-size:14px }
-
 .footer{ margin-top:36px; padding:30px 20px; text-align:center; color:var(--muted); border-top:1px solid rgba(255,255,255,0.02); font-size:14px; }
 
 #backToTop{ position:fixed; right:20px; bottom:20px; z-index:1400; width:48px;height:48px;border-radius:12px;border:none; cursor:pointer; background:linear-gradient(180deg,var(--accent),var(--accent-2)); color:#031423; font-weight:700; box-shadow:0 10px 30px rgba(3,132,252,0.16); display:none; align-items:center; justify-content:center; }
@@ -137,12 +109,12 @@ a:focus, button:focus{ outline: 3px solid rgba(3,132,252,0.12); outline-offset:3
   </div>
 
   <nav class="navlinks" aria-label="Päävalikko">
-    <a href="index.html">Talousuutiset</a>
+    <a href="index.html" class="active">Talousuutiset</a>
     <a href="kurssit.html">Pörssikurssit</a>
     <a href="talouskalenteri.html">Talouskalenteri</a>
     <a href="Blogi.html">Blogi</a>
     <a href="sijoituslaskuri.html">Sijoituslaskuri</a>
-    <a href="tietoa.html" class="active" aria-current="page">Tietoa</a>
+    <a href="tietoa.html">Tietoa</a>
   </nav>
 
   <div class="controls">
@@ -153,172 +125,101 @@ a:focus, button:focus{ outline: 3px solid rgba(3,132,252,0.12); outline-offset:3
 </header>
 
 <div id="mobileMenu" class="mobile-menu" role="menu" aria-hidden="true" style="display:none">
-  <a href="index.html" role="menuitem">Talousuutiset</a>
+  <a href="index.html" class="active" role="menuitem">Talousuutiset</a>
   <a href="kurssit.html" role="menuitem">Pörssikurssit</a>
   <a href="talouskalenteri.html" role="menuitem">Talouskalenteri</a>
   <a href="Blogi.html" role="menuitem">Blogi</a>
   <a href="sijoituslaskuri.html" role="menuitem">Sijoituslaskuri</a>
-  <a href="tietoa.html" role="menuitem" class="active">Tietoa</a>
+  <a href="tietoa.html" role="menuitem">Tietoa</a>
 </div>
 
+<section class="hero" aria-labelledby="hero-title">
+  <h1 id="hero-title">Talousuutiset</h1>
+  <p>Päivän tärkeimmät talous- ja sijoittamisuutiset, markkinat ja analyysit — aina ajantasaisesti.</p>
+</section>
 
-  /* Main content */
-  .main-container { display: flex; max-width: 1200px; margin: 40px auto; gap: 20px; padding: 0 20px; }
-  .feed-section { flex: 3; position: relative; }
-  .feed-section h2 { 
-    margin-bottom: 25px; color: #fff; font-size: 28px; 
-    border-bottom: 1px solid #222; padding-bottom: 10px; 
-    display: flex; justify-content: space-between; align-items: center; 
-  }
-  .feed-section h2 .date { font-size: 16px; font-weight: 300; color: #0384fc; }
-
-  .feed-box {
-    background: linear-gradient(135deg, #1a1a1a, #141414);
-    border-radius: 12px; padding: 25px; margin-bottom: 25px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-    transition: transform 0.3s, box-shadow 0.3s;
-    opacity: 0; transform: translateY(25px) scale(0.95); animation: fadeInBox 0.6s forwards;
-  }
-  .feed-box:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.7); }
-  .feed-box h3 { margin-bottom: 12px; font-size: 22px; color: #fff !important; }
-  .feed-box h3 a { color: #fff !important; transition: color 0.3s; }
-  .feed-box p { font-size: 16px; line-height: 1.6; margin-bottom: 8px; color: #ddd; }
-  .feed-box .source { font-size: 14px; color: #0384fc !important; font-weight: bold; }
-
-  @keyframes fadeInBox { to { opacity: 1; transform: translateY(0) scale(1); } }
-
-  /* Kit form box */
-  .kit-sidebar {
-    flex: 1; background: #1a1a1a; border-radius: 12px; padding: 25px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-    height: fit-content; position: sticky; top: 100px; max-width: 280px;
-    display: flex; flex-direction: column; gap: 20px;
-    opacity: 0; transform: translateY(30px); animation: fadeSlideIn 0.8s ease forwards 0.3s;
-  }
-  @keyframes fadeSlideIn {
-    0% { opacity: 0; transform: translateY(30px) scale(0.97); }
-    100% { opacity: 1; transform: translateY(0) scale(1); }
-  }
-  .kit-sidebar h3 { font-size: 20px; margin-bottom: 10px; color: #fff; text-align: center; }
-  .kit-sidebar .sidebar-text {
-    font-size: 14px; color: #ccc; line-height: 1.4; text-align: center; margin-bottom: -15px;
-  }
-
-  @media (max-width: 768px) {
-    .navbar ul { display: none; }
-    .hamburger { display: flex; }
-    .main-container { flex-direction: column; }
-    .kit-sidebar {
-      width: 80%; max-width: 300px; position: relative; top: auto; margin: 20px auto;
-      align-items: center;
-    }
-    .kit-sidebar > * { width: 100%; max-width: 100%; margin: 0 auto; }
-  }
-
-  /* Loader */
-  #loader {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-    font-size: 18px;
-    color: #ffffff;
-    margin-bottom: 20px;
-  }
-  .image-loader {
-    position: relative;
-    width: 140px;
-    height: 140px;
-    border-radius: 12px;
-    overflow: hidden;
-  }
-  .image-loader img {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  .image-loader .gray { filter: grayscale(100%); z-index: 1; }
-  .image-loader .color { z-index: 2; clip-path: inset(0 100% 0 0); animation: revealMask 3s linear forwards; }
-  @keyframes revealMask { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
-  .image-loader::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 50%;
-    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, #0f0f0f 100%);
-    z-index: 3;
-    pointer-events: none;
-  }
-</style>
-</head>
-<body>
-
-<nav class="navbar">
-  <div class="brand">Talousvahti</div>
-  <ul>
-    <li><a href="index.html" class="active">Talousuutiset</a></li>
-    <li><a href="kurssit.html">Pörssikurssit</a></li>
-    <li><a href="Blogi.html">Blogi</a></li>
-    <li><a href="sisapiiri.html">Sisäpiirikaupat</a></li>
-    <li><a href="talouskalenteri.html">Talouskalenteri</a></li>
-    <li><a href="sijoituslaskuri.html">Sijoituslaskuri</a></li>
-    <li><a href="#tietoa">Tietoa</a></li>
-  </ul>
-  <div class="hamburger" id="hamburger">
-    <span></span>
-    <span></span>
-    <span></span>
+<main class="container" role="main">
+  <div class="main" id="feeds">
+    <div class="card" id="loader">
+      <h3>Ladataan uutisia...</h3>
+      <p class="small">Odota hetki, uutisvirta päivittyy automaattisesti.</p>
+    </div>
   </div>
-</nav>
 
-<div class="mobile-menu" id="mobileMenu">
-  <a href="index.html" class="active">Talousuutiset</a>
-  <a href="kurssit.html">Pörssikurssit</a>
-  <a href="Blogi.html">Blogi</a>
-  <a href="sisapiiri.html">Sisäpiirikaupat</a>
-  <a href="talouskalenteri.html">Talouskalenteri</a>
-  <a href="sijoituslaskuri.html">Sijoituslaskuri</a>
-  <a href="#tietoa">Tietoa</a>
-</div>
-<div class="overlay" id="overlay"></div>
-
-<div class="main-container">
-  <section class="feed-section" id="talousuutiset">
-    <h2>
-      Talousuutiset
-      <span class="date" id="today-date"></span>
-    </h2>
-    <div id="feeds">
-      <div id="loader">
-        <div class="image-loader">
-          <img class="gray" src="https://storage.mlcdn.com/account_image/1738913/3UJwhclPvl7P8Z56KrJYVAXUe6dwuVPNN5TfLsfT.png" alt="Latauskuva">
-          <img class="color" src="https://storage.mlcdn.com/account_image/1738913/3UJwhclPvl7P8Z56KrJYVAXUe6dwuVPNN5TfLsfT.png" alt="Latauskuva">
+  <aside class="sidebar" role="complementary" aria-label="Sivupaneeli">
+    <div class="card" id="subscribe">
+      <div style="display:flex;gap:12px;align-items:center">
+        <div class="icon-circle" aria-hidden="true">✉️</div>
+        <div style="flex:1">
+          <h3>Liity sähköpostilistalle</h3>
+          <p class="small">Saat joka aamu päivän tärkeimmät talousuutiset ja markkinaluvut suoraan sähköpostiisi.</p>
         </div>
+      </div>
+      <div class="kit-wrap" style="margin-top:12px">
+        <script async data-uid="722673f8d4" src="https://talousvahti.kit.com/722673f8d4/index.js"></script>
+      </div>
     </div>
-  </section>
-
-  <aside class="kit-sidebar">
-    <br>
-    <h3>Liity sähköpostilistalle</h3>
-    <div class="sidebar-text">
-      Saat joka aamu päivän tärkeimmät talousuutiset, markkinaluvut ja talouskalenterin tapahtumat suoraan sähköpostiisi.
-    </div>
-    <script async data-uid="722673f8d4" src="https://talousvahti.kit.com/722673f8d4/index.js"></script>
   </aside>
-</div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div style="max-width:980px;margin:0 auto">
+    &copy; 2025 Talousvahti
+    <div style="margin-top:10px;color:var(--muted)">
+      <a href="tietosuoja.html">Tietosuojakäytäntö</a> &middot;
+      <a href="evasteet.html">Evästekäytäntö</a> &middot;
+      <a href="kayttoehdot.html">Käyttöehdot</a>
+    </div>
+  </div>
+</footer>
+
+<button id="backToTop" aria-label="Takaisin ylös" title="Takaisin ylös" aria-hidden="true">↑</button>
 
 <script>
-  // Päivämäärä
-  const today = new Date();
-  const dd = String(today.getDate()).padStart(2,'0');
-  const mm = String(today.getMonth()+1).padStart(2,'0');
-  document.getElementById('today-date').textContent = `${dd}.${mm}`;
+// Hamburger-menu
+(function(){
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  if (hamburger && mobileMenu) {
+    hamburger.addEventListener('click', () => {
+      const open = mobileMenu.style.display === 'block';
+      mobileMenu.style.display = open ? 'none' : 'block';
+      hamburger.setAttribute('aria-expanded', String(!open));
+      mobileMenu.setAttribute('aria-hidden', String(open));
+    });
+    document.addEventListener('click', (e) => {
+      if (mobileMenu.style.display === 'block' && !mobileMenu.contains(e.target) && !hamburger.contains(e.target)) {
+        mobileMenu.style.display = 'none';
+        hamburger.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
 
-  // Feed fetch
+  // Cards animation
+  const cards = document.querySelectorAll('.card');
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    cards.forEach(c => observer.observe(c));
+  } else { cards.forEach(c => c.classList.add('visible')); }
+
+  // Back to top
+  const backToTop = document.getElementById('backToTop');
+  if (backToTop) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 360) { backToTop.style.display = 'flex'; backToTop.setAttribute('aria-hidden','false'); }
+      else { backToTop.style.display = 'none'; backToTop.setAttribute('aria-hidden','true'); }
+    });
+    backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  }
+
+  // Fetch feeds
   const feedsContainer = document.getElementById('feeds');
   const loader = document.getElementById('loader');
   const rssUrl = 'https://script.google.com/macros/s/AKfycbzLi_oCwPh1BhH94s0vgy0DJUqLjrNCLwr6Zkr-iRBMRKDtyqPRck8LHZKdCq5Tl9Wp/exec';
@@ -326,29 +227,14 @@ a:focus, button:focus{ outline: 3px solid rgba(3,132,252,0.12); outline-offset:3
   fetch(rssUrl)
     .then(res => res.text())
     .then(html => {
-      loader.style.display = 'none';
+      loader.remove();
       feedsContainer.innerHTML = html;
     })
     .catch(err => {
-      loader.style.display = 'none';
-      feedsContainer.innerHTML = "<p>Uutisia ei voitu ladata.</p>";
+      loader.innerHTML = "<p>Uutisia ei voitu ladata.</p>";
       console.error('RSS fetch error:', err);
     });
-
-  // Hamburger-menu
-  const hamburger = document.getElementById('hamburger');
-  const mobileMenu = document.getElementById('mobileMenu');
-  const overlay = document.getElementById('overlay');
-
-  hamburger.addEventListener('click', () => {
-    const isOpen = mobileMenu.style.display === 'flex';
-    mobileMenu.style.display = isOpen ? 'none' : 'flex';
-    overlay.style.display = isOpen ? 'none' : 'block';
-  });
-  overlay.addEventListener('click', () => {
-    mobileMenu.style.display = 'none';
-    overlay.style.display = 'none';
-  });
+})();
 </script>
 
 </body>
