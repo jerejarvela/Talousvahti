@@ -1,343 +1,139 @@
 <!DOCTYPE html>
 <html lang="fi">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1, viewport-fit=cover" />
-<title>Talousuutiset – Päivän tärkeimmät talous- ja sijoittamisuutiset</title>
-<meta name="description" content="Päivän tärkeimmät talousuutiset ja sijoittamiseen liittyvät ajankohtaiset aiheet. Seuraa markkinoiden liikkeitä ja pysy ajan tasalla Talousvahdin kautta." />
-<meta name="keywords" content="talousuutiset, sijoittaminen, pörssi, sisäpiirikaupat, markkinat, osakkeet, finanssiuutiset">
-<meta name="author" content="Talousvahti" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Talousuutiset – Talousvahti</title>
+<meta name="description" content="Päivän tärkeimmät talousuutiset ja sijoittamiseen liittyvät ajankohtaiset aiheet. Seuraa markkinoiden liikkeitä ja pysy ajan tasalla Talousvahdin kautta.">
+<meta name="author" content="Talousvahti">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root{
-  --bg:#000;
-  --panel:#111;
-  --panel-2:#1a1a1a;
-  --muted:#aeb6c1;
-  --accent:#0384fc;
-  --accent-2:#00c2ff;
-  --glass: rgba(255,255,255,0.04);
-  --radius:14px;
-  --shadow: 0 8px 30px rgba(2,6,23,0.6);
-  --card-shadow: 0 6px 20px rgba(3,8,20,0.55);
-  --glass-border: rgba(255,255,255,0.03);
+  --bg:#000;
+  --panel:#111;
+  --panel-2:#1a1a1a;
+  --muted:#aeb6c1;
+  --accent:#0384fc;
+  --accent-2:#00c2ff;
+  --glass: rgba(255,255,255,0.04);
+  --radius:14px;
+  --shadow: 0 8px 30px rgba(2,6,23,0.6);
+  --card-shadow: 0 6px 20px rgba(3,8,20,0.55);
+  --glass-border: rgba(255,255,255,0.03);
 }
-
 *{box-sizing:border-box}
-html,body{height:100%; margin:0; background:#000; color:#eef2f5; font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; -webkit-font-smoothing:antialiased; -moz-osx-webkit-font-smoothing:grayscale; line-height:1.5; -webkit-tap-highlight-color: transparent;}
+html,body{height:100%; margin:0; background:var(--bg); color:#eef2f5; font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; line-height:1.5;}
 
 /* NAVBAR */
-.navbar{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  z-index:1200;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:20px;
-  padding:14px 28px;
-  background: linear-gradient(180deg, rgba(0,0,0,0.9), rgba(10,10,10,0.8));
-  border-bottom:1px solid rgba(255,255,255,0.03);
-  backdrop-filter: blur(6px);
-}
+.navbar{position:fixed;top:0;left:0;width:100%;z-index:1200;display:flex;align-items:center;justify-content:space-between;padding:14px 28px;background: linear-gradient(180deg, rgba(0,0,0,0.9), rgba(10,10,10,0.8));border-bottom:1px solid rgba(255,255,255,0.03);backdrop-filter: blur(6px);}
 .brand{display:flex; gap:12px; align-items:center;}
-.brand-badge{width:40px; height:40px; background:linear-gradient(135deg,var(--accent),var(--accent-2)); border-radius:10px; display:grid; place-items:center; font-weight:700; font-size:16px; color:#031423; box-shadow:0 6px 18px rgba(3,132,252,0.14), inset 0 -6px 10px rgba(0,0,0,0.15);}
+.brand-badge{width:40px;height:40px;background:linear-gradient(135deg,var(--accent),var(--accent-2)); border-radius:10px; display:grid; place-items:center; font-weight:700; font-size:16px; color:#031423; box-shadow:0 6px 18px rgba(3,132,252,0.14), inset 0 -6px 10px rgba(0,0,0,0.15);}
 .brand-title{ font-weight:600; font-size:18px; color:#fff; letter-spacing:0.2px; }
-
 .navlinks{ display:flex; gap:14px; align-items:center; }
 .navlinks a{ color:#dfe7ee; font-size:14px; padding:8px 12px; border-radius:8px; transition:all .18s ease; text-decoration:none; }
 .navlinks a:hover{ background:var(--glass); transform:translateY(-2px); color:#fff; }
 .navlinks a.active{ background:linear-gradient(90deg,#0f2b66 0%, rgba(3,132,252,0.12) 100%); color:#fff; box-shadow:0 6px 18px rgba(3,132,252,0.06); }
-
 .controls{ display:flex; gap:12px; align-items:center; }
-
 .hamburger{ display:none; width:42px; height:42px; border-radius:10px; background:transparent; border:1px solid var(--glass-border); display:grid; place-items:center; cursor:pointer; }
 .hamburger .lines{ width:20px; height:14px; position:relative; }
 .hamburger .lines::before, .hamburger .lines::after, .hamburger .lines div{ content:""; position:absolute; left:0; right:0; height:2px; background:#dfe7ee; border-radius:2px; }
 .hamburger .lines::before{ top:0; opacity:0.95 }
 .hamburger .lines::after{ bottom:0; opacity:0.95 }
 .hamburger .lines div{ top:6px; opacity:0.95 }
-
 .mobile-menu{ display:none; position:fixed; top:72px; right:18px; width:260px; background:linear-gradient(180deg,var(--panel), #121212); border-radius:12px; padding:12px; box-shadow:var(--shadow); z-index:1300; transform-origin:top right; animation:menuIn .22s ease; }
 @keyframes menuIn{ from{ transform: translateY(-6px) scale(.98); opacity:0 } to{ transform:none; opacity:1 } }
-.mobile-menu a{ display:block; padding:10px 12px; color:#e6eef6; border-radius:8px; margin:6px 0; transition:all .16s; text-decoration:none; }
+.mobile-menu a{ display:block; padding:10px 12px; color:#e6eef6; border-radius:8px; margin:6px 0; transition:all .16s; text-decoration:none }
 .mobile-menu a:hover{ background:rgba(255,255,255,0.03) }
 
-/* HERO */
-.hero{ padding:56px 20px 36px; display:grid; place-items:center; text-align:center; gap:10px; margin-top:72px; }
-.hero h1{ margin:0; font-size:28px; color:#ffffff; font-weight:600; letter-spacing:0.2px; }
-.hero p{ margin:0; max-width:820px; color:var(--muted); font-size:15.5px; }
-
 /* LAYOUT */
-.container{ max-width:1150px; margin:34px auto; padding:0 20px 60px; display:grid; grid-template-columns: repeat(12, 1fr); gap:22px; }
+.container{ max-width:1150px; margin:100px auto 60px; padding:0 20px; display:grid; grid-template-columns: repeat(12, 1fr); gap:22px; }
 .main{ grid-column:1 / span 8; display:flex; flex-direction:column; gap:18px; }
 .sidebar{ grid-column:9 / span 4; display:flex; flex-direction:column; gap:18px; }
-
-/* CARDS */
-.card{ 
-  background: linear-gradient(180deg,var(--panel), var(--panel-2)); 
-  border-radius: var(--radius); 
-  padding:22px; 
-  box-shadow: var(--card-shadow); 
-  border:1px solid rgba(255,255,255,0.02); 
-  transition: transform .28s cubic-bezier(.2,.9,.2,1), box-shadow .28s; 
-  opacity:0; 
-  transform: translateY(26px); 
-}
+.card{ background: linear-gradient(180deg,var(--panel), var(--panel-2)); border-radius: var(--radius); padding:22px; box-shadow: var(--card-shadow); border:1px solid rgba(255,255,255,0.02); transition: transform .28s cubic-bezier(.2,.9,.2,1), box-shadow .28s; opacity:0; transform: translateY(26px); }
 .card.visible{ animation: popIn .6s cubic-bezier(.2,.9,.2,1) forwards; }
 @keyframes popIn{ to{ opacity:1; transform:none } }
 .card:hover{ transform: translateY(-6px); box-shadow: 0 18px 45px rgba(2,6,23,0.6) }
 .card h3{ margin:0 0 10px 0; font-size:18px; color:#fff; font-weight:600; display:flex; align-items:center; gap:10px; }
 .card p.small{ color:var(--muted); margin:0; font-size:14px }
-
-/* NEWSCARD SPECIFIC STYLES */
-.news-card-content{
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.news-card-content h3{
-  margin: 0;
-  font-size: 19px;
-  font-weight: 600;
-  line-height: 1.3;
-}
-.news-card-content p{
-  margin: 0;
-  color: var(--muted);
-  font-size: 15px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 3; /* Show up to 3 lines of description */
-  -webkit-box-orient: vertical;
-}
-.news-card-meta{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 10px;
-  font-size: 13px;
-  color: rgba(255,255,255,0.45);
-}
-.news-card-meta span{
-  color: var(--accent-2);
-  font-weight: 600;
-}
-.news-link{
-  text-decoration: none;
-  color: inherit;
-  display: block;
-}
-
 .icon-circle{ width:44px; height:44px; border-radius:10px; display:grid; place-items:center; background:linear-gradient(135deg, rgba(3,132,252,0.12), rgba(0,194,255,0.06)); color:var(--accent); font-weight:700; box-shadow: inset 0 -8px 18px rgba(0,0,0,0.35); }
-
-.footer{ margin-top:36px; padding:30px 20px; text-align:center; color:var(--muted); border-top:1px solid rgba(255,255,255,0.02); font-size:14px; }
-
-#backToTop{ position:fixed; right:20px; bottom:20px; z-index:1400; width:48px;height:48px;border-radius:12px;border:none; cursor:pointer; background:linear-gradient(180deg,var(--accent),var(--accent-2)); color:#031423; font-weight:700; box-shadow:0 10px 30px rgba(3,132,252,0.16); display:none; align-items:center; justify-content:center; }
-
-a:focus, button:focus{ outline: 3px solid rgba(3,132,252,0.12); outline-offset:3px; border-radius:8px }
-
-@media (max-width:1024px){ .main{ grid-column:1 / span 7 } .sidebar{ grid-column:8 / span 5 } }
-@media (max-width:860px){ .container{ gap:16px } .main{ grid-column:1 / span 12 } .sidebar{ grid-column:1 / span 12 } .hamburger{ display:grid } .navlinks{ display:none } .brand-title{ display:none } .hero{ padding:36px 16px 24px } .hero h1{ font-size:22px } .brand-badge{ width:36px; height:36px; font-size:14px } #backToTop{ right:12px; bottom:12px } }
+@media (max-width:860px){ .container{ gap:16px } .main{ grid-column:1 / span 12 } .sidebar{ grid-column:1 / span 12 } .hamburger{ display:grid } .navlinks{ display:none } .brand-title{ display:none } }
 </style>
 </head>
 <body>
 
-<header class="navbar" role="banner">
-  <div class="brand" aria-label="Talousvahti">
-    <div class="brand-badge" aria-hidden="true">T</div>
-    <div>
-      <div class="brand-title">Talousvahti</div>
-      <div style="font-size:11px;color:var(--muted);margin-top:2px">Uutiset • Kurssit • Työkalut</div>
-    </div>
-  </div>
-
-  <nav class="navlinks" aria-label="Päävalikko">
-    <a href="index.html" class="active">Talousuutiset</a>
-    <a href="kurssit.html">Pörssikurssit</a>
-    <a href="talouskalenteri.html">Talouskalenteri</a>
-    <a href="Blogi.html">Blogi</a>
-    <a href="sijoituslaskuri.html">Sijoituslaskuri</a>
-    <a href="tietoa.html">Tietoa</a>
-  </nav>
-
-  <div class="controls">
-    <button class="hamburger" id="hamburger" aria-expanded="false" aria-controls="mobileMenu" title="Avaa valikko">
-      <span class="lines"><div></div></span>
-    </button>
-  </div>
+<header class="navbar">
+  <div class="brand">
+    <div class="brand-badge">T</div>
+    <div class="brand-title">Talousvahti</div>
+  </div>
+  <nav class="navlinks">
+    <a href="index.html" class="active">Talousuutiset</a>
+    <a href="kurssit.html">Pörssikurssit</a>
+    <a href="talouskalenteri.html">Talouskalenteri</a>
+    <a href="Blogi.html">Blogi</a>
+    <a href="sijoituslaskuri.html">Sijoituslaskuri</a>
+    <a href="tietoa.html">Tietoa</a>
+  </nav>
+  <div class="controls">
+    <button class="hamburger" id="hamburger" aria-expanded="false">
+      <span class="lines"><div></div></span>
+    </button>
+  </div>
 </header>
-
-<div id="mobileMenu" class="mobile-menu" role="menu" aria-hidden="true" style="display:none">
-  <a href="index.html" class="active" role="menuitem">Talousuutiset</a>
-  <a href="kurssit.html" role="menuitem">Pörssikurssit</a>
-  <a href="talouskalenteri.html" role="menuitem">Talouskalenteri</a>
-  <a href="Blogi.html" role="menuitem">Blogi</a>
-  <a href="sijoituslaskuri.html" role="menuitem">Sijoituslaskuri</a>
-  <a href="tietoa.html" role="menuitem">Tietoa</a>
+<div id="mobileMenu" class="mobile-menu" style="display:none">
+  <a href="index.html" class="active">Talousuutiset</a>
+  <a href="kurssit.html">Pörssikurssit</a>
+  <a href="talouskalenteri.html">Talouskalenteri</a>
+  <a href="Blogi.html">Blogi</a>
+  <a href="sijoituslaskuri.html">Sijoituslaskuri</a>
+  <a href="tietoa.html">Tietoa</a>
 </div>
 
-<section class="hero" aria-labelledby="hero-title">
-  <h1 id="hero-title">Talousuutiset</h1>
-  <p>Päivän tärkeimmät talous- ja sijoittamisuutiset, markkinat ja analyysit — aina ajantasaisesti.</p>
-</section>
+<main class="container">
+  <div class="main">
+    <section class="card" id="talousuutiset">
+      <h3>Talousuutiset <span id="today-date" style="font-size:14px;color:var(--accent);"></span></h3>
+      <div id="feeds">
+        <div id="loader">Ladataan uutisia...</div>
+      </div>
+    </section>
+  </div>
 
-<main class="container" role="main">
-  <div class="main" id="feeds">
-    <div class="card" id="loader">
-      <h3>Ladataan uutisia...</h3>
-      <p class="small">Odota hetki, uutisvirta päivittyy automaattisesti.</p>
-    </div>
-  </div>
-
-  <aside class="sidebar" role="complementary" aria-label="Sivupaneeli">
-    <div class="card" id="subscribe">
-      <div style="display:flex;gap:12px;align-items:center">
-        <div class="icon-circle" aria-hidden="true">✉️</div>
-        <div style="flex:1">
-          <h3>Liity sähköpostilistalle</h3>
-          <p class="small">Saat joka aamu päivän tärkeimmät talousuutiset ja markkinaluvut suoraan sähköpostiisi.</p>
-        </div>
-      </div>
-      <div class="kit-wrap" style="margin-top:12px">
-        <script async data-uid="722673f8d4" src="https://talousvahti.kit.com/722673f8d4/index.js"></script>
-      </div>
-    </div>
-  </aside>
+  <aside class="sidebar">
+    <div class="card" id="subscribe">
+      <h3>Liity sähköpostilistalle</h3>
+      <p class="small">Saat joka aamu päivän tärkeimmät talousuutiset, markkinaluvut ja talouskalenterin tapahtumat suoraan sähköpostiisi.</p>
+      <div class="kit-wrap">
+        <script async data-uid="722673f8d4" src="https://talousvahti.kit.com/722673f8d4/index.js"></script>
+      </div>
+    </div>
+  </aside>
 </main>
 
-<footer class="footer" role="contentinfo">
-  <div style="max-width:980px;margin:0 auto">
-    &copy; 2025 Talousvahti
-    <div style="margin-top:10px;color:var(--muted)">
-      <a href="tietosuoja.html">Tietosuojakäytäntö</a> &middot;
-      <a href="evasteet.html">Evästekäytäntö</a> &middot;
-      <a href="kayttoehdot.html">Käyttöehdot</a>
-    </div>
-  </div>
-</footer>
-
-<button id="backToTop" aria-label="Takaisin ylös" title="Takaisin ylös" aria-hidden="true">↑</button>
-
 <script>
-// Hamburger-menu
-(function(){
-  const hamburger = document.getElementById('hamburger');
-  const mobileMenu = document.getElementById('mobileMenu');
-  if (hamburger && mobileMenu) {
-    hamburger.addEventListener('click', () => {
-      const open = mobileMenu.style.display === 'block';
-      mobileMenu.style.display = open ? 'none' : 'block';
-      hamburger.setAttribute('aria-expanded', String(!open));
-      mobileMenu.setAttribute('aria-hidden', String(open));
-    });
-    document.addEventListener('click', (e) => {
-      if (mobileMenu.style.display === 'block' && !mobileMenu.contains(e.target) && !hamburger.contains(e.target)) {
-        mobileMenu.style.display = 'none';
-        hamburger.setAttribute('aria-expanded', 'false');
-      }
-    });
-  }
+  const today = new Date();
+  const dd = String(today.getDate()).padStart(2,'0');
+  const mm = String(today.getMonth()+1).padStart(2,'0');
+  document.getElementById('today-date').textContent = `${dd}.${mm}`;
 
-  // Cards animation
-  function setupCardAnimation() {
-    const cards = document.querySelectorAll('.card');
-    if ('IntersectionObserver' in window) {
-      const observer = new IntersectionObserver((entries, obs) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            obs.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.12 });
-      cards.forEach(c => observer.observe(c));
-    } else { cards.forEach(c => c.classList.add('visible')); }
-  }
-  setupCardAnimation(); // Kutsutaan aluksi sivupaneelin korteille
+  const feedsContainer = document.getElementById('feeds');
+  const loader = document.getElementById('loader');
+  const rssUrl = 'https://script.google.com/macros/s/AKfycbzLi_oCwPh1BhH94s0vgy0DJUqLjrNCLwr6Zkr-iRBMRKDtyqPRck8LHZKdCq5Tl9Wp/exec';
 
-  // Back to top
-  const backToTop = document.getElementById('backToTop');
-  if (backToTop) {
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 360) { backToTop.style.display = 'flex'; backToTop.setAttribute('aria-hidden','false'); }
-      else { backToTop.style.display = 'none'; backToTop.setAttribute('aria-hidden','true'); }
-    });
-    backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-  }
+  fetch(rssUrl)
+    .then(res => res.text())
+    .then(html => { loader.style.display='none'; feedsContainer.innerHTML=html; })
+    .catch(err => { loader.style.display='none'; feedsContainer.innerHTML='<p>Uutisia ei voitu ladata.</p>'; console.error(err); });
 
-  // Function to create a news card element
-  function createNewsCard(item) {
-    const card = document.createElement('div');
-    card.classList.add('card', 'news-card');
-
-    const link = document.createElement('a');
-    link.href = item.link;
-    link.target = '_blank';
-    link.rel = 'noopener noreferrer';
-    link.classList.add('news-link');
-    link.title = item.title;
-
-    const content = document.createElement('div');
-    content.classList.add('news-card-content');
-
-    const title = document.createElement('h3');
-    title.textContent = item.title;
-
-    const description = document.createElement('p');
-    description.textContent = item.description || ''; // Use description if available
-
-    const meta = document.createElement('div');
-    meta.classList.add('news-card-meta');
-    meta.innerHTML = `<span>${item.source || 'Lähde'}</span> &bull; ${item.pubDate || ''}`;
-
-    content.appendChild(title);
-    content.appendChild(description);
-    content.appendChild(meta);
-    link.appendChild(content);
-    card.appendChild(link);
-
-    return card;
-  }
-
-  // Fetch feeds and render cards
-  const feedsContainer = document.getElementById('feeds');
-  const loader = document.getElementById('loader');
-  // HUOM: Oletus, että tämä osoite palauttaa nyt JSON-datan, ei HTML:ää.
-  // Esimerkiksi: [{title: "...", link: "...", description: "...", pubDate: "...", source: "..."}, ...]
-  const rssUrl = 'https://script.google.com/macros/s/AKfycbzLi_oCwPh1BhH94s0vgy0DJUqLjrNCLwr6Zkr-iRBMRKDtyqPRck8LHZKdCq5Tl9Wp/exec';
-
-  fetch(rssUrl)
-    .then(res => {
-      if (!res.ok) { throw new Error('Network response was not ok'); }
-      return res.json(); // Oletetaan, että API palauttaa JSON-datan
-    })
-    .then(data => {
-      loader.remove();
-      
-      if (Array.isArray(data)) {
-        data.forEach(item => {
-          const newsCard = createNewsCard(item);
-          feedsContainer.appendChild(newsCard);
-        });
-        setupCardAnimation(); // Kutsutaan uudelleen ladatuille korteille
-      } else {
-        feedsContainer.innerHTML = "<p class='card'>Uutisia ei löytynyt tai data oli virheellisessä muodossa.</p>";
-        setupCardAnimation();
-      }
-
-    })
-    .catch(err => {
-      loader.innerHTML = "<p class='card'>Uutisia ei voitu ladata. Tarkista konsoli virheen tiedoista.</p>";
-      console.error('Uutisten haku epäonnistui:', err);
-      setupCardAnimation();
-    });
-})();
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    const open = mobileMenu.style.display === 'block';
+    mobileMenu.style.display = open ? 'none' : 'block';
+    hamburger.setAttribute('aria-expanded', String(!open));
+  });
 </script>
 
 </body>
