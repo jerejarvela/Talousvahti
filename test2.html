@@ -78,21 +78,21 @@ html,body{height:100%; margin:0; background:#000; color:#eef2f5; font-family: "I
 .sidebar{ grid-column:9 / span 4; display:flex; flex-direction:column; gap:18px; }
 
 /* CARDS */
-/* Uutiskortin linkki */
+/* Uutiskortin linkki-wrapper: tekee koko kortista klikattavan */
 .news-card-link {
-    display: block; /* Tee koko kortista klikattava */
-    text-decoration: none; /* Poista alleviivaus */
-    color: inherit; /* Peri väri, yleensä valkoinen/vaalea */
+    display: block; 
+    text-decoration: none; 
+    color: inherit; 
 }
 
-/* Uutiskortti perus-card-tyylien lisäksi */
+/* Uutiskortin tyyli */
 .news-card {
     background: linear-gradient(180deg,var(--panel), var(--panel-2));
     border-radius: var(--radius);
     padding:22px;
     box-shadow: var(--card-shadow);
     border:1px solid rgba(255,255,255,0.02);
-    transition: transform .28s cubic-bezier(.2,.9,.2,1), box-shadow .28s;
+    transition: transform .28s cubic-bezier(.2,.9,.2,1), box-shadow .28s, border-color .28s;
     opacity:0;
     transform: translateY(26px);
 }
@@ -102,7 +102,7 @@ html,body{height:100%; margin:0; background:#000; color:#eef2f5; font-family: "I
 .news-card:hover{ 
     transform: translateY(-6px); 
     box-shadow: 0 18px 45px rgba(2,6,23,0.6);
-    border-color: var(--accent); /* Hieno hieno korostus hoverissa */
+    border-color: var(--accent);
 }
 
 .news-card h3{ margin:0 0 10px 0; font-size:18px; color:#fff; font-weight:600; line-height:1.3; }
@@ -114,7 +114,7 @@ html,body{height:100%; margin:0; background:#000; color:#eef2f5; font-family: "I
     opacity:0.8;
 }
 
-/* Yleinen card muihin tarkoituksiin, kuten sivupaneeli */
+/* Yleinen card muihin tarkoituksiin, kuten sivupaneeli (säilytetty alkuperäinen .card) */
 .card {
     background: linear-gradient(180deg,var(--panel), var(--panel-2));
     border-radius: var(--radius);
@@ -196,7 +196,7 @@ a:focus, button:focus{ outline: 3px solid rgba(3,132,252,0.12); outline-offset:3
           <h3>Liity sähköpostilistalle</h3>
           <p class="small">Saat joka aamu päivän tärkeimmät talousuutiset ja markkinaluvut suoraan sähköpostiisi.</p>
         </div>
-        </div>
+      </div>
       <div class="kit-wrap" style="margin-top:12px">
         <script async data-uid="722673f8d4" src="https://talousvahti.kit.com/722673f8d4/index.js"></script>
       </div>
@@ -218,8 +218,18 @@ a:focus, button:focus{ outline: 3px solid rgba(3,132,252,0.12); outline-offset:3
 <button id="backToTop" aria-label="Takaisin ylös" title="Takaisin ylös" aria-hidden="true">↑</button>
 
 <script>
-// Hamburger-menu
+/**
+ * TÄRKEÄ HUOMAUTUS API-HAUSTA:
+ * Tämä skripti olettaa, että Google Apps Script -API (rssUrl) palauttaa
+ * JSON-datan HTML-merkkijonon sijaan. Esim. muoto:
+ * [ { "title": "...", "link": "...", "description": "...", "pubDate": "..." }, ... ]
+ * Jos API palauttaa edelleen HTML:n, fetch-osio on palautettava alkuperäiseksi.
+ */
+
 (function(){
+  // --- Yleinen toiminnallisuus (Hamburger, Back to Top) ---
+
+  // Hamburger-menu
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
   if (hamburger && mobileMenu) {
@@ -237,10 +247,22 @@ a:focus, button:focus{ outline: 3px solid rgba(3,132,252,0.12); outline-offset:3
     });
   }
 
-  // Korttien animaatio
-  // Huomaa: Uutiskortit haetaan myöhemmin fetch-kutsun jälkeen
+  // Back to top
+  const backToTop = document.getElementById('backToTop');
+  if (backToTop) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 360) { backToTop.style.display = 'flex'; backToTop.setAttribute('aria-hidden','false'); }
+      else { backToTop.style.display = 'none'; backToTop.setAttribute('aria-hidden','true'); }
+    });
+    backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  }
+  
+  // --- Korttien animaatio ja lataus (News Feeds) ---
+  
+  // Korttien animaation tarkkailija
   const observeCards = () => {
-    const cards = document.querySelectorAll('.news-card, .card');
+    // Tarkkailee sekä sivupaneelin valmiita kortteja (.card) että dynaamisesti luotuja uutiskortteja (.news-card)
+    const cards = document.querySelectorAll('.news-card, .card'); 
     if ('IntersectionObserver' in window) {
       const observer = new IntersectionObserver((entries, obs) => {
         entries.forEach(entry => {
@@ -253,55 +275,50 @@ a:focus, button:focus{ outline: 3px solid rgba(3,132,252,0.12); outline-offset:3
       cards.forEach(c => observer.observe(c));
     } else { cards.forEach(c => c.classList.add('visible')); }
   }
-  observeCards(); // Tarkkaile sivupaneelin kortteja heti
+  observeCards(); // Tarkkailee alussa olevat kortit heti (esim. loader ja subscribe-kortti)
 
-  // Back to top
-  const backToTop = document.getElementById('backToTop');
-  if (backToTop) {
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 360) { backToTop.style.display = 'flex'; backToTop.setAttribute('aria-hidden','false'); }
-      else { backToTop.style.display = 'none'; backToTop.setAttribute('aria-hidden','true'); }
-    });
-    backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-  }
+  // Apufunktio ajan muotoiluun
+  const formatTime = (dateString) => {
+    try {
+      const date = new Date(dateString);
+      if (isNaN(date)) return dateString; 
+
+      const now = new Date();
+      const diffInMinutes = Math.floor((now - date) / (1000 * 60));
+
+      if (diffInMinutes < 1) return `Hetki sitten`;
+      if (diffInMinutes < 60) return `${diffInMinutes} minuuttia sitten`;
+      if (diffInMinutes < 60 * 24) return `${Math.floor(diffInMinutes / 60)} tuntia sitten`;
+
+      const day = date.getDate().toString().padStart(2, '0');
+      const month = (date.getMonth() + 1).toString().padStart(2, '0');
+      const year = date.getFullYear();
+      const hours = date.getHours().toString().padStart(2, '0');
+      const minutes = date.getMinutes().toString().padStart(2, '0');
+
+      return `${day}.${month}.${year} klo ${hours}:${minutes}`;
+    } catch (e) {
+      return dateString;
+    }
+  };
 
   // Uutissyötteen haku ja korttien luonti
   const feedsContainer = document.getElementById('feeds');
   const loader = document.getElementById('loader');
-  // TÄRKEÄÄ: Oletetaan, että API palauttaa nyt JSON-datan HTML:n sijaan.
+  // RSS/uutis-API osoite.
   const rssUrl = 'https://script.google.com/macros/s/AKfycbzLi_oCwPh1BhH94s0vgy0DJUqLjrNCLwr6Zkr-iRBMRKDtyqPRck8LHZKdCq5Tl9Wp/exec';
-
-  // Apufunktio ajan muotoiluun (valinnainen, mutta parantaa ulkoasua)
-  const formatTime = (dateString) => {
-    const date = new Date(dateString);
-    if (isNaN(date)) return dateString; // Palauta alkuperäinen, jos virheellinen
-    
-    const now = new Date();
-    const diffInMinutes = Math.floor((now - date) / (1000 * 60));
-
-    if (diffInMinutes < 60) return `${diffInMinutes} minuuttia sitten`;
-    if (diffInMinutes < 60 * 24) return `${Math.floor(diffInMinutes / 60)} tuntia sitten`;
-
-    // Muotoilu suomalaiseen tapaan
-    const day = date.getDate().toString().padStart(2, '0');
-    const month = (date.getMonth() + 1).toString().padStart(2, '0');
-    const year = date.getFullYear();
-    const hours = date.getHours().toString().padStart(2, '0');
-    const minutes = date.getMinutes().toString().padStart(2, '0');
-
-    return `${day}.${month}.${year} klo ${hours}:${minutes}`;
-  };
 
   fetch(rssUrl)
     .then(res => {
-      if (!res.ok) throw new Error('Verkkovirhe');
-      // Yritä käsitellä JSON-muodossa
+      if (!res.ok) throw new Error(`Verkkovirhe: ${res.status}`);
+      // Oletetaan, että API palauttaa JSON-muodossa
       return res.json(); 
     })
     .then(data => {
       loader.remove();
+      
       if (!Array.isArray(data) || data.length === 0) {
-        feedsContainer.innerHTML = "<div class='card' style='opacity:1; transform:none'><h3>Ei uutisia saatavilla</h3><p class='small'>Uutissyötteessä ei ollut tietoja. Yritä myöhemmin uudelleen.</p></div>";
+        feedsContainer.innerHTML = "<div class='card' style='opacity:1; transform:none'><h3>Ei uutisia saatavilla</h3><p class='small'>Uutissyötteessä ei ollut tietoja.</p></div>";
         return;
       }
 
@@ -311,10 +328,10 @@ a:focus, button:focus{ outline: 3px solid rgba(3,132,252,0.12); outline-offset:3
         newsCard.className = 'news-card';
 
         const cardLink = document.createElement('a');
-        cardLink.href = item.link || '#'; // Uutisen linkki
-        cardLink.target = '_blank'; // Avaa uuden välilehden
+        cardLink.href = item.link || '#'; 
+        cardLink.target = '_blank'; 
         cardLink.className = 'news-card-link';
-        cardLink.rel = 'noopener noreferrer'; // Turvallisuus
+        cardLink.rel = 'noopener noreferrer'; 
 
         const title = document.createElement('h3');
         title.textContent = item.title || 'Otsikko puuttuu';
@@ -328,7 +345,7 @@ a:focus, button:focus{ outline: 3px solid rgba(3,132,252,0.12); outline-offset:3
         dateElement.textContent = item.pubDate ? formatTime(item.pubDate) : 'Aika tuntematon';
 
 
-        // Rakennetaan kortti
+        // Kokoa kortti
         cardLink.appendChild(title);
         cardLink.appendChild(description);
         cardLink.appendChild(dateElement);
@@ -338,12 +355,12 @@ a:focus, button:focus{ outline: 3px solid rgba(3,132,252,0.12); outline-offset:3
         feedsContainer.appendChild(newsCard);
       });
       
-      // Laita uudet kortit animaation tarkkailuun
+      // Laita uudet, dynaamisesti luodut kortit animaation tarkkailuun
       observeCards();
 
     })
     .catch(err => {
-      loader.innerHTML = "<div class='card' style='opacity:1; transform:none'><h3>Uutisia ei voitu ladata</h3><p class='small'>Virhe uutisten hakemisessa. Tarkista API-osoite tai -rakenne. Yksityiskohtainen virhe konsolissa.</p></div>";
+      loader.innerHTML = `<div class='card' style='opacity:1; transform:none'><h3>Uutisia ei voitu ladata</h3><p class='small'>Virhe uutisten hakemisessa: ${err.message}.</p></div>`;
       console.error('Uutisten haku epäonnistui:', err);
     });
 })();
