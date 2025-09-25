@@ -79,6 +79,89 @@ html,body{height:100%; margin:0; background:#000; color:#eef2f5; font-family: "I
 .mobile-menu a{ display:block; padding:10px 12px; color:#e6eef6; border-radius:8px; margin:6px 0; transition:all .16s; text-decoration:none; }
 .mobile-menu a:hover{ background:rgba(255,255,255,0.03) }
 
+/* HERO */
+.hero{ padding:56px 20px 36px; display:grid; place-items:center; text-align:center; gap:10px; margin-top:72px; }
+.hero h1{ margin:0; font-size:28px; color:#ffffff; font-weight:600; letter-spacing:0.2px; }
+.hero p{ margin:0; max-width:820px; color:var(--muted); font-size:15.5px; }
+
+/* LAYOUT */
+.container{ max-width:1150px; margin:34px auto; padding:0 20px 60px; display:grid; grid-template-columns: repeat(12, 1fr); gap:22px; }
+.main{ grid-column:1 / span 8; display:flex; flex-direction:column; gap:18px; }
+.sidebar{ grid-column:9 / span 4; display:flex; flex-direction:column; gap:18px; }
+
+/* CARDS */
+.card{ background: linear-gradient(180deg,var(--panel), var(--panel-2)); border-radius: var(--radius); padding:22px; box-shadow: var(--card-shadow); border:1px solid rgba(255,255,255,0.02); transition: transform .28s cubic-bezier(.2,.9,.2,1), box-shadow .28s; opacity:0; transform: translateY(26px); }
+.card.visible{ animation: popIn .6s cubic-bezier(.2,.9,.2,1) forwards; }
+@keyframes popIn{ to{ opacity:1; transform:none } }
+.card:hover{ transform: translateY(-6px); box-shadow: 0 18px 45px rgba(2,6,23,0.6) }
+.card h3{ margin:0 0 10px 0; font-size:18px; color:#fff; font-weight:600; display:flex; align-items:center; gap:10px; }
+.card p.small{ color:var(--muted); margin:0; font-size:14px }
+
+.icon-circle{ width:44px; height:44px; border-radius:10px; display:grid; place-items:center; background:linear-gradient(135deg, rgba(3,132,252,0.12), rgba(0,194,255,0.06)); color:var(--accent); font-weight:700; box-shadow: inset 0 -8px 18px rgba(0,0,0,0.35); }
+
+.stat-row{ display:flex; gap:12px; margin-top:8px }
+.stat{ background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:10px 12px; border-radius:10px; display:flex; flex-direction:column; width:120px; align-items:flex-start; }
+.stat strong{ font-size:18px; color:#fff; }
+.stat span{ font-size:12px; color:var(--muted) }
+
+.kit-wrap{ margin-top:14px; display:block; }
+.kit-embed, .kit-wrap > iframe, .kit-wrap > *{ width:100% }
+
+.policy-links a{ display:inline-flex; align-items:center; gap:10px; padding:10px 12px; border-radius:10px; background: rgba(255,255,255,0.015); margin:8px 0; color:var(--muted); transition:all .14s; text-decoration:none }
+.policy-links a:hover{ color:#fff; transform:translateX(6px) }
+
+.profile{ display:flex; gap:14px; align-items:center; }
+.profile .avatar{ width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,#0d253f,#072034); display:grid; place-items:center; font-weight:700; color:#fff; font-size:20px; box-shadow:0 6px 18px rgba(2,6,23,0.6); }
+.profile .meta small{ color:var(--muted); display:block }
+.profile .meta p{ margin:6px 0 0 0; color:var(--muted); font-size:14px }
+
+.footer{ margin-top:36px; padding:30px 20px; text-align:center; color:var(--muted); border-top:1px solid rgba(255,255,255,0.02); font-size:14px; }
+
+#backToTop{ position:fixed; right:20px; bottom:20px; z-index:1400; width:48px;height:48px;border-radius:12px;border:none; cursor:pointer; background:linear-gradient(180deg,var(--accent),var(--accent-2)); color:#031423; font-weight:700; box-shadow:0 10px 30px rgba(3,132,252,0.16); display:none; align-items:center; justify-content:center; }
+
+a:focus, button:focus{ outline: 3px solid rgba(3,132,252,0.12); outline-offset:3px; border-radius:8px }
+
+@media (max-width:1024px){ .main{ grid-column:1 / span 7 } .sidebar{ grid-column:8 / span 5 } }
+@media (max-width:860px){ .container{ gap:16px } .main{ grid-column:1 / span 12 } .sidebar{ grid-column:1 / span 12 } .hamburger{ display:grid } .navlinks{ display:none } .brand-title{ display:none } .hero{ padding:36px 16px 24px } .hero h1{ font-size:22px } .brand-badge{ width:36px; height:36px; font-size:14px } #backToTop{ right:12px; bottom:12px } }
+</style>
+</head>
+<body>
+
+<header class="navbar" role="banner">
+  <div class="brand" aria-label="Talousvahti">
+    <div class="brand-badge" aria-hidden="true">T</div>
+    <div>
+      <div class="brand-title">Talousvahti</div>
+      <div style="font-size:11px;color:var(--muted);margin-top:2px">Uutiset • Kurssit • Työkalut</div>
+    </div>
+  </div>
+
+  <nav class="navlinks" aria-label="Päävalikko">
+    <a href="index.html">Talousuutiset</a>
+    <a href="kurssit.html">Pörssikurssit</a>
+    <a href="talouskalenteri.html">Talouskalenteri</a>
+    <a href="Blogi.html">Blogi</a>
+    <a href="sijoituslaskuri.html">Sijoituslaskuri</a>
+    <a href="tietoa.html" class="active" aria-current="page">Tietoa</a>
+  </nav>
+
+  <div class="controls">
+    <button class="hamburger" id="hamburger" aria-expanded="false" aria-controls="mobileMenu" title="Avaa valikko">
+      <span class="lines"><div></div></span>
+    </button>
+  </div>
+</header>
+
+<div id="mobileMenu" class="mobile-menu" role="menu" aria-hidden="true" style="display:none">
+  <a href="index.html" role="menuitem">Talousuutiset</a>
+  <a href="kurssit.html" role="menuitem">Pörssikurssit</a>
+  <a href="talouskalenteri.html" role="menuitem">Talouskalenteri</a>
+  <a href="Blogi.html" role="menuitem">Blogi</a>
+  <a href="sijoituslaskuri.html" role="menuitem">Sijoituslaskuri</a>
+  <a href="tietoa.html" role="menuitem" class="active">Tietoa</a>
+</div>
+
+
   /* Main content */
   .main-container { display: flex; max-width: 1200px; margin: 40px auto; gap: 20px; padding: 0 20px; }
   .feed-section { flex: 3; position: relative; }
