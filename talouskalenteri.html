@@ -3,91 +3,205 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Talouskalenteri</title>
+<title>Talouskalenteri | Talousvahti</title>
 <meta name="description" content="Seuraa EU:n ja USA:n tärkeimpiä taloustapahtumia suoraan Talousvahdin talouskalenterista.">
 <meta name="keywords" content="talouskalenteri, EU, USA, pörssi, talous, sijoittaminen">
 <meta name="author" content="Talousvahti">
-
 <style>
-  body {
-    margin: 0;
-    font-family: 'Arial', sans-serif;
-    background-color: #0f0f0f;
-    color: #fff;
-  }
-  a { text-decoration: none; }
+:root {
+  --bg: #0f0f0f;
+  --card: #1a1a1a;
+  --accent: #0384fc;
+  --text: #fff;
+  --muted: #ccc;
+}
 
-  /* Navbar sama kuin etusivulla */
-  .navbar { display: flex; justify-content: space-between; align-items: center; background-color: #000; padding: 15px 30px; border-bottom: 2px solid #222; position: sticky; top: 0; z-index: 3000; }
-  .navbar .brand { font-size: 26px; font-weight: bold; letter-spacing: 1px; color: #fff; }
-  .navbar ul { list-style: none; display: flex; gap: 25px; }
-  .navbar ul li a { color: #fff; font-size: 18px; transition: all 0.3s; padding: 5px 10px; border-radius: 5px; }
-  .navbar ul li a:hover, .navbar ul li a.active { background-color: #1a1a1a; color: #ccc; }
-  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
-  .hamburger span { width: 25px; height: 3px; background: #fff; border-radius: 2px; }
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  scroll-behavior: smooth;
+}
 
-  .mobile-menu { display: none; flex-direction: column; background-color: #111; position: fixed; top: 70px; right: 20px; width: 220px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.6); overflow: hidden; z-index: 4000; animation: slideDown 0.3s ease forwards; }
-  .mobile-menu a { padding: 15px; border-bottom: 1px solid #222; color: #fff; transition: background 0.3s; }
-  .mobile-menu a:hover { background: #222; color: #0384fc; }
-  .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 3500; }
-  @keyframes slideDown { from { opacity:0; transform:translateY(-10px);} to {opacity:1; transform:translateY(0);} }
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #000;
+  padding: 15px 30px;
+  border-bottom: 2px solid #222;
+  position: sticky;
+  top: 0;
+  z-index: 3000;
+}
+.navbar .brand { font-size: 26px; font-weight: bold; letter-spacing: 1px; color: var(--text); }
+.navbar ul { list-style: none; display: flex; gap: 25px; }
+.navbar ul li a {
+  color: var(--text);
+  font-size: 18px;
+  transition: all 0.3s;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+.navbar ul li a:hover, .navbar ul li a.active {
+  background-color: #1a1a1a;
+  color: #ccc;
+}
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+.hamburger span { width: 25px; height: 3px; background: var(--text); border-radius: 2px; }
 
-  /* Main content */
-  .main-container { display: flex; max-width: 1200px; margin: 40px auto; gap: 20px; padding: 0 20px; }
-  .calendar-section { flex: 3; position: relative; }
-  .calendar-section h2 { margin-bottom: 25px; color: #fff; font-size: 28px; border-bottom: 1px solid #222; padding-bottom: 10px; }
+/* Mobile menu */
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  background-color: #111;
+  position: fixed;
+  top: 70px;
+  right: 20px;
+  width: 220px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+  overflow: hidden;
+  z-index: 4000;
+  animation: slideDown 0.3s ease forwards;
+}
+.mobile-menu a { padding: 15px; border-bottom: 1px solid #222; color: #fff; transition: background 0.3s; }
+.mobile-menu a:hover { background: #222; color: var(--accent); }
+.overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 3500; }
+@keyframes slideDown { from { opacity:0; transform:translateY(-10px);} to {opacity:1; transform:translateY(0);} }
 
-  .kit-sidebar { flex: 1; background: #1a1a1a; border-radius: 12px; padding: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); height: fit-content; position: sticky; top: 100px; max-width: 280px; display: flex; flex-direction: column; gap: 20px; }
-  .kit-sidebar h3 { font-size: 20px; margin-bottom: 10px; color: #fff; text-align: center; }
-  .kit-sidebar .sidebar-text { font-size: 14px; color: #ccc; line-height: 1.4; text-align: center; margin-bottom: -15px; }
+/* Layout */
+.main-container {
+  display: flex;
+  max-width: 1200px;
+  margin: 40px auto;
+  gap: 20px;
+  padding: 0 20px;
+}
+.calendar-section { flex: 3; }
+.calendar-section h2 {
+  margin-bottom: 25px;
+  color: #fff;
+  font-size: 28px;
+  border-bottom: 1px solid #222;
+  padding-bottom: 10px;
+}
 
-  @media (max-width: 768px) { .navbar ul { display: none; } .hamburger { display: flex; } .main-container { flex-direction: column; } .kit-sidebar { width: 80%; max-width: 300px; position: relative; top: auto; margin: 20px auto; align-items: center; } .kit-sidebar > * { width: 100%; max-width: 100%; margin: 0 auto; } }
+/* Sidebar */
+.kit-sidebar {
+  flex: 1;
+  background: var(--card);
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+  height: fit-content;
+  position: sticky;
+  top: 100px;
+  max-width: 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.kit-sidebar h3 { font-size: 20px; color: #fff; text-align: center; margin-bottom: 10px; }
+.kit-sidebar .sidebar-text {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.4;
+  text-align: center;
+  margin-bottom: -15px;
+}
 
-  /* Loader sama kuin etusivulla */
-  #loader {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-    font-size: 18px;
-    color: #ffffff;
-    margin-bottom: 20px;
-    justify-content: center;
-    height: 400px;
-  }
-  .image-loader {
-    position: relative;
-    width: 140px;
-    height: 140px;
-    border-radius: 12px;
-    overflow: hidden;
-  }
-  .image-loader img {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  .image-loader .gray { filter: grayscale(100%); z-index: 1; }
-  .image-loader .color { z-index: 2; clip-path: inset(0 100% 0 0); animation: revealMask 3s linear forwards; }
-  @keyframes revealMask { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
-  .image-loader::after {
-    content: "";
-    position: absolute;
-    bottom: 0; left: 0;
-    width: 100%; height: 50%;
-    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, #0f0f0f 100%);
-    z-index: 3;
-    pointer-events: none;
-  }
+@media (max-width: 768px) {
+  .navbar ul { display: none; }
+  .hamburger { display: flex; }
+  .main-container { flex-direction: column; }
+  .kit-sidebar { width: 80%; max-width: 300px; position: relative; top: auto; margin: 20px auto; align-items: center; }
+}
 
-  /* Piilota kalenteri aluksi */
-  #calendarContainer { display: none; border-radius:12px; overflow:hidden; box-shadow:0 4px 15px rgba(0,0,0,0.5); }
+/* Loader */
+#loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  font-size: 18px;
+  color: #ffffff;
+  margin: 40px 0;
+  justify-content: center;
+  height: 400px;
+}
+.image-loader {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+}
+.image-loader img {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.image-loader .gray { filter: grayscale(100%); z-index: 1; }
+.image-loader .color { z-index: 2; clip-path: inset(0 100% 0 0); animation: revealMask 3s linear forwards; }
+@keyframes revealMask { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+.image-loader::after {
+  content: "";
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 100%; height: 50%;
+  background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, #0f0f0f 100%);
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* Calendar hidden initially */
+#calendarContainer {
+  display: none;
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow:0 4px 15px rgba(0,0,0,0.5);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 30px;
+  color: var(--muted);
+  border-top: 1px solid #222;
+  margin-top: 50px;
+  font-size: 14px;
+}
+footer a { color: var(--accent); text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+
+/* Back to top */
+#topBtn {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  cursor: pointer;
+  font-size: 20px;
+  display: none;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+}
+#topBtn:hover { background: #026cd1; }
 </style>
 </head>
 <body>
 
+<!-- Navbar -->
 <nav class="navbar">
   <div class="brand">Talousvahti</div>
   <ul>
@@ -96,29 +210,28 @@
     <li><a href="Blogi.html">Blogi</a></li>
     <li><a href="sisapiiri.html">Sisäpiirikaupat</a></li>
     <li><a href="sijoituslaskuri.html">Sijoituslaskuri</a></li>
-    <li><a href="#tietoa">Tietoa</a></li>
+    <li><a href="tietoa.html">Tietoa</a></li>
   </ul>
   <div class="hamburger" id="hamburger">
-    <span></span>
-    <span></span>
-    <span></span>
+    <span></span><span></span><span></span>
   </div>
 </nav>
 
 <div class="mobile-menu" id="mobileMenu">
   <a href="index.html">Talousuutiset</a>
+  <a href="kurssit.html">Pörssikurssit</a>
   <a href="Blogi.html">Blogi</a>
   <a href="sisapiiri.html">Sisäpiirikaupat</a>
   <a href="sijoituslaskuri.html">Sijoituslaskuri</a>
-  <a href="#tietoa">Tietoa</a>
+  <a href="tietoa.html">Tietoa</a>
 </div>
 <div class="overlay" id="overlay"></div>
 
+<!-- Content -->
 <div class="main-container">
   <section class="calendar-section">
     <h2>Talouskalenteri</h2>
 
-    <!-- Loader -->
     <div id="loader">
       <div class="image-loader">
         <img class="gray" src="https://storage.mlcdn.com/account_image/1738913/3UJwhclPvl7P8Z56KrJYVAXUe6dwuVPNN5TfLsfT.png" alt="Latauskuva">
@@ -127,7 +240,6 @@
       Ladataan talouskalenteria...
     </div>
 
-    <!-- TradingView Widget -->
     <div id="calendarContainer">
       <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-events.js">
       {
@@ -152,29 +264,41 @@
   </aside>
 </div>
 
+<footer>
+  © 2025 Talousvahti | <a href="tietoa.html">Tietoa</a> | <a href="mailto:info@talousvahti.fi">Ota yhteyttä</a>
+</footer>
+
+<button id="topBtn" title="Takaisin ylös">↑</button>
+
 <script>
-  // Hamburger-menu
-  const hamburger = document.getElementById('hamburger');
-  const mobileMenu = document.getElementById('mobileMenu');
-  const overlay = document.getElementById('overlay');
+// Hamburger
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+const overlay = document.getElementById('overlay');
+hamburger.addEventListener('click', () => {
+  const open = mobileMenu.style.display === 'flex';
+  mobileMenu.style.display = open ? 'none' : 'flex';
+  overlay.style.display = open ? 'none' : 'block';
+});
+overlay.addEventListener('click', () => {
+  mobileMenu.style.display = 'none';
+  overlay.style.display = 'none';
+});
 
-  hamburger.addEventListener('click', () => {
-    const isOpen = mobileMenu.style.display === 'flex';
-    mobileMenu.style.display = isOpen ? 'none' : 'flex';
-    overlay.style.display = isOpen ? 'none' : 'block';
-  });
-  overlay.addEventListener('click', () => {
-    mobileMenu.style.display = 'none';
-    overlay.style.display = 'none';
-  });
+// Loader to calendar
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('loader').style.display = 'none';
+    document.getElementById('calendarContainer').style.display = 'block';
+  }, 3000);
+});
 
-  // Loader: piilota loader ja näytä kalenteri 3s jälkeen
-  window.addEventListener('load', () => {
-    setTimeout(() => {
-      document.getElementById('loader').style.display = 'none';
-      document.getElementById('calendarContainer').style.display = 'block';
-    }, 3000); // 3 sekuntia
-  });
+// Back to top
+const topBtn = document.getElementById("topBtn");
+window.onscroll = function() {
+  topBtn.style.display = (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) ? "block" : "none";
+};
+topBtn.onclick = function() { window.scrollTo({ top: 0, behavior: 'smooth' }); };
 </script>
 
 </body>
