@@ -7,191 +7,86 @@
 <meta name="description" content="Seuraa tärkeimpiä pörssikursseja: indeksit, osakkeet ja kryptot. Päivitetyt graafit ja ETF:t.">
 <meta name="keywords" content="pörssi, kurssit, indeksit, osakkeet, kryptot, sijoittaminen">
 <meta name="author" content="Talousvahti">
+<link rel="icon" type="image/png" href="https://storage.mlcdn.com/account_image/1738913/yEnW8kPkh3rEnCZoKq2yYcZ9xEPvMMnMfEfhwI8h.png">
+
 <style>
-  /* Yleisilme */
-  body {
-    margin: 0;
-    font-family: 'Poppins', Arial, sans-serif;
-    background-color: #0f0f0f;
-    color: #f5f5f5;
-  }
+  body { margin:0; font-family:'Poppins', sans-serif; background-color:#0f0f0f; color:#fff; overflow-x:hidden; }
 
   /* Loader */
   #loader {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%;
-    height: 100%;
-    background: #0f0f0f;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 12px;
-    font-size: 18px;
-    color: #fff;
-    z-index: 5000;
+    position:fixed; top:0; left:0; width:100%; height:100%;
+    background:#0f0f0f; display:flex; flex-direction:column;
+    justify-content:center; align-items:center; gap:12px;
+    font-size:18px; color:#ffffff; z-index:5000;
   }
   .image-loader {
-    position: relative;
-    width: 140px;
-    height: 140px;
-    border-radius: 16px;
-    overflow: hidden;
+    position:relative; width:140px; height:140px;
+    border-radius:12px; overflow:hidden;
   }
-  .image-loader img {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  .image-loader .gray { filter: grayscale(100%); z-index: 1; }
-  .image-loader .color { z-index: 2; clip-path: inset(0 100% 0 0); animation: revealMask 3s linear forwards; }
-  @keyframes revealMask {
-    from { clip-path: inset(0 100% 0 0); }
-    to { clip-path: inset(0 0 0 0); }
+  .image-loader img { position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; }
+  .image-loader .gray { filter:grayscale(100%); z-index:1; }
+  .image-loader .color { z-index:2; clip-path:inset(0 100% 0 0); animation:revealMask 3s linear forwards; }
+  @keyframes revealMask { from {clip-path:inset(0 100% 0 0);} to {clip-path:inset(0 0 0 0);} }
+  .image-loader::after {
+    content:""; position:absolute; bottom:0; left:0;
+    width:100%; height:50%; background:linear-gradient(to bottom, rgba(0,0,0,0) 0%, #0f0f0f 100%);
+    z-index:3; pointer-events:none;
   }
 
   /* Navbar */
   .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #000;
-    padding: 15px 30px;
-    border-bottom: 2px solid #1f1f1f;
-    position: sticky;
-    top: 0;
-    z-index: 3000;
+    display:flex; justify-content:space-between; align-items:center;
+    background-color:#000; padding:15px 30px; border-bottom:2px solid #222;
+    position:sticky; top:0; z-index:3000;
   }
-  .navbar .brand {
-    font-size: 26px;
-    font-weight: bold;
-    letter-spacing: 1px;
-    color: #fff;
-  }
-  .navbar ul {
-    list-style: none;
-    display: flex;
-    gap: 25px;
-  }
+  .navbar .brand { font-size:26px; font-weight:600; letter-spacing:1px; color:#fff; }
+  .navbar ul { list-style:none; display:flex; gap:25px; }
   .navbar ul li a {
-    color: #fff;
-    font-size: 17px;
-    padding: 6px 10px;
-    border-radius: 6px;
-    transition: 0.3s;
+    color:#fff; font-size:18px; transition:all 0.3s; padding:5px 10px; border-radius:8px; text-decoration:none;
   }
-  .navbar ul li a:hover,
-  .navbar ul li a.active {
-    background-color: #1a1a1a;
-    color: #00b3ff;
-  }
-
-  .hamburger {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    cursor: pointer;
-  }
-  .hamburger span {
-    width: 25px;
-    height: 3px;
-    background: #fff;
-    border-radius: 2px;
-  }
-
-  /* Mobile menu */
+  .navbar ul li a:hover, .navbar ul li a.active { background-color:#1a1a1a; color:#00aaff; }
+  .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; }
+  .hamburger span { width:25px; height:3px; background:#fff; border-radius:2px; }
   .mobile-menu {
-    display: none;
-    flex-direction: column;
-    background-color: #111;
-    position: fixed;
-    top: 70px;
-    right: 20px;
-    width: 220px;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.6);
-    overflow: hidden;
-    z-index: 4000;
-    animation: slideDown 0.3s ease forwards;
+    display:none; flex-direction:column; background-color:#111;
+    position:fixed; top:70px; right:20px; width:220px;
+    border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.6);
+    overflow:hidden; z-index:4000; animation:slideDown 0.3s ease forwards;
   }
-  .mobile-menu a {
-    padding: 15px;
-    border-bottom: 1px solid #222;
-    color: #fff;
-    transition: background 0.3s;
-  }
-  .mobile-menu a:hover {
-    background: #222;
-    color: #00b3ff;
-  }
-  .overlay {
-    display: none;
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.6);
-    z-index: 3500;
-  }
-  @keyframes slideDown {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+  .mobile-menu a { padding:15px; border-bottom:1px solid #222; color:#fff; transition:background 0.3s; text-decoration:none; }
+  .mobile-menu a:hover { background:#222; color:#00aaff; }
+  .overlay { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:3500; }
+  @keyframes slideDown { from {opacity:0; transform:translateY(-10px);} to {opacity:1; transform:translateY(0);} }
 
-  /* Main content */
+  /* Main */
   .main-container {
-    display: flex;
-    flex-direction: column;
-    max-width: 1300px;
-    margin: 40px auto;
-    gap: 25px;
-    padding: 0 20px;
-    display: none;
+    display:flex; flex-direction:column; max-width:1200px;
+    margin:40px auto; gap:20px; padding:0 20px; display:none;
   }
-  h1 {
-    font-size: 34px;
-    text-align: center;
-    margin-bottom: 10px;
-  }
-  .charts {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 25px;
-  }
+  h1 { font-size:36px; text-align:center; margin-bottom:20px; color:#00aaff; }
 
-  /* Kortit */
+  .charts { display:flex; flex-wrap:wrap; justify-content:center; gap:20px; }
+
   .chart-box {
-    background: linear-gradient(180deg, #181818, #101010);
-    border-radius: 14px;
-    padding: 15px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-    width: calc(33.333% - 20px);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transition: transform 0.3s, box-shadow 0.3s;
+    background:#1a1a1a; border-radius:16px; padding:15px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.5);
+    flex-direction:column; align-items:center; width:calc(33% - 20px); display:flex;
+    transition:transform 0.3s, box-shadow 0.3s;
   }
-  .chart-box:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 6px 25px rgba(0,0,0,0.6);
-  }
-  .chart-box h2 {
-    font-size: 18px;
-    color: #00b3ff;
-    margin-bottom: 8px;
-    text-align: center;
+  .chart-box:hover { transform:translateY(-6px); box-shadow:0 6px 18px rgba(0,0,0,0.6); }
+  .chart-box h2 { margin-bottom:10px; font-size:18px; text-align:center; color:#fff; }
+  .tradingview-widget-container { width:100% !important; }
+
+  footer {
+    background:#000; text-align:center; padding:25px; border-top:2px solid #222;
+    color:#aaa; margin-top:40px; font-size:14px;
   }
 
-  @media (max-width: 1024px) {
-    .chart-box { width: calc(50% - 15px); }
-  }
-  @media (max-width: 768px) {
-    .chart-box { width: 100%; }
-    .navbar ul { display: none; }
-    .hamburger { display: flex; }
+  @media (max-width:1024px) { .chart-box { width:calc(50% - 20px); } }
+  @media (max-width:768px) {
+    .chart-box { width:100%; }
+    .navbar ul { display:none; }
+    .hamburger { display:flex; }
   }
 </style>
 </head>
@@ -215,7 +110,6 @@
     <li><a href="sisapiiri.html">Sisäpiirikaupat</a></li>
     <li><a href="sijoituslaskuri.html">Sijoituslaskuri</a></li>
     <li><a href="tietoa.html">Tietoa</a></li>
-    <li><a href="porssikurssit.html" class="active">Pörssikurssit</a></li>
   </ul>
   <div class="hamburger" id="hamburger">
     <span></span><span></span><span></span>
@@ -228,11 +122,10 @@
   <a href="sisapiiri.html">Sisäpiirikaupat</a>
   <a href="sijoituslaskuri.html">Sijoituslaskuri</a>
   <a href="tietoa.html">Tietoa</a>
-  <a href="porssikurssit.html" class="active">Pörssikurssit</a>
 </div>
 <div class="overlay" id="overlay"></div>
 
-<!-- Pääsisältö -->
+<!-- Main -->
 <div class="main-container" id="mainContent">
   <h1>Pörssikurssit</h1>
   <div class="charts">
@@ -265,18 +158,46 @@
       </div>
     </div>
 
-    <!-- Osakkeet ja kryptot (säilytetty kuten alkuperäisessä) -->
-    <!-- ... kaikki muut chart-boxit tästä eteenpäin pysyvät samana ... -->
+    <!-- Kryptot -->
+    <div class="chart-box">
+      <h2>Bitcoin (BTC)</h2>
+      <div class="tradingview-widget-container">
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
+        { "symbols":[["CRYPTOCAP:BTC|1D"]],"chartOnly":true,"width":"100%","height":"350","locale":"fi","colorTheme":"dark","autosize":true }
+        </script>
+      </div>
+    </div>
+
+    <div class="chart-box">
+      <h2>Ethereum (ETH)</h2>
+      <div class="tradingview-widget-container">
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
+        { "symbols":[["CRYPTOCAP:ETH|1D"]],"chartOnly":true,"width":"100%","height":"350","locale":"fi","colorTheme":"dark","autosize":true }
+        </script>
+      </div>
+    </div>
+
+    <div class="chart-box">
+      <h2>XRP</h2>
+      <div class="tradingview-widget-container">
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
+        { "symbols":[["CRYPTOCAP:XRP|1D"]],"chartOnly":true,"width":"100%","height":"350","locale":"fi","colorTheme":"dark","autosize":true }
+        </script>
+      </div>
+    </div>
 
   </div>
 </div>
 
+<footer>
+  © 2025 Talousvahti – Kaikki oikeudet pidätetään.
+</footer>
+
 <script>
-  // Hamburger-menu
+  // Hamburger menu
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
   const overlay = document.getElementById('overlay');
-
   hamburger.addEventListener('click', () => {
     const isOpen = mobileMenu.style.display === 'flex';
     mobileMenu.style.display = isOpen ? 'none' : 'flex';
@@ -294,8 +215,9 @@
     setTimeout(() => {
       loader.style.display = 'none';
       mainContent.style.display = 'flex';
-    }, 2500);
+    }, 3000);
   });
 </script>
+
 </body>
 </html>
