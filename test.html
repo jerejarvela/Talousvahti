@@ -47,18 +47,19 @@
   .title{ font-size:20px; font-weight:600; color:#fff; display:flex; align-items:center; gap:10px; }
   .subtitle{ color:var(--muted); font-size:13px; }
   .tv-wrap{
-    width:100%; 
-    border-radius:10px; 
+    width:100%;
+    max-width:1000px;
+    height:1000px;
+    margin:0 auto;
+    border-radius:10px;
     overflow:hidden;
-    height:90vh; /* Neliömäinen, iso */
-    max-height:1200px; /* Ei kasva liikaa isoilla näytöillä */
   }
   footer{ text-align:center; color:var(--muted); font-size:13px; margin-top:18px; }
   #backToTop{ position:fixed; right:18px; bottom:18px; z-index:1400; width:46px;height:46px;border-radius:10px;border:none; cursor:pointer; background:linear-gradient(180deg,#0384fc,#00c2ff); color:#031423; font-weight:700; display:none; align-items:center; justify-content:center; box-shadow:0 10px 30px rgba(3,132,252,0.12); }
   @media (max-width:900px){
     .title{ font-size:16px }
     .page{ margin:86px 12px 48px; }
-    .tv-wrap{ height:80vw; } /* Pienemmillä näytöillä myös neliömäinen */
+    .tv-wrap{ width:90vw; height:90vw; } /* Pienemmillä näytöillä neliö */
   }
 </style>
 </head>
@@ -102,12 +103,14 @@
       if (!(window.TradingView && typeof window.TradingView.widget === 'function')) {
         return setTimeout(init, 200);
       }
+      const tvContainer = document.getElementById('tradingview_advanced');
+      const width = tvContainer.clientWidth;
+      const height = tvContainer.clientHeight;
       new TradingView.widget({
-        "autosize": true,
+        "width": width,
+        "height": height,
         "symbol": "AMEX:SPY",
         "interval": "D",
-        "width": "100%",
-        "height": document.querySelector('.tv-wrap').clientHeight, 
         "timezone": "Europe/Helsinki",
         "theme": "dark",
         "style": "1",
