@@ -62,29 +62,6 @@ html,body{height:100%; margin:0; background:#000; color:#eef2f5; font-family:"In
 .main{grid-column:1 / span 8;display:flex;flex-direction:column;gap:18px;}
 .sidebar{grid-column:9 / span 4;display:flex;flex-direction:column;gap:18px;}
 
-/* CARDS */
-.card{background:linear-gradient(180deg,var(--panel),var(--panel-2));border-radius:var(--radius);padding:22px;box-shadow:var(--card-shadow);border:1px solid rgba(255,255,255,0.02);transition:transform .28s cubic-bezier(.2,.9,.2,1),box-shadow .28s;opacity:0;transform:translateY(26px);}
-.card.visible{animation:popIn .6s cubic-bezier(.2,.9,.2,1) forwards;}
-@keyframes popIn{to{opacity:1;transform:none}}
-.card:hover{transform:translateY(-6px);box-shadow:0 18px 45px rgba(2,6,23,0.6)}
-.card h3{margin:0 0 10px 0;font-size:18px;color:#fff;font-weight:600;}
-.card p.small{color:var(--muted);margin:0;font-size:14px;}
-.feed-box{background:linear-gradient(180deg,var(--panel),var(--panel-2));border-radius:var(--radius);padding:22px;margin-bottom:20px;box-shadow:var(--card-shadow);border:1px solid rgba(255,255,255,0.02);animation:popIn .6s cubic-bezier(.2,.9,.2,1) forwards;}
-.feed-box h3{margin:0 0 8px 0;font-size:18px;color:#fff;}
-.feed-box p{color:var(--muted);margin:0 0 6px 0;font-size:14px;line-height:1.5;}
-.feed-box a {
-  color: #fff;
-  text-decoration: none;
-}
-.feed-box a:hover {
-  color: #fff;
-  text-decoration: underline;
-}
-
-.icon-circle{ width:44px; height:44px; border-radius:10px; display:grid; place-items:center; background:linear-gradient(135deg, rgba(3,132,252,0.12), rgba(0,194,255,0.06)); color:var(--accent); font-weight:700; box-shadow: inset 0 -8px 18px rgba(0,0,0,0.35); }
-
-.feed-section h2{margin:0 0 12px 0;color:#fff;font-size:22px;border-bottom:1px solid rgba(255,255,255,0.06);padding-bottom:8px;display:flex;justify-content:space-between;align-items:center;}
-.feed-section .date{font-size:14px;color:var(--accent);}
 
 /* FOOTER */
 .footer{margin-top:36px;padding:30px 20px;text-align:center;color:var(--muted);border-top:1px solid rgba(255,255,255,0.02);font-size:14px;}
