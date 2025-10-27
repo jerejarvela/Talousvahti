@@ -182,7 +182,7 @@ html,body{height:100%; margin:0; background:#000; color:#eef2f5; font-family:"In
   }
 
   const blogs=[
-    {title:"Miten kauppasopujen helpottuminen vaikuttaa sijoittajaan — käytännön opas suomalaisille",source:"Talousvahti",link:"https://talousvahti.com/miten-kauppasopujen-helpottuminen-vaikuttaa-sijoittajaan-kaytannon-opas-suomalaisille-2025-10-27.html"},
+    {title:"Miten kauppasopujen helpottuminen vaikuttaa sijoittajaan — käytännön opas suomalaisille",description:"Kansainvälisen kaupan jännitteet ja niiden helpottuminen muuttavat suhdanteita monella tasolla.",source:"Talousvahti",link:"https://talousvahti.com/miten-kauppasopujen-helpottuminen-vaikuttaa-sijoittajaan-kaytannon-opas-suomalaisille-2025-10-27.html"},
 
     {title:"Kuinka tunnistaa viherpesu ilmastorahastoissa – käytännön opas suomalaiselle sijoittajalle",description:"Johdanto Ilmastorahastot ja vastuullisuuslupaukset kiinnostavat yhä enemmän suomalaisia sijoittajia.",source:"Talousvahti",link:"https://talousvahti.com/kuinka-tunnistaa-viherpesu-ilmastorahastoissa-kaytannon-opas-suomalaiselle-sijoittajalle-2025-10-27.html"},
 
@@ -202,7 +202,7 @@ html,body{height:100%; margin:0; background:#000; color:#eef2f5; font-family:"In
   blogs.forEach((b,i)=>{
     const div=document.createElement('div');
     div.className='blog-box';
-    div.innerHTML=`<h3><a href="${b.link}" target="_blank">${b.title}</a></h3><p>${b.description}</p><div class="source">${b.source}</div>`;
+    div.innerHTML=`<h3><a href="${b.link}" target="_blank">${b.title}</a></h3><p></p><div class="source">${b.source}</div>`;
     container.appendChild(div);
   });
 
