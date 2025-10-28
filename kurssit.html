@@ -186,13 +186,82 @@ html,body{height:100%; margin:0; background:#000; color:#eef2f5; font-family: "I
 </main>
 
 <footer class="footer">
-  © 2025 Talousvahti — ylläpitäjä <strong>Jere Järvelä</strong>
-  <div style="margin-top:10px;color:var(--muted)">
-    <a href="tietosuoja.html">Tietosuojakäytäntö</a> &middot;
-    <a href="evasteet.html">Evästekäytäntö</a> &middot;
-    <a href="kayttoehdot.html">Käyttöehdot</a>
-  </div>
+  <p>© 2025 Talousvahti</p>
+  <a 
+    href="https://www.instagram.com/talousvahti/" 
+    target="_blank" 
+    rel="noopener noreferrer" 
+    class="instagram-link"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="instagram-icon">
+      <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm4.25 5.25a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9zm5.25-.75a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5z"/>
+    </svg>
+    @talousvahti
+  </a>
 </footer>
+
+<button id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</button>
+
+<style>
+.footer {
+  margin-top: 36px;
+  padding: 24px 16px;
+  text-align: center;
+  color: var(--muted);
+  border-top: 1px solid rgba(255,255,255,0.1);
+  font-size: 14px;
+}
+
+.instagram-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: opacity 0.2s ease;
+}
+
+.instagram-link:hover {
+  opacity: 0.7;
+}
+
+.instagram-icon {
+  width: 18px;
+  height: 18px;
+}
+
+#backToTop {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 1400;
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(180deg, var(--accent), var(--accent-2));
+  color: #031423;
+  font-weight: 700;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s ease;
+}
+
+#backToTop:hover {
+  opacity: 0.8;
+}
+
+/* Näytä nappi scrollatessa */
+window.addEventListener("scroll", () => {
+  const btn = document.getElementById("backToTop");
+  btn.style.display = window.scrollY > 200 ? "flex" : "none";
+});
+</style>
+
 
 <button id="backToTop" aria-label="Takaisin ylös" title="Takaisin ylös">↑</button>
 
