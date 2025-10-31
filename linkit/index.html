@@ -1,1 +1,91 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Talousvahti</title>
+
+  <!-- TailwindCSS -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  
+  <!-- GSAP for animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+  <style>
+    body {
+      background: radial-gradient(circle at top, #0f172a, #020617);
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+    .loader {
+      position: fixed;
+      inset: 0;
+      background: #0f172a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 50;
+    }
+    .fade-out {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 1s ease;
+    }
+  </style>
+</head>
+
+<body class="flex flex-col items-center justify-center min-h-screen p-6">
+
+  <!-- LOADER -->
+  <div id="loader" class="loader">
+    <img src="https://storage.mlcdn.com/account_image/1738913/mFv74YlPUMmnQOFd6JnbIS7JxzNXPWmwdSLF0X8H.png" alt="Talousvahti logo" class="w-40 h-40 animate-pulse" />
+  </div>
+
+  <!-- CONTENT -->
+  <main id="content" class="hidden text-center w-full max-w-md">
+    <img src="https://storage.mlcdn.com/account_image/1738913/mFv74YlPUMmnQOFd6JnbIS7JxzNXPWmwdSLF0X8H.png" alt="Talousvahti logo" class="mx-auto w-32 mb-6 drop-shadow-lg">
+
+    <h1 class="text-2xl font-bold mb-4">Liity Talousvahti-listalle 💸</h1>
+    <p class="text-gray-300 mb-6 leading-relaxed">
+      Talousvahti-sähköpostilistalla saat joka aamu tiiviin koosteen tärkeimmistä
+      talous- ja sijoitusuutisista, markkinaluvuista (S&P500, OMXH25, valuutat)
+      sekä päivän talouskalenterin — suoraan sähköpostiisi.
+    </p>
+
+    <!-- KIT SIGNUP FORM -->
+    <div class="bg-gray-800 bg-opacity-60 p-4 rounded-2xl shadow-lg mb-6">
+      <script async data-uid="722673f8d4" src="https://talousvahti.kit.com/722673f8d4/index.js"></script>
+    </div>
+
+    <!-- BLOG LINK -->
+    <div class="mt-8">
+      <a href="https://talousvahti.com/Blogi.html" target="_blank"
+        class="inline-block bg-blue-600 hover:bg-blue-700 transition-all text-white font-semibold py-3 px-6 rounded-2xl shadow-lg">
+        📖 Siirry blogiin
+      </a>
+    </div>
+
+    <footer class="text-xs text-gray-400 mt-8">
+      © 2025 Talousvahti — Kaikki oikeudet pidätetään.
+    </footer>
+  </main>
+
+  <script>
+    // Loader animation
+    window.addEventListener('load', () => {
+      const loader = document.getElementById('loader');
+      gsap.to(loader.querySelector('img'), { rotation: 360, duration: 1.5, repeat: 1, ease: "power1.inOut" });
+      setTimeout(() => {
+        loader.classList.add('fade-out');
+        setTimeout(() => {
+          loader.style.display = 'none';
+          document.getElementById('content').classList.remove('hidden');
+          gsap.from("#content", { opacity: 0, y: 30, duration: 1 });
+        }, 1000);
+      }, 1800);
+    });
+  </script>
+</body>
+</html>
 
