@@ -97,31 +97,38 @@ html,body{height:100%; margin:0; background:#000; color:#eef2f5; font-family: "I
   display: none;
   position: fixed;
   top: 72px;
-  right: 18px;
-  width: 260px;
+  left: 0;
+  width: 100%;
   background: linear-gradient(180deg, var(--panel), #121212);
-  border-radius: 12px;
+  border-radius: 0 0 12px 12px;
   padding: 12px;
   box-shadow: var(--shadow);
-  z-index: 1300;
-  transform-origin: top right;
-  animation: menuIn .22s ease;
+  z-index: 2000; /* nostetaan varmasti kaiken muun yläpuolelle */
+  transform-origin: top;
+  animation: menuIn 0.25s ease;
 }
 
-/* Mobiilissa menu vie koko näytön leveydeltä ja asettuu oikein */
-@media (max-width: 860px) {
-  .mobile-menu {
-    right: 0;
-    left: 0;
-    top: 64px;
-    width: 100%;
-    border-radius: 0 0 12px 12px;
-  }
+@keyframes menuIn {
+  from { transform: translateY(-10px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
 }
 
-@keyframes menuIn{ from{ transform: translateY(-6px) scale(.98); opacity:0 } to{ transform:none; opacity:1 } }
-.mobile-menu a{ display:block; padding:10px 12px; color:#e6eef6; border-radius:8px; margin:6px 0; transition:all .16s; text-decoration:none; }
-.mobile-menu a:hover{ background:rgba(255,255,255,0.03) }
+.mobile-menu a {
+  display: block;
+  padding: 12px 14px;
+  color: #e6eef6;
+  border-radius: 8px;
+  margin: 6px 0;
+  text-decoration: none;
+  font-size: 15px;
+  transition: all 0.18s;
+}
+
+.mobile-menu a:hover {
+  background: rgba(255,255,255,0.06);
+  color: #fff;
+}
+
 
 /* HERO */
 .hero{ padding:56px 20px 36px; display:grid; place-items:center; text-align:center; gap:10px; margin-top:72px; }
