@@ -44,7 +44,23 @@ html,body{height:100%; margin:0; background:#000; color:#eef2f5; font-family: "I
   backdrop-filter: blur(6px);
 }
 .brand{display:flex; gap:12px; align-items:center;}
-.brand-badge{width:40px; height:40px; background:linear-gradient(135deg,var(--accent),var(--accent-2)); border-radius:10px; display:grid; place-items:center; font-weight:700; font-size:16px; color:#031423; box-shadow:0 6px 18px rgba(3,132,252,0.14), inset 0 -6px 10px rgba(0,0,0,0.15);}
+.brand-badge {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2)); /* sininen tausta */
+  box-shadow: 0 6px 18px rgba(3,132,252,0.14);
+  overflow: hidden;
+}
+
+.brand-badge img {
+  width: 80%;          /* logo ei peitä koko laatikkoa */
+  height: 80%;
+  object-fit: contain; /* säilyttää mittasuhteet */
+  filter: drop-shadow(0 0 3px rgba(0,0,0,0.4)); /* hienovarainen varjo erottaa taustasta */
+}
 .brand-title{ font-weight:600; font-size:18px; color:#fff; letter-spacing:0.2px; }
 
 .navlinks {
@@ -125,14 +141,35 @@ html,body{height:100%; margin:0; background:#000; color:#eef2f5; font-family: "I
 a:focus, button:focus{ outline: 3px solid rgba(3,132,252,0.12); outline-offset:3px; border-radius:8px }
 
 @media (max-width:1024px){ .main{ grid-column:1 / span 7 } .sidebar{ grid-column:8 / span 5 } }
-@media (max-width:860px){ .container{ gap:16px } .main{ grid-column:1 / span 12 } .sidebar{ grid-column:1 / span 12 } .hamburger{ display:grid } .navlinks{ display:none } .brand-title{ display:none } .hero{ padding:36px 16px 24px } .hero h1{ font-size:22px } .brand-badge{ width:36px; height:36px; font-size:14px } #backToTop{ right:12px; bottom:12px } }
+@media(max-width:860px){
+  .chart-box{ width:100%; }
+  .hamburger{ display:grid }
+  .navlinks{ display:none }
+  .brand-title{ display:none }
+  .hero{ padding:36px 16px 24px }
+  .hero h1{ font-size:22px }
+
+  .brand-badge {
+    width: 36px;
+    height: 36px;
+  }
+  .brand-badge img {
+    width: 80%;
+    height: 80%;
+    object-fit: contain;
+  }
+
+  #backToTop{ right:12px; bottom:12px }
+}
 </style>
 </head>
 <body>
 
 <header class="navbar" role="banner">
   <div class="brand" aria-label="Talousvahti">
-    <div class="brand-badge" aria-hidden="true">T</div>
+    <div class="brand-badge">
+      <img src="https://storage.mlcdn.com/account_image/1738913/mFv74YlPUMmnQOFd6JnbIS7JxzNXPWmwdSLF0X8H.png" alt="Talousvahti logo">
+    </div>
     <div>
       <div class="brand-title">Talousvahti</div>
       <div style="font-size:11px;color:var(--muted);margin-top:2px">Uutiset • Blogit • Työkalut</div>
