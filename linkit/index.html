@@ -9,11 +9,10 @@
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <!-- GSAP -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
   <style>
     body {
-      background: linear-gradient(180deg, #f9fafb 0%, #e5e7eb 100%);
+      background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
       color: #111827;
       font-family: 'Inter', sans-serif;
       overflow-x: hidden;
@@ -37,9 +36,9 @@
 
     .glass {
       background: rgba(255, 255, 255, 0.8);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(0,0,0,0.05);
-      box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
     }
 
     .btn {
@@ -47,18 +46,22 @@
     }
 
     .btn:hover {
-      transform: translateY(-3px) scale(1.02);
-      box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
     }
 
-    .glow:hover {
-      filter: brightness(1.1);
+    .hover-card:hover {
+      transform: translateY(-4px) scale(1.01);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
     }
 
-    @keyframes float {
-      0% { transform: translateY(0px); }
-      50% { transform: translateY(-8px); }
-      100% { transform: translateY(0px); }
+    .hero-logo {
+      transition: transform 0.5s ease, opacity 0.5s ease;
+    }
+
+    .hero-logo:hover {
+      transform: scale(1.05);
+      opacity: 0.95;
     }
   </style>
 </head>
@@ -67,32 +70,32 @@
 
   <!-- LOADER -->
   <div id="loader" class="loader">
-    <img src="https://storage.mlcdn.com/account_image/1738913/Z4xGYORLle801mpzkstlHtM1QQ5nb0TSpYJeEyPG.png" alt="Talousvahti logo" class="w-28 h-28 opacity-90 animate-pulse" />
+    <img src="https://storage.mlcdn.com/account_image/1738913/mFv74YlPUMmnQOFd6JnbIS7JxzNXPWmwdSLF0X8H.png" alt="Talousvahti logo" class="w-28 h-28 opacity-80" />
   </div>
 
-  <!-- MAIN CONTENT -->
-  <main id="content" class="hidden flex flex-col items-center text-center w-full max-w-lg relative">
+  <!-- CONTENT -->
+  <main id="content" class="hidden text-center w-full max-w-xl">
 
     <!-- HERO -->
-    <section class="pt-8 pb-6">
+    <section class="mt-10 mb-6">
       <img 
-        src="https://storage.mlcdn.com/account_image/1738913/Z4xGYORLle801mpzkstlHtM1QQ5nb0TSpYJeEyPG.png" 
+        src="https://storage.mlcdn.com/account_image/1738913/mFv74YlPUMmnQOFd6JnbIS7JxzNXPWmwdSLF0X8H.png" 
         alt="Talousvahti logo" 
-        class="mx-auto w-32 mb-4 opacity-90 transition-transform duration-700 hover:scale-105 hover:rotate-1 glow"
-        style="animation: float 5s ease-in-out infinite;"
+        class="mx-auto w-32 mb-6 hero-logo"
       >
-      <h1 class="text-4xl font-extrabold mb-3 tracking-tight">Talousvahti</h1>
-      <p class="text-gray-600 max-w-md mx-auto leading-relaxed text-lg">
-        Saat joka aamu sähköpostiisi tärkeimmät talous- ja sijoitusuutiset, markkinaluvut
-        sekä tiiviin talouskalenterin — selkeästi ja ajantasaisesti.
+      <h1 class="text-4xl font-extrabold tracking-tight mb-3">Talousvahti</h1>
+      <p class="text-gray-600 max-w-md mx-auto text-lg leading-relaxed">
+        Päivän tärkeimmät talous- ja sijoitusuutiset, markkinaluvut sekä talouskalenteri – tiiviisti joka aamu sähköpostiisi.
       </p>
     </section>
 
-    <!-- KIT SIGNUP FORM -->
-    <section class="glass rounded-3xl p-6 w-full mt-6">
+    <!-- SIGNUP FORM -->
+    <section class="glass rounded-3xl p-6 mt-6 hover-card">
       <h2 class="text-xl font-semibold mb-3">💌 Liity Talousvahti-listalle</h2>
-      <p class="text-gray-600 mb-4">Pysy ajan tasalla markkinoista – helposti, joka aamu.</p>
-      <script async data-uid="722673f8d4" src="https://talousvahti.kit.com/722673f8d4/index.js"></script>
+      <p class="text-gray-600 mb-4">Pysy ajan tasalla markkinoista ja sijoitusuutisista helposti.</p>
+      <div id="kit-form">
+        <script async data-uid="722673f8d4" src="https://talousvahti.kit.com/722673f8d4/index.js"></script>
+      </div>
     </section>
 
     <!-- BLOG LINK -->
@@ -102,51 +105,58 @@
         target="_blank"
         class="btn inline-flex items-center gap-2 bg-black text-white font-semibold py-3 px-8 rounded-full text-lg shadow-md hover:bg-gray-900"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" /></svg>
-        Siirry blogiin
+        📈 Siirry blogiin
       </a>
     </section>
 
     <!-- FOOTER -->
-    <footer class="text-xs text-gray-500 mt-12 mb-2">
-      © 2025 Talousvahti — Kaikki oikeudet pidätetään.
+    <footer class="text-xs text-gray-500 mt-12 mb-3">
+      © 2025 Talousvahti — Talous selkeästi. Kaikki oikeudet pidätetään.
     </footer>
-
   </main>
 
-  <!-- INTERACTION SCRIPT -->
+  <!-- ANIMAATIOT -->
   <script>
     window.addEventListener('load', () => {
       const loader = document.getElementById('loader');
-      gsap.fromTo(loader.querySelector('img'), 
-        { scale: 0.8, opacity: 0.5, rotation: 0 }, 
-        { scale: 1, opacity: 1, rotation: 360, duration: 1.5, ease: "power2.inOut" }
-      );
+      gsap.from(loader.querySelector('img'), { opacity: 0, scale: 0.8, duration: 1, ease: "power2.out" });
+      
       setTimeout(() => {
         loader.classList.add('fade-out');
         setTimeout(() => {
           loader.style.display = 'none';
           const content = document.getElementById('content');
           content.classList.remove('hidden');
+
+          // Sisällön pehmeä sisääntulo
           gsap.from("#content section", {
             opacity: 0,
-            y: 40,
+            y: 30,
             duration: 0.8,
-            stagger: 0.2,
+            stagger: 0.25,
             ease: "power2.out"
           });
-        }, 1000);
-      }, 2000);
+        }, 800);
+      }, 1200);
     });
 
-    // Parallax hover effect
-    document.addEventListener('mousemove', e => {
-      const x = (window.innerWidth / 2 - e.pageX) / 40;
-      const y = (window.innerHeight / 2 - e.pageY) / 40;
-      gsap.to('img[alt="Talousvahti logo"]', { rotationY: x, rotationX: y, duration: 0.5, ease: "power1.out" });
+    // Hover-animaatio hero-logoille ja lasikortille
+    document.querySelectorAll('.hero-logo, .hover-card').forEach(el => {
+      el.addEventListener('mousemove', (e) => {
+        const rect = el.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        gsap.to(el, {
+          transformOrigin: `${x}px ${y}px`,
+          scale: 1.03,
+          duration: 0.3
+        });
+      });
+      el.addEventListener('mouseleave', () => {
+        gsap.to(el, { scale: 1, duration: 0.4 });
+      });
     });
   </script>
 
 </body>
 </html>
-
