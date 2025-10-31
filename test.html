@@ -40,18 +40,22 @@ html,body{height:100%; margin:0; background:#000; color:#eef2f5; font-family: "I
   width: 40px;
   height: 40px;
   border-radius: 10px;
-  overflow: hidden;
   display: grid;
   place-items: center;
-  background: transparent;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2)); /* palautetaan värit */
   box-shadow: 0 6px 18px rgba(3,132,252,0.14);
+  overflow: hidden;
+  padding: 4px; /* pieni sisämarginaali että logo ei leikkaannu */
 }
 
 .brand-badge img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain; /* näkyy nätisti logon omalla muodolla */
+  border-radius: 8px;
+  background-color: #000; /* varmuustausta jos logo on läpinäkyvä */
 }
+
 
 .brand-title{ font-weight:600; font-size:18px; color:#fff; letter-spacing:0.2px; }
 
@@ -125,19 +129,20 @@ html,body{height:100%; margin:0; background:#000; color:#eef2f5; font-family: "I
   .hero{ padding:36px 16px 24px }
   .hero h1{ font-size:22px }
 
-  /* Tämä korvaa vanhan .brand-badge -osion */
   .brand-badge {
     width: 36px;
     height: 36px;
+    padding: 3px;
   }
   .brand-badge img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
   }
 
   #backToTop{ right:12px; bottom:12px }
 }
+
 
 </style>
 </head>
