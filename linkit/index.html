@@ -7,21 +7,20 @@
 
   <!-- TailwindCSS -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  
-  <!-- GSAP for animations -->
+  <!-- GSAP -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
   <style>
     body {
-      background: radial-gradient(circle at top, #0f172a, #020617);
-      color: #fff;
+      background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+      color: #111827;
       font-family: 'Inter', sans-serif;
       overflow-x: hidden;
     }
     .loader {
       position: fixed;
       inset: 0;
-      background: #0f172a;
+      background: white;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -32,6 +31,18 @@
       pointer-events: none;
       transition: opacity 1s ease;
     }
+    .glass {
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    .btn {
+      transition: all 0.3s ease;
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+    }
   </style>
 </head>
 
@@ -39,53 +50,68 @@
 
   <!-- LOADER -->
   <div id="loader" class="loader">
-    <img src="https://storage.mlcdn.com/account_image/1738913/mFv74YlPUMmnQOFd6JnbIS7JxzNXPWmwdSLF0X8H.png" alt="Talousvahti logo" class="w-40 h-40 animate-pulse" />
+    <img src="https://storage.mlcdn.com/account_image/1738913/Z4xGYORLle801mpzkstlHtM1QQ5nb0TSpYJeEyPG.png" alt="Talousvahti logo" class="w-28 h-28 opacity-80 animate-pulse" />
   </div>
 
   <!-- CONTENT -->
   <main id="content" class="hidden text-center w-full max-w-md">
-    <img src="https://storage.mlcdn.com/account_image/1738913/mFv74YlPUMmnQOFd6JnbIS7JxzNXPWmwdSLF0X8H.png" alt="Talousvahti logo" class="mx-auto w-32 mb-6 drop-shadow-lg">
+    <!-- LOGO -->
+    <img 
+      src="https://storage.mlcdn.com/account_image/1738913/mFv74YlPUMmnQOFd6JnbIS7JxzNXPWmwdSLF0X8H.png" 
+      alt="Talousvahti logo" 
+      class="mx-auto w-28 mb-6 opacity-90 transition-transform duration-500 hover:scale-105"
+    >
 
-    <h1 class="text-2xl font-bold mb-4">Liity Talousvahti-listalle 💸</h1>
-    <p class="text-gray-300 mb-6 leading-relaxed">
-      Talousvahti-sähköpostilistalla saat joka aamu tiiviin koosteen tärkeimmistä
-      talous- ja sijoitusuutisista, markkinaluvuista (S&P500, OMXH25, valuutat)
-      sekä päivän talouskalenterin — suoraan sähköpostiisi.
+    <!-- HEADER -->
+    <h1 class="text-3xl font-bold mb-4 tracking-tight">Talousvahti 💸</h1>
+    <p class="text-gray-700 mb-6 leading-relaxed px-2">
+      Liity Talousvahti-sähköpostilistalle ja saa joka aamu tärkeimmät 
+      talous- ja sijoitusuutiset, markkinaluvut (S&P500, OMXH25, valuutat) 
+      sekä päivän talouskalenteri – suoraan sähköpostiisi.
     </p>
 
-    <!-- KIT SIGNUP FORM -->
-    <div class="bg-gray-800 bg-opacity-60 p-4 rounded-2xl shadow-lg mb-6">
+    <!-- SIGNUP FORM (Kit embed) -->
+    <div class="glass rounded-2xl p-4 mb-6">
       <script async data-uid="722673f8d4" src="https://talousvahti.kit.com/722673f8d4/index.js"></script>
     </div>
 
     <!-- BLOG LINK -->
     <div class="mt-8">
-      <a href="https://talousvahti.com/Blogi.html" target="_blank"
-        class="inline-block bg-blue-600 hover:bg-blue-700 transition-all text-white font-semibold py-3 px-6 rounded-2xl shadow-lg">
-        📖 Siirry blogiin
+      <a 
+        href="https://talousvahti.com/Blogi.html" 
+        target="_blank"
+        class="btn inline-block bg-black text-white font-semibold py-3 px-8 rounded-full text-lg shadow-md hover:bg-gray-900"
+      >
+        📖 Lue blogia
       </a>
     </div>
 
-    <footer class="text-xs text-gray-400 mt-8">
-      © 2025 Talousvahti — Kaikki oikeudet pidätetään.
+    <!-- FOOTER -->
+    <footer class="text-xs text-gray-500 mt-10 mb-2">
+      © 2025 Talousvahti — Päivän talous tiivistettynä.
     </footer>
   </main>
 
+  <!-- Loader Animation -->
   <script>
-    // Loader animation
     window.addEventListener('load', () => {
       const loader = document.getElementById('loader');
-      gsap.to(loader.querySelector('img'), { rotation: 360, duration: 1.5, repeat: 1, ease: "power1.inOut" });
+      gsap.fromTo(loader.querySelector('img'), 
+        { scale: 0.8, opacity: 0.4 }, 
+        { scale: 1, opacity: 1, duration: 1.5, yoyo: true, repeat: 1, ease: "power1.inOut" }
+      );
       setTimeout(() => {
         loader.classList.add('fade-out');
         setTimeout(() => {
           loader.style.display = 'none';
-          document.getElementById('content').classList.remove('hidden');
+          const content = document.getElementById('content');
+          content.classList.remove('hidden');
           gsap.from("#content", { opacity: 0, y: 30, duration: 1 });
         }, 1000);
-      }, 1800);
+      }, 2000);
     });
   </script>
+
 </body>
 </html>
 
