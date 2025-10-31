@@ -56,7 +56,12 @@ html,body{height:100%; margin:0; background:#000; color:#eef2f5; font-family:"In
   filter: drop-shadow(0 0 3px rgba(0,0,0,0.4)); /* hienovarainen varjo erottaa taustasta */
 }
 .brand-title{font-weight:600;font-size:18px;color:#fff;}
-.navlinks{display:flex;gap:14px;align-items:center;}
+.navlinks {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  margin-left: auto; /* Tämä työntää linkit oikeaan reunaan */
+}
 .navlinks a{color:#dfe7ee;font-size:14px;padding:8px 12px;border-radius:8px;transition:all .18s;text-decoration:none;}
 .navlinks a:hover{background:var(--glass);color:#fff;}
 .navlinks a.active{background:linear-gradient(90deg,#0f2b66 0%,rgba(3,132,252,0.12)100%);color:#fff;}
