@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="fi">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
 <head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-2566G3KPHW"></script>
@@ -169,8 +171,7 @@ html,body{height:100%; margin:0; background:#000; color:#eef2f5; font-family:"In
   pointer-events: none;
 }
 
-  
-  
+
 </style>
 </head>
 <body>
@@ -214,16 +215,16 @@ html,body{height:100%; margin:0; background:#000; color:#eef2f5; font-family:"In
   <div class="main">
     <section class="feed-section">
       <h2>Talousuutiset <span class="date" id="today-date"></span></h2>
-        <div id="feeds">
-          <div id="news-loader" class="flex flex-col items-center justify-center py-16">
-            <img 
-              src="https://storage.mlcdn.com/account_image/1738913/Z4xGYORLle801mpzkstlHtM1QQ5nb0TSpYJeEyPG.png" 
-              alt="Talousvahti logo" 
-              class="w-20 h-20 opacity-80 mb-4"
-            />
-            <p class="text-gray-400 text-sm tracking-wide">Ladataan uutisia...</p>
-          </div>
+      <div id="feeds">
+        <div id="news-loader" class="flex flex-col items-center justify-center py-16">
+          <img 
+            src="https://storage.mlcdn.com/account_image/1738913/Z4xGYORLle801mpzkstlHtM1QQ5nb0TSpYJeEyPG.png" 
+            alt="Talousvahti logo" 
+            class="w-20 h-20 opacity-80 mb-4"
+          />
+          <p class="text-gray-400 text-sm tracking-wide">Ladataan uutisia...</p>
         </div>
+      </div>
 
 
   <aside class="sidebar">
@@ -264,35 +265,35 @@ html,body{height:100%; margin:0; background:#000; color:#eef2f5; font-family:"In
   const mm = String(today.getMonth()+1).padStart(2,'0');
   document.getElementById('today-date').textContent = dd + '.' + mm;
 
-  const feedsContainer = document.getElementById('feeds');
-  const loader = document.getElementById('news-loader');
-  const rssUrl = 'https://script.google.com/macros/s/AKfycbzLi_oCwPh1BhH94s0vgy0DJUqLjrNCLwr6Zkr-iRBMRKDtyqPRck8LHZKdCq5Tl9Wp/exec';
-  
-  // Animoidaan loaderin sisään ilmestyminen GSAP:lla
-  gsap.from(loader.querySelector('img'), { opacity: 0, scale: 0.85, duration: 1, ease: "power2.out" });
-  gsap.from(loader.querySelector('p'), { opacity: 0, y: 10, delay: 0.2, duration: 0.8 });
-  
-  fetch(rssUrl)
-    .then(r => r.text())
-    .then(html => {
-      // Fade-out animaatio
-      loader.classList.add('fade-out');
-      setTimeout(() => {
-        feedsContainer.innerHTML = html;
-        // Pehmeä sisääntulo uutisille
-        gsap.from("#feeds .feed-box", {
-          opacity: 0,
-          y: 25,
-          duration: 0.8,
-          stagger: 0.2,
-          ease: "power2.out"
-        });
-      }, 900);
-    })
-    .catch(err => {
-      feedsContainer.innerHTML = "<div class='feed-box'><p>Uutisia ei voitu ladata.</p></div>";
-      console.error(err);
-    });
+const feedsContainer = document.getElementById('feeds');
+const loader = document.getElementById('news-loader');
+const rssUrl = 'https://script.google.com/macros/s/AKfycbzLi_oCwPh1BhH94s0vgy0DJUqLjrNCLwr6Zkr-iRBMRKDtyqPRck8LHZKdCq5Tl9Wp/exec';
+
+// Loaderin sisääntulo
+gsap.from(loader.querySelector('img'), { opacity: 0, scale: 0.85, duration: 1, ease: "power2.out" });
+gsap.from(loader.querySelector('p'), { opacity: 0, y: 10, delay: 0.2, duration: 0.8 });
+
+fetch(rssUrl)
+  .then(r => r.text())
+  .then(html => {
+    // Fade-out animaatio
+    loader.classList.add('fade-out');
+    setTimeout(() => {
+      feedsContainer.innerHTML = html;
+      // Pehmeä sisääntulo uutisille
+      gsap.from("#feeds .feed-box", {
+        opacity: 0,
+        y: 25,
+        duration: 0.8,
+        stagger: 0.2,
+        ease: "power2.out"
+      });
+    }, 900);
+  })
+  .catch(err => {
+    feedsContainer.innerHTML = "<div class='feed-box'><p>Uutisia ei voitu ladata.</p></div>";
+    console.error(err);
+  });
 
 
   const hamburger=document.getElementById('hamburger');
