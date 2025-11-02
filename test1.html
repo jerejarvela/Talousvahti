@@ -1,14 +1,25 @@
 <!DOCTYPE html>
 <html lang="fi">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2566G3KPHW"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-2566G3KPHW');
+</script>
+<meta name="google-site-verification" content="7WCvI6pUCbJVC3QmzkJqjICcZzEzENP3sszMQ1-QS00" />
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1, viewport-fit=cover" />
-<title>Talousuutiset – Päivän tärkeimmät talous- ja sijoittamisuutiset</title>
+<title>Päivän Talousuutiset | Talousvahti</title>
 <meta name="description" content="Päivän tärkeimmät talousuutiset ja sijoittamiseen liittyvät ajankohtaiset aiheet. Seuraa markkinoiden liikkeitä ja pysy ajan tasalla Talousvahdin kautta." />
-<meta name="keywords" content="talousuutiset, sijoittaminen, pörssi, sisäpiirikaupat, markkinat, osakkeet, finanssiuutiset">
-<meta name="author" content="Talousvahti" />
+<meta name="author" content="Jere Järvelä" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+
 
 <style>
 :root{
@@ -26,102 +37,139 @@
 }
 
 *{box-sizing:border-box}
-html,body{height:100%; margin:0; background:var(--bg); color:#eef2f5; font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; line-height:1.5; -webkit-tap-highlight-color: transparent;}
+html,body{height:100%; margin:0; background:#000; color:#eef2f5; font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial; line-height:1.5; -webkit-tap-highlight-color: transparent;}
 
 /* NAVBAR */
 .navbar{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  z-index:1200;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:20px;
-  padding:14px 28px;
-  background: linear-gradient(180deg, rgba(0,0,0,0.9), rgba(10,10,10,0.8));
-  border-bottom:1px solid rgba(255,255,255,0.03);
-  backdrop-filter: blur(6px);
+  position:fixed; top:0; left:0; width:100%; z-index:1200;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:14px 28px; background:linear-gradient(180deg,rgba(0,0,0,0.9),rgba(10,10,10,0.8));
+  border-bottom:1px solid rgba(255,255,255,0.03); backdrop-filter:blur(6px);
 }
 .brand{display:flex; gap:12px; align-items:center;}
-.brand-badge{width:40px; height:40px; background:linear-gradient(135deg,var(--accent),var(--accent-2)); border-radius:10px; display:grid; place-items:center; font-weight:700; font-size:16px; color:#031423; box-shadow:0 6px 18px rgba(3,132,252,0.14), inset 0 -6px 10px rgba(0,0,0,0.15);}
-.brand-title{ font-weight:600; font-size:18px; color:#fff; letter-spacing:0.2px; }
+.brand-badge {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2)); /* sininen tausta */
+  box-shadow: 0 6px 18px rgba(3,132,252,0.14);
+  overflow: hidden;
+}
 
-.navlinks{ display:flex; gap:14px; align-items:center; }
-.navlinks a{ color:#dfe7ee; font-size:14px; padding:8px 12px; border-radius:8px; transition:all .18s ease; text-decoration:none; }
-.navlinks a:hover{ background:var(--glass); transform:translateY(-2px); color:#fff; }
-.navlinks a.active{ background:linear-gradient(90deg,#0f2b66 0%, rgba(3,132,252,0.12) 100%); color:#fff; box-shadow:0 6px 18px rgba(3,132,252,0.06); }
+.brand-badge img {
+  width: 80%;          /* logo ei peitä koko laatikkoa */
+  height: 80%;
+  object-fit: contain; /* säilyttää mittasuhteet */
+  filter: drop-shadow(0 0 3px rgba(0,0,0,0.4)); /* hienovarainen varjo erottaa taustasta */
+}
 
-.controls{ display:flex; gap:12px; align-items:center; }
+.brand-title{font-weight:600;font-size:18px;color:#fff;letter-spacing:0.2px;}
+.navlinks {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  margin-left: auto; /* Tämä työntää linkit oikeaan reunaan */
+}
+.navlinks a{color:#dfe7ee;font-size:14px;padding:8px 12px;border-radius:8px;transition:all .18s ease;text-decoration:none;}
+.navlinks a:hover{background:var(--glass);transform:translateY(-2px);color:#fff;}
+.navlinks a.active{background:linear-gradient(90deg,#0f2b66 0%,rgba(3,132,252,0.12) 100%);color:#fff;box-shadow:0 6px 18px rgba(3,132,252,0.06);}
+.hamburger {
+  display: none;
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: transparent;
+  border: 1px solid var(--glass-border);
+  place-items: center;
+  cursor: pointer;
+}
 
-.hamburger{ display:none; width:42px; height:42px; border-radius:10px; background:transparent; border:1px solid var(--glass-border); display:grid; place-items:center; cursor:pointer; }
-.hamburger .lines{ width:20px; height:14px; position:relative; }
-.hamburger .lines::before, .hamburger .lines::after, .hamburger .lines div{ content:""; position:absolute; left:0; right:0; height:2px; background:#dfe7ee; border-radius:2px; }
-.hamburger .lines::before{ top:0; opacity:0.95 }
-.hamburger .lines::after{ bottom:0; opacity:0.95 }
-.hamburger .lines div{ top:6px; opacity:0.95 }
-
-.mobile-menu{ display:none; position:fixed; top:72px; right:18px; width:260px; background:linear-gradient(180deg,var(--panel), #121212); border-radius:12px; padding:12px; box-shadow:var(--shadow); z-index:1300; transform-origin:top right; animation:menuIn .22s ease; }
-@keyframes menuIn{ from{ transform: translateY(-6px) scale(.98); opacity:0 } to{ transform:none; opacity:1 } }
-.mobile-menu a{ display:block; padding:10px 12px; color:#e6eef6; border-radius:8px; margin:6px 0; transition:all .16s; text-decoration:none; }
-.mobile-menu a:hover{ background:rgba(255,255,255,0.03) }
+.hamburger .lines{width:20px;height:14px;position:relative;}
+.hamburger .lines::before,.hamburger .lines::after,.hamburger .lines div{content:"";position:absolute;left:0;right:0;height:2px;background:#dfe7ee;border-radius:2px;}
+.hamburger .lines::before{top:0}
+.hamburger .lines::after{bottom:0}
+.hamburger .lines div{top:6px}
+.mobile-menu{display:none;position:fixed;top:72px;right:18px;width:260px;background:linear-gradient(180deg,var(--panel),#121212);border-radius:12px;padding:12px;box-shadow:var(--shadow);z-index:1300;transform-origin:top right;animation:menuIn .22s ease;}
+@keyframes menuIn{from{transform:translateY(-6px) scale(.98);opacity:0}to{transform:none;opacity:1}}
+.mobile-menu a{display:block;padding:10px 12px;color:#e6eef6;border-radius:8px;margin:6px 0;transition:all .16s;text-decoration:none;}
+.mobile-menu a:hover{background:rgba(255,255,255,0.03)}
 
 /* HERO */
-.hero{ padding:56px 20px 36px; display:grid; place-items:center; text-align:center; gap:10px; margin-top:72px; }
-.hero h1{ margin:0; font-size:28px; color:#ffffff; font-weight:600; letter-spacing:0.2px; }
-.hero p{ margin:0; max-width:820px; color:var(--muted); font-size:15.5px; }
+.hero{padding:56px 20px 36px;text-align:center;margin-top:72px;}
+.hero h1{margin:0;font-size:28px;color:#ffffff;font-weight:600;}
 
 /* LAYOUT */
-.container{ max-width:1150px; margin:34px auto; padding:0 20px 60px; display:grid; grid-template-columns: repeat(12, 1fr); gap:22px; }
-.main{ grid-column:1 / span 8; display:flex; flex-direction:column; gap:18px; }
-.sidebar{ grid-column:9 / span 4; display:flex; flex-direction:column; gap:18px; }
+.container{max-width:1150px;margin:34px auto;padding:0 20px 60px;display:grid;grid-template-columns:repeat(12,1fr);gap:22px;}
+.main{grid-column:1 / span 8;display:flex;flex-direction:column;gap:18px;}
+.sidebar{grid-column:9 / span 4;display:flex;flex-direction:column;gap:18px;}
 
 /* CARDS */
-.card{ background: linear-gradient(180deg,var(--panel), var(--panel-2)); border-radius: var(--radius); padding:18px; box-shadow: var(--card-shadow); border:1px solid rgba(255,255,255,0.02); transition: transform .28s cubic-bezier(.2,.9,.2,1), box-shadow .28s; opacity:0; transform: translateY(26px); display:flex; gap:14px; align-items:flex-start; }
-.card.visible{ animation: popIn .5s cubic-bezier(.2,.9,.2,1) forwards; }
-@keyframes popIn{ to{ opacity:1; transform:none } }
-.card:hover{ transform: translateY(-6px); box-shadow: 0 18px 45px rgba(2,6,23,0.6) }
-.card .thumb{ width:120px; height:80px; border-radius:10px; background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); overflow:hidden; flex:0 0 120px; display:grid; place-items:center; }
-.card .thumb img{ width:100%; height:100%; object-fit:cover; display:block; }
-.card .content{ flex:1 1 auto; min-width:0; }
-.card h3{ margin:0 0 8px 0; font-size:17px; color:#fff; font-weight:700; line-height:1.25; }
-.meta{ display:flex; gap:10px; align-items:center; color:var(--muted); font-size:13px; margin-bottom:8px; }
-.meta .source{ text-transform:none; }
-.card p.small{ color:var(--muted); margin:0; font-size:14px; }
-.card .actions{ margin-top:10px; display:flex; gap:12px; align-items:center; }
-.btn{ padding:8px 12px; border-radius:10px; background:linear-gradient(90deg,var(--accent),var(--accent-2)); color:#031423; text-decoration:none; font-weight:700; display:inline-flex; align-items:center; gap:8px; }
+.card{background:linear-gradient(180deg,var(--panel),var(--panel-2));border-radius:var(--radius);padding:22px;box-shadow:var(--card-shadow);border:1px solid rgba(255,255,255,0.02);transition:transform .28s cubic-bezier(.2,.9,.2,1),box-shadow .28s;opacity:0;transform:translateY(26px);}
+.card.visible{animation:popIn .6s cubic-bezier(.2,.9,.2,1) forwards;}
+@keyframes popIn{to{opacity:1;transform:none}}
+.card:hover{transform:translateY(-6px);box-shadow:0 18px 45px rgba(2,6,23,0.6)}
+.card h3{margin:0 0 10px 0;font-size:18px;color:#fff;font-weight:600;}
+.card p.small{color:var(--muted);margin:0;font-size:14px;}
+.feed-box{background:linear-gradient(180deg,var(--panel),var(--panel-2));border-radius:var(--radius);padding:22px;margin-bottom:20px;box-shadow:var(--card-shadow);border:1px solid rgba(255,255,255,0.02);animation:popIn .6s cubic-bezier(.2,.9,.2,1) forwards;}
+.feed-box h3{margin:0 0 8px 0;font-size:18px;color:#fff;}
+.feed-box p{color:var(--muted);margin:0 0 6px 0;font-size:14px;line-height:1.5;}
+.feed-box a {
+  color: #fff;
+  text-decoration: none;
+}
+.feed-box a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
 
-.loader-skeleton{ height:84px; border-radius:12px; background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); display:flex; align-items:center; justify-content:center; color:var(--muted); }
-
-.empty{ text-align:center; padding:28px; color:var(--muted); }
-
-/* SIDEBAR */
 .icon-circle{ width:44px; height:44px; border-radius:10px; display:grid; place-items:center; background:linear-gradient(135deg, rgba(3,132,252,0.12), rgba(0,194,255,0.06)); color:var(--accent); font-weight:700; box-shadow: inset 0 -8px 18px rgba(0,0,0,0.35); }
 
+.feed-section h2{margin:0 0 12px 0;color:#fff;font-size:22px;border-bottom:1px solid rgba(255,255,255,0.06);padding-bottom:8px;display:flex;justify-content:space-between;align-items:center;}
+.feed-section .date{font-size:14px;color:var(--accent);}
+
 /* FOOTER */
-.footer{ margin-top:36px; padding:30px 20px; text-align:center; color:var(--muted); border-top:1px solid rgba(255,255,255,0.02); font-size:14px; }
+.footer{margin-top:36px;padding:30px 20px;text-align:center;color:var(--muted);border-top:1px solid rgba(255,255,255,0.02);font-size:14px;}
+#backToTop{position:fixed;right:20px;bottom:20px;z-index:1400;width:48px;height:48px;border-radius:12px;border:none;cursor:pointer;background:linear-gradient(180deg,var(--accent),var(--accent-2));color:#031423;font-weight:700;box-shadow:0 10px 30px rgba(3,132,252,0.16);display:none;align-items:center;justify-content:center;}
 
-#backToTop{ position:fixed; right:20px; bottom:20px; z-index:1400; width:48px;height:48px;border-radius:12px;border:none; cursor:pointer; background:linear-gradient(180deg,var(--accent),var(--accent-2)); color:#031423; font-weight:700; box-shadow:0 10px 30px rgba(3,132,252,0.16); display:none; align-items:center; justify-content:center; }
+/* RESPONSIVE */
+@media(max-width:860px){ .container{ gap:16px } .main{ grid-column:1 / span 12 } .sidebar{ grid-column:1 / span 12 }
+  .chart-box{ width:100%; }
+  .hamburger{ display:grid }
+  .navlinks{ display:none }
+  .brand-title{ display:none }
+  .hero{ padding:36px 16px 24px }
+  .hero h1{ font-size:22px }
 
-a:focus, button:focus{ outline: 3px solid rgba(3,132,252,0.12); outline-offset:3px; border-radius:8px }
+  .brand-badge {
+    width: 36px;
+    height: 36px;
+  }
+  .brand-badge img {
+    width: 80%;
+    height: 80%;
+    object-fit: contain;
+  }
 
-@media (max-width:1024px){ .main{ grid-column:1 / span 7 } .sidebar{ grid-column:8 / span 5 } }
-@media (max-width:860px){ .container{ gap:16px } .main{ grid-column:1 / span 12 } .sidebar{ grid-column:1 / span 12 } .hamburger{ display:grid } .navlinks{ display:none } .brand-title{ display:none } .hero{ padding:36px 16px 24px } .hero h1{ font-size:22px } .brand-badge{ width:36px; height:36px; font-size:14px } #backToTop{ right:12px; bottom:12px } .card{ flex-direction:column } .card .thumb{ width:100%; height:200px; }
+  #backToTop{ right:12px; bottom:12px }
+}
+
 </style>
 </head>
 <body>
 
-<header class="navbar" role="banner">
-  <div class="brand" aria-label="Talousvahti">
-    <div class="brand-badge" aria-hidden="true">T</div>
+<header class="navbar">
+  <div class="brand">
+    <div class="brand-badge">
+      <img src="https://storage.mlcdn.com/account_image/1738913/mFv74YlPUMmnQOFd6JnbIS7JxzNXPWmwdSLF0X8H.png" alt="Talousvahti logo">
+    </div>
     <div>
       <div class="brand-title">Talousvahti</div>
-      <div style="font-size:11px;color:var(--muted);margin-top:2px">Uutiset • Kurssit • Työkalut</div>
+      <div style="font-size:11px;color:var(--muted);margin-top:2px">Uutiset • Blogit • Työkalut</div>
     </div>
   </div>
-
-  <nav class="navlinks" aria-label="Päävalikko">
+  <nav class="navlinks">
     <a href="index.html" class="active">Talousuutiset</a>
     <a href="kurssit.html">Pörssikurssit</a>
     <a href="talouskalenteri.html">Talouskalenteri</a>
@@ -129,54 +177,60 @@ a:focus, button:focus{ outline: 3px solid rgba(3,132,252,0.12); outline-offset:3
     <a href="sijoituslaskuri.html">Sijoituslaskuri</a>
     <a href="tietoa.html">Tietoa</a>
   </nav>
-
-  <div class="controls">
-    <button class="hamburger" id="hamburger" aria-expanded="false" aria-controls="mobileMenu" title="Avaa valikko">
-      <span class="lines"><div></div></span>
-    </button>
-  </div>
+  <button class="hamburger" id="hamburger"><span class="lines"><div></div></span></button>
 </header>
 
-<div id="mobileMenu" class="mobile-menu" role="menu" aria-hidden="true" style="display:none">
-  <a href="index.html" class="active" role="menuitem">Talousuutiset</a>
-  <a href="kurssit.html" role="menuitem">Pörssikurssit</a>
-  <a href="talouskalenteri.html" role="menuitem">Talouskalenteri</a>
-  <a href="Blogi.html" role="menuitem">Blogi</a>
-  <a href="sijoituslaskuri.html" role="menuitem">Sijoituslaskuri</a>
-  <a href="tietoa.html" role="menuitem">Tietoa</a>
+<div id="mobileMenu" class="mobile-menu">
+  <a href="index.html" class="active">Talousuutiset</a>
+  <a href="kurssit.html">Pörssikurssit</a>
+  <a href="talouskalenteri.html">Talouskalenteri</a>
+  <a href="Blogi.html">Blogi</a>
+  <a href="sijoituslaskuri.html">Sijoituslaskuri</a>
+  <a href="tietoa.html">Tietoa</a>
 </div>
 
-<section class="hero" aria-labelledby="hero-title">
-  <h1 id="hero-title">Talousuutiset</h1>
-  <p>Päivän tärkeimmät talous- ja sijoittamisuutiset, markkinat ja analyysit — aina ajantasaisesti.</p>
+<section class="hero">
+  <h1></h1>
+  <p></p>
 </section>
 
-<main class="container" role="main">
-  <div class="main" id="feeds" aria-live="polite" aria-busy="true">
-    <div class="card loader-skeleton" id="loader" role="status" aria-label="Ladataan uutisia">
-      <strong>Ladataan uutisia…</strong>
-    </div>
-  </div>
-
-  <aside class="sidebar" role="complementary" aria-label="Sivupaneeli">
-    <div class="card" id="subscribe">
-      <div style="display:flex;gap:12px;align-items:center">
-        <div class="icon-circle" aria-hidden="true">✉️</div>
-        <div style="flex:1">
-          <h3>Liity sähköpostilistalle</h3>
-          <p class="small">Saat joka aamu päivän tärkeimmät talousuutiset ja markkinaluvut suoraan sähköpostiisi.</p>
+<main class="container">
+  <div class="main">
+    <section class="feed-section">
+      <h2>Talousuutiset <span class="date" id="today-date"></span></h2>
+      <div id="feeds">
+        <div class="feed-box">
+          <p>Ladataan uutisia...</p>
         </div>
       </div>
-      <div class="kit-wrap" style="margin-top:12px">
+    </section>
+  </div>
+
+  <div id="loader" class="loader">
+    <img src="https://storage.mlcdn.com/account_image/1738913/Z4xGYORLle801mpzkstlHtM1QQ5nb0TSpYJeEyPG.png" alt="Talousvahti logo" class="w-24 h-24 opacity-80" />
+  </div>
+
+  <aside class="sidebar">
+    <div class="card" id="subscribe" aria-labelledby="subscribe-title">
+      <div style="display:flex;gap:12px;align-items:center">
+        <div class="icon-circle" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 8l9 6 9-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div style="flex:1">
+          <h3 id="subscribe-title">Liity sähköpostilistalle</h3>
+          <p class="small">Joka aamu — päivän tärkeimmät talousuutiset ja markkinakatsaus suoraan sähköpostiisi.</p>
+        </div>
+      </div>
+
+      <div class="kit-wrap" aria-hidden="false" style="margin-top:12px">
         <script async data-uid="722673f8d4" src="https://talousvahti.kit.com/722673f8d4/index.js"></script>
       </div>
+
     </div>
   </aside>
 </main>
 
-<footer class="footer" role="contentinfo">
+<footer class="footer">
   <div style="max-width:980px;margin:0 auto">
-    &copy; 2025 Talousvahti
+    &copy; 2025 Talousvahti — ylläpitäjä <strong>Jere Järvelä</strong>
     <div style="margin-top:10px;color:var(--muted)">
       <a href="tietosuoja.html">Tietosuojakäytäntö</a> &middot;
       <a href="evasteet.html">Evästekäytäntö</a> &middot;
@@ -185,449 +239,81 @@ a:focus, button:focus{ outline: 3px solid rgba(3,132,252,0.12); outline-offset:3
   </div>
 </footer>
 
-<button id="backToTop" aria-label="Takaisin ylös" title="Takaisin ylös" aria-hidden="true">↑</button>
+<button id="backToTop" aria-label="Takaisin ylös">↑</button>
 
 <script>
-/* ===========================
-   APUFUNKTIOT
-   =========================== */
+(function(){
+  const today = new Date();
+  const dd = String(today.getDate()).padStart(2,'0');
+  const mm = String(today.getMonth()+1).padStart(2,'0');
+  document.getElementById('today-date').textContent = dd + '.' + mm;
 
-/** Trunkkaa tekstiä */
-function truncateText(str, max = 260) {
-  if (!str) return '';
-  const clean = str.replace(/\s+/g, ' ').trim();
-  if (clean.length <= max) return clean;
-  return clean.slice(0, max).trim() + '…';
-}
-
-/** Puhdistaa yksinkertaisesti HTML:stä (sallittuja tageja: a, b, strong, i, em, p, br, ul, ol, li). Palauttaa turvallisen HTML-stringin. */
-function sanitizeHtml(input) {
-  if (!input) return '';
-  const ALLOWED = new Set(['A','B','STRONG','I','EM','P','BR','UL','OL','LI']);
-  const parser = new DOMParser();
-  const doc = parser.parseFromString(input, 'text/html');
-  const outDiv = document.createElement('div');
-
-  function cleanNode(node, target) {
-    if (node.nodeType === Node.TEXT_NODE) {
-      target.appendChild(document.createTextNode(node.textContent));
-      return;
-    }
-    if (node.nodeType !== Node.ELEMENT_NODE) return;
-
-    const tag = node.tagName.toUpperCase();
-    if (!ALLOWED.has(tag)) {
-      // jos ei sallittu, käsittele lapset (kopioi teksti)
-      node.childNodes.forEach(child => cleanNode(child, target));
-      return;
-    }
-    const el = document.createElement(tag.toLowerCase());
-    // sallittu attribuutti vain <a href>
-    if (tag === 'A' && node.hasAttribute('href')) {
-      try {
-        const href = node.getAttribute('href').trim();
-        // salli vain http, https ja mailto
-        if (/^(https?:|mailto:)/i.test(href)) {
-          el.setAttribute('href', href);
-          el.setAttribute('target', '_blank');
-          el.setAttribute('rel', 'noopener noreferrer');
-        }
-      } catch(e) {}
-    }
-    node.childNodes.forEach(child => cleanNode(child, el));
-    target.appendChild(el);
-  }
-
-  doc.body.childNodes.forEach(n => cleanNode(n, outDiv));
-  return outDiv.innerHTML;
-}
-
-/** Yritä jäsentää päivämäärä ja palauttaa Date-objekti tai null */
-function parseDateString(s) {
-  if (!s) return null;
-  // usein pubDate on RFC2822 tai ISO. Kokeillaan Date-constructoria ensin.
-  const d = new Date(s);
-  if (!isNaN(d)) return d;
-  // yritä poistaa timezone-tekstin ja parse uudelleen
-  try {
-    const cleaned = s.replace(/\s*\(.*?\)\s*/g, '');
-    const d2 = new Date(cleaned);
-    if (!isNaN(d2)) return d2;
-  } catch(e){}
-  return null;
-}
-
-/** Muotoilee päivämäärän suomeksi (esim. 25.9.2025 14:23) */
-function formatDateFi(d) {
-  if (!(d instanceof Date) || isNaN(d)) return '';
-  const opts = { day:'numeric', month:'numeric', year:'numeric', hour:'2-digit', minute:'2-digit', hour12:false };
-  return new Intl.DateTimeFormat('fi-FI', opts).format(d);
-}
-
-/** Palauta hostname-tyyppinen lähde */
-function getSourceFromUrl(url) {
-  try {
-    const u = new URL(url);
-    return u.hostname.replace(/^www\./,'');
-  } catch(e) {
-    return '';
-  }
-}
-
-/* ===========================
-   KORTIN LUONTI
-   =========================== */
-function createNewsCard({ title, link, description, date, image }) {
-  const card = document.createElement('article');
-  card.className = 'card';
-  card.setAttribute('role','article');
-
-  // Thumbnail
-  const thumb = document.createElement('div');
-  thumb.className = 'thumb';
-  if (image) {
-    const img = document.createElement('img');
-    img.src = image;
-    img.alt = title || 'Uutiskuva';
-    thumb.appendChild(img);
-  } else {
-    thumb.innerHTML = '<div style="padding:10px;color:var(--muted);font-size:13px">Ei kuvaa</div>';
-  }
-
-  // Content
-  const content = document.createElement('div');
-  content.className = 'content';
-
-  const h3 = document.createElement('h3');
-  if (link) {
-    const a = document.createElement('a');
-    a.href = link;
-    a.textContent = title || 'Avaa uutinen';
-    a.target = '_blank';
-    a.rel = 'noopener noreferrer';
-    a.style.color = 'inherit';
-    a.style.textDecoration = 'none';
-    h3.appendChild(a);
-  } else {
-    h3.textContent = title || 'Ilman otsikkoa';
-  }
-
-  const meta = document.createElement('div');
-  meta.className = 'meta';
-  const src = document.createElement('span');
-  src.className = 'source';
-  src.textContent = link ? getSourceFromUrl(link) : '';
-  const dateSpan = document.createElement('time');
-  dateSpan.className = 'date';
-  dateSpan.setAttribute('datetime', date instanceof Date && !isNaN(date) ? date.toISOString() : '');
-  dateSpan.textContent = date instanceof Date && !isNaN(date) ? formatDateFi(date) : '';
-  if (src.textContent) meta.appendChild(src);
-  if (dateSpan.textContent) meta.appendChild(dateSpan);
-
-  const desc = document.createElement('p');
-  desc.className = 'small';
-  // Puhdistetaan ja rajataan kuvauksen pituutta
-  const safeHtml = sanitizeHtml(description || '');
-  desc.innerHTML = truncateText(safeHtml, 350);
-
-  const actions = document.createElement('div');
-  actions.className = 'actions';
-  if (link) {
-    const read = document.createElement('a');
-    read.className = 'btn';
-    read.href = link;
-    read.target = '_blank';
-    read.rel = 'noopener noreferrer';
-    read.textContent = 'Lue lisää';
-    actions.appendChild(read);
-  }
-
-  content.appendChild(h3);
-  content.appendChild(meta);
-  content.appendChild(desc);
-  content.appendChild(actions);
-
-  card.appendChild(thumb);
-  card.appendChild(content);
-  return card;
-}
-
-/* ===========================
-   PARSERIT: JSON, XML (RSS/ATOM), HTML FRAGMENT
-   =========================== */
-
-/** Käsittele JSON-muoto: odotetaan array tai object.items */
-function handleJson(data) {
-  // mahdollisuudet: data.items (array), data (array), data.response.items jne.
-  let items = [];
-  if (Array.isArray(data)) items = data;
-  else if (data && Array.isArray(data.items)) items = data.items;
-  else if (data && Array.isArray(data.articles)) items = data.articles;
-  else {
-    // yrittää löytää array-ominaisuuden
-    for (const k in data) {
-      if (Array.isArray(data[k])) { items = data[k]; break; }
-    }
-  }
-  return items.map(it => ({
-    title: it.title || it.headline || '',
-    link: it.link || it.url || it.guid || '',
-    description: it.description || it.summary || it.content || '',
-    date: parseDateString(it.pubDate || it.published || it.date || it.pubdate) || null,
-    image: it.image || it.thumbnail || it.img || null
-  }));
-}
-
-/** Käsittele XML: RSS tai Atom */
-function handleXml(xmlDoc) {
-  const items = [];
-  const itemNodes = xmlDoc.querySelectorAll('item, entry');
-  itemNodes.forEach(node => {
-    const title = (node.querySelector('title') && node.querySelector('title').textContent) || '';
-    const linkEl = node.querySelector('link');
-    let link = '';
-    if (linkEl) {
-      // atom link voi olla elementti rel=alternate href=...
-      if (linkEl.getAttribute && linkEl.getAttribute('href')) link = linkEl.getAttribute('href');
-      else link = linkEl.textContent || '';
-    } else {
-      // mahdollisesti guid
-      const guid = node.querySelector('guid');
-      if (guid) link = guid.textContent || '';
-    }
-    const description = (node.querySelector('description') && node.querySelector('description').textContent)
-                      || (node.querySelector('summary') && node.querySelector('summary').textContent)
-                      || (node.querySelector('content\\:encoded') && node.querySelector('content\\:encoded').textContent)
-                      || '';
-    const pubDateText = (node.querySelector('pubDate') && node.querySelector('pubDate').textContent)
-                      || (node.querySelector('published') && node.querySelector('published').textContent)
-                      || '';
-    const enclosure = node.querySelector('enclosure');
-    let image = null;
-    if (enclosure && enclosure.getAttribute('url')) image = enclosure.getAttribute('url');
-    // myös media:content
-    const media = node.querySelector('[url$=".jpg"], [url$=".png"], media\\:content, image');
-    if (!image && media && media.getAttribute) image = media.getAttribute('url') || media.getAttribute('src') || null;
-
-    items.push({
-      title: title,
-      link: link,
-      description: description,
-      date: parseDateString(pubDateText) || null,
-      image: image
-    });
-  });
-  return items;
-}
-
-/** Käsittele HTML-fragmentin: etsi artikkeli/elementit ja ota tiedot talteen */
-function handleHtmlFragment(htmlString) {
-  const doc = new DOMParser().parseFromString(htmlString, 'text/html');
-  const candidates = [];
-
-  // etsittäviä selektoreita useille mahdollisille lähdetyypeille
-  const selectors = [
-    'article', '.item', '.post', '.news-item', '.feed-item', 'li', '.entry', '.story'
-  ];
-  for (const sel of selectors) {
-    const found = doc.querySelectorAll(sel);
-    if (found && found.length) {
-      found.forEach(n => candidates.push(n));
-    }
-  }
-
-  // jos ei löydy, yritetään hakea linkkejä listasta
-  if (candidates.length === 0) {
-    const links = doc.querySelectorAll('a[href]');
-    links.forEach(a => {
-      // Grano link-elementeistä yksinkertaisesti
-      const parentText = a.closest('li') || a.closest('div') || a;
-      if (!candidates.includes(parentText)) candidates.push(parentText);
-    });
-  }
-
-  // deduplikoi
-  const unique = Array.from(new Set(candidates));
-
-  const items = unique.map(node => {
-    const a = node.querySelector('a[href]') || node;
-    const link = a && a.getAttribute ? a.getAttribute('href') : '';
-    const title = (node.querySelector('h1,h2,h3') && node.querySelector('h1,h2,h3').textContent)
-                || (a && (a.title || a.textContent)) || '';
-    const imgEl = node.querySelector('img');
-    const image = imgEl ? (imgEl.getAttribute('src') || imgEl.getAttribute('data-src') || null) : null;
-    const descEl = node.querySelector('p');
-    const description = descEl ? descEl.innerHTML : (node.innerHTML || '');
-    // yritä löytää pubdate
-    const dateEl = node.querySelector('time') || node.querySelector('.date') || node.querySelector('.pubdate') || null;
-    const date = dateEl ? parseDateString(dateEl.getAttribute('datetime') || dateEl.textContent) : null;
-
-    return {
-      title: (title||'').trim(),
-      link: link ? (new URL(link, location.href)).href : '',
-      description: description,
-      date: date,
-      image: image ? (new URL(image, location.href)).href : null
-    };
-  });
-
-  return items;
-}
-
-/* ===========================
-   PÄÄ-FETCH: haetaan endpoint ja prosessoidaan
-   =========================== */
-
-document.addEventListener('DOMContentLoaded', () => {
   const feedsContainer = document.getElementById('feeds');
-  const loader = document.getElementById('loader');
-
-  // Aseta tähän oma endpoint (käyttäjän antama)
   const rssUrl = 'https://script.google.com/macros/s/AKfycbzLi_oCwPh1BhH94s0vgy0DJUqLjrNCLwr6Zkr-iRBMRKDtyqPRck8LHZKdCq5Tl9Wp/exec';
+  fetch(rssUrl).then(r=>r.text()).then(html=>{
+    feedsContainer.innerHTML = html;
+  }).catch(err=>{
+    feedsContainer.innerHTML = "<div class='feed-box'><p>Uutisia ei voitu ladata.</p></div>";
+    console.error(err);
+  });
 
-  // timeout abort
-  const controller = new AbortController();
-  const timeout = setTimeout(()=> controller.abort(), 15000); // 15s timeout
-
-  fetch(rssUrl, { signal: controller.signal, credentials: 'omit' })
-    .then(async res => {
-      clearTimeout(timeout);
-      if (!res.ok) throw new Error('Verkkovirhe: ' + res.status);
-
-      const ct = res.headers.get('content-type') || '';
-      // Jos JSON
-      if (ct.includes('application/json') || ct.includes('text/json')) {
-        const json = await res.json();
-        return { type: 'json', data: json };
+  const hamburger=document.getElementById('hamburger');
+  const mobileMenu=document.getElementById('mobileMenu');
+  if(hamburger&&mobileMenu){
+    hamburger.addEventListener('click',()=>{
+      const open=mobileMenu.style.display==='block';
+      mobileMenu.style.display=open?'none':'block';
+      hamburger.setAttribute('aria-expanded',String(!open));
+    });
+    document.addEventListener('click',e=>{
+      if(mobileMenu.style.display==='block'&&!mobileMenu.contains(e.target)&&!hamburger.contains(e.target)){
+        mobileMenu.style.display='none';
       }
+    });
+  }
 
-      // luetaan teksti
-      const text = await res.text();
-
-      // jos teksti näyttää olevan XML (rss/atom)
-      if (/^\s*<\?xml/i.test(text) || /<rss[\s>]/i.test(text) || /<feed[\s>]/i.test(text)) {
-        const xml = new DOMParser().parseFromString(text, 'application/xml');
-        // tarkista, ettei parsing error
-        if (xml.querySelector('parsererror')) {
-          // jos parsererror, käsitellään tekstinä HTML-fragmenttina
-          return { type: 'html', data: text };
-        }
-        return { type: 'xml', data: xml };
-      }
-
-      // jos tekstissä näyttää olevan HTML, käsitellään fragmenttina
-      if (/<[a-z][\s\S]*>/i.test(text)) {
-        return { type: 'html', data: text };
-      }
-
-      // jos ei tunnistu, yritetään JSON-parsinta
-      try {
-        const maybe = JSON.parse(text);
-        return { type: 'json', data: maybe };
-      } catch(e) {
-        // tuntematon muoto
-        return { type: 'unknown', data: text };
-      }
-    })
-    .then(result => {
-      loader.remove();
-      feedsContainer.setAttribute('aria-busy','false');
-
-      if (!result) {
-        feedsContainer.innerHTML = '<div class="empty">Uutisia ei löytynyt.</div>';
-        return;
-      }
-
-      let items = [];
-      if (result.type === 'json') {
-        items = handleJson(result.data);
-      } else if (result.type === 'xml') {
-        items = handleXml(result.data);
-      } else if (result.type === 'html') {
-        items = handleHtmlFragment(result.data);
-      } else if (result.type === 'unknown') {
-        // yritetään käsitellä HTML-fragmenttina
-        items = handleHtmlFragment(String(result.data));
-      }
-
-      // jos ei yhtään itemiä, näytetään virheilmoitus
-      if (!items || items.length === 0) {
-        feedsContainer.innerHTML = '<div class="empty">Uutisia ei voitu jäsentää tästä lähteestä.</div>';
-        console.warn('Ei jäsennettäviä uutisia. Vastauksen tyyppi:', result.type, result.data);
-        return;
-      }
-
-      // Rajataan esim. 40 ensimmäiseen (turvallisuus)
-      const maxToShow = 40;
-      items.slice(0, maxToShow).forEach(it => {
-        // it.title, it.link, it.description (html), it.date (Date|null), it.image
-        const card = createNewsCard({
-          title: it.title || '',
-          link: it.link || '',
-          description: it.description || '',
-          date: it.date || null,
-          image: it.image || null
-        });
-        feedsContainer.appendChild(card);
+  const cards=document.querySelectorAll('.card,.feed-box');
+  if('IntersectionObserver'in window){
+    const obs=new IntersectionObserver(entries=>{
+      entries.forEach(en=>{
+        if(en.isIntersecting){en.target.classList.add('visible');obs.unobserve(en.target);}
       });
+    },{threshold:0.12});
+    cards.forEach(c=>obs.observe(c));
+  }else cards.forEach(c=>c.classList.add('visible'));
 
-      // IntersectionObserver: lisää .visible luokka kun kortti tulee näkyviin
-      const feedCards = feedsContainer.querySelectorAll('.card');
-      if ('IntersectionObserver' in window) {
-        const obs = new IntersectionObserver((entries, o) => {
-          entries.forEach(en => {
-            if (en.isIntersecting) {
-              en.target.classList.add('visible');
-              o.unobserve(en.target);
-            }
+  const backToTop=document.getElementById('backToTop');
+  window.addEventListener('scroll',()=>{
+    if(window.scrollY>360){backToTop.style.display='flex';}else backToTop.style.display='none';
+  });
+  backToTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+})();
+
+
+    window.addEventListener('load', () => {
+      const loader = document.getElementById('loader');
+      gsap.from(loader.querySelector('img'), { opacity: 0, scale: 0.85, duration: 1, ease: "power2.out" });
+      
+      setTimeout(() => {
+        loader.classList.add('fade-out');
+        setTimeout(() => {
+          loader.style.display = 'none';
+          const content = document.getElementById('content');
+          content.classList.remove('hidden');
+
+          // Pehmeä sisääntulo
+          gsap.from("#content section", {
+            opacity: 0,
+            y: 30,
+            duration: 0.8,
+            stagger: 0.25,
+            ease: "power2.out"
           });
-        }, { threshold: 0.08 });
-        feedCards.forEach(c => obs.observe(c));
-      } else {
-        feedCards.forEach(c => c.classList.add('visible'));
-      }
-    })
-    .catch(err => {
-      console.error('Uutisten haku epäonnistui:', err);
-      loader.remove();
-      feedsContainer.setAttribute('aria-busy','false');
-      const errDiv = document.createElement('div');
-      errDiv.className = 'card';
-      errDiv.innerHTML = '<h3>Uutisia ei voitu ladata</h3><p class="small">Tarkista verkkoyhteys tai CORS-asetukset palvelimella.</p>';
-      feedsContainer.appendChild(errDiv);
+        }, 800);
+      }, 1200);
     });
-
-  /* ===========================
-     UI: Hamburger, backToTop ym.
-     =========================== */
-  const hamburger = document.getElementById('hamburger');
-  const mobileMenu = document.getElementById('mobileMenu');
-  if (hamburger && mobileMenu) {
-    hamburger.addEventListener('click', () => {
-      const open = mobileMenu.style.display === 'block';
-      mobileMenu.style.display = open ? 'none' : 'block';
-      hamburger.setAttribute('aria-expanded', String(!open));
-      mobileMenu.setAttribute('aria-hidden', String(open));
-    });
-    document.addEventListener('click', (e) => {
-      if (mobileMenu.style.display === 'block' && !mobileMenu.contains(e.target) && !hamburger.contains(e.target)) {
-        mobileMenu.style.display = 'none';
-        hamburger.setAttribute('aria-expanded', 'false');
-      }
-    });
-  }
-
-  const backToTop = document.getElementById('backToTop');
-  if (backToTop) {
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 360) { backToTop.style.display = 'flex'; backToTop.setAttribute('aria-hidden','false'); }
-      else { backToTop.style.display = 'none'; backToTop.setAttribute('aria-hidden','true'); }
-    });
-    backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-  }
-});
+  
 </script>
 
 </body>
 </html>
-
