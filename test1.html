@@ -155,71 +155,21 @@ html,body{height:100%; margin:0; background:#000; color:#eef2f5; font-family:"In
   #backToTop{ right:12px; bottom:12px }
 }
 
-/* ======= UUSI TYYLIKÄS FEED-LOADER ======= */
-#feed-loader {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 80px 0;
-  position: relative;
-  overflow: hidden;
-}
-
-.loader-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 18px;
-  text-align: center;
-  position: relative;
-}
-
-.loader-logo {
-  width: 90px;
-  height: 90px;
-  object-fit: contain;
-  filter: drop-shadow(0 0 20px rgba(3,132,252,0.5));
-  animation: logoFloat 2.4s ease-in-out infinite;
-}
-
-.loader-ring {
-  width: 140px;
-  height: 140px;
-  border: 4px solid rgba(3,132,252,0.25);
-  border-top-color: rgba(3,132,252,0.9);
-  border-radius: 50%;
-  animation: spinRing 1.8s linear infinite;
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  filter: blur(0.4px);
-}
-
-#feed-loader p {
-  color: var(--muted);
-  font-size: 15px;
-  opacity: 0.9;
-}
-
-@keyframes spinRing {
-  0% { transform: translateX(-50%) rotate(0deg); }
-  100% { transform: translateX(-50%) rotate(360deg); }
-}
-
-@keyframes logoFloat {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
-
-/* Kun uutiset latautuvat, piilotetaan loader tyylikkäästi */
-#feed-loader.fade-out {
-  opacity: 0;
-  transform: scale(0.97);
+/* ======= FEED LOADER (Talousvahti-tyyliin) ======= */
+#news-loader {
+  background: linear-gradient(180deg, #030712 0%, #0b101d 100%);
+  border-radius: 1rem;
+  box-shadow: 0 0 40px rgba(3,132,252,0.05) inset;
   transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+#news-loader.fade-out {
+  opacity: 0;
+  transform: scale(0.96);
   pointer-events: none;
 }
 
+  
   
 </style>
 </head>
@@ -265,12 +215,13 @@ html,body{height:100%; margin:0; background:#000; color:#eef2f5; font-family:"In
     <section class="feed-section">
       <h2>Talousuutiset <span class="date" id="today-date"></span></h2>
         <div id="feeds">
-          <div id="feed-loader">
-            <div class="loader-wrapper">
-              <div class="loader-ring"></div>
-              <img src="https://storage.mlcdn.com/account_image/1738913/3ffITIlb3p17IaYG3RcfwCueUnHxNH6iG0EtEEPU.png" alt="Talousvahti logo" class="loader-logo">
-              <p>Ladataan uutisia...</p>
-            </div>
+          <div id="news-loader" class="flex flex-col items-center justify-center py-16">
+            <img 
+              src="https://storage.mlcdn.com/account_image/1738913/Z4xGYORLle801mpzkstlHtM1QQ5nb0TSpYJeEyPG.png" 
+              alt="Talousvahti logo" 
+              class="w-20 h-20 opacity-80 mb-4"
+            />
+            <p class="text-gray-400 text-sm tracking-wide">Ladataan uutisia...</p>
           </div>
         </div>
 
@@ -314,16 +265,29 @@ html,body{height:100%; margin:0; background:#000; color:#eef2f5; font-family:"In
   document.getElementById('today-date').textContent = dd + '.' + mm;
 
   const feedsContainer = document.getElementById('feeds');
+  const loader = document.getElementById('news-loader');
   const rssUrl = 'https://script.google.com/macros/s/AKfycbzLi_oCwPh1BhH94s0vgy0DJUqLjrNCLwr6Zkr-iRBMRKDtyqPRck8LHZKdCq5Tl9Wp/exec';
-  const loader = document.getElementById('feed-loader');
+  
+  // Animoidaan loaderin sisään ilmestyminen GSAP:lla
+  gsap.from(loader.querySelector('img'), { opacity: 0, scale: 0.85, duration: 1, ease: "power2.out" });
+  gsap.from(loader.querySelector('p'), { opacity: 0, y: 10, delay: 0.2, duration: 0.8 });
   
   fetch(rssUrl)
     .then(r => r.text())
     .then(html => {
-      loader.classList.add('fade-out'); // häivytys
+      // Fade-out animaatio
+      loader.classList.add('fade-out');
       setTimeout(() => {
         feedsContainer.innerHTML = html;
-      }, 800);
+        // Pehmeä sisääntulo uutisille
+        gsap.from("#feeds .feed-box", {
+          opacity: 0,
+          y: 25,
+          duration: 0.8,
+          stagger: 0.2,
+          ease: "power2.out"
+        });
+      }, 900);
     })
     .catch(err => {
       feedsContainer.innerHTML = "<div class='feed-box'><p>Uutisia ei voitu ladata.</p></div>";
