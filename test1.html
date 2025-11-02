@@ -155,9 +155,73 @@ html,body{height:100%; margin:0; background:#000; color:#eef2f5; font-family:"In
   #backToTop{ right:12px; bottom:12px }
 }
 
+/* ======= LOADER (tyylikäs versio) ======= */
+#loader {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(180deg, #020611 0%, #000 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  overflow: hidden;
+  transition: opacity 1s ease, visibility 1s ease;
+}
+#loader.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loader-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.loader-content img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  animation: logoPulse 2.4s ease-in-out infinite;
+  filter: drop-shadow(0 0 14px rgba(3,132,252,0.45));
+}
+
+.loader-glow {
+  position: absolute;
+  bottom: -60px;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(3,132,252,0.25), transparent 70%);
+  animation: glowPulse 3s ease-in-out infinite;
+  filter: blur(30px);
+}
+
+@keyframes logoPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.08); opacity: 0.9; }
+}
+
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.35; transform: scale(1); }
+  50% { opacity: 0.65; transform: scale(1.15); }
+}
+
+
 </style>
 </head>
 <body>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-content">
+    <img src="https://storage.mlcdn.com/account_image/1738913/3ffITIlb3p17IaYG3RcfwCueUnHxNH6iG0EtEEPU.png" alt="Talousvahti logo">
+    <div class="loader-ring"></div>
+  </div>
+</div>
+
 
 <header class="navbar">
   <div class="brand">
@@ -204,10 +268,6 @@ html,body{height:100%; margin:0; background:#000; color:#eef2f5; font-family:"In
         </div>
       </div>
     </section>
-  </div>
-
-  <div id="loader" class="loader">
-    <img src="https://storage.mlcdn.com/account_image/1738913/Z4xGYORLle801mpzkstlHtM1QQ5nb0TSpYJeEyPG.png" alt="Talousvahti logo" class="w-24 h-24 opacity-80" />
   </div>
 
   <aside class="sidebar">
@@ -288,32 +348,29 @@ html,body{height:100%; margin:0; background:#000; color:#eef2f5; font-family:"In
   });
   backToTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 })();
-
-
-    window.addEventListener('load', () => {
-      const loader = document.getElementById('loader');
-      gsap.from(loader.querySelector('img'), { opacity: 0, scale: 0.85, duration: 1, ease: "power2.out" });
-      
-      setTimeout(() => {
-        loader.classList.add('fade-out');
-        setTimeout(() => {
-          loader.style.display = 'none';
-          const content = document.getElementById('content');
-          content.classList.remove('hidden');
-
-          // Pehmeä sisääntulo
-          gsap.from("#content section", {
-            opacity: 0,
-            y: 30,
-            duration: 0.8,
-            stagger: 0.25,
-            ease: "power2.out"
-          });
-        }, 800);
-      }, 1200);
-    });
-  
 </script>
 
+<script>
+// Tyylikäs loader pois, kun data haettu
+document.addEventListener("DOMContentLoaded", () => {
+  const loader = document.getElementById("loader");
+  const feedsContainer = document.getElementById("feeds");
+  const rssUrl = 'https://script.google.com/macros/s/AKfycbzLi_oCwPh1BhH94s0vgy0DJUqLjrNCLwr6Zkr-iRBMRKDtyqPRck8LHZKdCq5Tl9Wp/exec';
+
+  fetch(rssUrl)
+    .then(r => r.text())
+    .then(html => {
+      feedsContainer.innerHTML = html;
+      setTimeout(() => loader.classList.add("hidden"), 800);
+    })
+    .catch(err => {
+      feedsContainer.innerHTML = "<div class='feed-box'><p>Uutisia ei voitu ladata.</p></div>";
+      console.error(err);
+      setTimeout(() => loader.classList.add("hidden"), 800);
+    });
+});
+</script>
+
+  
 </body>
 </html>
