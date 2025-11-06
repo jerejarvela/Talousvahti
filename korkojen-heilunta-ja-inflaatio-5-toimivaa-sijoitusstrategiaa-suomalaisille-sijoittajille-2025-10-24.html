@@ -10,13 +10,84 @@
 <meta name="keywords" content="sijoitusstrategia, korot, inflaatio, osakesijoittaminen, rahastot, ETF, hajautus, riskienhallinta, markkinatrendit, kustannustehokkuus">
 <meta name="author" content="Jere Järvelä" />
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Korkojen heilunta ja inflaatio – 5 toimivaa sijoitusstrategiaa suomalaisille sijoittajille","author":{"@type":"Person","name":"Jere Järvelä"},"publisher":{"@type":"Organization","name":"Talousvahti","logo":{"@type":"ImageObject","url":"https://talousvahti.com/logo.png"}},"datePublished":"2025-10-24","inLanguage":"fi","keywords":"sijoitusstrategia, korot, inflaatio, osakesijoittaminen, rahastot, ETF, hajautus, riskienhallinta, markkinatrendit, kustannustehokkuus","description":"Korkojen heilunta ja inflaatio – 5 toimivaa sijoitusstrategiaa suomalaisille sijoittajille","mainEntityOfPage":"https://talousvahti.com/korkojen-heilunta-ja-inflaatio-5-toimivaa-sijoitusstrategiaa-suomalaisille-sijoittajille-2025-10-24.html"}</script>
+
 <style>
-body{font-family:Inter,Arial,sans-serif;background:#fff;color:#000;
-max-width:800px;margin:auto;padding:20px;line-height:1.7;}
-h1{font-size:28px;margin-bottom:16px;}
-p{margin-bottom:16px;}
-footer{margin-top:40px;padding-top:20px;border-top:1px solid #ddd;
-color:#666;font-size:14px;text-align:center;}
+:root{
+  --bg:#000;
+  --panel:#111;
+  --panel-2:#1a1a1a;
+  --muted:#aeb6c1;
+  --accent:#0384fc;
+  --accent-2:#00c2ff;
+  --glass: rgba(255,255,255,0.04);
+  --radius:14px;
+  --shadow: 0 8px 30px rgba(2,6,23,0.6);
+  --card-shadow: 0 6px 20px rgba(3,8,20,0.55);
+  --glass-border: rgba(255,255,255,0.03);
+}
+*{box-sizing:border-box}
+html,body{height:100%; margin:0; background:#000; color:#eef2f5; font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial; line-height:1.5; -webkit-tap-highlight-color:transparent;}
+
+/* NAVBAR */
+.navbar{
+  position:fixed; top:0; left:0; width:100%; z-index:1200;
+  display:flex; align-items:center; justify-content:space-between; gap:20px;
+  padding:14px 28px;
+  background:linear-gradient(180deg,rgba(0,0,0,0.9),rgba(10,10,10,0.8));
+  border-bottom:1px solid rgba(255,255,255,0.03);
+  backdrop-filter:blur(6px);
+}
+.brand{display:flex;gap:12px;align-items:center;}
+.brand-badge {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2)); /* sininen tausta */
+  box-shadow: 0 6px 18px rgba(3,132,252,0.14);
+  overflow: hidden;
+}
+
+.brand-badge img {
+  width: 80%;          /* logo ei peitä koko laatikkoa */
+  height: 80%;
+  object-fit: contain; /* säilyttää mittasuhteet */
+  filter: drop-shadow(0 0 3px rgba(0,0,0,0.4)); /* hienovarainen varjo erottaa taustasta */
+}
+.brand-title{font-weight:600;font-size:18px;color:#fff;letter-spacing:0.2px;}
+.navlinks {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  margin-left: auto; /* Tämä työntää linkit oikeaan reunaan */
+}
+
+.navlinks a{color:#dfe7ee;font-size:14px;padding:8px 12px;border-radius:8px;transition:all .18s ease;text-decoration:none;}
+.navlinks a:hover{background:var(--glass);transform:translateY(-2px);color:#fff;}
+.navlinks a.active{background:linear-gradient(90deg,#0f2b66 0%,rgba(3,132,252,0.12) 100%);color:#fff;box-shadow:0 6px 18px rgba(3,132,252,0.06);}
+.controls{display:flex;gap:12px;align-items:center;}
+.hamburger {
+  display: none;
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: transparent;
+  border: 1px solid var(--glass-border);
+  place-items: center;
+  cursor: pointer;
+}
+.hamburger .lines{width:20px;height:14px;position:relative;}
+.hamburger .lines::before,.hamburger .lines::after,.hamburger .lines div{content:"";position:absolute;left:0;right:0;height:2px;background:#dfe7ee;border-radius:2px;}
+.hamburger .lines::before{top:0;opacity:0.95}
+.hamburger .lines::after{bottom:0;opacity:0.95}
+.hamburger .lines div{top:6px;opacity:0.95}
+.mobile-menu{display:none;position:fixed;top:72px;right:18px;width:260px;background:linear-gradient(180deg,var(--panel),#121212);border-radius:12px;padding:12px;box-shadow:var(--shadow);z-index:1300;transform-origin:top right;animation:menuIn .22s ease;}
+@keyframes menuIn{from{transform:translateY(-6px)scale(.98);opacity:0}to{transform:none;opacity:1}}
+.mobile-menu a{display:block;padding:10px 12px;color:#e6eef6;border-radius:8px;margin:6px 0;transition:all .16s;text-decoration:none;}
+.mobile-menu a:hover{background:rgba(255,255,255,0.03)}
+
+  
 </style>
 </head>
 <body>
