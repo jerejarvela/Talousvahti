@@ -96,3 +96,131 @@ html,body{height:100%; margin:0; background:#000; color:#eef2f5; font-family:"In
 <footer><p>© 2025 Talousvahti — kirjoittanut Jere Järvelä</p></footer>
 </body>
 </html>
+
+.footer{margin-top:36px;padding:30px 20px;text-align:center;color:var(--muted);border-top:1px solid rgba(255,255,255,0.02);font-size:14px;}
+
+#backToTop{position:fixed;right:20px;bottom:20px;z-index:1400;width:48px;height:48px;border-radius:12px;border:none;cursor:pointer;background:linear-gradient(180deg,var(--accent),var(--accent-2));color:#031423;font-weight:700;box-shadow:0 10px 30px rgba(3,132,252,0.16);display:none;align-items:center;justify-content:center;}
+
+@media(max-width:1024px){.main{grid-column:1 / span 7}.sidebar{grid-column:8 / span 5}}
+@media(max-width:860px){ .container{ gap:16px } .main{ grid-column:1 / span 12 } .sidebar{ grid-column:1 / span 12 }
+  .chart-box{ width:100%; }
+  .hamburger{ display:grid }
+  .navlinks{ display:none }
+  .brand-title{ display:none }
+  .hero{ padding:36px 16px 24px }
+  .hero h1{ font-size:22px }
+
+  .brand-badge {
+    width: 36px;
+    height: 36px;
+  }
+  .brand-badge img {
+    width: 80%;
+    height: 80%;
+    object-fit: contain;
+  }
+
+  #backToTop{ right:12px; bottom:12px }
+}
+</style>
+</head>
+<body>
+
+<header class="navbar" role="banner">
+  <div class="brand" aria-label="Talousvahti">
+    <div class="brand-badge">
+      <img src="https://storage.mlcdn.com/account_image/1738913/mFv74YlPUMmnQOFd6JnbIS7JxzNXPWmwdSLF0X8H.png" alt="Talousvahti logo">
+    </div>
+    <div>
+      <div class="brand-title">Talousvahti</div>
+      <div style="font-size:11px;color:var(--muted);margin-top:2px">Uutiset • Blogit • Työkalut</div>
+    </div>
+  </div>
+
+  <nav class="navlinks" aria-label="Päävalikko">
+    <a href="index.html">Talousuutiset</a>
+    <a href="kurssit.html">Pörssikurssit</a>
+    <a href="talouskalenteri.html">Talouskalenteri</a>
+    <a href="Blogi.html" class="active" aria-current="page">Blogi</a>
+    <a href="sijoituslaskuri.html">Sijoituslaskuri</a>
+    <a href="tietoa.html">Tietoa</a>
+  </nav>
+
+  <div class="controls">
+    <button class="hamburger" id="hamburger" aria-expanded="false" aria-controls="mobileMenu" title="Avaa valikko">
+      <span class="lines"><div></div></span>
+    </button>
+  </div>
+</header>
+
+<div id="mobileMenu" class="mobile-menu" role="menu" aria-hidden="true" style="display:none">
+  <a href="index.html" role="menuitem">Talousuutiset</a>
+  <a href="kurssit.html" role="menuitem">Pörssikurssit</a>
+  <a href="talouskalenteri.html" role="menuitem">Talouskalenteri</a>
+  <a href="Blogi.html" role="menuitem" class="active">Blogi</a>
+  <a href="sijoituslaskuri.html" role="menuitem">Sijoituslaskuri</a>
+  <a href="tietoa.html" role="menuitem">Tietoa</a>
+</div>
+
+<section class="hero" aria-labelledby="hero-title">
+  <h1 id="hero-title">Blogi</h1>
+  <p>Näkemyksiä sijoittamisesta, markkinoista ja taloudesta — tiiviisti ja käytännönläheisesti.</p>
+</section>
+
+<main class="container" role="main">
+  <div class="main" id="blogContainer"></div>
+  <aside class="sidebar" role="complementary" aria-label="Sivupaneeli">
+    <div class="card visible">
+      <h3>Liity sähköpostilistalle</h3>
+      <p class="small">Saat uusimmat blogit ja uutiset suoraan sähköpostiisi.</p>
+      <div class="kit-wrap" style="margin-top:12px">
+        <script async data-uid="722673f8d4" src="https://talousvahti.kit.com/722673f8d4/index.js"></script>
+      </div> 
+    </div>
+      <div class="ad-box" style="text-align:center; margin-top:20px;">
+      <a href="https://ion.bookbeat.com/t/t?a=1510243164&as=2017175102&t=2&tk=1&url=https://www.bookbeat.com/fi/book/vaurastu-viisaasti-1265070" target="_blank" rel="noopener noreferrer">
+        <img src="https://prod-bb-images.akamaized.net/book-covers/coverimage-9789520460402-wsoy-2024-09-04t08-54.jpeg"
+             width="300" height="250" style="display:block; margin:0 auto; border:0;" alt="BookBeat mainos">
+      </a>
+          <div style="font-size:14px; color:#333; text-align:left; margin-top:12px; line-height:1.4;">
+      <p><strong>Mainos Bookbeat:</strong></p>
+      <p>Linkin kautta pääset kokeilemaan BookBeatia maksutta 30 päivän ajan, jos et ole kokeillut BookBeatia aiemmin.</p>
+    </div>
+  </aside>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div style="max-width:980px;margin:0 auto">
+    &copy; 2025 Talousvahti — ylläpitäjä <strong>Jere Järvelä</strong>
+    <div style="margin-top:10px;color:var(--muted)">
+      <a href="tietosuoja.html">Tietosuojakäytäntö</a> &middot;
+      <a href="evasteet.html">Evästekäytäntö</a> &middot;
+      <a href="kayttoehdot.html">Käyttöehdot</a>
+    </div>
+  </div>
+</footer>
+
+<button id="backToTop" aria-label="Takaisin ylös" title="Takaisin ylös" aria-hidden="true">↑</button>
+
+<script>
+(function(){
+  const hamburger=document.getElementById('hamburger');
+  const mobileMenu=document.getElementById('mobileMenu');
+  if(hamburger&&mobileMenu){
+    hamburger.addEventListener('click',()=>{
+      const open=mobileMenu.style.display==='block';
+      mobileMenu.style.display=open?'none':'block';
+      hamburger.setAttribute('aria-expanded',String(!open));
+      mobileMenu.setAttribute('aria-hidden',String(open));
+    });
+    document.addEventListener('click',(e)=>{
+      if(mobileMenu.style.display==='block'&&!mobileMenu.contains(e.target)&&!hamburger.contains(e.target)){
+        mobileMenu.style.display='none';hamburger.setAttribute('aria-expanded','false');
+      }
+    });
+    document.addEventListener('keydown',(e)=>{
+      if(e.key==='Escape'&&mobileMenu.style.display==='block'){
+        mobileMenu.style.display='none';hamburger.setAttribute('aria-expanded','false');hamburger.focus();
+      }
+    });
+  }
