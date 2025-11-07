@@ -186,6 +186,21 @@ html,body{height:100%; margin:0; background:#000; color:#eef2f5; font-family:"In
   to { opacity: 1; transform: none; }
 }
 
+/* UUTISTEN SISÄÄNTULOANIMAATIO */
+.fade-in-item {
+  opacity: 0;
+  transform: translateY(18px);
+  animation: fadeSlideIn 0.7s cubic-bezier(0.2, 0.9, 0.2, 1) forwards;
+}
+
+@keyframes fadeSlideIn {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+
 
 </style>
 </head>
@@ -281,7 +296,15 @@ html,body{height:100%; margin:0; background:#000; color:#eef2f5; font-family:"In
   const rssUrl = 'https://script.google.com/macros/s/AKfycbwekTyZGfwAEAUhrKQLFb3QZmP8Hl2jv3XvuBg-Ivof6xb2ZviSEzvLQNsuv9MigvJe/exec';
   fetch(rssUrl).then(r=>r.text()).then(html=>{
     feedsContainer.innerHTML = html;
-    // Poista latausanimaatio kun valmis
+  
+    // Lisää tyylikäs animaatio uutisille
+    const items = feedsContainer.querySelectorAll('.feed-box, article, div');
+    items.forEach((el, i) => {
+      el.classList.add('fade-in-item');
+      el.style.animationDelay = (i * 0.08) + 's'; // pientä porrastusta
+    });
+  
+    // Poistetaan latausanimaatio
     const loader = document.getElementById('loader-inline');
     if (loader) loader.remove();
   }).catch(err=>{
@@ -290,6 +313,7 @@ html,body{height:100%; margin:0; background:#000; color:#eef2f5; font-family:"In
     if (loader) loader.remove();
     console.error(err);
   });
+
 
 
   const hamburger=document.getElementById('hamburger');
