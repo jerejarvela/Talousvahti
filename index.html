@@ -245,7 +245,7 @@ html,body{height:100%; margin:0; background:#000; color:#eef2f5; font-family:"In
   document.getElementById('today-date').textContent = dd + '.' + mm;
 
   const feedsContainer = document.getElementById('feeds');
-  const rssUrl = 'https://script.google.com/macros/s/AKfycbzLi_oCwPh1BhH94s0vgy0DJUqLjrNCLwr6Zkr-iRBMRKDtyqPRck8LHZKdCq5Tl9Wp/exec';
+  const rssUrl = 'https://script.google.com/macros/s/AKfycbwekTyZGfwAEAUhrKQLFb3QZmP8Hl2jv3XvuBg-Ivof6xb2ZviSEzvLQNsuv9MigvJe/exec';
   fetch(rssUrl).then(r=>r.text()).then(html=>{
     feedsContainer.innerHTML = html;
   }).catch(err=>{
