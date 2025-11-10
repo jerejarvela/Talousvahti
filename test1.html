@@ -1,333 +1,140 @@
 <!DOCTYPE html>
 <html lang="fi">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-2566G3KPHW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-2566G3KPHW');
-</script>
-<meta name="google-site-verification" content="7WCvI6pUCbJVC3QmzkJqjICcZzEzENP3sszMQ1-QS00" />
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1, viewport-fit=cover" />
-<title>Päivän Talousuutiset | Talousvahti</title>
-<meta name="description" content="Päivän tärkeimmät talousuutiset ja sijoittamiseen liittyvät ajankohtaiset aiheet. Seuraa markkinoiden liikkeitä ja pysy ajan tasalla Talousvahdin kautta." />
-<meta name="author" content="Jere Järvelä" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-<link rel="icon" href="/favicon.ico" type="image/x-icon">
-
-
-<style>
-:root{
-  --bg:#000;
-  --panel:#111;
-  --panel-2:#1a1a1a;
-  --muted:#aeb6c1;
-  --accent:#0384fc;
-  --accent-2:#00c2ff;
-  --glass: rgba(255,255,255,0.04);
-  --radius:14px;
-  --shadow: 0 8px 30px rgba(2,6,23,0.6);
-  --card-shadow: 0 6px 20px rgba(3,8,20,0.55);
-  --glass-border: rgba(255,255,255,0.03);
-}
-
-*{box-sizing:border-box}
-html,body{height:100%; margin:0; background:#000; color:#eef2f5; font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial; line-height:1.5; -webkit-tap-highlight-color: transparent;}
-
-/* NAVBAR */
-.navbar{
-  position:fixed; top:0; left:0; width:100%; z-index:1200;
-  display:flex; align-items:center; justify-content:space-between;
-  padding:14px 28px; background:linear-gradient(180deg,rgba(0,0,0,0.9),rgba(10,10,10,0.8));
-  border-bottom:1px solid rgba(255,255,255,0.03); backdrop-filter:blur(6px);
-}
-.brand{display:flex; gap:12px; align-items:center;}
-.brand-badge {
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
-  display: grid;
-  place-items: center;
-  background: linear-gradient(135deg, var(--accent), var(--accent-2)); /* sininen tausta */
-  box-shadow: 0 6px 18px rgba(3,132,252,0.14);
-  overflow: hidden;
-}
-
-.brand-badge img {
-  width: 80%;          /* logo ei peitä koko laatikkoa */
-  height: 80%;
-  object-fit: contain; /* säilyttää mittasuhteet */
-  filter: drop-shadow(0 0 3px rgba(0,0,0,0.4)); /* hienovarainen varjo erottaa taustasta */
-}
-
-.brand-title{font-weight:600;font-size:18px;color:#fff;letter-spacing:0.2px;}
-.navlinks {
-  display: flex;
-  gap: 14px;
-  align-items: center;
-  margin-left: auto; /* Tämä työntää linkit oikeaan reunaan */
-}
-.navlinks a{color:#dfe7ee;font-size:14px;padding:8px 12px;border-radius:8px;transition:all .18s ease;text-decoration:none;}
-.navlinks a:hover{background:var(--glass);transform:translateY(-2px);color:#fff;}
-.navlinks a.active{background:linear-gradient(90deg,#0f2b66 0%,rgba(3,132,252,0.12) 100%);color:#fff;box-shadow:0 6px 18px rgba(3,132,252,0.06);}
-.hamburger {
-  display: none;
-  width: 42px;
-  height: 42px;
-  border-radius: 10px;
-  background: transparent;
-  border: 1px solid var(--glass-border);
-  place-items: center;
-  cursor: pointer;
-}
-
-.hamburger .lines{width:20px;height:14px;position:relative;}
-.hamburger .lines::before,.hamburger .lines::after,.hamburger .lines div{content:"";position:absolute;left:0;right:0;height:2px;background:#dfe7ee;border-radius:2px;}
-.hamburger .lines::before{top:0}
-.hamburger .lines::after{bottom:0}
-.hamburger .lines div{top:6px}
-.mobile-menu{display:none;position:fixed;top:72px;right:18px;width:260px;background:linear-gradient(180deg,var(--panel),#121212);border-radius:12px;padding:12px;box-shadow:var(--shadow);z-index:1300;transform-origin:top right;animation:menuIn .22s ease;}
-@keyframes menuIn{from{transform:translateY(-6px) scale(.98);opacity:0}to{transform:none;opacity:1}}
-.mobile-menu a{display:block;padding:10px 12px;color:#e6eef6;border-radius:8px;margin:6px 0;transition:all .16s;text-decoration:none;}
-.mobile-menu a:hover{background:rgba(255,255,255,0.03)}
-
-/* HERO */
-.hero{padding:56px 20px 36px;text-align:center;margin-top:72px;}
-.hero h1{margin:0;font-size:28px;color:#ffffff;font-weight:600;}
-
-/* LAYOUT */
-.container{max-width:1150px;margin:34px auto;padding:0 20px 60px;display:grid;grid-template-columns:repeat(12,1fr);gap:22px;}
-.main{grid-column:1 / span 8;display:flex;flex-direction:column;gap:18px;}
-.sidebar{grid-column:9 / span 4;display:flex;flex-direction:column;gap:18px;}
-
-/* CARDS */
-.card{background:linear-gradient(180deg,var(--panel),var(--panel-2));border-radius:var(--radius);padding:22px;box-shadow:var(--card-shadow);border:1px solid rgba(255,255,255,0.02);transition:transform .28s cubic-bezier(.2,.9,.2,1),box-shadow .28s;opacity:0;transform:translateY(26px);}
-.card.visible{animation:popIn .6s cubic-bezier(.2,.9,.2,1) forwards;}
-@keyframes popIn{to{opacity:1;transform:none}}
-.card:hover{transform:translateY(-6px);box-shadow:0 18px 45px rgba(2,6,23,0.6)}
-.card h3{margin:0 0 10px 0;font-size:18px;color:#fff;font-weight:600;}
-.card p.small{color:var(--muted);margin:0;font-size:14px;}
-.feed-box{background:linear-gradient(180deg,var(--panel),var(--panel-2));border-radius:var(--radius);padding:22px;margin-bottom:20px;box-shadow:var(--card-shadow);border:1px solid rgba(255,255,255,0.02);animation:popIn .6s cubic-bezier(.2,.9,.2,1) forwards;}
-.feed-box h3{margin:0 0 8px 0;font-size:18px;color:#fff;}
-.feed-box p{color:var(--muted);margin:0 0 6px 0;font-size:14px;line-height:1.5;}
-.feed-box a {
-  color: #fff;
-  text-decoration: none;
-}
-.feed-box a:hover {
-  color: #fff;
-  text-decoration: underline;
-}
-
-.icon-circle{ width:44px; height:44px; border-radius:10px; display:grid; place-items:center; background:linear-gradient(135deg, rgba(3,132,252,0.12), rgba(0,194,255,0.06)); color:var(--accent); font-weight:700; box-shadow: inset 0 -8px 18px rgba(0,0,0,0.35); }
-
-.feed-section h2{margin:0 0 12px 0;color:#fff;font-size:22px;border-bottom:1px solid rgba(255,255,255,0.06);padding-bottom:8px;display:flex;justify-content:space-between;align-items:center;}
-.feed-section .date{font-size:14px;color:var(--accent);}
-
-/* FOOTER */
-.footer{margin-top:36px;padding:30px 20px;text-align:center;color:var(--muted);border-top:1px solid rgba(255,255,255,0.02);font-size:14px;}
-#backToTop{position:fixed;right:20px;bottom:20px;z-index:1400;width:48px;height:48px;border-radius:12px;border:none;cursor:pointer;background:linear-gradient(180deg,var(--accent),var(--accent-2));color:#031423;font-weight:700;box-shadow:0 10px 30px rgba(3,132,252,0.16);display:none;align-items:center;justify-content:center;}
-
-/* RESPONSIVE */
-@media(max-width:860px){ .container{ gap:16px } .main{ grid-column:1 / span 12 } .sidebar{ grid-column:1 / span 12 }
-  .chart-box{ width:100%; }
-  .hamburger{ display:grid }
-  .navlinks{ display:none }
-  .brand-title{ display:none }
-  .hero{ padding:36px 16px 24px }
-  .hero h1{ font-size:22px }
-
-  .brand-badge {
-    width: 36px;
-    height: 36px;
-  }
-  .brand-badge img {
-    width: 80%;
-    height: 80%;
-    object-fit: contain;
-  }
-
-  #backToTop{ right:12px; bottom:12px }
-}
-
-/* ======= FEED LOADER (Talousvahti-tyyliin) ======= */
-#news-loader {
-  background: linear-gradient(180deg, #030712 0%, #0b101d 100%);
-  border-radius: 1rem;
-  box-shadow: 0 0 40px rgba(3,132,252,0.05) inset;
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-#news-loader.fade-out {
-  opacity: 0;
-  transform: scale(0.96);
-  pointer-events: none;
-}
-
-
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rahasto Työkalu</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="bg-gray-50 font-sans">
+  <header class="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-6 text-center">
+    <h1 class="text-3xl font-bold">Rahasto Valitsin</h1>
+    <p class="mt-2 text-lg">Valitse kriteerit ja löydä paras rahasto sinulle</p>
+  </header>
 
-<header class="navbar">
-  <div class="brand">
-    <div class="brand-badge">
-      <img src="https://storage.mlcdn.com/account_image/1738913/mFv74YlPUMmnQOFd6JnbIS7JxzNXPWmwdSLF0X8H.png" alt="Talousvahti logo">
-    </div>
-    <div>
-      <div class="brand-title">Talousvahti</div>
-      <div style="font-size:11px;color:var(--muted);margin-top:2px">Uutiset • Blogit • Työkalut</div>
-    </div>
-  </div>
-  <nav class="navlinks">
-    <a href="index.html" class="active">Talousuutiset</a>
-    <a href="kurssit.html">Pörssikurssit</a>
-    <a href="talouskalenteri.html">Talouskalenteri</a>
-    <a href="Blogi.html">Blogi</a>
-    <a href="sijoituslaskuri.html">Sijoituslaskuri</a>
-    <a href="tietoa.html">Tietoa</a>
-  </nav>
-  <button class="hamburger" id="hamburger"><span class="lines"><div></div></span></button>
-</header>
+  <main class="max-w-4xl mx-auto p-6">
+    <!-- Valinta Lomake -->
+    <section class="bg-white shadow-md rounded-lg p-6 mb-6">
+      <h2 class="text-2xl font-semibold mb-4">Valitse kriteerit</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div>
+          <label class="block mb-2 font-medium">Kategoria</label>
+          <select id="category" class="w-full border-gray-300 rounded p-2">
+            <option value="">Kaikki</option>
+            <option value="Sektori arvometallit osakkeet">Arvometallit</option>
+            <option value="Sektori teollisuusmateriaalit osakkeet">Teollisuusmateriaalit</option>
+          </select>
+        </div>
 
-<div id="mobileMenu" class="mobile-menu">
-  <a href="index.html" class="active">Talousuutiset</a>
-  <a href="kurssit.html">Pörssikurssit</a>
-  <a href="talouskalenteri.html">Talouskalenteri</a>
-  <a href="Blogi.html">Blogi</a>
-  <a href="sijoituslaskuri.html">Sijoituslaskuri</a>
-  <a href="tietoa.html">Tietoa</a>
-</div>
+        <div>
+          <label class="block mb-2 font-medium">Maksimi Riski (1-10)</label>
+          <input type="number" id="risk" min="1" max="10" class="w-full border-gray-300 rounded p-2" placeholder="Esim. 6">
+        </div>
 
-<section class="hero">
-  <h1></h1>
-  <p></p>
-</section>
-
-<main class="container">
-  <div class="main">
-    <section class="feed-section">
-      <h2>Talousuutiset <span class="date" id="today-date"></span></h2>
-      <div id="feeds">
-        <div id="news-loader" class="flex flex-col items-center justify-center py-16">
-          <img 
-            src="https://storage.mlcdn.com/account_image/1738913/Z4xGYORLle801mpzkstlHtM1QQ5nb0TSpYJeEyPG.png" 
-            alt="Talousvahti logo" 
-            class="w-20 h-20 opacity-80 mb-4"
-          />
-          <p class="text-gray-400 text-sm tracking-wide">Ladataan uutisia...</p>
+        <div>
+          <label class="block mb-2 font-medium">Minimi 12 kk tuotto</label>
+          <input type="number" step="0.0001" id="return" class="w-full border-gray-300 rounded p-2" placeholder="Esim. 0.6">
         </div>
       </div>
+      <button onclick="findBestFund()" class="mt-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded shadow hover:from-purple-600 hover:to-blue-600 transition">Etsi Paras Rahasto</button>
+    </section>
 
+    <!-- Tulokset -->
+    <section id="result" class="hidden bg-white shadow-md rounded-lg p-6">
+      <h2 class="text-2xl font-semibold mb-4">Suositeltu Rahasto</h2>
+      <div id="fund-card" class="p-4 border rounded bg-gray-50"></div>
+    </section>
+  </main>
 
-  <aside class="sidebar">
-    <div class="card" id="subscribe" aria-labelledby="subscribe-title">
-      <div style="display:flex;gap:12px;align-items:center">
-        <div class="icon-circle" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 8l9 6 9-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <div style="flex:1">
-          <h3 id="subscribe-title">Liity sähköpostilistalle</h3>
-          <p class="small">Joka aamu — päivän tärkeimmät talousuutiset ja markkinakatsaus suoraan sähköpostiisi.</p>
-        </div>
-      </div>
+  <footer class="text-center text-gray-500 p-6">
+    &copy; 2025 Rahasto Työkalu
+  </footer>
 
-      <div class="kit-wrap" aria-hidden="false" style="margin-top:12px">
-        <script async data-uid="722673f8d4" src="https://talousvahti.kit.com/722673f8d4/index.js"></script>
-      </div>
-
-    </div>
-  </aside>
-</main>
-
-<footer class="footer">
-  <div style="max-width:980px;margin:0 auto">
-    &copy; 2025 Talousvahti — ylläpitäjä <strong>Jere Järvelä</strong>
-    <div style="margin-top:10px;color:var(--muted)">
-      <a href="tietosuoja.html">Tietosuojakäytäntö</a> &middot;
-      <a href="evasteet.html">Evästekäytäntö</a> &middot;
-      <a href="kayttoehdot.html">Käyttöehdot</a>
-    </div>
-  </div>
-</footer>
-
-<button id="backToTop" aria-label="Takaisin ylös">↑</button>
-
-<script>
-(function(){
-  const today = new Date();
-  const dd = String(today.getDate()).padStart(2,'0');
-  const mm = String(today.getMonth()+1).padStart(2,'0');
-  document.getElementById('today-date').textContent = dd + '.' + mm;
-
-const feedsContainer = document.getElementById('feeds');
-const loader = document.getElementById('news-loader');
-const rssUrl = 'https://script.google.com/macros/s/AKfycbzLi_oCwPh1BhH94s0vgy0DJUqLjrNCLwr6Zkr-iRBMRKDtyqPRck8LHZKdCq5Tl9Wp/exec';
-
-// Loaderin sisääntulo
-gsap.from(loader.querySelector('img'), { opacity: 0, scale: 0.85, duration: 1, ease: "power2.out" });
-gsap.from(loader.querySelector('p'), { opacity: 0, y: 10, delay: 0.2, duration: 0.8 });
-
-fetch(rssUrl)
-  .then(r => r.text())
-  .then(html => {
-    // Fade-out animaatio
-    loader.classList.add('fade-out');
-    setTimeout(() => {
-      feedsContainer.innerHTML = html;
-      // Pehmeä sisääntulo uutisille
-      gsap.from("#feeds .feed-box", {
-        opacity: 0,
-        y: 25,
-        duration: 0.8,
-        stagger: 0.2,
-        ease: "power2.out"
-      });
-    }, 900);
-  })
-  .catch(err => {
-    feedsContainer.innerHTML = "<div class='feed-box'><p>Uutisia ei voitu ladata.</p></div>";
-    console.error(err);
-  });
-
-
-  const hamburger=document.getElementById('hamburger');
-  const mobileMenu=document.getElementById('mobileMenu');
-  if(hamburger&&mobileMenu){
-    hamburger.addEventListener('click',()=>{
-      const open=mobileMenu.style.display==='block';
-      mobileMenu.style.display=open?'none':'block';
-      hamburger.setAttribute('aria-expanded',String(!open));
-    });
-    document.addEventListener('click',e=>{
-      if(mobileMenu.style.display==='block'&&!mobileMenu.contains(e.target)&&!hamburger.contains(e.target)){
-        mobileMenu.style.display='none';
+  <script>
+    const funds = [
+      {
+        name: "Franklin Gold & Prec Mtls A(acc)USD",
+        category: "Sektori arvometallit osakkeet",
+        return12m: 0.6858,
+        rating: "3 stars",
+        risk: 6,
+        sfdr: "",
+        fees: "1,86%",
+        owners: 9604
+      },
+      {
+        name: "Evli Silver and Gold B",
+        category: "Sektori arvometallit osakkeet",
+        return12m: 0.6773,
+        rating: "4 stars",
+        risk: 6,
+        sfdr: "",
+        fees: "1,02%",
+        owners: 1482
+      },
+      {
+        name: "AuAg Silver Bullet B",
+        category: "Sektori arvometallit osakkeet",
+        return12m: 0.6476,
+        rating: "2 stars",
+        risk: 8,
+        sfdr: "",
+        fees: "1,40%",
+        owners: 9807
+      },
+      {
+        name: "Finserve Global Security Fund I SEK R",
+        category: "Sektori teollisuusmateriaalit osakkeet",
+        return12m: 0.6287,
+        rating: "5 stars",
+        risk: 8,
+        sfdr: "",
+        fees: "1,94%",
+        owners: 19207
+      },
+      {
+        name: "Jupiter Gold & Silver L USD Acc",
+        category: "Sektori arvometallit osakkeet",
+        return12m: 0.578,
+        rating: "3 stars",
+        risk: 6,
+        sfdr: "",
+        fees: "1,75%",
+        owners: 3275
       }
-    });
-  }
+    ];
 
-  const cards=document.querySelectorAll('.card,.feed-box');
-  if('IntersectionObserver'in window){
-    const obs=new IntersectionObserver(entries=>{
-      entries.forEach(en=>{
-        if(en.isIntersecting){en.target.classList.add('visible');obs.unobserve(en.target);}
+    function findBestFund() {
+      const category = document.getElementById("category").value;
+      const maxRisk = parseInt(document.getElementById("risk").value) || 10;
+      const minReturn = parseFloat(document.getElementById("return").value) || 0;
+
+      let filtered = funds.filter(f => {
+        return (category === "" || f.category === category) &&
+               f.risk <= maxRisk &&
+               f.return12m >= minReturn;
       });
-    },{threshold:0.12});
-    cards.forEach(c=>obs.observe(c));
-  }else cards.forEach(c=>c.classList.add('visible'));
 
-  const backToTop=document.getElementById('backToTop');
-  window.addEventListener('scroll',()=>{
-    if(window.scrollY>360){backToTop.style.display='flex';}else backToTop.style.display='none';
-  });
-  backToTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
-})();
-</script>
+      if (filtered.length === 0) {
+        document.getElementById("fund-card").innerHTML = "<p class='text-red-500 font-medium'>Ei sopivia rahastoja löytynyt.</p>";
+      } else {
+        // Järjestä 12 kk tuoton mukaan laskevasti
+        filtered.sort((a,b) => b.return12m - a.return12m);
+        const best = filtered[0];
+        document.getElementById("fund-card").innerHTML = `
+          <h3 class="text-xl font-bold mb-2">${best.name}</h3>
+          <p><strong>Kategoria:</strong> ${best.category}</p>
+          <p><strong>12 kk tuotto:</strong> ${(best.return12m*100).toFixed(2)}%</p>
+          <p><strong>Rating:</strong> ${best.rating}</p>
+          <p><strong>Riski:</strong> ${best.risk}</p>
+          <p><strong>Kulut:</strong> ${best.fees}</p>
+          <p><strong>Omistajia Nordnetissä:</strong> ${best.owners}</p>
+        `;
+      }
 
+      document.getElementById("result").classList.remove("hidden");
+      window.scrollTo({ top: document.getElementById("result").offsetTop - 20, behavior: 'smooth' });
+    }
+  </script>
 </body>
 </html>
