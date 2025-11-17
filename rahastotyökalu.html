@@ -294,7 +294,11 @@
       });
 
       // Initial demo load hidden: empty state
+      // Auto-load RAHASTOT.csv from same repository if available
+      const autoUrl = window.location.origin + window.location.pathname.replace(/index\.html$/,'') + 'RAHASTOT.csv';
+      fetch(autoUrl).then(r=>{ if(r.ok) r.text().then(t=>parseCSVText(t)); });
     });
   </script>
 </body>
 </html>
+
