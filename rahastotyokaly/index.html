@@ -6,7 +6,7 @@
   <title>Rahastotyökalu</title>
   <meta name="description" content="Rahastojen suodatus- ja hakutyökalu (GitHub Pages).">
   <link rel="icon" href="data:,"><style>
-    :root{--bg:#0f172a;--card:#0b1220;--muted:#9aa4b2;--accent:#7c3aed;--glass: rgba(255,255,255,0.03)}
+    :root{--space:14px;--bg:#0f172a;--card:#0b1220;--muted:#9aa4b2;--accent:#7c3aed;--glass: rgba(255,255,255,0.03)}
     *{box-sizing:border-box}
     body{margin:0;font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;background:linear-gradient(180deg,#071127 0%, #0b1020 100%);color:#e6eef8;min-height:100vh}
     .app{max-width:1200px;margin:24px auto;padding:20px}
@@ -15,17 +15,17 @@
     p.lead{margin:6px 0 0;color:var(--muted);font-size:0.95rem}
     .controls{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
     @media(max-width:900px){.controls{grid-template-columns:1fr}.sidebar{order:2}}
-    .panel{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:14px;padding:14px;box-shadow:0 6px 18px rgba(2,6,23,0.6);}
+    .panel{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:14px;padding:14px;box-shadow:0 6px 18px rgba(2,6,23,0.6);width:100%;}{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:14px;padding:14px;box-shadow:0 6px 18px rgba(2,6,23,0.6);}
     .filters{padding:12px;display:flex;flex-direction:column;gap:12px}
     .buttons{display:flex;flex-wrap:wrap;gap:8px}
     .btn{background:var(--glass);border:1px solid rgba(255,255,255,0.04);padding:10px 12px;border-radius:10px;cursor:pointer;font-weight:600;color:inherit}
     .btn.small{padding:6px 10px;font-weight:600;font-size:0.95rem}
     .btn.active{background:linear-gradient(90deg,var(--accent),#5b21b6);box-shadow:0 6px 18px rgba(124,58,237,0.18);}
-    .hint{color:var(--muted);font-size:0.9rem}
+    .hint{color:var(--muted);font-size:0.9rem;margin-bottom:var(--space);}{color:var(--muted);font-size:0.9rem}
     .slider{width:100%}
     .rightcol{display:flex;flex-direction:column;gap:12px}
     .stats{display:flex;gap:12px;align-items:center;justify-content:space-between}
-    .results{margin-top:16px;display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    .results{margin-top:16px;display:grid;grid-template-columns:1fr;gap:12px}
     @media(max-width:700px){.results{grid-template-columns:1fr}}
     .card{background:linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01));padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
     .card h3{margin:0 0 6px;font-size:1rem}
@@ -73,18 +73,18 @@
           </div>
 
           <div>
-            <div class="hint">4) Valitse riski (1 = matala, 7 = korkea)</div>
+            <div class="hint">4) Valitse riski (1 = matala, 7 = korkea)<div class="explain">Riski kertoo rahaston arvonvaihtelun tason.</div></div>
             <input id="riskRange" class="slider" type="range" min="1" max="7" step="1" value="7">
             <div class="smallmuted">Riski enintään: <span id="riskVal">7</span></div>
           </div>
 
           <div>
-            <div class="hint">5) Morningstar-rating — valitse tähtien määrä (paras 5)</div>
+            <div class="hint">5) Morningstar-rating — valitse tähtien määrä<div class="explain">Tähdet kuvaavat rahaston historiallista tuotto–riski suhdetta.</div> (paras 5)</div>
             <div id="ratingPicker" class="buttons"></div>
           </div>
 
           <div>
-            <div class="hint">6) Kulut — valitse korkeimmillaan sallitut kulut (prosentti)</div>
+            <div class="hint">6) Kulut — valitse korkeimmillaan<div class="explain">Kokonaiskuluprosentti kertoo paljonko rahasto veloittaa vuosittain.</div> sallitut kulut (prosentti)</div>
             <input id="feeRange" class="slider" type="range" min="0" max="5" step="0.01" value="5">
             <div class="smallmuted">Kulut enintään: <span id="feeVal">5.00%</span></div>
           </div>
@@ -342,5 +342,4 @@
   </script>
 </body>
 </html>
-
 
