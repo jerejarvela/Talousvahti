@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="fi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Rahasto-työkalu</title>
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+  <!-- Minimal modern styling (no build steps). Uses Google Fonts. -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#0f1720;--card:#0b1220;--muted:#9aa4b2;--accent:#5eead4;--glass:rgba(255,255,255,0.04)}
+    *{box-sizing:border-box}
+    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial; margin:0;background:linear-gradient(180deg,#061023 0%, #071827 50%, #0b1220 100%);color:#e6eef6;min-height:100vh}
+    .container{max-width:1100px;margin:28px auto;padding:20px}
+    header{display:flex;gap:16px;align-items:center}
+    header h1{margin:0;font-size:20px}
+    header p{margin:0;color:var(--muted);font-size:13px}
+    .panel{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:14px;padding:16px;margin-top:18px;box-shadow:0 8px 30px rgba(2,6,23,0.6)}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}
+    select,input{width:100%;padding:8px 10px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:var(--card);color:inherit}
+    .full{grid-column:1/-1}
+    .controls{display:flex;gap:10px;align-items:end}
+    button.primary{background:linear-gradient(90deg,#06b6d4,#5eead4);border:none;padding:10px 14px;border-radius:10px;color:#052024;font-weight:700;cursor:pointer}
+    button.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 10px;border-radius:10px;color:var(--muted);cursor:pointer}
+    .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:18px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
+    .card h3{margin:0 0 6px 0;font-size:15px}
+    .meta{font-size:12px;color:var(--muted);margin-bottom:8px}
+    .tags{display:flex;gap:8px;flex-wrap:wrap}
+    .tag{font-size:11px;padding:6px 8px;border-radius:999px;background:var(--glass);color:var(--muted)}
+    .footer{display:flex;justify-content:space-between;align-items:center;margin-top:16px}
+    .small{font-size:12px;color:var(--muted)}
+    .hint{font-size:12px;color:var(--muted);margin-top:8px}
+    .row{display:flex;gap:8px}
+    .file-area{display:flex;gap:8px;align-items:center}
+    input[type=file]{color:transparent}
+    .no-results{text-align:center;color:var(--muted);padding:28px}
+    @media (max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}.container{padding:12px}}
+    @media (max-width:560px){.grid{grid-template-columns:1fr}header{flex-direction:column;align-items:flex-start}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div>
+        <h1>Rahasto-työkalu</h1>
+        <p>Valitse kriteerit — hae GitHubin RAHASTOT.csv-tiedostosta tai lataa paikallinen tiedosto</p>
+      </div>
+    </header>
+
+    <div class="panel">
+      <div class="grid" id="filters">
+        <div>
+          <label>GitHub raw URL tai CSV-tiedosto</label>
+          <div style="display:flex;gap:8px;align-items:center">
+            <input id="csvUrl" placeholder="https://raw.githubusercontent.com/<user>/<repo>/main/RAHASTOT.csv" />
+            <div style="display:flex;flex-direction:column">
+              <input id="fileInput" type="file" accept=".csv" />
+            </div>
+          </div>
+          <div class="hint">Voit joko liittää raw GitHub -linkin tai ladata CSV:n suoraan.</div>
+        </div>
+
+        <div>
+          <label>Kategoria</label>
+          <select id="category"><option value="">— Valitse —</option></select>
+        </div>
+
+        <div>
+          <label>Yläluokka</label>
+          <select id="superclass"><option value="">— Valitse —</option></select>
+        </div>
+
+        <div>
+          <label>Alaluokka</label>
+          <select id="subclass"><option value="">— Valitse —</option></select>
+        </div>
+
+        <div>
+          <label>Riski</label>
+          <select id="risk"><option value="">— Valitse —</option></select>
+        </div>
+
+        <div>
+          <label>Morningstar rating (min)</label>
+          <select id="rating"><option value="">— Valitse —</option><option value="5">5</option><option value="4">4</option><option value="3">3</option><option value="2">2</option><option value="1">1</option></select>
+        </div>
+
+        <div>
+          <label>Kulut (max %)</label>
+          <input id="fees" placeholder="Esim. 1.2" />
+        </div>
+
+        <div>
+          <label>Valuutta</label>
+          <select id="currency"><option value="">— Valitse —</option></select>
+        </div>
+
+        <div>
+          <label>Vastuullisuus</label>
+          <select id="esg"><option value="">— Valitse —</option><option value="Korkea">Korkea</option><option value="Kohtalainen">Kohtalainen</option><option value="Matala">Matala</option><option value="Ei tietoa">Ei tietoa</option></select>
+        </div>
+
+        <div class="full controls">
+          <div style="flex:1;display:flex;gap:8px">
+            <button class="primary" id="searchBtn">Hae sopivat rahastot</button>
+            <button class="ghost" id="resetBtn">Nollaa</button>
+            <button class="ghost" id="sampleBtn">Lataa esimerkkidata (demo)</button>
+          </div>
+          <div style="display:flex;gap:8px;align-items:center">
+            <label style="margin:0 6px 0 0;color:var(--muted);font-size:13px">Lajittele:</label>
+            <select id="sort"><option value="relevance">Suhteellinen</option><option value="cost">Pienin kulut</option><option value="rating">Parhaat ratingit</option></select>
+          </div>
+        </div>
+
+      </div>
+
+      <div id="results" class="cards" style="margin-top:12px"></div>
+      <div id="noResults" class="no-results" style="display:none">Ei sopivia rahastoja. Kokeile eri suodattimia.</div>
+
+      <div class="footer">
+        <div class="small">Vinkki: voit käyttää GitHubin raw-linkkiä muodossa <code>https://raw.githubusercontent.com/<user>/<repo>/main/RAHASTOT.csv</code></div>
+        <div class="small">Valmiina julkaistavaksi GitHub Pages -sivuna (tiedosto: <code>index.html</code>).</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PapaParse CSV parser -->
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  <script>
+    // Utility helpers
+    const $ = id => document.getElementById(id);
+
+    let rawData = []; // array of objects
+
+    function uniqueSorted(arr){ return Array.from(new Set(arr.filter(x=>x!==undefined&&x!==null&&String(x).trim()!=""))).sort((a,b)=>String(a).localeCompare(String(b))); }
+
+    function populateFilters(){
+      const c = uniqueSorted(rawData.map(r=>r.Kategoria));
+      const sc = uniqueSorted(rawData.map(r=>r.Ylaluokka || r.Yläluokka || r.Yläluokka));
+      const sub = uniqueSorted(rawData.map(r=>r.Alaluokka));
+      const risk = uniqueSorted(rawData.map(r=>r.Riski));
+      const cur = uniqueSorted(rawData.map(r=>r.Valuutta));
+
+      fillSelect('category', c);
+      fillSelect('superclass', sc);
+      fillSelect('subclass', sub);
+      fillSelect('risk', risk);
+      fillSelect('currency', cur);
+    }
+
+    function fillSelect(id, arr){
+      const el = $(id); if(!el) return; const cur = el.value; el.innerHTML = '<option value="">— Valitse —</option>';
+      arr.forEach(v=>{ const opt = document.createElement('option'); opt.value = v; opt.textContent = v; el.appendChild(opt)});
+      if(cur) el.value = cur;
+    }
+
+    function parseCSVText(text){
+      const parsed = Papa.parse(text, {header:true, skipEmptyLines:true});
+      if(parsed.errors.length){ console.warn('CSV parse errors', parsed.errors); }
+      rawData = parsed.data.map(row=>normalizeRow(row));
+      populateFilters();
+      renderResults(rawData);
+    }
+
+    function normalizeRow(row){
+      // Normalize common column name variants (case insensitive)
+      const map = {};
+      for(const k in row){ map[k.trim()] = row[k]; }
+      const get = (...names)=>{ for(const n of names){ if(map.hasOwnProperty(n)) return map[n]; const lc = Object.keys(map).find(x=>x.toLowerCase()===(n.toLowerCase())); if(lc) return map[lc]; } return '' };
+
+      const feesRaw = (get('Kulut','kustannus','kulu')||'').toString().replace(',','.') || '';
+      const fees = parseFloat(feesRaw) || null;
+      const ratingRaw = get('Morningstar_rating','Rating','rating','Morningstar');
+      const rating = ratingRaw ? parseInt(String(ratingRaw).trim()) : null;
+
+      return {
+        Nimi: get('Nimi','Name','Rahaston','Rahasto'),
+        Tietoa: get('Tietoa','Tieto','Info','Kuvaus','Kuvaus/Info'),
+        Rating: rating,
+        Riski: get('Riski','Risk','Riskiluokka'),
+        Kategoria: get('Kategoria','Category'),
+        Ylaluokka: get('Ylaluokka','Yläluokka','Ylaluokka','Yläluokka'),
+        Alaluokka: get('Alaluokka','Alaluokka','AlaLuokka','Alaluokka'),
+        Kulut: fees,
+        Valuutta: get('Valuutta','Currency'),
+        Vastuullisuus: get('Vastuullisuus','Vastuullisuus','ESG','Vastuullisuusluokka'),
+        raw: row
+      };
+    }
+
+    function renderResults(list){
+      const out = $("results"); out.innerHTML = '';
+      if(!list.length){ $('noResults').style.display='block'; return; } else {$('noResults').style.display='none'}
+
+      list.forEach(item=>{
+        const card = document.createElement('div'); card.className='card';
+        card.innerHTML = `
+          <h3>${escapeHtml(item.Nimi || '—')}</h3>
+          <div class="meta">${escapeHtml(item.Tietoa || '')}</div>
+          <div class="tags">
+            <div class="tag">Rating: ${item.Rating||'—'}</div>
+            <div class="tag">Riski: ${escapeHtml(item.Riski||'—')}</div>
+            <div class="tag">Vastuullisuus: ${escapeHtml(item.Vastuullisuus||'—')}</div>
+            <div class="tag">Kulut: ${item.Kulut!=null?item.Kulut + '%':'—'}</div>
+            <div class="tag">Valuutta: ${escapeHtml(item.Valuutta||'—')}</div>
+          </div>
+        `;
+        out.appendChild(card);
+      });
+    }
+
+    function escapeHtml(s){ if(!s) return ''; return String(s).replace(/[&<>"']/g,c=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' })[c]); }
+
+    // Filtering logic using UI values
+    function applyFilters(){
+      let list = rawData.slice();
+      const cat = $('category').value;
+      const sup = $('superclass').value;
+      const sub = $('subclass').value;
+      const risk = $('risk').value;
+      const rating = $('rating').value;
+      const fees = parseFloat($('fees').value.replace(',','.'));
+      const cur = $('currency').value;
+      const esg = $('esg').value;
+
+      if(cat) list = list.filter(r=>String(r.Kategoria||'').toLowerCase()===cat.toLowerCase());
+      if(sup) list = list.filter(r=>String(r.Ylaluokka||'').toLowerCase()===sup.toLowerCase());
+      if(sub) list = list.filter(r=>String(r.Alaluokka||'').toLowerCase()===sub.toLowerCase());
+      if(risk) list = list.filter(r=>String(r.Riski||'').toLowerCase()===risk.toLowerCase());
+      if(rating) list = list.filter(r=>{ const v = parseInt(r.Rating)||0; return v >= parseInt(rating); });
+      if(!Number.isNaN(fees)) list = list.filter(r=> (r.Kulut==null) ? false : (parseFloat(r.Kulut) <= fees));
+      if(cur) list = list.filter(r=>String(r.Valuutta||'').toLowerCase()===cur.toLowerCase());
+      if(esg) list = list.filter(r=>{ const v = String(r.Vastuullisuus||'').toLowerCase(); return v.includes(esg.toLowerCase()) || v===esg.toLowerCase(); });
+
+      const sort = $('sort').value;
+      if(sort==='cost'){ list.sort((a,b)=> (a.Kulut||999)-(b.Kulut||999)); }
+      else if(sort==='rating'){ list.sort((a,b)=> (b.Rating||0)-(a.Rating||0)); }
+
+      renderResults(list);
+    }
+
+    // Load CSV from URL
+    async function loadFromUrl(url){
+      try{
+        const res = await fetch(url);
+        if(!res.ok) throw new Error('Fetch error: '+res.status);
+        const text = await res.text();
+        parseCSVText(text);
+      }catch(e){ alert('Virhe ladattaessa CSV: ' + e.message); }
+    }
+
+    // Read local file
+    function loadFromFile(file){
+      const reader = new FileReader();
+      reader.onload = e=> parseCSVText(e.target.result);
+      reader.readAsText(file,'utf-8');
+    }
+
+    // Demo sample CSV (very small) to try UI without external file
+    const sampleCSV = `Nimi,Tietoa,Rating,Riski,Kategoria,Ylaluokka,Alaluokka,Kulut,Valuutta,Vastuullisuus
+"Esimerkki Euro Indeksi","Laaja EU indeksi",4,Medium,Osakerahasto,Osakkeet,Eurooppa,0.75,EUR,Korkea
+"Kasvu Global","Kasvuyhtiöt globaalisti",5,High,Osakerahasto,Osakkeet,Globaali,1.25,USD,Kohtalainen
+"Korko Suomi","Suomalaiset korkorahastot",3,Low,Velkarahasto,Kiinnityslaina,,0.45,EUR,Matala
+`;
+
+    // Wire up UI
+    document.addEventListener('DOMContentLoaded', ()=>{
+      $('fileInput').addEventListener('change', e=>{
+        const f = e.target.files[0]; if(f) loadFromFile(f);
+      });
+
+      $('searchBtn').addEventListener('click', ()=>{
+        // If URL provided use it, else if rawData exists filter, else show error
+        const url = $('csvUrl').value.trim();
+        if(url){ loadFromUrl(url); }
+        else if(rawData.length){ applyFilters(); }
+        else { alert('Lisää GitHub raw -url tai lataa CSV-tiedosto (tai käytä esimerkkiä).'); }
+      });
+
+      $('resetBtn').addEventListener('click', ()=>{
+        ['category','superclass','subclass','risk','rating','fees','currency','esg'].forEach(id=>{ if($(id)) $(id).value=''; });
+        renderResults(rawData);
+      });
+
+      $('sampleBtn').addEventListener('click', ()=>{
+        parseCSVText(sampleCSV);
+      });
+
+      // Live filter on change
+      ['category','superclass','subclass','risk','rating','fees','currency','esg','sort'].forEach(id=>{
+        const el = $(id); if(!el) return; el.addEventListener('change', applyFilters); el.addEventListener('input', applyFilters);
+      });
+
+      // Initial demo load hidden: empty state
+      // Auto-load RAHASTOT.csv from same repository if available
+      const autoUrl = window.location.origin + window.location.pathname.replace(/index\.html$/,'') + 'RAHASTOT.csv';
+      fetch(autoUrl).then(r=>{ if(r.ok) r.text().then(t=>parseCSVText(t)); });
+    });
+  </script>
+</body>
+</html>
