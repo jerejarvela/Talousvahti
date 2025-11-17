@@ -103,8 +103,23 @@
   </div>
 
   <script>
-    const CSV_SRC = 'RAHASTOT.csv';
-    document.getElementById('csv-url').href = CSV_SRC;
+      const CSV_SRC = 'RAHASTOT.csv'; // polku repositorion CSV:hen
+      document.getElementById('csv-url').href = CSV_SRC;
+      
+      async function loadData(){
+        try {
+          const data = await fetchCSV(CSV_SRC);
+          rawData = data.map(normalizeRow);
+          document.getElementById('source-status').textContent = 'ladattu paikallisesta RAHASTOT.csv';
+          initFilters();
+          applyFilters();
+        } catch(err) {
+          console.error('CSV-tiedoston haku epäonnistui', err);
+          document.getElementById('source-status').textContent = 'ei saatavilla (katso konsoli)';
+        }
+      }
+      
+      loadData();
 
     let rawData = [];
 
