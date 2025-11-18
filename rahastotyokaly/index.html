@@ -99,6 +99,36 @@
   display: none !important;
     }
 
+        /* Estää vaakasuuntaisen ylivuodon mobiilissa */
+    html, body {
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+    
+    /* Varmistaa että grid mukautuu */
+    .controls {
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+    
+    /* Tulosten yläosan oikea info ei pakota sivua liian leveäksi */
+    .toprow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    
+    /* Estää 160px oikean sarakkeen rikkomasta mobiilia */
+    .toprow > div:last-child {
+      width: auto;
+      min-width: 0;
+      flex: 1 1 120px;
+      text-align: left;
+    }
+
+
 
     footer{text-align:center;margin-top:32px;color:var(--muted);font-size:0.9rem}
 </style>
