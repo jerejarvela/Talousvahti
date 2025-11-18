@@ -351,13 +351,28 @@
       document.getElementById('feeRange').addEventListener('input', (e)=>{ filters.maxFee = parseFloat(e.target.value); document.getElementById('feeVal').textContent = filters.maxFee.toFixed(2)+'%'; applyFilters(); });
 
       // rating picker (stars)
-      const ratingPicker = document.getElementById('ratingPicker'); ratingPicker.innerHTML='';
-      for(let i=0;i<=5;i++){
-        const b=document.createElement('button'); b.className='btn small'; b.textContent = (i===0? '—' : '★'.repeat(i));
-        b.title = (i===0? 'Ei suodatusta' : i+' tähteä tai enemmän');
-        b.onclick=(()=>{ return ()=>{ filters.minRating = i; applyFilters(); updateActive(); }; })(i);
+      // rating picker (stars) ilman "—"
+      const ratingPicker = document.getElementById('ratingPicker'); 
+      ratingPicker.innerHTML='';
+      
+      for(let i=1;i<=5;i++){  // aloitetaan yhdestä, ei nollasta
+        const b=document.createElement('button'); 
+        b.className='btn small'; 
+        b.textContent = '★'.repeat(i);
+        b.title = i+' tähteä tai enemmän';
+        b.onclick=(()=>{ 
+          return ()=>{ 
+            filters.minRating = i; 
+            applyFilters(); 
+            updateActive(); 
+          }; 
+        })(i);
         ratingPicker.appendChild(b);
       }
+      
+      // oletuksena ei valittuna mitään
+      filters.minRating = 0;
+
 
       // currency buttons
       const currs = unique(data.map(d=>d.Valuutta));
