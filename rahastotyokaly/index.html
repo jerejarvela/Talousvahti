@@ -190,18 +190,18 @@
           </div>
 
           <div>
-            <br><div class="hint">Valitse riski<div class="explain">Riski kertoo rahaston arvonvaihtelun tason. (1 = matala, 7 = korkea)</div></div><br>
+            <br><div class="hint">Valitse riski<div class="explain">Riski kertoo, kuinka paljon rahaston arvo voi vaihdella. Matala riski (1) tarkoittaa tasaisempaa kehitystä, korkea riski (7) suurempia tuottoja, mutta myös suurempia vaihteluita.</div></div><br>
             <input id="riskRange" class="slider" type="range" min="1" max="7" step="1" value="7">
             <div class="explain">Riski enintään: <span id="riskVal">7</span></div>
           </div>
 
           <div>
-            <br><div class="hint">Morningstar-rating<div class="explain">Tähdet kuvaavat rahaston historiallista tuotto–riski suhdetta (paras 5).</div></div><br>
+            <br><div class="hint">Morningstar-rating<div class="explain">Tähdet kuvaavat rahaston historiallista tuotto–riski-suhdetta. Mitä enemmän tähtiä (enintään 5), sitä paremmin rahasto on aiemmin yhdistänyt tuoton ja riskin..</div></div><br>
             <div id="ratingPicker" class="buttons"></div>
           </div>
 
           <div>
-            <br><div class="hint">Kulut<div class="explain">Kokonaiskuluprosentti kertoo paljonko rahasto veloittaa vuosittain — valitse korkeimmillaan.</div></div><br>
+            <br><div class="hint">Kulut<div class="explain">Kokonaiskuluprosentti kertoo, kuinka paljon rahasto veloittaa vuosittain kuluina. Valitse arvo korkeimmillaan.</div></div><br>
             <input id="feeRange" class="slider" type="range" min="0" max="5" step="0.01" value="5">
             <div class="smallmuted">Kulut enintään: <span id="feeVal">5.00%</span></div>
           </div>
@@ -212,10 +212,10 @@
               <div class="more" id="toggleExtra">Lisäasetukset ⚙️</div>
             </div>
             <div id="extra" class="hidden" style="margin-top:8px">
-              <br><div class="hint">Valuutta</div>
+              <br><div class="hint">Valuutta</div><br>
               <div class="buttons" id="currencyButtons"></div>
               <div style="height:8px"></div>
-              <br><div class="hint">Vastuullisuus (SFDR) enintään</div>
+              <br><div class="hint">Vastuullisuus (SFDR) enintään</div><br>
               <input id="sfdrRange" class="slider" type="range" min="0" max="10" step="1" value="10">
               <div class="smallmuted">SFDR enintään: <span id="sfdrVal">10</span></div>
             </div>
