@@ -1,1 +1,478 @@
+<!doctype html>
+<html lang="fi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Rahastotyökalu</title>
+  <meta name="description" content="Rahastojen suodatus- ja hakutyökalu (GitHub Pages).">
+  <link rel="icon" href="data:,"><style>
+    :root{
+      --bg:#0e1117;
+      --card:#181c24;
+      --text:#e8ecf3;
+      --muted:#98a2b3;
+      --accent:#4f46e5;
+      --radius:16px;
+      --shadow:0 8px 28px rgba(0,0,0,0.45);
+    }
+    *{box-sizing:border-box;font-family:Inter,ui-sans-serif,system-ui}
+    body{margin:0;background:var(--bg);color:var(--text);line-height:1.6}
 
+    .app{max-width:1400px;margin:auto;padding:32px}
+    h1{margin:0;font-size:2rem;font-weight:700}
+    .lead{color:var(--muted);margin-top:6px;font-size:1.05rem}
+
+    /* LAYOUT */
+    .controls{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:28px}
+    @media(max-width:900px){.controls{grid-template-columns:1fr}}
+
+    .panel{
+      background:var(--card);
+      border-radius:var(--radius);
+      padding:24px;
+      box-shadow:var(--shadow);
+    }
+
+    .hint {
+    font-size: 18px; /* fonttikoko */
+    font-weight: bold; /* tekee tekstistä lihavoidun */
+    }
+
+    .explain {
+    font-size: 14px;
+    font-weight: normal; 
+    color: #999;
+    }
+
+    /* FILTERS */
+    .filters{display:flex;flex-direction:column;gap:32px}
+    .section-title{font-size:1rem;font-weight:600;margin-bottom:6px}
+    .section-desc{color:var(--muted);font-size:0.9rem;margin-bottom:14px}
+
+    .buttons{display:flex;flex-wrap:wrap;gap:10px}
+    .btn{
+      background:#272d38;
+      border:none;
+      padding:10px 14px;
+      border-radius:10px;
+      cursor:pointer;
+      color:var(--text);
+      font-size:0.95rem;
+      transition:0.15s;
+    }
+    .btn:hover{background:#323949}
+    .btn.active{background:var(--accent);box-shadow:0 4px 14px rgba(79,70,229,0.4)}
+
+    input[type=range]{width:100%}
+    .range-value{color:var(--muted);margin-top:6px;font-size:0.9rem}
+
+    /* RESULTS */
+    .results{display:flex;flex-direction:column;gap:20px;margin-top:20px}
+    .card{
+      background:#181c24;
+      padding:20px;
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+    }
+    .card h3{margin:0 0 6px;font-size:1.15rem}
+    .meta{display:flex;gap:18px;flex-wrap:wrap;color:var(--muted);font-size:0.9rem;margin-top:10px}
+
+    .star{color:#facc15;font-size:1.1rem}
+
+    /* SEARCH + STATUS */
+    .searchbar input{
+      width:100%;
+      padding:10px 14px;
+      background:#272d38;
+      border:none;
+      border-radius:10px;
+      color:var(--text);
+      font-size:0.95rem;
+    }
+    .countbubble{
+      background:#1e2530;
+      padding:10px 18px;
+      border-radius:999px;
+      font-weight:600;
+      font-size:0.95rem;
+    }
+
+    .hidden {
+  display: none !important;
+    }
+
+        /* Estää vaakasuuntaisen ylivuodon mobiilissa */
+    html, body {
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+    
+    /* Varmistaa että grid mukautuu */
+    .controls {
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+      margin-bottom: 30px
+    }
+    
+    /* Tulosten yläosan oikea info ei pakota sivua liian leveäksi */
+    .toprow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    
+    /* Estää 160px oikean sarakkeen rikkomasta mobiilia */
+    .toprow > div:last-child {
+      width: auto;
+      min-width: 0;
+      flex: 1 1 120px;
+      text-align: left;
+    }
+
+    @media (max-width: 768px) {
+  .controls {
+    display: block !important;
+    width: 100% !important;
+    margin-bottom: 30px !important;
+  }
+
+  .results {
+    width: 100% !important;
+  }
+}
+
+    @media (max-width: 768px) {
+  .container, .main, .wrapper {
+    grid-template-columns: 1fr !important;
+    width: 100% !important;
+  }
+}
+
+    @media (max-width: 768px) {
+  .results {
+    margin-top: 24px !important;   /* Lisää väli filttereiden ja listan väliin */
+  }
+
+
+
+
+    footer{text-align:center;margin-top:32px;color:var(--muted);font-size:0.9rem}
+</style>
+</head>
+<body>
+  <div class="app">
+    <header>
+      <div>
+        <h1>Rahastotyökalu</h1>
+        <p class="lead">Suodata ja tutki rahastoja. Valitse ensin kategoria, sitten yläluokka, alakategoria — säädä riskitasoa, Morningstar-ratingia ja kuluja.</p>
+      </div>
+      <div class="countbubble" id="totalCount">Ladataan…</div>
+    </header>
+
+    <div class="controls">
+      <div class="panel"><br>
+        <div class="filters">
+
+          <div>
+            <div class="hint">Valitse rahaston kategoria</div><br>
+            <div class="buttons" id="categoryButtons"></div>
+          </div>
+
+          <div id="ylaluokkaWrap" class="hidden">
+            <div class="hint"></div>
+            <div class="buttons" id="ylaluokkaButtons"></div>
+          </div>
+
+          <div id="alakategoriaWrap" class="hidden">
+            <div class="hint"></div>
+            <div class="buttons" id="alakategoriaButtons"></div>
+          </div>
+
+          <div>
+            <br><div class="hint">Valitse riski<div class="explain">Riski kertoo, kuinka paljon rahaston arvo voi vaihdella. Matala riski (1) tarkoittaa tasaisempaa kehitystä, korkea riski (7) suurempia tuottoja, mutta myös suurempia vaihteluita.</div></div><br>
+            <input id="riskRange" class="slider" type="range" min="1" max="7" step="1" value="7">
+            <div class="smallmuted">Riski enintään: <span id="riskVal">7</span></div>
+          </div>
+
+          <div>
+            <br><div class="hint">Morningstar-rating<div class="explain">Tähdet kuvaavat rahaston historiallista tuotto–riski-suhdetta. Mitä enemmän tähtiä (enintään 5), sitä paremmin rahasto on aiemmin yhdistänyt tuoton ja riskin..</div></div><br>
+            <div id="ratingPicker" class="buttons"></div>
+          </div>
+
+          <div>
+            <br><div class="hint">Kulut<div class="explain">Kokonaiskuluprosentti kertoo, kuinka paljon rahasto veloittaa vuosittain kuluina. Valitse arvo korkeimmillaan.</div></div><br>
+            <input id="feeRange" class="slider" type="range" min="0" max="5" step="0.01" value="5">
+            <div class="smallmuted">Kulut enintään: <span id="feeVal">5.00%</span></div>
+          </div>
+
+          <div>
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <br><div class="hint"></div>
+              <div class="more" id="toggleExtra">Lisäasetukset ⚙️</div>
+            </div>
+            <div id="extra" class="hidden" style="margin-top:8px">
+              <br><div class="hint">Valuutta</div><br>
+              <div class="buttons" id="currencyButtons"></div>
+              <div style="height:8px"></div>
+              <br><div class="hint">Vastuullisuus (SFDR) enintään</div><br>
+              <input id="sfdrRange" class="slider" type="range" min="0" max="10" step="1" value="10">
+              <div class="smallmuted">SFDR enintään: <span id="sfdrVal">10</span></div>
+            </div>
+          </div>
+
+          <div style="display:flex;gap:8px;align-items:center;margin-top:8px">
+            <input id="clearBtn" type="button" class="btn small" value="Tyhjennä suodattimet">
+            <div class="muteb"> <span id="resultsCount">0</span> tulosta</div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="rightcol">
+        <br>
+          <div class="toprow">
+            <div style="flex:1">
+              <br><div class="hint">Tulokset</div><br>
+              <div class="searchbar"><input id="searchInput" type="search" placeholder="Haku 🔍"> </div>
+            </div>
+            <div style="width:160px;text-align:right">
+              <div class="smallmuted"></div>
+              <div id="activeFilters" class="muteb hidden"></div>
+            </div>
+          </div>
+
+          <div id="results" class="results" style="margin-top:14px">
+            <!-- Rahastokortit -->
+          
+        </div>
+
+        <footer>
+          
+        </footer>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- PapaParse for CSV parsing -->
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.2/papaparse.min.js"></script>
+  <script>
+    // Emoji mapping for categories (voit muokata)
+    const emojiMap = {
+      'Sektori': '🏭',
+      'Maantiede': '🌍',
+      'Tyyli': '🎯',
+      'Muut': '🧩',
+      'Vaihtoehtoinen': '⚖️',
+      'Korko': '💰',
+      'Yhdistelmä': '🔀',
+      'Kiinteistö': '🏠'
+    };
+
+    let data = [];
+    let filters = {
+      category: null,
+      ylaluokka: null,
+      alakategoria: null,
+      maxRisk: 7,
+      minRating: 0,
+      maxFee: 5.0,
+      currency: null,
+      maxSfdr: 10,
+      search: ''
+    };
+
+    function parseFee(s){
+      if(!s) return 999;
+      s = String(s).replace('%','').trim().replace(',','.');
+      let v = parseFloat(s);
+      return isNaN(v)?999:v;
+    }
+
+    function parseRisk(s){
+      if(!s) return null;
+      // CSV has format like '6 / 7'
+      const m = String(s).match(/(\d+)\s*\/\s*7/);
+      if(m) return parseInt(m[1],10);
+      const n = parseInt(s,10);
+      return isNaN(n)?null:n;
+    }
+
+    function parseRating(s){
+      if(!s) return 0;
+      const m = String(s).match(/(\d+)\s*stars?/i);
+      if(m) return parseInt(m[1],10);
+      return 0;
+    }
+
+    function fmtFee(v){ return (isFinite(v) ? v.toFixed(2) + '%' : '—'); }
+
+    function loadCSV(){
+      Papa.parse('/RAHASTOT.csv', {
+        download:true, header:true, skipEmptyLines:true,
+        complete: (results)=>{
+          data = results.data.map(r=>({
+            Nimi: r['Nimi']||'',
+            Valuutta: r['Valuutta']||'',
+            Tietoa: r['Tietoa']||'',
+            RatingRaw: r['Rating']||'',
+            Rating: parseRating(r['Rating']),
+            RiskiRaw: r['Riski']||'',
+            Riski: parseRisk(r['Riski']),
+            Vastuullisuus: r['Vastuullisuus (SFDR)']||'',
+            Omistajia: r['Omistajia Nordnetissä']||'',
+            KulutRaw: r['Kulut']||'',
+            Kulut: parseFee(r['Kulut']),
+            Kategoria: r['Kategoria']||'',
+            Ylaluokka: r['Yläluokka']||'',
+            Alakategoria: r['Alakategoria']||''
+          }));
+          initUI();
+          applyFilters();
+        }
+      });
+    }
+
+    function unique(vals){ return Array.from(new Set(vals.filter(v=>v!==''))).sort(); }
+
+    // UI init
+    function initUI(){
+      const categories = unique(data.map(d=>d.Kategoria));
+      const catWrap = document.getElementById('categoryButtons');
+      catWrap.innerHTML='';
+      categories.forEach(c=>{
+        const b = document.createElement('button'); b.className='btn'; b.innerHTML = `${emojiMap[c]||'🔘'} ${c}`;
+        b.onclick = ()=>{ filters.category = (filters.category===c?null:c); filters.ylaluokka=null; filters.alakategoria=null; updateActive(); populateYla(); applyFilters(); };
+        catWrap.appendChild(b);
+      });
+
+      document.getElementById('riskRange').addEventListener('input', (e)=>{ filters.maxRisk = parseInt(e.target.value,10); document.getElementById('riskVal').textContent = filters.maxRisk; applyFilters(); });
+      document.getElementById('feeRange').addEventListener('input', (e)=>{ filters.maxFee = parseFloat(e.target.value); document.getElementById('feeVal').textContent = filters.maxFee.toFixed(2)+'%'; applyFilters(); });
+
+      // rating picker (stars)
+      // rating picker (stars) ilman "—"
+      const ratingPicker = document.getElementById('ratingPicker'); 
+      ratingPicker.innerHTML='';
+      
+      for(let i=1;i<=5;i++){  // aloitetaan yhdestä, ei nollasta
+        const b=document.createElement('button'); 
+        b.className='btn small'; 
+        b.textContent = '★'.repeat(i);
+        b.title = i+' tähteä tai enemmän';
+        b.onclick = (() => {
+          return () => {
+            // Jos sama arvo on jo valittuna, poista valinta (0 = ei suodatusta)
+            filters.minRating = (filters.minRating === i ? 0 : i);
+            applyFilters();
+            updateActive();
+          };
+        })(i);
+        ratingPicker.appendChild(b);
+      }
+      
+      // oletuksena ei valittuna mitään
+      filters.minRating = 0;
+
+
+      // currency buttons
+      const currs = unique(data.map(d=>d.Valuutta));
+      const cb = document.getElementById('currencyButtons'); cb.innerHTML='';
+      currs.forEach(c=>{ const b=document.createElement('button'); b.className='btn small'; b.textContent=c; b.onclick=()=>{ filters.currency = (filters.currency===c?null:c); updateActive(); applyFilters(); }; cb.appendChild(b); });
+
+      // toggle extra
+      document.getElementById('toggleExtra').addEventListener('click', ()=>{ const ex=document.getElementById('extra'); ex.classList.toggle('hidden'); document.getElementById('toggleExtra').textContent = ex.classList.contains('hidden')? 'Näytä':'Piilota'; });
+      document.getElementById('sfdrRange').addEventListener('input', (e)=>{ filters.maxSfdr = parseInt(e.target.value,10); document.getElementById('sfdrVal').textContent = filters.maxSfdr; applyFilters(); });
+
+      document.getElementById('searchInput').addEventListener('input', (e)=>{ filters.search = e.target.value; applyFilters(); });
+      document.getElementById('clearBtn').addEventListener('click', ()=>{ filters = {category:null, ylaluokka:null, alakategoria:null, maxRisk:7, minRating:0, maxFee:5.0, currency:null, maxSfdr:10, search:''}; document.getElementById('riskRange').value=7; document.getElementById('riskVal').textContent='7'; document.getElementById('feeRange').value=5; document.getElementById('feeVal').textContent='5.00%'; document.getElementById('sfdrRange').value=10; document.getElementById('sfdrVal').textContent='10'; document.getElementById('searchInput').value=''; document.getElementById('extra').classList.add('hidden'); document.getElementById('toggleExtra').textContent='Näytä'; populateYla(); updateActive(); applyFilters(); });
+
+      populateYla(); updateActive();
+    }
+
+    function populateYla(){
+      const wrap = document.getElementById('ylaluokkaWrap'); const btns = document.getElementById('ylaluokkaButtons'); btns.innerHTML='';
+      if(!filters.category){ wrap.classList.add('hidden'); document.getElementById('alakategoriaWrap').classList.add('hidden'); return; }
+      const ylas = unique(data.filter(d=>d.Kategoria===filters.category).map(d=>d.Ylaluokka));
+      if(ylas.length===0){ wrap.classList.add('hidden'); document.getElementById('alakategoriaWrap').classList.add('hidden'); return; }
+      wrap.classList.remove('hidden');
+      ylas.forEach(y=>{ const b=document.createElement('button'); b.className='btn'; b.textContent = y||'—'; b.onclick=()=>{ filters.ylaluokka = (filters.ylaluokka===y?null:y); filters.alakategoria=null; populateAla(); updateActive(); applyFilters(); }; btns.appendChild(b); });
+      populateAla();
+    }
+
+    function populateAla(){
+      const wrap = document.getElementById('alakategoriaWrap'); const btns = document.getElementById('alakategoriaButtons'); btns.innerHTML='';
+      if(!filters.category || !filters.ylaluokka){ wrap.classList.add('hidden'); return; }
+      const alas = unique(data.filter(d=>d.Kategoria===filters.category && d.Ylaluokka===filters.ylaluokka).map(d=>d.Alakategoria));
+      if(alas.length===0){ wrap.classList.add('hidden'); return; }
+      wrap.classList.remove('hidden');
+      alas.forEach(a=>{ const b=document.createElement('button'); b.className='btn small'; b.textContent = a||'—'; b.onclick=()=>{ filters.alakategoria = (filters.alakategoria===a?null:a); updateActive(); applyFilters(); }; btns.appendChild(b); });
+    }
+
+    function updateActive(){
+      // categories
+      document.querySelectorAll('#categoryButtons .btn').forEach(b=>{ b.classList.toggle('active', filters.category && b.textContent.includes(filters.category)); });
+      document.querySelectorAll('#ylaluokkaButtons .btn').forEach(b=>{ b.classList.toggle('active', filters.ylaluokka && b.textContent.includes(filters.ylaluokka)); });
+      document.querySelectorAll('#alakategoriaButtons .btn').forEach(b=>{ b.classList.toggle('active', filters.alakategoria && b.textContent.includes(filters.alakategoria)); });
+      document.querySelectorAll('#ratingPicker .btn').forEach(b=>{ const txt=b.textContent.trim(); const count = txt==='—'?0:txt.length; b.classList.toggle('active', filters.minRating===count); });
+      document.querySelectorAll('#currencyButtons .btn').forEach(b=>{ b.classList.toggle('active', filters.currency && b.textContent===filters.currency); });
+
+      // active filters summary
+      const parts = [];
+      if(filters.category) parts.push(filters.category);
+      if(filters.ylaluokka) parts.push(filters.ylaluokka);
+      if(filters.alakategoria) parts.push(filters.alakategoria);
+      if(filters.maxRisk<7) parts.push('Riski ≤ '+filters.maxRisk);
+      if(filters.minRating>0) parts.push('Rating ≥ '+filters.minRating);
+      if(filters.maxFee<5) parts.push('Kulut ≤ '+filters.maxFee.toFixed(2)+'%');
+      if(filters.currency) parts.push(filters.currency);
+      if(filters.maxSfdr<10) parts.push('SFDR ≤ '+filters.maxSfdr);
+      if(filters.search) parts.push('Hakusana: '+filters.search);
+      document.getElementById('activeFilters').textContent = parts.length? parts.join(' • '): '—';
+    }
+
+    function applyFilters(){
+      const res = data.filter(d=>{
+        if(filters.category && d.Kategoria!==filters.category) return false;
+        if(filters.ylaluokka && d.Ylaluokka!==filters.ylaluokka) return false;
+        if(filters.alakategoria && d.Alakategoria!==filters.alakategoria) return false;
+        if(d.Riski!==null && filters.maxRisk!==null && d.Riski>filters.maxRisk) return false;
+        if(d.Rating<filters.minRating) return false;
+        if(isFinite(d.Kulut) && d.Kulut>filters.maxFee) return false;
+        if(filters.currency && d.Valuutta!==filters.currency) return false;
+        if(d.Vastuullisuus!=='' && !isNaN(parseInt(d.Vastuullisuus)) && parseInt(d.Vastuullisuus)>filters.maxSfdr) return false;
+        if(filters.search){ const s=filters.search.toLowerCase(); if(!(d.Nimi.toLowerCase().includes(s) || d.Tietoa.toLowerCase().includes(s))) return false; }
+        return true;
+      });
+      renderResults(res);
+      document.getElementById('resultsCount').textContent = res.length;
+      document.getElementById('totalCount').textContent = res.length + ' tulosta';
+    }
+
+    function renderResults(list){
+      const cont = document.getElementById('results'); cont.innerHTML='';
+      if(list.length===0){ cont.innerHTML = '<div class="muteb">Ei tuloksia — yritä laajentaa suodattimia.</div>'; return; }
+      list.forEach(d=>{
+        const c = document.createElement('div'); c.className='card';
+        const h = document.createElement('h3'); h.textContent = d.Nimi; c.appendChild(h);
+        const info = document.createElement('div'); info.className='muteb'; info.textContent = d.Tietoa; c.appendChild(info);
+        const meta = document.createElement('div'); meta.className='meta';
+        // rating stars
+        const stars = document.createElement('div'); stars.className='stars'; for(let i=1;i<=5;i++){ const sp = document.createElement('span'); sp.className='star'; sp.textContent = i<=d.Rating? '★':'☆'; stars.appendChild(sp); }
+        meta.appendChild(stars);
+        // risk
+        const risk = document.createElement('div'); risk.textContent = 'Riski: '+(d.Riski===null? '—': d.Riski + '/7'); meta.appendChild(risk);
+        // vastuullisuus
+        const vas = document.createElement('div'); vas.textContent = 'Vastuullisuus: ' + (d.Vastuullisuus||'—'); meta.appendChild(vas);
+        // kulut
+        const fee = document.createElement('div'); fee.textContent = 'Kulut: ' + (isFinite(d.Kulut)? d.Kulut.toFixed(2)+'%':'—'); meta.appendChild(fee);
+        c.appendChild(meta);
+        cont.appendChild(c);
+      });
+    }
+
+    loadCSV();
+  </script>
+</body>
+</html>
