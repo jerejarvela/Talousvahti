@@ -360,12 +360,13 @@
         b.className='btn small'; 
         b.textContent = '★'.repeat(i);
         b.title = i+' tähteä tai enemmän';
-        b.onclick=(()=>{ 
-          return ()=>{ 
-            filters.minRating = i; 
-            applyFilters(); 
-            updateActive(); 
-          }; 
+        b.onclick = (() => {
+          return () => {
+            // Jos sama arvo on jo valittuna, poista valinta (0 = ei suodatusta)
+            filters.minRating = (filters.minRating === i ? 0 : i);
+            applyFilters();
+            updateActive();
+          };
         })(i);
         ratingPicker.appendChild(b);
       }
