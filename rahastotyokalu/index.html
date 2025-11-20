@@ -28,16 +28,18 @@
       grid-template-columns: 1fr 1fr; /* sama leveys molemmille */
       gap: 32px;
     }
-
-    .panel{
-      background:var(--card);
-      border-radius:var(--radius);
-      padding:24px;
-      box-shadow:var(--shadow);
+    
+    .panel {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      height: auto;          /* EI venymistä */
     }
-
+    
     .rightcol {
-      /* EI FLEX-ASIOITA! */
+      overflow-y: auto;      /* scrollaa tarvittaessa */
+      max-height: 80vh;      /* rajoitetaan maksimikorkeus */
     }
 
     .hint {
