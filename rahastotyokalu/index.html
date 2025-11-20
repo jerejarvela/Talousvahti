@@ -25,8 +25,9 @@
     /* LAYOUT */
     .controls {
       display: grid;
-      grid-template-columns: 1fr 1fr; /* sama leveys molemmille */
+      grid-template-columns: 1fr 1fr; /* molemmat sarakkeet sama leveys */
       gap: 32px;
+      align-items: start;             /* tärkeää! ei venytä paneelia */
     }
     
     .panel {
@@ -34,12 +35,11 @@
       border-radius: var(--radius);
       padding: 24px;
       box-shadow: var(--shadow);
-      height: auto;          /* EI venymistä */
+      height: auto;                   /* EI 100%, EI stretch */
     }
     
     .rightcol {
-      overflow-y: auto;      /* scrollaa tarvittaessa */
-      max-height: 80vh;      /* rajoitetaan maksimikorkeus */
+      /* EI mitään flex:1 tai korkeusasetuksia */
     }
 
     .hint {
