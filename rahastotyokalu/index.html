@@ -165,29 +165,6 @@
   }
 
 
-.search-area {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.sort-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 16px;
-}
-
-#sort {
-  padding: 8px 12px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  background: #fff;
-  font-size: 15px;
-}
-
-
-
 
 
     footer{text-align:center;margin-top:32px;color:var(--muted);font-size:0.9rem}
@@ -268,17 +245,7 @@
             <div style="flex:1">
               <br><div class="hint">Tulokset <p class="explain">Tutustu rahastoesitteeseen ja avaintietoasiakirjaan ennen sijoituspäätösten tekemistä. </p></div>
               <div class="searchbar"><input id="searchInput" type="search" placeholder="Haku 🔍"> </div>
-              
-              <div class="sort-wrapper">
-                <label for="sort">Järjestä:</label>
-                <select id="sort">
-                  <option value="popular" selected>Suosituimmat ensin</option>
-                  <option value="low_fee">Edullisimmat kulut</option>
-                  <option value="high_return">Parhaiten tuottaneet</option>
-                  <option value="low_risk">Matalin riski</option>
-                </select>
-              </div>
-              
+            
             <div style="width:160px;text-align:right">
               <div class="smallmuted"></div>
               <div id="activeFilters" class="muteb hidden"></div>
@@ -418,34 +385,6 @@
       filters.minRating = 0;
 
 
-      const sortSelect = document.getElementById("sort");
-      
-      sortSelect.addEventListener("change", () => {
-        sortResults();
-        renderResults();
-      });
-      
-      function sortResults() {
-        const option = sortSelect.value;
-      
-        if (option === "Suosituimmat") {
-          results.sort((a, b) => b.omistajia - a.omistajia);
-        }
-      
-        if (option === "Matalimmat kulut") {
-          results.sort((a, b) => a.kulut - b.kulut);
-        }
-      
-        if (option === "high_return") {
-          results.sort((a, b) => b.tuotto - a.tuotto);
-        }
-      
-        if (option === "low_risk") {
-          results.sort((a, b) => a.riski - b.riski);
-        }
-      }
-
-      
       // currency buttons
       const currs = unique(data.map(d=>d.Valuutta));
       const cb = document.getElementById('currencyButtons'); cb.innerHTML='';
