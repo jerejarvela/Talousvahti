@@ -23,8 +23,19 @@
     .lead{color:var(--muted);margin-top:6px;font-size:1.05rem}
 
     /* LAYOUT */
-    .controls{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:28px}
-    @media(max-width:900px){.controls{grid-template-columns:1fr}}
+    .controls {
+      display: flex;
+      align-items: stretch;     /* venyttää paneelin ja tuloskolumnin saman korkuisiksi */
+      gap: 32px;
+    }
+    
+    .panel {
+      height: 100%;             /* venyy koko korkeuden verran */
+    }
+    
+    .rightcol {
+      flex: 1;                  /* oikea sarake vie lopun tilasta */
+    }
 
     .panel{
       background:var(--card);
