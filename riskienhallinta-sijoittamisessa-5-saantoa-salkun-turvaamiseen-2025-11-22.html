@@ -1,0 +1,222 @@
+
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Riskienhallinta sijoittamisessa: 5 sääntöä salkun turvaamiseen</title>
+<meta name="description" content="Riskienhallinta sijoittamisessa: 5 sääntöä salkun turvaamiseen – Päivän sijoitusblogi Talousvahdissa.">
+<meta name="keywords" content="riskienhallinta, sijoittaminen, salkun suojaaminen, hajauttaminen, salkun uudelleentasapainotus, sijoitusriskit, pitkäaikainen sijoittaminen, stop-loss, position sizing">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2566G3KPHW"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2566G3KPHW');
+</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Riskienhallinta sijoittamisessa: 5 sääntöä salkun turvaamiseen","author":{"@type":"Person","name":"Jere Järvelä"},"publisher":{"@type":"Organization","name":"Talousvahti","logo":{"@type":"ImageObject","url":"https://talousvahti.com/logo.png"}},"datePublished":"2025-11-22","inLanguage":"fi","keywords":"riskienhallinta, sijoittaminen, salkun suojaaminen, hajauttaminen, salkun uudelleentasapainotus, sijoitusriskit, pitkäaikainen sijoittaminen, stop-loss, position sizing","description":"Riskienhallinta sijoittamisessa: 5 sääntöä salkun turvaamiseen","mainEntityOfPage":"https://talousvahti.com/riskienhallinta-sijoittamisessa-5-saantoa-salkun-turvaamiseen-2025-11-22.html"}</script>
+
+<!-- Fontit ja tyyli -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #0d0d0d;
+  --accent: #0077ff;
+  --text: #1a1a1a;
+  --muted: #666;
+  --bg: #ffffff;
+  --radius: 12px;
+  --shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+body {
+  font-family: 'Inter', Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+  line-height: 1.8;
+}
+
+nav {
+  background: var(--primary);
+  color: #fff;
+  padding: 18px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+nav .nav-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+nav img {
+  height: 38px;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 20px;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+nav a:hover {
+  color: var(--accent);
+}
+
+main {
+  max-width: 820px;
+  margin: 60px auto;
+  background: #fff;
+  padding: 40px 50px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+h1 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+article {
+  font-size: 1.05rem;
+  color: var(--text);
+}
+
+article p {
+  margin-bottom: 1.2rem;
+}
+
+footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-top: 60px;
+  padding: 20px 0;
+  border-top: 1px solid #eee;
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  main {
+    padding: 25px;
+    margin: 30px 10px;
+  }
+  h1 {
+    font-size: 1.7rem;
+  }
+  nav img {
+    height: 32px;
+  }
+}
+
+/* Hamburger valikko */
+.hamburger {
+  font-size: 28px;
+  cursor: pointer;
+  user-select: none;
+  display: block;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  right: 20px;
+  top: 68px;
+  background: var(--primary);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 10px 0;
+  min-width: 190px;
+  z-index: 20;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 10px 20px;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.dropdown-menu a:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+
+
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-left">
+    <img src="https://storage.mlcdn.com/account_image/1738913/3ffITIlb3p17IaYG3RcfwCueUnHxNH6iG0EtEEPU.png" alt="Talousvahti logo">
+    <strong>Talousvahti Blogi</strong>
+  </div>
+
+  <!-- Hamburger ikonit -->
+  <div class="hamburger" onclick="toggleMenu()">
+    ☰
+  </div>
+
+  <!-- Dropdown valikko -->
+  <div id="dropdownMenu" class="dropdown-menu">
+    <a href="https://talousvahti.com/">Talousuutiset</a>
+    <a href="https://talousvahti.com/kurssit.html">Pörssikurssit</a>
+    <a href="https://talousvahti.com/talouskalenteri.html">Talouskalenteri</a>
+    <a href="https://talousvahti.com/Blogi.html">Blogi</a>
+    <a href="https://talousvahti.com/sijoituslaskuri.html">Sijoituslaskuri</a>
+    <a href="https://talousvahti.com/tietoa.html">Tietoa</a>
+  </div>
+</nav>
+
+
+<main>
+  <header>
+    <h1>Riskienhallinta sijoittamisessa: 5 sääntöä salkun turvaamiseen</h1>
+  </header>
+  <article>Riskienhallinta on sijoittamisen perusta. Hyvä tuotto syntyy usein siitä, että osaa suojata pääoman suurilta tappioilta ja käyttäytyä järkevästi markkinan heilahtuessa. Tässä artikkelissa käydään läpi viisi käytännönläheistä ja ajattoman hyödyllistä sääntöä, jotka auttavat suomalaisia sijoittajia rakentamaan kestävämpiä salkkuja. Käytän konkreettisia esimerkkejä, jotta vinkit on helppo ottaa käyttöön.<br><br><br><br><h2>1. Tunne oma riskinsietokykysi ja aikahorisonttisi</h2><br><br>Riskinsietokyky määrittää, kuinka paljon salkkusi voi heilahdella ilman, että menet tavoitteistasi tai paniikista myyntiin. Nuorella sijoittajalla, jolla on pitkän aikavälin horisontti, on yleensä korkeampi riskinsietokyky kuin eläkkeelle lähtevällä. Konkreettinen esimerkki: 30-vuotias voi pitää 70–80 % osakkeissa ja 20–30 % korkosijoituksissa. 60-vuotias saattaa haluta 40–60 % osakkeissa ja enemmän korkoja tai käteisvaroja. Kirjaa oma tavoitteesi ja ajanjakso ylös — se helpottaa päätösten tekemistä laskusuhdanteessa.<br><br><br><br><h2>2. Hajauttaminen ei ole vain sijoituskohteiden lukumäärä</h2><br><br>Hajauttaminen pienentää yksittäisen sijoituksen riskiä. Se ei kuitenkaan tarkoita vain ostavansa monta osaketta. Hajautus kattaa alueet, toimialat, omaisuuslajit (osakkeet, korko, käteinen, kiinteistöt) ja sijoitustyylit. Esimerkiksi suomalainen sijoittaja voi jakaa salkun niin, että 50 % on maailmanlaajuisia indeksiosakkeita (ETF), 20 % eurooppalaisia tai kotimaisia osakkeita, 20 % joukkovelkakirjoja ja 10 % vaihtoehtoisia sijoituksia tai käteistä puskuriksi. Tämä vähentää riskiä, että yksittäinen tapahtuma romahduttaa koko salkkua.<br><br><br><br><h2>3. Säännöllinen uudelleentasapainotus pitää riskin kurissa</h2><br><br>Markkinat liikkuvat, ja ilman uudelleentasapainotusta allokaatiot voivat vaihtua huomattavasti. Uudelleentasapainotus tarkoittaa osuuksien palauttamista alkuperäiseen tai päivitettyyn tavoitteeseen. Esimerkki: tavoitteesi on 60/40 osakkeet/korko. Jos osakkeet nousevat ja muuttuvat 70/30, myyt osin voittoja ja ostat korkoja takaisin 60/40 -tasapainoon. Tämä käytäntö “pakottaa” myymään korkealta ja ostamaan matalalta, mikä parantaa pitkän aikavälin tuotto/riskisuhdetta. Rebalanssi kannattaa tehdä joko aikataulun (vuosittain) tai poikkeamarajan (esim. 5–10 %) mukaan.<br><br><br><br><h2>4. Käytä position sizingia ja suojaa suuria panoksia</h2><br><br>Position sizing tarkoittaa yksittäisen sijoituksen kokoa suhteessa koko salkkuun. Yleinen sääntö on pitää yksittäisen osakesijoituksen osuus alle 3–5 % salkusta, jotta yksittäisen yhtiön romahdus ei romauta kokonaisuutta. Esimerkki: 100 000 euron salkussa 3 % tarkoittaa 3 000 euroa yhteen yhtiöön. Isommat panokset voi suojata optioilla tai stop-loss-rajauksilla, mutta nämä työkalut vaativat osaamista. Pienemmälläkin sijoituksella voi hakea hajautushyötyjä ETF:ien kautta.<br><br><br><br><h2>5. Pidä likviditeetti ja hätärahasto kunnossa</h2><br><br>Sijoittaminen ei ole sama kuin hätärahaston puute. Ennen kuin sijoitat, varmista että sinulla on 3–6 kuukauden elinkustannuksia vastaava puskurirahasto helposti saatavilla. Tämä estää myynnit huonoina hetkinä ja antaa aikaa toteuttaa suunnitelmaa. Lisäksi pidä osa salkusta likvidinä tarpeen mukaan — jos osakkeet romahtavat ja on tilaisuus ostaa laadukkaita papereita halvemmalla, haluat pystyä hyödyntämään tilanteen.<br><br><br><br>Käytännön vinkkejä ja virhearvioiden välttämistä<br><br>- Vältä tunnepohjaisia osto- ja myyntipäätöksiä. Laadi sijoitussuunnitelma ja pidä kiinni siitä.<br><br>- Huomioi kulut: kaupankäynti- ja rahastokulut syövät tuottoa pitkällä aikavälillä. Valitse matalakuluinen indeksi-ETF, jos olet aloittelija.<br><br>- Verotus vaikuttaa nettotuottoon. Suunnittele myyntitapahtumat verotehokkaasti, esimerkiksi hyödyntämällä osingon verotusta tai pitkäaikaista omistusta.<br><br>- Seuraa sijoituksia säännöllisesti, mutta vältä päivittäistä kurssikatselua. Liiallinen seuranta voi johtaa turhiin päätöksiin.<br><br><br><br>Lyhyet esimerkit käytännöstä<br><br>- Jos salkussasi on 10 000 euron arvoinen osake ja haluat pitää yksittäisen position alle 3 %, myyt osakkeita tai lisäät pääomaa, jotta osuudet vastaisivat tavoitetta.<br><br>- Jos indeksirahastojen kulut ovat 0,05 % vs. aktiivisen rahaston 1,5 %, pitkällä aikavälillä ero on huomattava. Pienikin ero vuosikuluissa vaikuttaa korkoa korolle -ilmiössä.<br><br>- Rebalanssi: vuosittain myyt ylipainotettuihin osakkeisiin ja ostat painoihin laskeneita korkoja — näin realisoit voittoa ja vähennät riskiä.<br><br><br><br>Yhteenveto<br><br>Riskienhallinta ei ole pelkkää riskin välttelyä. Se on systemaattista suunnittelua: tiedä omat tavoitteesi, hajauta laajasti, pidä allokaatio tasapainossa, määritä yksittäisen position koko ja varmista, että sinulla on likvidi hätärahasto. Noudattamalla näitä viittä kultaisia sääntöä teet salkustasi kestävämmän ja rauhallisemman markkinavaihteluille. Pienillä, toistuilla teoilla voit suojata pääomasi ja parantaa mahdollisuutta vakaaseen pitkän aikavälin tuottoon.<br><br><br><br>Lähteet:<br><br><a href="https://www.finanssivalvonta.fi">https://www.finanssivalvonta.fi</a><br><br><a href="https://www.sijoitustieto.fi">https://www.sijoitustieto.fi</a><br><br><a href="https://www.nordnet.fi">https://www.nordnet.fi</a><br><br><a href="https://www.investopedia.com">https://www.investopedia.com</a><br><br><a href="https://www.morningstar.com">https://www.morningstar.com</a><br><br><a href="https://www.suomenpankki.fi">https://www.suomenpankki.fi</a></article>
+</main>
+
+<footer>
+  <p>© 2025 Talousvahti — kirjoittanut <strong>Jere Järvelä</strong></p>
+</footer>
+
+<script>
+function toggleMenu() {
+  const menu = document.getElementById("dropdownMenu");
+  menu.style.display = (menu.style.display === "block") ? "none" : "block";
+}
+
+document.addEventListener("click", function(e) {
+  const menu = document.getElementById("dropdownMenu");
+  const hamburger = document.querySelector(".hamburger");
+
+  if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+    menu.style.display = "none";
+  }
+});
+</script>
+
+
+</body>
+</html>
