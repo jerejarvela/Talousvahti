@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="fi">
 <head>
-<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-2566G3KPHW"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -10,16 +9,14 @@
 
   gtag('config', 'G-2566G3KPHW');
 </script>
-<meta name="google-site-verification" content="7WCvI6pUCbJVC3QmzkJqjICcZzEzENP3sszMQ1-QS00" />
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1, viewport-fit=cover" />
-<title>Päivän Talousuutiset | Talousvahti</title>
-<meta name="description" content="Päivän tärkeimmät talousuutiset ja sijoittamiseen liittyvät ajankohtaiset aiheet. Seuraa markkinoiden liikkeitä ja pysy ajan tasalla Talousvahdin kautta." />
+<title>Sijoituslaskuri – Talousvahti</title>
+<meta name="description" content="Laske sijoitustesi tuleva arvo ja tuotto Talousvahdin sijoituslaskurilla. Käytä realistisia korkoja ja kuukausittaisia säästöjä." />
 <meta name="author" content="Jere Järvelä" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-<link rel="icon" href="/favicon.ico" type="image/x-icon">
-
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <style>
 :root{
@@ -37,14 +34,16 @@
 }
 
 *{box-sizing:border-box}
-html,body{height:100%; margin:0; background:#000; color:#eef2f5; font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial; line-height:1.5; -webkit-tap-highlight-color: transparent;}
+html,body{height:100%; margin:0; background:#000; color:#eef2f5; font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial; -webkit-font-smoothing:antialiased; line-height:1.5;}
 
 /* NAVBAR */
 .navbar{
   position:fixed; top:0; left:0; width:100%; z-index:1200;
   display:flex; align-items:center; justify-content:space-between;
-  padding:14px 28px; background:linear-gradient(180deg,rgba(0,0,0,0.9),rgba(10,10,10,0.8));
-  border-bottom:1px solid rgba(255,255,255,0.03); backdrop-filter:blur(6px);
+  padding:14px 28px;
+  background:linear-gradient(180deg,rgba(0,0,0,0.9),rgba(10,10,10,0.8));
+  border-bottom:1px solid rgba(255,255,255,0.03);
+  backdrop-filter:blur(6px);
 }
 .brand{display:flex; gap:12px; align-items:center;}
 .brand-badge {
@@ -64,76 +63,50 @@ html,body{height:100%; margin:0; background:#000; color:#eef2f5; font-family:"In
   object-fit: contain; /* säilyttää mittasuhteet */
   filter: drop-shadow(0 0 3px rgba(0,0,0,0.4)); /* hienovarainen varjo erottaa taustasta */
 }
-
-.brand-title{font-weight:600;font-size:18px;color:#fff;letter-spacing:0.2px;}
+.brand-title{font-weight:600;font-size:18px;color:#fff;}
 .navlinks {
   display: flex;
   gap: 14px;
   align-items: center;
   margin-left: auto; /* Tämä työntää linkit oikeaan reunaan */
 }
-.navlinks a{color:#dfe7ee;font-size:14px;padding:8px 12px;border-radius:8px;transition:all .18s ease;text-decoration:none;}
-.navlinks a:hover{background:var(--glass);transform:translateY(-2px);color:#fff;}
-.navlinks a.active{background:linear-gradient(90deg,#0f2b66 0%,rgba(3,132,252,0.12) 100%);color:#fff;box-shadow:0 6px 18px rgba(3,132,252,0.06);}
-.hamburger {
-  display: none;
-  width: 42px;
-  height: 42px;
-  border-radius: 10px;
-  background: transparent;
-  border: 1px solid var(--glass-border);
-  place-items: center;
-  cursor: pointer;
-}
+.navlinks a{color:#dfe7ee;font-size:14px;padding:8px 12px;border-radius:8px;transition:all .18s;text-decoration:none;}
+.navlinks a:hover{background:var(--glass);color:#fff;}
+.navlinks a.active{background:linear-gradient(90deg,#0f2b66 0%,rgba(3,132,252,0.12)100%);color:#fff;}
 
+.hamburger{display:none;width:42px;height:42px;border-radius:10px;border:1px solid var(--glass-border);display:grid;place-items:center;cursor:pointer;}
 .hamburger .lines{width:20px;height:14px;position:relative;}
 .hamburger .lines::before,.hamburger .lines::after,.hamburger .lines div{content:"";position:absolute;left:0;right:0;height:2px;background:#dfe7ee;border-radius:2px;}
-.hamburger .lines::before{top:0}
-.hamburger .lines::after{bottom:0}
-.hamburger .lines div{top:6px}
-.mobile-menu{display:none;position:fixed;top:72px;right:18px;width:260px;background:linear-gradient(180deg,var(--panel),#121212);border-radius:12px;padding:12px;box-shadow:var(--shadow);z-index:1300;transform-origin:top right;animation:menuIn .22s ease;}
-@keyframes menuIn{from{transform:translateY(-6px) scale(.98);opacity:0}to{transform:none;opacity:1}}
-.mobile-menu a{display:block;padding:10px 12px;color:#e6eef6;border-radius:8px;margin:6px 0;transition:all .16s;text-decoration:none;}
-.mobile-menu a:hover{background:rgba(255,255,255,0.03)}
+.hamburger .lines::before{top:0}.hamburger .lines::after{bottom:0}.hamburger .lines div{top:6px}
+
+.mobile-menu{display:none;position:fixed;top:72px;right:18px;width:260px;background:linear-gradient(180deg,var(--panel),#121212);border-radius:12px;padding:12px;box-shadow:var(--shadow);z-index:1300;}
+.mobile-menu a{display:block;padding:10px 12px;color:#e6eef6;border-radius:8px;margin:6px 0;text-decoration:none;}
+.mobile-menu a:hover{background:rgba(255,255,255,0.03);color:#fff;}
 
 /* HERO */
-.hero{padding:56px 20px 36px;text-align:center;margin-top:72px;}
-.hero h1{margin:0;font-size:28px;color:#ffffff;font-weight:600;}
+.hero{padding:56px 20px 36px;margin-top:72px;text-align:center;}
+.hero h1{margin:0;font-size:28px;color:#fff;font-weight:600;}
+.hero p{margin:0 auto;max-width:820px;color:var(--muted);font-size:15.5px;}
 
-/* LAYOUT */
-.container{max-width:1150px;margin:34px auto;padding:0 20px 60px;display:grid;grid-template-columns:repeat(12,1fr);gap:22px;}
-.main{grid-column:1 / span 8;display:flex;flex-direction:column;gap:18px;}
-.sidebar{grid-column:9 / span 4;display:flex;flex-direction:column;gap:18px;}
+/* CONTAINER */
+.container{max-width:950px;margin:34px auto;padding:0 20px 60px;display:flex;flex-direction:column;gap:20px;}
 
-/* CARDS */
-.card{background:linear-gradient(180deg,var(--panel),var(--panel-2));border-radius:var(--radius);padding:22px;box-shadow:var(--card-shadow);border:1px solid rgba(255,255,255,0.02);transition:transform .28s cubic-bezier(.2,.9,.2,1),box-shadow .28s;opacity:0;transform:translateY(26px);}
-.card.visible{animation:popIn .6s cubic-bezier(.2,.9,.2,1) forwards;}
-@keyframes popIn{to{opacity:1;transform:none}}
-.card:hover{transform:translateY(-6px);box-shadow:0 18px 45px rgba(2,6,23,0.6)}
-.card h3{margin:0 0 10px 0;font-size:18px;color:#fff;font-weight:600;}
-.card p.small{color:var(--muted);margin:0;font-size:14px;}
-.feed-box{background:linear-gradient(180deg,var(--panel),var(--panel-2));border-radius:var(--radius);padding:22px;margin-bottom:20px;box-shadow:var(--card-shadow);border:1px solid rgba(255,255,255,0.02);animation:popIn .6s cubic-bezier(.2,.9,.2,1) forwards;}
-.feed-box h3{margin:0 0 8px 0;font-size:18px;color:#fff;}
-.feed-box p{color:var(--muted);margin:0 0 6px 0;font-size:14px;line-height:1.5;}
-.feed-box a {
-  color: #fff;
-  text-decoration: none;
-}
-.feed-box a:hover {
-  color: #fff;
-  text-decoration: underline;
-}
+/* CARD */
+.card{background:linear-gradient(180deg,var(--panel),var(--panel-2));border-radius:var(--radius);padding:24px;box-shadow:var(--card-shadow);border:1px solid rgba(255,255,255,0.02);}
+.card h2,h3{color:#fff;margin-top:0;}
+.input-group{margin-bottom:20px;}
+.input-group label{display:block;margin-bottom:6px;font-size:15px;font-weight:500;}
+.input-wrapper{display:flex;align-items:center;gap:12px;}
+.input-wrapper input[type="number"]{width:100px;padding:8px;border:1px solid rgba(255,255,255,0.1);border-radius:8px;background:#0f0f0f;color:#fff;}
+.input-wrapper input[type="range"]{flex:1;height:6px;background:#222;border-radius:5px;-webkit-appearance:none;}
+.input-wrapper input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;background:var(--accent);border-radius:50%;cursor:pointer;}
 
-.icon-circle{ width:44px; height:44px; border-radius:10px; display:grid; place-items:center; background:linear-gradient(135deg, rgba(3,132,252,0.12), rgba(0,194,255,0.06)); color:var(--accent); font-weight:700; box-shadow: inset 0 -8px 18px rgba(0,0,0,0.35); }
+.results{text-align:center;margin-top:28px;padding:22px;border-radius:12px;background:rgba(255,255,255,0.02);}
+.results h3{font-size:20px;margin-bottom:10px;}
+.results .highlight{font-size:26px;font-weight:700;color:var(--accent);}
+canvas{margin-top:20px;width:100%!important;max-height:320px;}
 
-.feed-section h2{margin:0 0 12px 0;color:#fff;font-size:22px;border-bottom:1px solid rgba(255,255,255,0.06);padding-bottom:8px;display:flex;justify-content:space-between;align-items:center;}
-.feed-section .date{font-size:14px;color:var(--accent);}
-
-/* FOOTER */
 .footer{margin-top:36px;padding:30px 20px;text-align:center;color:var(--muted);border-top:1px solid rgba(255,255,255,0.02);font-size:14px;}
-#backToTop{position:fixed;right:20px;bottom:20px;z-index:1400;width:48px;height:48px;border-radius:12px;border:none;cursor:pointer;background:linear-gradient(180deg,var(--accent),var(--accent-2));color:#031423;font-weight:700;box-shadow:0 10px 30px rgba(3,132,252,0.16);display:none;align-items:center;justify-content:center;}
-
-/* RESPONSIVE */
 @media(max-width:860px){ .container{ gap:16px } .main{ grid-column:1 / span 12 } .sidebar{ grid-column:1 / span 12 }
   .chart-box{ width:100%; }
   .hamburger{ display:grid }
@@ -151,57 +124,6 @@ html,body{height:100%; margin:0; background:#000; color:#eef2f5; font-family:"In
     height: 80%;
     object-fit: contain;
   }
-
-  #backToTop{ right:12px; bottom:12px }
-}
-
-/* INLINE LATAUSANIMAATIO */
-#loader-inline {
-  text-align: center;
-  padding: 50px 0;
-  animation: fadeIn 0.6s ease forwards;
-}
-
-#loader-inline img {
-  width: 80px;
-  height: 80px;
-  animation: pulse 2.2s ease-in-out infinite;
-  filter: drop-shadow(0 0 12px rgba(3,132,252,0.45));
-}
-
-#loader-inline p {
-  color: var(--muted);
-  font-size: 14px;
-  margin-top: 16px;
-  letter-spacing: 0.4px;
-}
-
-@keyframes pulse {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.08); opacity: 0.85; }
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(6px); }
-  to { opacity: 1; transform: none; }
-}
-
-/* UUTISTEN SISÄÄNTULOANIMAATIO */
-.fade-in-item {
-  opacity: 0;
-  transform: translateY(18px);
-  animation: fadeSlideIn 0.7s cubic-bezier(0.2, 0.9, 0.2, 1) forwards;
-}
-
-@keyframes fadeSlideIn {
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-
-
 </style>
 </head>
 <body>
@@ -216,137 +138,214 @@ html,body{height:100%; margin:0; background:#000; color:#eef2f5; font-family:"In
       <div style="font-size:11px;color:var(--muted);margin-top:2px">Uutiset • Blogit • Työkalut</div>
     </div>
   </div>
+
   <nav class="navlinks">
-    <a href="index.html" class="active">Talousuutiset</a>
+    <a href="index.html">Talousuutiset</a>
     <a href="kurssit.html">Pörssikurssit</a>
     <a href="talouskalenteri.html">Talouskalenteri</a>
     <a href="Blogi.html">Blogi</a>
-    <a href="sijoituslaskuri.html">Sijoituslaskuri</a>
+    <a href="sijoituslaskuri.html" class="active">Sijoituslaskuri</a>
     <a href="tietoa.html">Tietoa</a>
   </nav>
+
   <button class="hamburger" id="hamburger"><span class="lines"><div></div></span></button>
 </header>
 
 <div id="mobileMenu" class="mobile-menu">
-  <a href="index.html" class="active">Talousuutiset</a>
+  <a href="index.html">Talousuutiset</a>
   <a href="kurssit.html">Pörssikurssit</a>
   <a href="talouskalenteri.html">Talouskalenteri</a>
   <a href="Blogi.html">Blogi</a>
-  <a href="sijoituslaskuri.html">Sijoituslaskuri</a>
+  <a href="sijoituslaskuri.html" class="active">Sijoituslaskuri</a>
   <a href="tietoa.html">Tietoa</a>
 </div>
 
 <section class="hero">
-  <h1></h1>
-  <p></p>
+  <h1>Sijoituslaskuri</h1>
+  <p>Laske helposti sijoitustesi tuleva arvo ja tuotto — huomioi korkoa korolle -ilmiö ja kuukausittaiset lisäsijoitukset.</p>
 </section>
 
 <main class="container">
-  <div class="main">
-    <section class="feed-section">
-      <h2>Talousuutiset <span class="date" id="today-date"></span></h2>
-      <div id="feeds">
-      <div id="loader-inline">
-        <img src="https://storage.mlcdn.com/account_image/1738913/3ffITIlb3p17IaYG3RcfwCueUnHxNH6iG0EtEEPU.png" alt="Ladataan uutisia...">
-        <p>Ladataan uutisia...</p>
+  <section class="card">
+    <h2>Sijoitustuottolaskuri</h2>
+
+    <div class="input-group">
+      <label for="initial">Aloitussumma (€)</label>
+      <div class="input-wrapper">
+        <input type="number" id="initial" value="1000" min="0" max="1000000" step="100">
+        <input type="range" id="initialRange" value="1000" min="0" max="100000" step="100">
       </div>
+    </div>
+
+    <div class="input-group">
+      <label for="return">Tuotto per vuosi (%)</label>
+      <div class="input-wrapper">
+        <input type="number" id="return" value="7" min="0" max="20" step="0.1">
+        <input type="range" id="returnRange" value="7" min="0" max="20" step="0.1">
       </div>
-    </section>
+    </div>
+
+    <div class="input-group">
+      <label for="years">Säästöaika (vuosina)</label>
+      <div class="input-wrapper">
+        <input type="number" id="years" value="20" min="1" max="50" step="1">
+        <input type="range" id="yearsRange" value="20" min="1" max="50" step="1">
+      </div>
+    </div>
+
+    <div class="input-group">
+      <label for="monthly">Kuukausittainen säästösumma (€)</label>
+      <div class="input-wrapper">
+        <input type="number" id="monthly" value="200" min="0" max="10000" step="10">
+        <input type="range" id="monthlyRange" value="200" min="0" max="10000" step="10">
+      </div>
+    </div>
+
+    <div class="results">
+      <h3>Kertynyt pääoma</h3>
+      <div class="highlight" id="total">0 €</div>
+      <p><span id="duration">0</span> vuodessa</p>
+      <canvas id="growthChart"></canvas>
+    </div>
+  </section>
+<!-- --- Aloita Nordnet-mainos (affiliate) --- -->
+<section id="nordnet-ad" class="card" aria-label="Nordnet-mainos" style="display:none;">
+  <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+    <div style="flex:0 0 88px; height:88px; border-radius:12px; background:linear-gradient(135deg,#0384fc,#00c2ff); display:grid; place-items:center; box-shadow:0 8px 20px rgba(1,6,30,0.45);">
+      <strong style="font-size:18px;color:#fff">Nordnet</strong>
+    </div>
+
+    <div style="flex:1; min-width:220px">
+      <div style="font-weight:600;font-size:16px;color:#fff;margin-bottom:6px;">Tutustu Nordnetiin</div>
+      <div id="nordnet-ad-text" style="color:var(--muted); font-size:14px; line-height:1.4;">
+        Sijoittamisen palvelut ja sijoitustuotteet — vertaile ja aloita sijoittaminen helposti.
+      </div>
+
+      <div style="margin-top:12px; display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+        <a id="nordnet-aff-link" href="#" target="_blank" rel="nofollow noopener noreferrer"
+           style="background:linear-gradient(90deg,#0f2b66,#0384fc); color:#fff; padding:10px 14px; border-radius:10px; text-decoration:none; font-weight:600;">
+          Siirry Nordnetiin
+        </a>
+
+        <span style="font-size:12px;color:var(--muted);">Mainos / kumppanilinkki</span>
+      </div>
+    </div>
   </div>
 
-  <aside class="sidebar">
-    <div class="card" id="subscribe" aria-labelledby="subscribe-title">
-      <div style="display:flex;gap:12px;align-items:center">
-        <div class="icon-circle" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 8l9 6 9-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <div style="flex:1">
-          <h3 id="subscribe-title">Liity sähköpostilistalle</h3>
-          <p class="small">Joka aamu — päivän tärkeimmät talousuutiset ja markkinakatsaus suoraan sähköpostiisi.</p>
-        </div>
-      </div>
+  <!-- Välttämätön riskivaroitus -->
+  <p style="margin-top:14px;color:#d6dbe0;font-size:13px;line-height:1.45;">
+    Sijoittamiseen osake- ja pääomamarkkinoilla liittyy aina riskejä. Sijoitusten arvo ja tuotto voi nousta tai laskea, ja sijoittaja voi menettää sijoittamansa pääoman kokonaan.
+    Historiallinen tuotto ja kehitys ei ole tae tulevasta tuotosta.
+  </p>
 
-      <div class="kit-wrap" aria-hidden="false" style="margin-top:12px">
-        <script async data-uid="722673f8d4" src="https://talousvahti.kit.com/722673f8d4/index.js"></script>
-      </div>
+  <!-- Rahastoteksti lisätään automaattisesti, jos mainosteksti käsittelee rahastoja -->
+  <p id="nordnet-fund-warning" style="margin-top:8px;color:#d6dbe0;font-size:13px;line-height:1.45; display:none;">
+    Tutustu rahastoesitteeseen ja avaintietoasiakirjaan ennen sijoituspäätösten tekemistä.
+  </p>
+</section>
 
-    </div>
-  </aside>
+<script>
+/* --- Aseta affiliate-linkki ja mainosteksti tähän --- */
+(function(){
+  // Affiliate-linkki (käyttäjän antama)
+  const affiliate = "https://go.adt231.net/t/t?a=1046441655&as=2017175102&t=2&tk=1";
+
+  // Mainosteksti — muokkaa tarvittaessa. Jos teksti sisältää sanan "rahasto" (case-insensitive),
+  // näkyviin tulee myös rahastovaroitus.
+  const adText = "Tutustu Nordnetin palveluihin — osakkeet, rahastot ja muut sijoitustuotteet helposti yhdestä paikasta.";
+
+  const adSection = document.getElementById('nordnet-ad');
+  const adTextEl = document.getElementById('nordnet-ad-text');
+  const affLink = document.getElementById('nordnet-aff-link');
+  const fundWarn = document.getElementById('nordnet-fund-warning');
+
+  // Aseta tekstit ja linkki
+  adTextEl.textContent = adText;
+  affLink.href = affiliate;
+
+  // Näytä rahastovaroitus jos adText sisältää 'rahasto' tai 'rahastot'
+  const lower = adText.toLowerCase();
+  if (lower.includes('rahasto') || lower.includes('rahastot')) {
+    fundWarn.style.display = 'block';
+  }
+
+  // Näytä mainoslohko sivulla
+  adSection.style.display = 'block';
+
+  // (Valinnainen) voit halutessasi lisätä pienen tapahtumakuuntelijan, esim. klikki-seuranta:
+  affLink.addEventListener('click', function(){
+    // Esimerkki: lähetä tapahtuma konsoliin — korvaa omalla seurannalla jos haluat
+    try { console.log('Nordnet affiliate clicked'); } catch(e){}
+  });
+
+  // Lisävarmistus: varmista, että mainos tulee näkyviin laskurin jälkeen.
+  // Etsitään containeri ja sijoitetaan mainos sen loppuun, jos se ei ole jo siellä.
+  const container = document.querySelector('main.container');
+  if (container && !container.contains(adSection)) {
+    container.appendChild(adSection);
+  }
+})();
+</script>
+<!-- --- Lopeta Nordnet-mainos --- -->
+
 </main>
 
 <footer class="footer">
-  <div style="max-width:980px;margin:0 auto">
-    &copy; 2025 Talousvahti — ylläpitäjä <strong>Jere Järvelä</strong>
-    <div style="margin-top:10px;color:var(--muted)">
-      <a href="tietosuoja.html">Tietosuojakäytäntö</a> &middot;
-      <a href="evasteet.html">Evästekäytäntö</a> &middot;
-      <a href="kayttoehdot.html">Käyttöehdot</a>
-    </div>
-  </div>
+  &copy; 2025 Talousvahti — ylläpitäjä <strong>Jere Järvelä</strong><br>
+  <a href="tietosuoja.html">Tietosuojakäytäntö</a> ·
+  <a href="evasteet.html">Evästekäytäntö</a> ·
+  <a href="kayttoehdot.html">Käyttöehdot</a>
 </footer>
 
-<button id="backToTop" aria-label="Takaisin ylös">↑</button>
-
 <script>
-(function(){
-  const today = new Date();
-  const dd = String(today.getDate()).padStart(2,'0');
-  const mm = String(today.getMonth()+1).padStart(2,'0');
-  document.getElementById('today-date').textContent = dd + '.' + mm;
+const hamburger=document.getElementById('hamburger');
+const mobileMenu=document.getElementById('mobileMenu');
+hamburger.addEventListener('click',()=>{const open=mobileMenu.style.display==='block';mobileMenu.style.display=open?'none':'block';});
 
-  const feedsContainer = document.getElementById('feeds');
-  const rssUrl = 'https://script.google.com/macros/s/AKfycbwekTyZGfwAEAUhrKQLFb3QZmP8Hl2jv3XvuBg-Ivof6xb2ZviSEzvLQNsuv9MigvJe/exec';
-  fetch(rssUrl).then(r=>r.text()).then(html=>{
-    feedsContainer.innerHTML = html;
-  
-    // Lisää tyylikäs animaatio uutisille
-    const items = feedsContainer.querySelectorAll('.feed-box, article, div');
-    items.forEach((el, i) => {
-      el.classList.add('fade-in-item');
-      el.style.animationDelay = (i * 0.12) + 's'; // pientä porrastusta
-    });
-  
-    // Poistetaan latausanimaatio
-    const loader = document.getElementById('loader-inline');
-    if (loader) loader.remove();
-  }).catch(err=>{
-    feedsContainer.innerHTML = "<div class='feed-box'><p>Uutisia ei voitu ladata.</p></div>";
-    const loader = document.getElementById('loader-inline');
-    if (loader) loader.remove();
-    console.error(err);
-  });
+const initial=document.getElementById('initial');
+const initialRange=document.getElementById('initialRange');
+const yearlyReturn=document.getElementById('return');
+const returnRange=document.getElementById('returnRange');
+const years=document.getElementById('years');
+const yearsRange=document.getElementById('yearsRange');
+const monthly=document.getElementById('monthly');
+const monthlyRange=document.getElementById('monthlyRange');
+const totalEl=document.getElementById('total');
+const durationEl=document.getElementById('duration');
 
+function sync(i,r){i.addEventListener('input',()=>{r.value=i.value;calculate();});r.addEventListener('input',()=>{i.value=r.value;calculate();});}
+sync(initial,initialRange);sync(yearlyReturn,returnRange);sync(years,yearsRange);sync(monthly,monthlyRange);
 
+const ctx=document.getElementById('growthChart').getContext('2d');
+let chart=new Chart(ctx,{type:'line',data:{labels:[],datasets:[
+{label:'Säästetty pääoma',data:[],borderColor:'#555',backgroundColor:'transparent',borderWidth:2,tension:0},
+{label:'Sijoitusten arvo',data:[],borderColor:'#0384fc',backgroundColor:'transparent',borderWidth:2,tension:0.4}
+]},options:{plugins:{legend:{labels:{color:'#fff'}}},scales:{x:{ticks:{color:'#fff'}},y:{ticks:{color:'#fff'}}}}});
 
-  const hamburger=document.getElementById('hamburger');
-  const mobileMenu=document.getElementById('mobileMenu');
-  if(hamburger&&mobileMenu){
-    hamburger.addEventListener('click',()=>{
-      const open=mobileMenu.style.display==='block';
-      mobileMenu.style.display=open?'none':'block';
-      hamburger.setAttribute('aria-expanded',String(!open));
-    });
-    document.addEventListener('click',e=>{
-      if(mobileMenu.style.display==='block'&&!mobileMenu.contains(e.target)&&!hamburger.contains(e.target)){
-        mobileMenu.style.display='none';
-      }
-    });
+function calculate(){
+  let P=parseFloat(initial.value);
+  let r=parseFloat(yearlyReturn.value)/100/12;
+  let n=parseInt(years.value)*12;
+  let contrib=parseFloat(monthly.value);
+  let total=P*Math.pow(1+r,n);
+  for(let i=1;i<=n;i++){total+=contrib*Math.pow(1+r,n-i);}
+  totalEl.textContent=total.toLocaleString('fi-FI',{style:'currency',currency:'EUR'});
+  durationEl.textContent=years.value;
+
+  let labels=[],saved=[],invested=[];
+  let principal=P;
+  for(let y=1;y<=parseInt(years.value);y++){
+    labels.push(y);
+    saved.push(P+(contrib*12*y));
+    principal=principal*(1+r*12)+contrib*12;
+    invested.push(principal);
   }
-
-  const cards=document.querySelectorAll('.card,.feed-box');
-  if('IntersectionObserver'in window){
-    const obs=new IntersectionObserver(entries=>{
-      entries.forEach(en=>{
-        if(en.isIntersecting){en.target.classList.add('visible');obs.unobserve(en.target);}
-      });
-    },{threshold:0.12});
-    cards.forEach(c=>obs.observe(c));
-  }else cards.forEach(c=>c.classList.add('visible'));
-
-  const backToTop=document.getElementById('backToTop');
-  window.addEventListener('scroll',()=>{
-    if(window.scrollY>360){backToTop.style.display='flex';}else backToTop.style.display='none';
-  });
-  backToTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
-})();
+  chart.data.labels=labels;
+  chart.data.datasets[0].data=saved;
+  chart.data.datasets[1].data=invested;
+  chart.update();
+}
+calculate();
 </script>
 
 </body>
