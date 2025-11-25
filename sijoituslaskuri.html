@@ -178,7 +178,7 @@ canvas{margin-top:20px;width:100%!important;max-height:320px;}
     </div>
 
     <div class="input-group">
-      <label for="return">Tuotto per vuosi (%)</label>
+      <label for="return">tuotto-odotus per vuosi (%)</label>
       <div class="input-wrapper">
         <input type="number" id="return" value="7" min="0" max="20" step="0.1">
         <input type="range" id="returnRange" value="7" min="0" max="20" step="0.1">
@@ -208,13 +208,98 @@ canvas{margin-top:20px;width:100%!important;max-height:320px;}
       <canvas id="growthChart"></canvas>
     </div>
   </section>
-  <section class="card">
-  <h3>Mitä sijoituslaskuri näyttää?</h3>
-  <p>
-    Laskuri kertoo, paljonko sijoituksesi voivat kasvaa ajan myötä korkoa korolle -ilmiön
-    avulla. Voit muuttaa tuottoprosenttia, kuukausittaista säästöä ja sijoitusaikaa.
+<!-- --- NORDNET MAINOSKORTTI (AMMATTIMAINEN) --- -->
+
+<section id="nordnet-ad" class="card" aria-label="Nordnet-mainos" style="display:none; padding:28px; border-radius:18px;">
+  
+  <div style="display:flex; gap:22px; align-items:center; flex-wrap:wrap;">
+    
+    <!-- Icon box / logon korvike, ei tekijänoikeusriskiä -->
+
+
+    <div style="flex:1; min-width:240px;">
+
+      <div style="font-size:20px; font-weight:600; color:#fff; margin-bottom:6px;">
+        Avaa sijoitustili Nordnetiin
+      </div>
+
+      <p id="nordnet-ad-text" style="color:var(--muted); font-size:15px; margin:0 0 14px;">
+        Sijoita osakkeisiin, rahastoihin ja ETF:iin helposti — Nordnet on Pohjoismaiden suosituin sijoitusalusta.
+      </p>
+
+      <a id="nordnet-aff-link" href="#" target="_blank" rel="nofollow noopener noreferrer"
+         style="
+           display:inline-block;
+           background:linear-gradient(90deg,#0f2b66,#0384fc);
+           color:#fff;
+           padding:12px 18px;
+           border-radius:12px;
+           font-weight:600;
+           text-decoration:none;
+         ">
+         Siirry Nordnetiin
+      </a>
+
+      <div style="font-size:12px; margin-top:8px; color:var(--muted);">
+        Mainos / kumppanilinkki
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Vakiovaroitus -->
+  <p style="margin-top:18px; color:#d4d9de; font-size:13px; line-height:1.55;">
+    Sijoittamiseen osake- ja pääomamarkkinoilla liittyy aina riskejä. 
+    Sijoitusten arvo ja tuotto voi nousta tai laskea, ja sijoittaja voi menettää 
+    sijoittamansa pääoman kokonaan. Historiallinen tuotto ja kehitys ei ole tae tulevasta tuotosta.
   </p>
+
+  <!-- Näytetään vain jos teksti käsittelee rahastoja -->
+  <p id="nordnet-fund-warning" style="display:none; margin-top:10px; color:#d4d9de; font-size:13px; line-height:1.55;">
+    Tutustu rahastoesitteeseen ja avaintietoasiakirjaan ennen sijoituspäätösten tekemistä.
+  </p>
+
 </section>
+
+
+<script>
+(function() {
+  /* --- Asetukset --- */
+
+  const affiliate = "https://go.adt231.net/t/t?a=1046441655&as=2017175102&t=2&tk=1";
+
+  const adText = 
+    "Sijoita osakkeisiin, rahastoihin ja ETF:iin helposti — Nordnet on Pohjoismaiden suosituin sijoitusalusta.";
+
+  /* --- Elementit --- */
+  const ad = document.getElementById("nordnet-ad");
+  const adTextEl = document.getElementById("nordnet-ad-text");
+  const affLink = document.getElementById("nordnet-aff-link");
+  const fundWarn = document.getElementById("nordnet-fund-warning");
+
+  /* --- Aseta sisältö --- */
+  adTextEl.textContent = adText;
+  affLink.href = affiliate;
+
+  /* --- Näytä rahastovaroitus vain tarvittaessa --- */
+  const lower = adText.toLowerCase();
+  if (lower.includes("rahasto")) {
+    fundWarn.style.display = "block";
+  }
+
+  /* --- Näytä mainos --- */
+  ad.style.display = "block";
+
+  /* --- Sijoita laskurin perään, jos ei ole jo siellä --- */
+  const container = document.querySelector("main.container");
+  if (container && !container.contains(ad)) {
+    container.appendChild(ad);
+  }
+})();
+</script>
+
+<!-- --- NORDNET MAINOSKORTTI LOPPU --- -->
+
 </main>
 
 <footer class="footer">
