@@ -1,0 +1,222 @@
+
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sharpe-luku: Mittari tuoton ja riskin suhteelle</title>
+<meta name="description" content="Sharpe-luku: Mittari tuoton ja riskin suhteelle – Päivän sijoitusblogi Talousvahdissa.">
+<meta name="keywords" content="Sharpe-luku, Sharpe ratio, riskikorjattu tuotto, sijoittaminen, portfolioanalyysi, volatiliteetti, riskin mittaaminen, sijoitusstrategiat, sijoitusrahastot, ETF">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2566G3KPHW"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2566G3KPHW');
+</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Sharpe-luku: Mittari tuoton ja riskin suhteelle","author":{"@type":"Person","name":"Jere Järvelä"},"publisher":{"@type":"Organization","name":"Talousvahti","logo":{"@type":"ImageObject","url":"https://talousvahti.com/logo.png"}},"datePublished":"2025-12-02","inLanguage":"fi","keywords":"Sharpe-luku, Sharpe ratio, riskikorjattu tuotto, sijoittaminen, portfolioanalyysi, volatiliteetti, riskin mittaaminen, sijoitusstrategiat, sijoitusrahastot, ETF","description":"Sharpe-luku: Mittari tuoton ja riskin suhteelle","mainEntityOfPage":"https://talousvahti.com/sharpe-luku-mittari-tuoton-ja-riskin-suhteelle-2025-12-02.html"}</script>
+
+<!-- Fontit ja tyyli -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #0d0d0d;
+  --accent: #0077ff;
+  --text: #1a1a1a;
+  --muted: #666;
+  --bg: #ffffff;
+  --radius: 12px;
+  --shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+body {
+  font-family: 'Inter', Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+  line-height: 1.8;
+}
+
+nav {
+  background: var(--primary);
+  color: #fff;
+  padding: 18px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+nav .nav-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+nav img {
+  height: 38px;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 20px;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+nav a:hover {
+  color: var(--accent);
+}
+
+main {
+  max-width: 820px;
+  margin: 60px auto;
+  background: #fff;
+  padding: 40px 50px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+h1 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+article {
+  font-size: 1.05rem;
+  color: var(--text);
+}
+
+article p {
+  margin-bottom: 1.2rem;
+}
+
+footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-top: 60px;
+  padding: 20px 0;
+  border-top: 1px solid #eee;
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  main {
+    padding: 25px;
+    margin: 30px 10px;
+  }
+  h1 {
+    font-size: 1.7rem;
+  }
+  nav img {
+    height: 32px;
+  }
+}
+
+/* Hamburger valikko */
+.hamburger {
+  font-size: 28px;
+  cursor: pointer;
+  user-select: none;
+  display: block;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  right: 20px;
+  top: 68px;
+  background: var(--primary);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 10px 0;
+  min-width: 190px;
+  z-index: 20;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 10px 20px;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.dropdown-menu a:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+
+
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-left">
+    <img src="https://storage.mlcdn.com/account_image/1738913/3ffITIlb3p17IaYG3RcfwCueUnHxNH6iG0EtEEPU.png" alt="Talousvahti logo">
+    <strong>Talousvahti Blogi</strong>
+  </div>
+
+  <!-- Hamburger ikonit -->
+  <div class="hamburger" onclick="toggleMenu()">
+    ☰
+  </div>
+
+  <!-- Dropdown valikko -->
+  <div id="dropdownMenu" class="dropdown-menu">
+    <a href="https://talousvahti.com/">Talousuutiset</a>
+    <a href="https://talousvahti.com/kurssit.html">Pörssikurssit</a>
+    <a href="https://talousvahti.com/talouskalenteri.html">Talouskalenteri</a>
+    <a href="https://talousvahti.com/Blogi.html">Blogi</a>
+    <a href="https://talousvahti.com/sijoituslaskuri.html">Sijoituslaskuri</a>
+    <a href="https://talousvahti.com/tietoa.html">Tietoa</a>
+  </div>
+</nav>
+
+
+<main>
+  <header>
+    <h1>Sharpe-luku: Mittari tuoton ja riskin suhteelle</h1>
+  </header>
+  <article>Sharpe-luku on yksi yleisimmin käytetyistä mittareista arvioitaessa sijoitusten tuottoa suhteessa otettuun riskiin. Se sopii erityisesti sijoittajille, jotka haluavat vertailla eri rahastoja, ETF:iä tai omaa salkkua ottaen huomioon sekä tuoton että volatiliteetin. Tässä artikkelissa selitän, mitä Sharpe-luku tarkoittaa, miten sitä lasketaan käytännössä, mitä rajoituksia sillä on ja miten etenet suomalaisena sijoittajana, kun hyödynnät tätä mittaria päätöksenteossa.<br><br><br><br><h2>Mikä on Sharpe-luku ja miksi se on tärkeä?</h2><br><br><br><br>Sharpe-luku (Sharpe ratio) kertoo, kuinka paljon tuottoa sijoitus tuottaa jokaista yksikköä volatiliteettia (riskiä) kohden. William F. Sharpe kehitti sen 1960-luvulla osana modernia portfolioteoriaa. Kaava on yksinkertainen:<br><br><br><br>Sharpe = (Salkun tuotto − Riskitön korko) / Salkun volatiliteetti<br><br><br><br>Tässä:<br><br>- Salkun tuotto on yleensä sijoituksen odotettu tai historiallinen tuotto (usein vuositasolla).<br><br>- Riskitön korko on tuotto, jonka sijoittaja saisi täysin "turvallisesta" sijoituksesta, kuten valtion lyhytaikaisista veloista. Suomessa käytetään usein euroalueen riskitöntä korkoa tai kotimaisia valtion obligaatioita.<br><br>- Volatiliteetti tarkoittaa salkun tuoton standardipoikkeamaa, eli kuinka paljon tuotto vaihtelee.<br><br><br><br>Miksi se on tärkeä? Yksinkertaisesti: kaksi sijoitusta voivat näyttää houkuttelevilta pelkästään tuottojen perusteella, mutta toinen voi olla paljon riskisempi. Sharpe-luku yhdistää nämä ja kertoo, mikä sijoitus tuottaa parhaiten suhteessa ottamaansa riskiin. Korkeampi Sharpe-luku on yleensä parempi.<br><br><br><br><h2>Miten Sharpe-luku lasketaan — käytännön esimerkit</h2><br><br><br><br>Laskettaessa Sharpe-lukua on tärkeää käyttää saman aikayksikön tuottoja ja volatiliteettia sekä valita sopiva riskitön korko. Alla kaksi selkeää esimerkkiä.<br><br><br><br>Esimerkki 1 — yksinkertainen vuosilaskelma:<br><br>- Rahasto A: vuosituotto 8 %, volatiliteetti (SD) 12 %<br><br>- Rahasto B: vuosituotto 6 %, volatiliteetti 6 %<br><br>- Riskitön korko: 1 % (vuositasolla)<br><br><br><br>Sharpe A = (8 − 1) / 12 = 7 / 12 ≈ 0,58<br><br>Sharpe B = (6 − 1) / 6 = 5 / 6 ≈ 0,83<br><br><br><br>Tulkinta: vaikka Rahasto A tuottaa enemmän absoluuttisesti (8 % vs 6 %), Rahasto B tuottaa paremmin suhteessa riskiin — sen Sharpe-luku on korkeampi. B on siis riskikorjatusti parempi valinta, jos tavoitteena on maksimoida tuotto per riskiyksikkö.<br><br><br><br>Esimerkki 2 — kuukausidata ja annualisointi:<br><br>Oletetaan, että sinulla on kahden vuoden kuukausituotot. Lasket kuukausikeskiarvon (muunnettuna vuositasolle kertomalla 12:lla) ja kuukausisen volatiliteetin (SD). Annualisoidaksesi volatiliteetin kerro kuukausisen SD:n neliöjuurella 12: sqrt(12) ≈ 3,464.<br><br><br><br>- Kuukausikeskiarvo: 0,6 % → vuosituotto ≈ 0,6 % × 12 = 7,2 %<br><br>- Kuukausinen SD: 3 % → vuosittu volatiliteetti ≈ 3 % × sqrt(12) ≈ 10,4 %<br><br>- Riskitön korko: 0,5 %<br><br><br><br>Sharpe ≈ (7,2 − 0,5) / 10,4 ≈ 6,7 / 10,4 ≈ 0,64<br><br><br><br>Huomaa: laskutavat ja annualisointi vaikuttavat ja siksi on tärkeää käyttää yhdenmukaista käytäntöä, etenkin kun vertailet eri rahastoja tai ajanjaksoja.<br><br><br><br><h2>Sharpe-luvun tulkinta ja yleiset nyrkkisäännöt</h2><br><br><br><br>Sharpe-luville ei ole yhtä absoluuttista rajaa, mutta markkinakäytännössä käytetään usein seuraavia suuntaa-antavia luokituksia:<br><br>- Alle 0: Huono — sijoitus tuottaa vähemmän kuin riskitön korko tai on erittäin riskinen.<br><br>- 0–0,5: Heikko — sijoitus tarjoaa pientä riskikorjattua lisäarvoa.<br><br>- 0,5–1,0: Kohtalainen — hyväksyttävä, mutta ei erinomainen.<br><br>- 1,0–2,0: Hyvä — sijoitus tarjoaa selvästi hyvää riskikorjatua tuottoa.<br><br>- Yli 2,0: Erinomainen — harvinainen pitkällä aikajänteellä.<br><br><br><br>Nämä rajat ovat vain suuntaa antavia. Erityisesti erittäin matalavolyylisillä sijoituksilla (esim. korkorahastoilla) voi olla erilainen odotusarvo. Lisäksi eri sijoitustyypeissä normaali Sharpe-taso vaihtelee (esim. osakkeet vs vaihtoehtoiset sijoitukset).<br><br><br><br><h2>Rajoitukset, joita sijoittajan tulee tiedostaa</h2><br><br><br><br>Sharpe-luku on hyödyllinen mutta ei täydellinen. Tässä tärkeimmät rajoitukset:<br><br><br><br>1. Oletus normaalijakaumasta: Sharpe käyttää standardipoikkeamaa riskin mittarina. Se olettaa, että tuotot käyttäytyvät "normaalisti". Käytännössä sijoitustuottojen jakaumat voivat olla vinoja (skew) tai sisältää paksuhäntäisiä epätyypillisiä tapahtumia (kurtosis), jolloin standardipoikkeama ei kerro kaikkea.<br><br><br><br>2. Ei erottele ylös- ja alaspäin syntyvää riskiä: Standardipoikkeama rankaisee sekä positiivisia että negatiivisia heilahteluja. Useimmat sijoittajat pelkäävät enemmän tappioita kuin he haluavat ylimääräisiä voittoja. Tämän takia Sortino-suhde voi joskus olla informatiivisempi — se huomioi ainoastaan negatiivisen volatiliteetin.<br><br><br><br>3. Ajanjakso ja seuranta-ajankohta vaikuttavat: Sharpe-luku vaihtelee suuresti riippuen valitusta ajanjaksosta ja tuottotietojen frekvenssistä (päivä, kuukausi, vuosi). Lyhyt ajanjakso voi antaa harhaanjohtavia arvoja.<br><br><br><br>4. Tuoton manipulointi: Rahastot voivat ajoittaa arvoja tai käyttää lainoitusta, mikä voi vääristää volatiliteettia ja siten Sharpe-lukua. Myös tuotot, joissa on paljon epäsäännöllisyyttä tai harvoja suuria voittoja, voivat antaa korkean Sharpen lyhyellä aikavälillä.<br><br><br><br>5. Riskitön korko valinta: Eri sijoittajat käyttävät eri riskittömiä korkoja. Euroalueen tai Suomen lyhyet valtionlainat antavat erilaisen tuloksen. Valitse johdonmukaisesti, kun vertaat sijoituksia.<br><br><br><br><h2>Kun ymmärrät rajoitukset — miten käyttää Sharpe-lukua käytännössä?</h2><br><br><br><br>Sharpe-luku kannattaa nähdä yhtenä työkaluna laajemman arvioinnin osana. Tässä konkreettisia vinkkejä suomalaiselle sijoittajalle:<br><br><br><br>- Vertaa saman tyyppisiä sijoituksia: Käytä Sharpea vertaillaksesi esimerkiksi suomalaisia osakerahastoja keskenään tai pitkän koron rahastoja keskenään. Älä vertaile suoraan hypoteettisesti eri riskiluokan tuotteita ilman kontekstia.<br><br><br><br>- Käytä samaa ajanjaksoa: Kun vertailet rahastoja A ja B, laske Sharpe samasta ajanjaksosta ja samalla frekvenssillä (esim. kuukausituotot 5 vuoden ajalta). Tämä vähentää virheellisiä johtopäätöksiä.<br><br><br><br>- Ristiintarkista muiden mittareiden kanssa: Katso myös maksimum drawdown (suurin pudotus), Sortino-suhde, alfa ja betat, kulut (TER) sekä kertyneet verovaikutukset. Esimerkiksi rahasto voi näyttää hyvää Sharpea mutta kärsiä suurista laskuista altistaen sijoittajan merkittäville tappioille.<br><br><br><br>- Ota huomioon likviditeetti ja tuote-erityispiirteet: Pääomamarkkinoilla, joissa on rajattu likviditeetti tai complex-strategioita (derivaatit, käännettävät lainat), Sharpe voi olla harhaanjohtava.<br><br><br><br>- Hyödynnä Sharpea portfolion optimoinnissa: Kun rakennat hajautettua salkkua, pyri nostamaan kokonais-Sharpea yhdistämällä omaisuuseriä, joiden tuotot eivät korreloi keskenään. Tämä on modernin portfolioteorian ydin.<br><br><br><br>Esimerkki: Hajautus parantaa Sharpea<br><br>- Salkku 1: 100 % suomalaisia osakkeita, odotettu tuotto 8 %, volatiliteetti 17 % → Sharpe ≈ (8 − 1) / 17 ≈ 0,41<br><br>- Salkku 2: 60 % osakkeita, 40 % korkoja, odotettu tuotto 5 %, volatiliteetti 8 % → Sharpe ≈ (5 − 1) / 8 = 0,5<br><br><br><br>Vaikka Salkku 1 tarjoaa paremman absoluuttisen tuoton, Salkku 2 antaa paremman riskikorjatun suorituksen. Hajautus on nostanut Sharpea.<br><br><br><br><h2>Sharpe-luku ja verotus, valuuttariski sekä kulut</h2><br><br><br><br>Suomalaiselle sijoittajalle on tärkeää muistaa, että käytännön tuottoihin vaikuttavat verot ja kustannukset. Rahaston ilmoitettu tuotto voi olla brutto, eikä se ota huomioon:<br><br>- Rahaston hallinnointipalkkiota (TER)<br><br>- Mahdollisia myynti- tai lunastuspalkkioita<br><br>- Verovaikutuksia (esim. osinkoverotus, luovutusvoitot)<br><br>- Valuuttakurssien vaikutusta, jos sijoitat ulkomaisiin instrumentteihin<br><br><br><br>Esimerkiksi euroalueen riskittömän koron muutos voi muuttaa negatiivisesti tai positiivisesti Sharpe-lukua. Jos korot nousevat, riskitön korko kasvaa ja rahaston ylituotto riskittömään korkoon nähden voi pienentyä — jolloin Sharpe laskee. Muista vähentää rahaston kulut ja arvioida verotettava nettotuotto ennen kuin lasket lopullisen Sharpen.<br><br><br><br><h2>Mitä vaihtoehtoisia mittareita kannattaa käyttää?</h2><br><br><br><br>Sharpe on hyvä perusmittari, mutta joskus kannattaa katsoa myös:<br><br>- Sortino-suhde: käyttää vain negatiivista volatiliteettia; parempi silloin, kun huolena ovat vain tappiot.<br><br>- Treynor-suhde: käyttää järjestystoista riskimittausta (beta); sopii, kun kiinnostuksen kohteena on markkinariski.<br><br>- Information ratio: mittaa aktiivisen salkun ylituoton suhdetta aktiivisen riskin (tracking error) määrään. Hyvä työkalu rahastojen suhteessa indekseihin.<br><br>- Maksimi drawdown: kertoo suurimman historiallisen menetyksen, joka voi vaikuttaa sijoittajan psykologiaan ja likviditeetin tarpeeseen.<br><br><br><br>Käytä useampaa metriikkaa — näin saat kattavamman kuvan sijoituksen ominaisuuksista.<br><br><br><br><h2>Yhteenveto: Milloin Sharpe-luku kannattaa ottaa huomioon?</h2><br><br><br><br>Sharpe-luku on erinomainen lähtökohta silloin, kun haluat mitata sijoituksen tuottoa suhteessa volatiliteettiin. Se auttaa tekemään objektiivisempia vertailuja samanlaisten tuotteiden välillä ja toimii osana portfolion optimointia. Kuitenkin:<br><br>- Älä luota Sharpeen yksin — yhdistä se muihin mittareihin.<br><br>- Huomioi ajanjaksojen ja frekvenssien vaikutus.<br><br>- Ota huomioon verot, kulut ja valuuttariski.<br><br>- Muista, että korkea Sharpe ei takaa tulevia tuloksia — se kertoo historiallisesta tai odotetusta suhteesta tuoton ja volatiliteetin välillä.<br><br><br><br>Konkreettinen toimintasuositus suomalaiselle sijoittajalle:<br><br>1. Laske tai hae rahaston Sharpe viimeiseltä 3–5 vuodelta, käyttäen kuukausituottoja, jos saatavilla.<br><br>2. Vertaa saman kategorian rahastoihin ja ota huomioon kulut (TER).<br><br>3. Tarkista maksimi drawdown ja Sortino, jotta tiedät, miten rahasto kestää laskukausia.<br><br>4. Käytä tuloksia osana laajempaa sijoitussuunnitelmaa — älä koskaan anna yhden numeron ratkaista kaikkea.<br><br><br><br>Sharpe-luku on tehokas työkalu fiksulle sijoittajalle. Kun ymmärrät sen laskennan, tulkinnan ja rajoitukset, voit tehdä parempia valintoja ja rakentaa salkun, joka palvelee tavoitteitasi — nyt ja tulevaisuudessa.<br><br><br><br>Lähteitä ja lisälukemista:<br><br><a href="https://www.investopedia.com/terms/s/sharperatio.asp">https://www.investopedia.com/terms/s/sharperatio.asp</a><br><br><a href="https://en.wikipedia.org/wiki/Sharpe_ratio">https://en.wikipedia.org/wiki/Sharpe_ratio</a><br><br><a href="https://www.nobelprize.org/prizes/economic-sciences/1990/sharpe/lecture/">https://www.nobelprize.org/prizes/economic-sciences/1990/sharpe/lecture/</a><br><br><a href="https://www.cfainstitute.org/en/research/foundation/2011/performance-evaluation">https://www.cfainstitute.org/en/research/foundation/2011/performance-evaluation</a><br><br><a href="https://www.morningstar.com/articles/886362/understanding-risk-adjusted-return">https://www.morningstar.com/articles/886362/understanding-risk-adjusted-return</a><br><br><a href="https://www.nordnet.fi/blogi">https://www.nordnet.fi/blogi</a></article>
+</main>
+
+<footer>
+  <p>© 2025 Talousvahti — kirjoittanut <strong>Jere Järvelä</strong></p>
+</footer>
+
+<script>
+function toggleMenu() {
+  const menu = document.getElementById("dropdownMenu");
+  menu.style.display = (menu.style.display === "block") ? "none" : "block";
+}
+
+document.addEventListener("click", function(e) {
+  const menu = document.getElementById("dropdownMenu");
+  const hamburger = document.querySelector(".hamburger");
+
+  if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+    menu.style.display = "none";
+  }
+});
+</script>
+
+
+</body>
+</html>
