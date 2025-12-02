@@ -1,0 +1,222 @@
+
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jatkettu hajauttaminen: Korreloimattomat omaisuusluokat</title>
+<meta name="description" content="Jatkettu hajauttaminen: Korreloimattomat omaisuusluokat – Päivän sijoitusblogi Talousvahdissa.">
+<meta name="keywords" content="hajauttaminen, korreloimattomat omaisuusluokat, sijoittaminen, ETF, osakesalkku, kiinteistöt, kulta, inflaatio, riskienhallinta, sijoitusstrategia">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2566G3KPHW"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2566G3KPHW');
+</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Jatkettu hajauttaminen: Korreloimattomat omaisuusluokat","author":{"@type":"Person","name":"Jere Järvelä"},"publisher":{"@type":"Organization","name":"Talousvahti","logo":{"@type":"ImageObject","url":"https://talousvahti.com/logo.png"}},"datePublished":"2025-12-02","inLanguage":"fi","keywords":"hajauttaminen, korreloimattomat omaisuusluokat, sijoittaminen, ETF, osakesalkku, kiinteistöt, kulta, inflaatio, riskienhallinta, sijoitusstrategia","description":"Jatkettu hajauttaminen: Korreloimattomat omaisuusluokat","mainEntityOfPage":"https://talousvahti.com/jatkettu-hajauttaminen-korreloimattomat-omaisuusluokat-2025-12-02.html"}</script>
+
+<!-- Fontit ja tyyli -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #0d0d0d;
+  --accent: #0077ff;
+  --text: #1a1a1a;
+  --muted: #666;
+  --bg: #ffffff;
+  --radius: 12px;
+  --shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+body {
+  font-family: 'Inter', Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+  line-height: 1.8;
+}
+
+nav {
+  background: var(--primary);
+  color: #fff;
+  padding: 18px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+nav .nav-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+nav img {
+  height: 38px;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 20px;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+nav a:hover {
+  color: var(--accent);
+}
+
+main {
+  max-width: 820px;
+  margin: 60px auto;
+  background: #fff;
+  padding: 40px 50px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+h1 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+article {
+  font-size: 1.05rem;
+  color: var(--text);
+}
+
+article p {
+  margin-bottom: 1.2rem;
+}
+
+footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-top: 60px;
+  padding: 20px 0;
+  border-top: 1px solid #eee;
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  main {
+    padding: 25px;
+    margin: 30px 10px;
+  }
+  h1 {
+    font-size: 1.7rem;
+  }
+  nav img {
+    height: 32px;
+  }
+}
+
+/* Hamburger valikko */
+.hamburger {
+  font-size: 28px;
+  cursor: pointer;
+  user-select: none;
+  display: block;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  right: 20px;
+  top: 68px;
+  background: var(--primary);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 10px 0;
+  min-width: 190px;
+  z-index: 20;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 10px 20px;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.dropdown-menu a:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+
+
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-left">
+    <img src="https://storage.mlcdn.com/account_image/1738913/3ffITIlb3p17IaYG3RcfwCueUnHxNH6iG0EtEEPU.png" alt="Talousvahti logo">
+    <strong>Talousvahti Blogi</strong>
+  </div>
+
+  <!-- Hamburger ikonit -->
+  <div class="hamburger" onclick="toggleMenu()">
+    ☰
+  </div>
+
+  <!-- Dropdown valikko -->
+  <div id="dropdownMenu" class="dropdown-menu">
+    <a href="https://talousvahti.com/">Talousuutiset</a>
+    <a href="https://talousvahti.com/kurssit.html">Pörssikurssit</a>
+    <a href="https://talousvahti.com/talouskalenteri.html">Talouskalenteri</a>
+    <a href="https://talousvahti.com/Blogi.html">Blogi</a>
+    <a href="https://talousvahti.com/sijoituslaskuri.html">Sijoituslaskuri</a>
+    <a href="https://talousvahti.com/tietoa.html">Tietoa</a>
+  </div>
+</nav>
+
+
+<main>
+  <header>
+    <h1>Jatkettu hajauttaminen: Korreloimattomat omaisuusluokat</h1>
+  </header>
+  <article>Sijoittamisen perusajatuksiin kuuluu hajauttaminen. Useimmat suomalaiset sijoittajat tuntevat hajautuksen osakesalkun ja korkosijoitusten välillä. Mutta todellista lisäarvoa voi löytyä, kun laajennat salkkuasi korreloimattomiin omaisuusluokkiin. Tämä artikkeli avaa, miksi korrelaatio on tärkeää, mitä omaisuusluokkia kannattaa tarkastella ja miten käytännössä voit lisätä korreloimattomuutta omiin sijoituksiisi — veroseikat ja likviditeetti huomioiden.<br><br><br><br><h2>Mitä tarkoitetaan korreloimattomilla omaisuusluokilla?</h2><br><br><br><br>Korrelaatiolla mitataan, miten kahden sijoituksen hinnat liikkuvat suhteessa toisiinsa. Arvo +1 tarkoittaa täydellistä samaan suuntaan liikettä, 0 tarkoittaa, että liikkeet eivät ole yhteydessä, ja -1 täydellistä vastakkaista liikettä. Korreloimattomat omaisuusluokat ovat sellaisia, joiden arvonmuutokset eivät liity suoraan osakemarkkinoihin tai joukkolainamarkkinoihin. Niitä kannattaa lisätä, koska ne voivat laskea salkun kokonaisriskiä ja tehdä tuotoista tasaisempia.<br><br><br><br>Käytännössä täydellisesti korreloimattomia kohteita on harvoin. Myös aiemmin korreloimattomina pidetyt omaisuusluokat voivat yhtäkkiä korreloitua voimakkaasti osakemarkkinoiden romahduksessa. Silti pitkällä aikavälillä korrelaation hajautus toimii: monipuolinen salkku reagoi eri suhdanteisiin eri tavoin.<br><br><br><br><h2>Miksi lisätä korreloimattomia omaisuusluokkia salkkuun?</h2><br><br><br><br>- Riskien alentaminen: Jos yksi markkina romahtaa, muut omaisuusluokat voivat suojata salkun arvoa. Esimerkiksi kulta on historiallisesti usein säilynyt tai jopa noussut kriisien aikana.<br><br>- Tuoton parantaminen suhteessa riskiin: Hyvin valittu yhdistelmä voi laskea volatiliteettia ilman, että odotettu tuotto laskee samassa suhteessa. Tämä parantaa Sharpe-suhdetta eli tuottoa suhteessa riskiin.<br><br>- Inflaatiolta suojaaminen: Reaalihyödykkeet, kuten maatalousmaa tai inflaatiosidonnaiset obligaatioerät, voivat suojata ostovoimaa.<br><br>- Sijoittajan mielenrauha: Tasaisempi salkku auttaa pysymään suunnitelmassa myös kurssiheilahdusten aikana.<br><br><br><br>Konreettinen esimerkki:<br><br>Kuvitellaan, että sinulla on 100 000 euron salkku, joka on 80 % osakkeissa ja 20 % joukkovelkakirjoissa. Liität portfolioon 5–10 % kultaa ja 5 % suoria tai listattuja kiinteistöjä. Tällainen lisäys voi vähentää salkun pudotusta taantuman aikana ja nopeuttaa paluuta lähtötasoon ilman, että osakepainoa tarvitsee pienentää radikaalisti.<br><br><br><br><h2>Keskeiset korreloimattomat omaisuusluokat — mitä harkita?</h2><br><br><br><br>Esittelen tässä ryhmiä, joita suomalainen sijoittaja voi harkita. Jokaisesta ryhmästä annan käytännönläheisiä esimerkkejä siitä, miten päästä mukaan.<br><br><br><br>1) Kulta ja jalometallit<br><br>- Luonne: Perinteinen turvasatama ja inflaatiopuolustaja.<br><br>- Miten päästä mukaan: fyysinen kulta, arvo-osuuksiin listatut kulta-ETF:t tai kultayhtiöihin sijoittavat rahastot.<br><br>- Huomioitavaa: Kulta ei tuota kassavirtaa, ja säilytyskustannuksia voi tulla. Verotus Suomessa kohtelee kultaa pääomatulona kuten muutkin myyntivoitot.<br><br><br><br>2) Hyödykkeet (commodities)<br><br>- Luonne: Öljy, maataloustuotteet, metallit ja energia. Usein hyviä inflaatiosuojia.<br><br>- Miten päästä mukaan: hyödyke-ETF:t, futuurisijoitukset tai yritykset, jotka jalostavat hyödykkeitä.<br><br>- Huomioitavaa: Futuuripohjaiset ETF:t voivat sisältää roll-kustannuksia, jotka vaikuttavat tuottoon.<br><br><br><br>3) Kiinteistöt ja infrastruktuuri<br><br>- Luonne: Tuotot koostuvat vuokratuloista ja arvonnoususta; usein erilainen suhdannekäyttäytyminen kuin osakkeilla.<br><br>- Miten päästä mukaan: listatut REITit/kiinteistö-ETF:t, kotimaiset ja kansainväliset kiinteistörahastot, suorat sijoitukset (esim. asuntosijoitus) tai joukkorahoitusprojektit.<br><br>- Huomioitavaa: Suorat kiinteistöt ovat epälikvidejä ja vaativat pääomaa sekä hallinnointia.<br><br><br><br>4) Vaihtoehtoiset sijoitukset (private equity, hedge funds)<br><br>- Luonne: Usein matalampi korrelaatio listattuihin markkinoihin, mutta usein vähintään osittain syklisiä.<br><br>- Miten päästä mukaan: yksityisten pääomarahastojen kautta, jälkimarkkinoilla noteeratut private equity -yhtiöt, tai listatut tuotteet, jotka jäljittelevät näitä.<br><br>- Huomioitavaa: Korkeat kulut, vähimmäissijoitukset ja pitkä sitoutumisaika.<br><br><br><br>5) Maatalous- ja metsäsijoitukset<br><br>- Luonne: Reaalituotteita, jotka reagoivat eri tavalla kuin rahoitusmarkkinat.<br><br>- Miten päästä mukaan: maatila- ja metsäsijoitusrahastot, suorat hankinnat, tai ETF:ien kautta saatava agriteollisuuden altistus.<br><br>- Huomioitavaa: Alhaisempi likviditeetti ja paikallislainsäädäntö sekä ylläpitokustannukset.<br><br><br><br>6) Velkakirjat eri riskitasoilla ja inflaatiosuojatut lainat<br><br>- Luonne: Valtionlainat, yrityslainat, korkokattoiset tuotteet ja inflaatiokorjatut instrumentit.<br><br>- Miten päästä mukaan: valtion obligaatiot, yrityslainarahastot, ETF:t ja indeksit.<br><br>- Huomioitavaa: Korkojen nousu voi laskea obligaatioiden arvoa. Inflaatiosuojatut lainat voivat suojata ostovoimaa.<br><br><br><br>7) Vertaislainat ja suorat lainat<br><br>- Luonne: Tuotto- ja riskiominaisuudet eroavat perinteisistä osakkeista ja joukkolainoista.<br><br>- Miten päästä mukaan: vertaislainausalustat ja joukkorahoitus.<br><br>- Huomioitavaa: Korkea riski luottotappioiden kautta ja usein huonompi likviditeetti. Voi soveltua pienempään painoon salkussa.<br><br><br><br><h2>Miten rakentaa käytännössä korreloimattomuutta salkkuusi?</h2><br><br><br><br>1) Aloita tavoitteista ja aikajänteestä<br><br>- Selvitä, mikä on sijoitushorisonttisi, riskinsietokykysi ja tuottotavoitteesi. Lyhyellä aikavälillä likvidit sijoitukset ovat tärkeämpiä. Pitkällä aikavälillä vaihtoehtoiset ja epälikvidit kohteet voivat tuoda etua.<br><br><br><br>2) Pienin askelin testaten<br><br>- Ota aluksi pieni paino uusiin omaisuusluokkiin, esimerkiksi 5–10 %. Seuraa, miten ne käyttäytyvät markkinatilanteessa. Voit kasvattaa painoa, jos ymmärrys ja kokemus vahvistuvat.<br><br><br><br>3) Käytä ETF:iä ja rahastoja helppoon pääsyyn<br><br>- Moni korreloimattomaksi laskettava luokka on saatavilla ETF:ien kautta. ETF:t tarjoavat kustannustehokkaan ja likvidin tavan päästä mukaan, vaikka jotkin ETF:t voivat silti heijastaa korkeita hallinnointikuluja.<br><br><br><br>4) Huomioi kulut ja verotus<br><br>- Vaihtoehtoiset sijoitukset ovat usein kalliimpia. Suomessa osakesäästötili voi olla verotehokas tapa kasvattaa osakealtistusta, mutta se ei kata esimerkiksi suoria kiinteistösijoituksia. Selvitä veroseuraamukset ennen sijoittamista.<br><br><br><br>5) Rebalansointi<br><br>- Säännöllinen rebalanssi pitää korrelaation hyödyllisen vaikutuksen toiminnassa. Ilman rebalanssia epätasapaino voi kasvaa ja riski keskittyä takaisin osakkeisiin.<br><br><br><br>6) Ymmärrä likviditeettiriski<br><br>- Esimerkiksi taiteeseen, suoriin metsähankkeisiin tai private equityyn sijoittaminen voi sitoa pääomaa vuosiksi. Pidä osa salkusta likvidinä katteeksi.<br><br><br><br>Konkretti portfoliomalli:<br><br>- Esimerkki konservatiivisesta salkusta: 50 % joukkolainat, 25 % osakkeet, 10 % kiinteistöt/REIT, 5 % kulta, 10 % vaihtoehtoiset (esim. hedge/PE/vertailainat).<br><br>- Esimerkki keskitason salkusta: 60 % osakkeet, 20 % joukkovelkakirjat, 10 % REIT/kiinteistö, 5 % kulta, 5 % hyödykkeet.<br><br>Nämä ovat viitteellisiä ja riippuvat sijoittajan tilanteesta.<br><br><br><br><h2>Riskit ja sudenkuopat — mitä välttää</h2><br><br><br><br>- Liiallinen monimutkaisuus: Hajauttaminen ei tarkoita, että salkun täytyy sisältää kaikki mahdolliset instrumentit. Liian moni erikoisolio voi tehdä hallinnoinnista työlästä ja kallista.<br><br>- Korkeat kulut murentavat hyötyä: Vaihtoehtoiset rahastot ja private equity -tuotteet perivät usein korkeita palkkioita. Laske nettotuotot.<br><br>- Väärin arvioitu korrelaatio: Korrelaatiot muuttuvat. Esimerkiksi monet hyödykkeet ja yrityslainat korreloivat vahvemmin osakekriiseissä kuin odotettiin.<br><br>- Likviditeettiriski: Sijoitukset, joita ei voi nopeasti myydä ilman merkittävää arvonalennusta, voivat aiheuttaa ongelmia hätätapauksissa.<br><br>- Sääntely- ja veroriskit: Eri omaisuusluokat ja kansainväliset sijoitukset altistavat erilaisille sääntely- ja veromuutoksille.<br><br><br><br><h2>Miten suomalaissijoittaja voi aloittaa jo tänään?</h2><br><br><br><br>1) Tee oma riskiprofiili<br><br>Käytä aikaa tavoitteiden kirjoittamiseen. Kuinka paljon haluat riskiä? Tarvitsetko kassaa vuoden sisällä? Mitä teet, jos markkinat putoavat 30 %?<br><br><br><br>2) Aloita pienellä korrelaatiossa erottuvalla sijoituksella<br><br>Voit ostaa 2–5 % kultaa ETF:n kautta tai lisätä 5 % painon globaaleihin REIT-ETF:iin. Se on pieni kokeilu, mutta antaa tietoa siitä, miten näet reaaliaikaisen käyttäytymisen.<br><br><br><br>3) Hyödynnä ETF:iä kustannustehokkaasti<br><br>ETF:t tarjoavat edullisen väylän hyödykkeisiin, REITeihin ja korkoon. Suomessa on useita välittäjiä, jotka tarjoavat pääsyn kansainvälisiin ETF:iin.<br><br><br><br>4) Opiskele verotusta ja säästämisratkaisuja<br><br>Osakesäästötili voi olla hyvä työkalu osakesijoituksille. Joukkorahoitus- ja vertaislainalainat voivat olla verotuksellisesti monimutkaisempia. Kysy tarvittaessa veroneuvojalta tai käytä verottajan ohjeita.<br><br><br><br>5) Seuraa tuloksia ja sopeuta<br><br>Pidä kirjaa salkun suorituskyvystä. Seuraa korrelaatioita ja reagoi vain silloin, kun taustaoletukset muuttuvat olennaisesti.<br><br><br><br>Lopuksi: hajauttaminen ei ole vain tapojen harjoittamista, vaan jatkuvaa oppimista. Korreloimattomat omaisuusluokat eivät poista riskiä, mutta hyvin valitut ja kohtuullisesti painotetut ne voivat tehdä sijoittamisesta kestävämpää ja vähemmän stressaavaa. Suomalaiselle sijoittajalle, jolla voi olla suuri kotimainen osake- tai asuntopaino, kansainvälistä diversifikaatiota ja vaihtoehtoisia omaisuusluokkia kannattaa harkita erityisesti.<br><br><br><br>Lähteet:<br><br><a href="https://www.investopedia.com/terms/d/diversification.asp">https://www.investopedia.com/terms/d/diversification.asp</a><br><br><a href="https://www.investopedia.com/terms/c/correlation.asp">https://www.investopedia.com/terms/c/correlation.asp</a><br><br><a href="https://www.cfainstitute.org">https://www.cfainstitute.org</a><br><br><a href="https://www.suomenpankki.fi">https://www.suomenpankki.fi</a><br><br><a href="https://www.sijoitustieto.fi">https://www.sijoitustieto.fi</a><br><br><a href="https://www.nasdaq.com">https://www.nasdaq.com</a></article>
+</main>
+
+<footer>
+  <p>© 2025 Talousvahti — kirjoittanut <strong>Jere Järvelä</strong></p>
+</footer>
+
+<script>
+function toggleMenu() {
+  const menu = document.getElementById("dropdownMenu");
+  menu.style.display = (menu.style.display === "block") ? "none" : "block";
+}
+
+document.addEventListener("click", function(e) {
+  const menu = document.getElementById("dropdownMenu");
+  const hamburger = document.querySelector(".hamburger");
+
+  if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+    menu.style.display = "none";
+  }
+});
+</script>
+
+
+</body>
+</html>
