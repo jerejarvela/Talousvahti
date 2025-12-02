@@ -1,0 +1,222 @@
+
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Beta-arvo: Miten se kertoo sijoituksesi riskisyydestä?</title>
+<meta name="description" content="Beta-arvo: Miten se kertoo sijoituksesi riskisyydestä? – Päivän sijoitusblogi Talousvahdissa.">
+<meta name="keywords" content="beta-arvo, beeta, betakerroin, sijoittaminen, sijoitusriski, markkinariski, volatiliteetti, salkun hajautus, CAPM, odotettu tuotto, OMXH, riskinhallinta">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2566G3KPHW"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2566G3KPHW');
+</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Beta-arvo: Miten se kertoo sijoituksesi riskisyydestä?","author":{"@type":"Person","name":"Jere Järvelä"},"publisher":{"@type":"Organization","name":"Talousvahti","logo":{"@type":"ImageObject","url":"https://talousvahti.com/logo.png"}},"datePublished":"2025-12-02","inLanguage":"fi","keywords":"beta-arvo, beeta, betakerroin, sijoittaminen, sijoitusriski, markkinariski, volatiliteetti, salkun hajautus, CAPM, odotettu tuotto, OMXH, riskinhallinta","description":"Beta-arvo: Miten se kertoo sijoituksesi riskisyydestä?","mainEntityOfPage":"https://talousvahti.com/beta-arvo-miten-se-kertoo-sijoituksesi-riskisyydesta-2025-12-02.html"}</script>
+
+<!-- Fontit ja tyyli -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #0d0d0d;
+  --accent: #0077ff;
+  --text: #1a1a1a;
+  --muted: #666;
+  --bg: #ffffff;
+  --radius: 12px;
+  --shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+body {
+  font-family: 'Inter', Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+  line-height: 1.8;
+}
+
+nav {
+  background: var(--primary);
+  color: #fff;
+  padding: 18px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+nav .nav-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+nav img {
+  height: 38px;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 20px;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+nav a:hover {
+  color: var(--accent);
+}
+
+main {
+  max-width: 820px;
+  margin: 60px auto;
+  background: #fff;
+  padding: 40px 50px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+h1 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+article {
+  font-size: 1.05rem;
+  color: var(--text);
+}
+
+article p {
+  margin-bottom: 1.2rem;
+}
+
+footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-top: 60px;
+  padding: 20px 0;
+  border-top: 1px solid #eee;
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  main {
+    padding: 25px;
+    margin: 30px 10px;
+  }
+  h1 {
+    font-size: 1.7rem;
+  }
+  nav img {
+    height: 32px;
+  }
+}
+
+/* Hamburger valikko */
+.hamburger {
+  font-size: 28px;
+  cursor: pointer;
+  user-select: none;
+  display: block;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  right: 20px;
+  top: 68px;
+  background: var(--primary);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 10px 0;
+  min-width: 190px;
+  z-index: 20;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 10px 20px;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.dropdown-menu a:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+
+
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-left">
+    <img src="https://storage.mlcdn.com/account_image/1738913/3ffITIlb3p17IaYG3RcfwCueUnHxNH6iG0EtEEPU.png" alt="Talousvahti logo">
+    <strong>Talousvahti Blogi</strong>
+  </div>
+
+  <!-- Hamburger ikonit -->
+  <div class="hamburger" onclick="toggleMenu()">
+    ☰
+  </div>
+
+  <!-- Dropdown valikko -->
+  <div id="dropdownMenu" class="dropdown-menu">
+    <a href="https://talousvahti.com/">Talousuutiset</a>
+    <a href="https://talousvahti.com/kurssit.html">Pörssikurssit</a>
+    <a href="https://talousvahti.com/talouskalenteri.html">Talouskalenteri</a>
+    <a href="https://talousvahti.com/Blogi.html">Blogi</a>
+    <a href="https://talousvahti.com/sijoituslaskuri.html">Sijoituslaskuri</a>
+    <a href="https://talousvahti.com/tietoa.html">Tietoa</a>
+  </div>
+</nav>
+
+
+<main>
+  <header>
+    <h1>Beta-arvo: Miten se kertoo sijoituksesi riskisyydestä?</h1>
+  </header>
+  <article>Beta-arvo on keskeinen käsite monen sijoittajan työkalupakissa. Se antaa yksinkertaisen numeron, joka kertoo kuinka paljon osakkeen tai salkun tuotto liikkuu markkinan mukana. Suomessa sijoittajille beta on hyödyllinen etenkin, kun halutaan ymmärtää markkinariskin vaikutusta sijoituksiin, mitoittaa positioita tai arvioida odotettua tuottoa CAPM-mallin avulla. Tämä artikkeli selittää, mitä beta tarkoittaa, miten se lasketaan, mitä siitä kannattaa pitää mielessä ja miten sitä voi käyttää käytännön sijoituspäätöksissä — selkeästi, konkreettisesti ja esimerkkien avulla.<br><br><br><br><h2>Mitä beta-arvo kertoo?</h2><br><br><br><br>Beta (tai beeta) mittaa sijoitteen herkkyyttä markkinaportfolion muutoksille. Markkina tarkoittaa yleensä sopivaa indeksiä — suomalaisille sijoittajille esimerkiksi OMX Helsinki 25 (OMXH25) tai laajemmin Euro Stoxx/Nordic-indeksi voi olla markkinan edustaja. Beta kertoo, kuinka paljon osakkeen prosentuaalinen tuotto muuttuu, kun markkina muuttuu yhdellä prosenttiyksiköllä.<br><br><br><br>- Beta = 1: osake liikkuu samaan suuntaan ja samaa vauhtia markkinan kanssa.<br><br>- Beta > 1: osake on markkinaa herkempi; se nousee enemmän nousuissa mutta laskee enemmän laskuissa.<br><br>- Beta < 1 (mutta > 0): osake on vähemmän volatiili kuin markkina.<br><br>- Beta < 0: harvinaisempi; osake liikkuu vastakkaiseen suuntaan kuin markkina (esim. tietyt suojaavat instrumentit).<br><br>- Beta = 0: osakkeen tuotto ei korreloi markkinan kanssa.<br><br><br><br>Beta ei kerro kaikkea. Se kuvaa vain systemaattista riskiä — markkinariskiä — eikä yrityskohtaisia tapahtumia kuten hallinnon ongelmia, oikeudenkäyntejä tai tuotekohtaisia riskejä. Siksi beta on yksi työkalu muiden joukossa.<br><br><br><br><h2>Kuinka beta lasketaan — yksinkertainen esimerkki</h2><br><br><br><br>Matemaattisesti beta lasketaan regressiolla tai kaavalla:<br><br>beta = Cov(R_i, R_m) / Var(R_m),<br><br>missä R_i on sijoitteen (esim. osakkeen) tuotto ja R_m markkinan tuotto.<br><br><br><br>Selvennetään käytännön numeroesimerkillä: oletetaan, että tarkastellaan pienen ajanjakson viiden kuukauden tuottoja.<br><br><br><br>- Markkinan kuukausituotot: 1%, 0%, 2%, -1%, 3%<br><br>- Osakkeen kuukausituotot: 2%, -1%, 3%, -2%, 4%<br><br><br><br>Vaihe 1: Laske kummankin keskimääräinen tuotto:<br><br>- Markkina keskiarvo = (1 + 0 + 2 - 1 + 3) / 5 = 1%<br><br>- Osake keskiarvo = (2 - 1 + 3 - 2 + 4) / 5 = 1.2%<br><br><br><br>Vaihe 2: Laske poikkeamat ja niiden tulojen keskiarvo (kovarianssi) sekä markkinan varianssi.<br><br>- Esimerkiksi ensimmäisen kuukauden poikkeamat: markkina 1% - 1% = 0, osake 2% - 1.2% = 0.8%<br><br>- Tee sama kaikille kuukausille, kerro poikkeamat keskenään ja laske keskiarvo -> tämä antaa kovarianssin.<br><br>- Varianssi lasketaan markkinan poikkeamien neliöiden keskiarvona.<br><br><br><br>Vaihe 3: Jaa kovarianssi varianssilla -> saat beta-arvon. Tässä yksinkertaistetussa esimerkissä beta voisi olla esimerkiksi noin 1,1 — mikä kertoo, että osake on hieman herkempi kuin markkina.<br><br><br><br>Monet käyttävät valmiita työkaluja (pörssipalvelut, perustyökalut, Excelin LINEST- tai SLOPE-funktiot) beta-arvon laskemiseen. Huomaa, että tulos riippuu aikajakson pituudesta (päivä-, viikko-, kuukausidata) ja vertailuindeksistä.<br><br><br><br><h2>Miten sijoittaja hyödyntää beta-arvoa käytännössä?</h2><br><br><br><br>1) Salkun riskin arviointi ja hallinta<br><br>Beta kertoo, miten paljon salkkusi altistuu markkinariskille. Salkun beta lasketaan sijoitusten betojen painotettuna keskiarvona:<br><br>salkun beta = w1*beta1 + w2*beta2 + ...,<br><br>missä w ovat kunkin sijoituksen prosenttiosuudet salkusta.<br><br><br><br>Esimerkki: Salkussa 60 % osakkeessa A (beta 1,2) ja 40 % osakkeessa B (beta 0,6):<br><br>salkun beta = 0.6*1.2 + 0.4*0.6 = 0.72 + 0.24 = 0.96.<br><br>Tämä kertoo, että salkkusi reagoisi markkinamuutoksiin hieman vähemmän kuin markkina.<br><br><br><br>2) Odotetun tuoton arviointi CAPM-mallilla<br><br>CAPM (Capital Asset Pricing Model) yhdistää riskittömän koron, markkinaportfolion odotetun tuoton ja beta-arvon:<br><br>odotettu tuotto = rf + beta * (rm - rf),<br><br>missä rf on riskitön korko ja rm markkinan odotettu tuotto.<br><br><br><br>Esimerkki: jos riskitön korko on 1 % ja markkinan odotettu tuotto 7 %, niin riskimarginaali = 6 %. Osakkeella, jonka beta on 1,2, odotettu tuotto on:<br><br>1 % + 1,2 * 6 % = 1 % + 7,2 % = 8,2 %.<br><br><br><br>Tämä antaa viitearvon siitä, mikä tuotto olisi perusteltu ottaen huomioon markkinariski.<br><br><br><br>3) Positioiden kokoonmittaus ja hedging<br><br>Beta auttaa päättämään position koosta: korkean betan osakkeessa suurempi positiokoko voi lisätä salkun volatiliteettia voimakkaasti. Jos haluat suojata salkkua markkinariskiä vastaan, voit ottaa lyhyen position markkinafutuurissa, jonka koko vastaa salkun beta-arvoa. Esimerkiksi salkun beta 1,5 tarkoittaa, että lyhyeksi ottamalla 1,5 kertaa markkina-indexin positio voit neutralisoida markkinariskin (teoriassa).<br><br><br><br>4) Valitse sektoreita ja strategioita<br><br>Teknologia- ja kasvuyhtiöt ovat usein korkean betan kohteita (herkkiä markkinamuutoksille), kun taas hyödyke- tai sähköyhtiöt voivat olla vakaampia (pienempi beta). Beta auttaa sektoreiden vertailussa ja tasapainottamisessa salkussa.<br><br><br><br><h2>Rajoitukset ja sudenkuopat — mitä beta ei kerro</h2><br><br><br><br>Beta on hyödyllinen, mutta sillä on selkeitä rajoitteita:<br><br><br><br>- Historiallinen riippuvuus: Useimmat beta-arvot perustuvat menneisyyteen. Markkinaympäristö muuttuu, ja yritysten herkkyys voi muuttua ajan kuluessa (uusi liiketoimintamalli, velan muuttuminen, regulaatio).<br><br>- Riippuvuus markkinaindeksistä: Beta kuvaa herkkyyttä valittuun markkinaindeksiin. Jos käytät OMXH25:ttä, tulos voi poiketa beta-arvosta suhteessa globaaliin markkinaan.<br><br>- Ei kuvaa yrityskohtaisia riskejä: Beta kertoo systemaattisesta riskistä, mutta yrityskohtainen riskitekijä voi tuoda suuria heilahteluja, joita beta ei ennusta.<br><br>- Aikasarjan valinta vaikuttaa: Päivät, viikot tai kuukaudet antavat eri betoja. Lyhyellä aikavälillä beta voi olla epävakaa.<br><br>- Ei automaattista tasa-arvoa volatiliteetin kanssa: Beta ei ole sama kuin volatiliteetti (standardipoikkeama). Korkea volatiliteetti ei välttämättä tarkoita korkeaa betaa, jos liikkeet eivät ole korreloituneet markkinan kanssa.<br><br>- Valuuttariski puuttuu: Kun suomalainen sijoittaa ulkomaisiin osakkeisiin, valuuttakurssit voivat lisätä volatiliteettia ilman että beta indikoi sitä markkinaindeksin suhteessa.<br><br><br><br>Tästä syystä beta kannattaa yhdistää muihin mittareihin: volatiliteettiin, sharpe-suhteeseen, yrityksen fundamentteihin ja laadullisiin riskeihin.<br><br><br><br><h2>Käytännön vinkkejä suomalaiselle sijoittajalle</h2><br><br><br><br>1) Valitse oikea markkinaindeksi vertailuksi<br><br>Suomalaisille OMXH25 tai OMX Helsinki all share voivat olla luonnollisia vertailuindeksejä. Jos salkkusi on globaali, käytä laajempaa indeksiä kuten MSCI World tai Stoxx Europe.<br><br><br><br>2) Katso useita aikajaksoja ja frekvenssejä<br><br>Tarkista sekä lyhyen että pitkän aikavälin beta. Päivätason beta voi näyttää lyhyen aikavälin herkkyyden, kuukausidata voi näyttää vakaamman kuvan.<br><br><br><br>3) Käytä beta-arvoa sijoituskokoa määrittäessä<br><br>Jos oma riskinsietokyky on matala, hakeudu pienemmän betan papereihin tai käytä pienempiä positioita korkean betan kohteissa. Käytä salkun beta-arvoa osaston riskin arviointiin ja aseta tavoite (esim. salkun beta 0,8–1,0).<br><br><br><br>4) Muista hajautus<br><br>Beta voi auttaa ymmärtämään, mitkä sijoitukset tarjoavat aitoa hajautushyötyä. Valitse osakkeita, joiden betat korreloivat vähän keskenään tai jotka tarjoavat vastakkaisia suojauksia.<br><br><br><br>5) Harkitse velkaantumisen vaikutusta (leveraged/unleveraged beta)<br><br>Yrityksen beta voi muuttua, jos yritys on paljon velkaa. Leveraged beta kuvaa yrityksen todellista riskin tasoa; unleveraged beta (equity beta ilman velan vaikutusta) on hyödyllinen, jos vertaat eri pääomarakenneisia yrityksiä.<br><br><br><br>6) Ota huomioon verotus ja kulut<br><br>Suojaukset (esim. futuurit, ETF-lyhennykset) ja valuuttasuojaukset vaikuttavat kustannuksiin. Beta-laskelmat eivät sisällä kuluja.<br><br><br><br><h3>Esimerkkejä päätöksenteosta</h3><br><br><br><br>Esimerkki 1 — nuori sijoittaja: Haluat kasvaa nopeasti ja hyväksyt suuremman volatiliteetin. Voit rakentaa salkun, jonka painot ovat korkean beetan osakkeissa (esim. teknologiayhtiöt beta 1,3–1,6) ja pitää salkun betan >1. Tiedosta, että markkinadipit näkyvät voimakkaammin.<br><br><br><br>Esimerkki 2 — eläkeikäinen sijoittaja: Haluat vakautta ja pienempiä pääoman heilahduksia. Valitse vähemmän volatiileja papereita tai obligaatiosuojattuja tuotteita; salkun beta voi olla 0,5–0,8.<br><br><br><br>Esimerkki 3 — suojaus markkinalta: Oma salkku on 100 000 € ja sen beta on 1,2. Haluat suojata 50 % markkinariskistä lyhyellä aikavälillä. Voit ottaa lyhyen position markkinaindeksissä, joka vastaa 0,6 kertaa salkun markkina-arvoa (100 000 € * 1,2 * 0,5 ≈ 60 000 € indeksiä vastaan).<br><br><br><br><h3>Mistä beta-arvon löytää ja miten se käytännössä tarkistetaan?</h3><br><br><br><br>- Pörssipalvelut ja kaupankäyntialustat (Nordnet, Nordea, S-Bank) näyttävät usein beta-arvon osakeen tiedoissa.<br><br>- Talousportaalit kuten Yahoo Finance näyttävät beetan ja tarjoavat eri aikajaksojen arvoja.<br><br>- Voit laskea beta-arvon itse Excelissä käyttäen SLOPE- tai LINEST-funktioita markkina- ja osaketuotoille.<br><br>- Tarkista, mikä indeksi on käytetty markkinana ja mikä datafrekvenssi (päivä, viikko, kuukausi).<br><br><br><br>Yhteenveto: beta on selkeä ja hyödyllinen mittari, mutta sitä ei pidä käyttää yksin. Yhdistä beta fundamenttianalyysiin, volatiliteettiin ja omaan sijoitussuunnitelmaan. Beta auttaa hahmottamaan, miten sijoituksesi käyttäytyvät markkinaheilahteluissa ja miten voit mitoittaa riskiä strategisesti.<br><br><br><br>Lähteet:<br><br><a href="https://www.investopedia.com/terms/b/beta.asp">https://www.investopedia.com/terms/b/beta.asp</a><br><br><a href="https://en.wikipedia.org/wiki/Beta_(finance)">https://en.wikipedia.org/wiki/Beta_(finance)</a><br><br><a href="https://www.nasdaq.com/articles/what-is-beta">https://www.nasdaq.com/articles/what-is-beta</a><br><br><a href="https://www.cfainstitute.org">https://www.cfainstitute.org</a><br><br><a href="https://www.morningstar.com">https://www.morningstar.com</a><br><br><a href="https://www.sijoitustieto.fi">https://www.sijoitustieto.fi</a></article>
+</main>
+
+<footer>
+  <p>© 2025 Talousvahti — kirjoittanut <strong>Jere Järvelä</strong></p>
+</footer>
+
+<script>
+function toggleMenu() {
+  const menu = document.getElementById("dropdownMenu");
+  menu.style.display = (menu.style.display === "block") ? "none" : "block";
+}
+
+document.addEventListener("click", function(e) {
+  const menu = document.getElementById("dropdownMenu");
+  const hamburger = document.querySelector(".hamburger");
+
+  if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+    menu.style.display = "none";
+  }
+});
+</script>
+
+
+</body>
+</html>
