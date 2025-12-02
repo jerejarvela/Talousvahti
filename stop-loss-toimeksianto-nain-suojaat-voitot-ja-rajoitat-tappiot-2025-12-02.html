@@ -1,0 +1,222 @@
+
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stop-loss -toimeksianto: Näin suojaat voitot ja rajoitat tappiot</title>
+<meta name="description" content="Stop-loss -toimeksianto: Näin suojaat voitot ja rajoitat tappiot – Päivän sijoitusblogi Talousvahdissa.">
+<meta name="keywords" content="stop-loss, stop loss, stop-loss toimeksianto, riskienhallinta, sijoittaminen, osakkeet, trailing stop, tappioraja, voitonsuojaus, stop-loss strategia, kaupankäynti">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2566G3KPHW"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2566G3KPHW');
+</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Stop-loss -toimeksianto: Näin suojaat voitot ja rajoitat tappiot","author":{"@type":"Person","name":"Jere Järvelä"},"publisher":{"@type":"Organization","name":"Talousvahti","logo":{"@type":"ImageObject","url":"https://talousvahti.com/logo.png"}},"datePublished":"2025-12-02","inLanguage":"fi","keywords":"stop-loss, stop loss, stop-loss toimeksianto, riskienhallinta, sijoittaminen, osakkeet, trailing stop, tappioraja, voitonsuojaus, stop-loss strategia, kaupankäynti","description":"Stop-loss -toimeksianto: Näin suojaat voitot ja rajoitat tappiot","mainEntityOfPage":"https://talousvahti.com/stop-loss-toimeksianto-nain-suojaat-voitot-ja-rajoitat-tappiot-2025-12-02.html"}</script>
+
+<!-- Fontit ja tyyli -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #0d0d0d;
+  --accent: #0077ff;
+  --text: #1a1a1a;
+  --muted: #666;
+  --bg: #ffffff;
+  --radius: 12px;
+  --shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+body {
+  font-family: 'Inter', Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+  line-height: 1.8;
+}
+
+nav {
+  background: var(--primary);
+  color: #fff;
+  padding: 18px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+nav .nav-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+nav img {
+  height: 38px;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 20px;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+nav a:hover {
+  color: var(--accent);
+}
+
+main {
+  max-width: 820px;
+  margin: 60px auto;
+  background: #fff;
+  padding: 40px 50px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+h1 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+article {
+  font-size: 1.05rem;
+  color: var(--text);
+}
+
+article p {
+  margin-bottom: 1.2rem;
+}
+
+footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-top: 60px;
+  padding: 20px 0;
+  border-top: 1px solid #eee;
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  main {
+    padding: 25px;
+    margin: 30px 10px;
+  }
+  h1 {
+    font-size: 1.7rem;
+  }
+  nav img {
+    height: 32px;
+  }
+}
+
+/* Hamburger valikko */
+.hamburger {
+  font-size: 28px;
+  cursor: pointer;
+  user-select: none;
+  display: block;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  right: 20px;
+  top: 68px;
+  background: var(--primary);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 10px 0;
+  min-width: 190px;
+  z-index: 20;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 10px 20px;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.dropdown-menu a:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+
+
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-left">
+    <img src="https://storage.mlcdn.com/account_image/1738913/3ffITIlb3p17IaYG3RcfwCueUnHxNH6iG0EtEEPU.png" alt="Talousvahti logo">
+    <strong>Talousvahti Blogi</strong>
+  </div>
+
+  <!-- Hamburger ikonit -->
+  <div class="hamburger" onclick="toggleMenu()">
+    ☰
+  </div>
+
+  <!-- Dropdown valikko -->
+  <div id="dropdownMenu" class="dropdown-menu">
+    <a href="https://talousvahti.com/">Talousuutiset</a>
+    <a href="https://talousvahti.com/kurssit.html">Pörssikurssit</a>
+    <a href="https://talousvahti.com/talouskalenteri.html">Talouskalenteri</a>
+    <a href="https://talousvahti.com/Blogi.html">Blogi</a>
+    <a href="https://talousvahti.com/sijoituslaskuri.html">Sijoituslaskuri</a>
+    <a href="https://talousvahti.com/tietoa.html">Tietoa</a>
+  </div>
+</nav>
+
+
+<main>
+  <header>
+    <h1>Stop-loss -toimeksianto: Näin suojaat voitot ja rajoitat tappiot</h1>
+  </header>
+  <article>Stop-loss -toimeksianto on yksi yksinkertaisimmista ja tehokkaimmista työkaluista sijoittajan riskienhallinnassa. Se auttaa rajaamaan tappioita ja suojaamaan jo syntyneitä voittoja automaattisesti. Tässä artikkelissa selitän, mitä stop-loss tarkoittaa, millaisia vaihtoehtoja on, miten sijoittaja voi käyttää sitä eri tilanteissa ja millaisia sudenkuoppia tulee välttää. Käytän runsaasti käytännön esimerkkejä ja annan konkreettisia laskelmia, jotta voit ottaa opit suoraan omaan kaupankäyntiin.<br><br><br><br><h2>Mitä stop-loss on ja miksi se kannattaa asettaa</h2><br><br>Stop-loss on toimeksianto, jonka asetat välittämään välittäjällesi myyntitoimeksiannon, kun arvopaperin hinta laskee tietyn rajan alle. Perusidea on yksinkertainen: et halua menettää enempää kuin olet valmis, joten asetat tappiorajan etukäteen.<br><br><br><br>Hyödyt:<br><br>- Rajoittaa tappioita automaattisesti.<br><br>- Poistaa tunteet päätöksenteosta.<br><br>- Mahdollistaa systemaattisen riskienhallinnan.<br><br>- Helppo soveltaa sekä osakkeisiin että johdannaisiin.<br><br><br><br>Esimerkki 1:<br><br>Olet ostanut osaketta hintaan 50 €. Päätät, että maksimihäviösi yhdestä sijoituksesta on 10 %. Asetat stop-lossin 45 euroon. Jos hinta laskee 45 €:oon, toimeksianto aktivoituu ja osakkeet myydään. Näin tappiosi on noin 5 € per osake tai 10 % (riippuen toteutuneesta toimeksiantotyypistä).<br><br><br><br><h2>Stop-lossin eri muodot ja niiden erot</h2><br><br>On tärkeää ymmärtää, että kaikki stop-loss -toimeksiannot eivät ole samanlaisia. Eri toimeksiantotyypit käyttäytyvät eri tavoin volatiilissa markkinassa.<br><br><br><br>Stop-market (stop-loss market)<br><br>- Kun hinta saavuttaa stop-hinnan, toimeksianto muuttuu markkinatoimeksiannoksi ja myydään markkinahintaan.<br><br>- Et voi varmuudella tietää myyntihintaa, mutta toimeksianto toteutuu nopeasti.<br><br>- Hyvä valinta likvideille osakkeille ja nopeaan poistumiseen.<br><br><br><br>Stop-limit<br><br>- Kun stop-hinta saavutetaan, toimeksianto muuttuu limit-toimeksiannoksi, jossa asetat alimman hyväksyttävän hinnan.<br><br>- Jos markkinassa ei ole ostajaa limit-hinnallesi, toimeksianto voi jäädä toteutumatta.<br><br>- Käytännössä vältät huonon toteutuksen, mutta riski jäädä ulos kasvaa.<br><br><br><br>Trailing stop (liukuva stop)<br><br>- Stop-hinta seuraa markkinahintaa tietyn prosenttiyksikön tai absoluuttisen arvon verran ylöspäin, mutta ei alas.<br><br>- Esimerkiksi trailing stop 10 %: kohdalla stop seuraa kurssia 10 % päässä ylhäällä. Jos osakkeen hinta nousee 100 € → 120 €, stop nousee 90 € → 108 €.<br><br>- Erinomainen voitonsuojaukseen nousevissa trendeissä.<br><br><br><br>Esimerkki 2:<br><br>Ostit osaketta 20 €. Hinta nousee 35 €:oon. Haluat suojata voittoa mutta antaa tilaa nousulle. Asetat trailing stop 15 %:iin. Jos hinta kääntyy ja laskee 15 % huipusta, trailing aktivoituu ja myy. Näin annat voitolle tilaa kasvaa, mutta rajoitat alasmenon.<br><br><br><br><h2>Milloin ja miten asettaa stop-loss – käytännön strategiat</h2><br><br>Stop-lossin paikka riippuu sijoitustyylistäsi, ajanjaksosta ja riskinsietokyvystä. Tässä muutama yleinen tapa asettaa stop-loss.<br><br><br><br>1) Prosenttipohjainen stop<br><br>- Yksinkertainen: asetat kiinteän prosenttiosuuden ostohinnasta (esim. 5–15 %).<br><br>- Sopii aloittelijalle ja useimpiin osakkeisiin.<br><br>- Esimerkki: Ostat 1 000 € arvoisen position ja asetat 5 % stopin. Maksimihäviö on 50 €.<br><br><br><br>2) ATR (Average True Range) -perusteinen stop<br><br>- Käyttää volatiliteettimittaria hintaheilunnan mukaan.<br><br>- ATR kertoo, kuinka paljon hinta keskimäärin liikkuu päivän aikana. Asetat stopin useamman ATR:n päähän (esim. 1.5 × ATR).<br><br>- Hyvä volatiliteetiltaan vaihteleville instrumenteille.<br><br><br><br>3) Tukitasot ja tekninen analyysi<br><br>- Aseta stop alle merkittävän tukitason tai trendilinjan.<br><br>- Jos tukitaso pettää, trendi voi kääntyä, ja stop suojaa sinua pidemmältä alasmenolta.<br><br><br><br>4) Salkun riskiprosentti<br><br>- Määritä, kuinka paljon salkustasi olet valmis riskeeraamaan per kauppa (esim. 1–2 %).<br><br>- Lasket stopin sen mukaan, että potentiaalinen häviö ei ylitä tätä prosenttia.<br><br>- Esimerkki: Salkku 50 000 €, riskiprofiili 1 % → riski 500 € per kauppa. Osta osakkeita 2 000 € arvosta ja aseta stop siten, että tappio olisi 500 €, eli 25 %:n lasku salkkuosuuteen.<br><br><br><br>5) Aikajänteeseen perustuvat stopit<br><br>- Päiväkaupassa stopit voivat olla tiukempia (esim. 0.5–1 %), swing-kaupassa väljempiä (3–10 %) ja pitkäaikaisessa sijoittamisessa voidaan käyttää hyvin leveitä stoppeja tai pelkästään strategisia mental stoppeja.<br><br><br><br><h2>Stop-lossin sudenkuopat ja miten välttää ne</h2><br><br>Stop-lossit eivät ole taikakeino. On riskejä, jotka sijoittajan tulee ymmärtää ja hallita.<br><br><br><br>Slippage ja hintahypyt<br><br>- Volatiliteetissa tai markkina-aukoissa (gap) stop-market voi toteutua paljon huonompaan hintaan kuin stop-rajasi.<br><br>- Esimerkkitilanne: Stop 45 € aktivoituu, mutta kurssi hyppää avauksessa 40 €:oon → toteutunut hinta 40 €.<br><br><br><br>Whipsaw-ilmiö (häiritsevät piikit)<br><br>- Lyhytaikaiset piikit voivat napsauttaa stopin, vaikka suunta palautuisi pian.<br><br>- Ratkaisu: käytä esimerkiksi ATR-pohjaista tai tukitasoon perustuvaa stopia sellaisella etäisyydellä, ettei pientä heilahdusta tarvitse pelätä.<br><br><br><br>Stop-limitin toteutumattomuus<br><br>- Limit-stop voi jäädä toteutumatta, jolloin tappio voi kasvaa suuremmaksi kuin halusit.<br><br>- Harkitse limitin käyttöä likvidissä markkinassa ja tilanteissa, joissa hinta ei usein hyppää.<br><br><br><br>Psykologinen vaikutus<br><br>- Joillakin sijoittajilla automaattinen stop voi aiheuttaa false security -tunteen tai pakottaa liialliseen kaupankäyntiin.<br><br>- Muista, että stop on työkalu, ei strategia. Käytä sitä yhdessä selkeän kaupankäyntisuunnitelman kanssa.<br><br><br><br><h2>Strategioita voitonsuojaukseen ja yhdistelyihin</h2><br><br>Stop-loss voi toimia eri tavoin riippuen tavoitteestasi. Tässä muutama taktinen lähestymistapa.<br><br><br><br>1) Suora voitonsuojaus<br><br>- Kun sijoitus on tappiolla, käytä perinteistä stopia rajoittamaan tappio.<br><br>- Kun sijoitus on voitolla, siirrä stop ostohinnan yläpuolelle “breakeven”-tasolle tai hiukan sen yläpuolelle estääksesi nollatuoton äkillisistä käänteistä.<br><br><br><br>2) Osittainen myynti ja stopin siirto<br><br>- Myy osa positiosta voiton saavuttaessa ja siirrä stop jäljelle jääneeseen osaan voiton suojaamiseksi.<br><br>- Esimerkki: Ostit 100 osaketta 10 € → myyt 50 osaketta 15 € (voitot lukittuna), siirrät stopin jäljelle jääviin 50 osakkeeseen 12 €.<br><br><br><br>3) Trailing stop voittojen kasvattamiseen<br><br>- Trailing stop antaa voitolle tilaa ja seuraa ylöspäin. Tämä toimii erityisen hyvin pitkässä nousutrendissä.<br><br>- Muista määrittää trailing-etäisyys sopivaksi instrumentin volatiliteetille.<br><br><br><br>4) Yhdistä take-profit -toimeksiantoon<br><br>- Aseta samanaikaisesti stop-loss ja take-profit. Tämä auttaa hallitsemaan riskin ja varmistamaan tavoitteen toteutumisen ilman, että tarvitsee seurata markkinaa 24/7.<br><br>- Esimerkki: Ostat 100 osaketta 30 €:lla. Asetat stop 27 € (–10 %) ja take-profit 36 € (+20 %).<br><br><br><br><h2>Tekniset ja käytännön huomioitavat seikat</h2><br><br>Tässä muutamia teknisiä asioita ja käytännön vinkkejä, joita kannattaa huomioida.<br><br><br><br>- Valitse oikea toimeksiantotyyppi markkinan ja likviditeetin mukaan.<br><br>- Tarkista välittäjän tarjoamat stop-toimeksiannot; kaikki eivät tue trailing stoppeja tai samoja limit-asetuksia.<br><br>- Huomioi kaupankäyntikulut ja spreadit, erityisesti pienempiä osakkeita tai eri markkina-alueita kauppatessa.<br><br>- Älä aseta stoppeja liian tiukasti vain välttääksesi pientä kurssiheiluntaa.<br><br>- Päivitä stopteja, kun position koko muuttuu tai markkinatilanne muuttuu radikaalisti.<br><br><br><br><h2>Esimerkkilaskelma: stop-loss ja position koko</h2><br><br>Käydään läpi konkreettinen laskelma askel askeleelta.<br><br><br><br>Tilanne:<br><br>- Salkkuarvo: 50 000 €<br><br>- Riskiprofiili: 1 % per kauppa → riskiraja 500 €<br><br>- Ostohinta osakkeelle: 25 €<br><br>- Haluttu stop-loss: 20 % alaspäin → stop-hinta 20 €<br><br><br><br>Kuinka monta osaketta voin ostaa?<br><br>- Riskin määrä per osake: ostohinta – stop-hinta = 25 € – 20 € = 5 €<br><br>- Maksimi ostomäärä = riskiraja / riski per osake = 500 € / 5 € = 100 osaketta<br><br>- Position arvo = 100 x 25 € = 2 500 €<br><br><br><br>Tulos: Ostamalla 100 osaketta rajoitat tappiosi 500 €:oon, joka on 1 % salkusta. Tämä on selkeä ja mittariin perustuva tapa asettaa stop-loss ja position koko.<br><br><br><br><h2>Milloin kannattaa olla ilman stop-lossia</h2><br><br>On tilanteita, joissa sijoittaja voi harkita stop-lossin poistamista:<br><br>- Pitkäaikainen sijoittaja, joka pitää osakkeita vuosikausia perustuen fundamentteihin eikä välittä huolestua lyhyen aikavälin heilahteluista.<br><br>- Jos et pysty seuraamaan markkinaa eikä välittäjäsi tarjoa luotettavia toimeksiantoja.<br><br>- Kun markkina on poikkeuksellisen epävakaa ja stopit johtavat liian moneen turhaan ulosmyyntiin.<br><br><br><br>Kuitenkin useimmille sijoittajille stop-loss on hyödyllinen. Se on edullinen tapa hallita riskiä ilman jatkuvaa markkinaseurantaa.<br><br><br><br><h2>Yhteenveto ja käytännön vinkit aloittamiseen</h2><br><br>Stop-loss on yksinkertainen, mutta voimapakkaus riskienhallintaan. Se auttaa sinua säästämään pääomaa ja ylläpitämään kurinalaisuutta sijoittamisessa. Muista kuitenkin seuraavat käytännön vinkit:<br><br><br><br>- Määritä riskiprofiilisi ja noudata sitä.<br><br>- Valitse sopiva toimeksiantotyyppi (market, limit, trailing).<br><br>- Käytä teknisiä ja volatiliteettiin perustuvia menetelmiä stopin sijoittamiseen.<br><br>- Harkitse osittaista myyntiä ja trailing stopin käyttöä voitonsuojaukseen.<br><br>- Testaa strategia demo-tilillä tai pienillä positioilla ennen aktiivista käyttöä.<br><br>- Pidä mielessä markkinan likviditeetti, slippage ja veroseuraamukset (konsultoi tarvittaessa veroasiantuntijaa).<br><br><br><br>Stop-loss ei tee päätöksiä puolestasi, mutta se auttaa pitämään sijoittamisen kurissa ja hallittuna. Kun opit käyttämään sitä järkevästi yhdessä muiden riskinhallintatyökalujen kanssa, voit parantaa pitkän aikavälin tuottopotentiaalia ja vähentää riskiä kohtuuttomiin menetyksiin.<br><br><br><br>Lähteet:<br><br><a href="https://www.investopedia.com/terms/s/stop-lossorder.asp">https://www.investopedia.com/terms/s/stop-lossorder.asp</a><br><br><a href="https://www.investopedia.com/terms/t/trailingstop.asp">https://www.investopedia.com/terms/t/trailingstop.asp</a><br><br><a href="https://www.nordnet.fi/blogi">https://www.nordnet.fi/blogi</a><br><br><a href="https://www.nasdaq.com">https://www.nasdaq.com</a><br><br><a href="https://www.morningstar.fi">https://www.morningstar.fi</a><br><br><a href="https://www.suomenpankki.fi">https://www.suomenpankki.fi</a></article>
+</main>
+
+<footer>
+  <p>© 2025 Talousvahti — kirjoittanut <strong>Jere Järvelä</strong></p>
+</footer>
+
+<script>
+function toggleMenu() {
+  const menu = document.getElementById("dropdownMenu");
+  menu.style.display = (menu.style.display === "block") ? "none" : "block";
+}
+
+document.addEventListener("click", function(e) {
+  const menu = document.getElementById("dropdownMenu");
+  const hamburger = document.querySelector(".hamburger");
+
+  if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+    menu.style.display = "none";
+  }
+});
+</script>
+
+
+</body>
+</html>
