@@ -1,0 +1,222 @@
+
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sijoituspäiväkirja – dokumentoi päätökset ja opi sijoittamisesta</title>
+<meta name="description" content="Sijoituspäiväkirja – dokumentoi päätökset ja opi sijoittamisesta – Päivän sijoitusblogi Talousvahdissa.">
+<meta name="keywords" content="sijoituspäiväkirja,sijoituspäätökset,sijoittaminen,osakesijoittaminen,sijoitusstrategia,riskinhallinta,sijoitusten seuranta,sijoitusjournal,sijoituspsykologia,sijoitusblohgi">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2566G3KPHW"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2566G3KPHW');
+</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Sijoituspäiväkirja – dokumentoi päätökset ja opi sijoittamisesta","author":{"@type":"Person","name":"Jere Järvelä"},"publisher":{"@type":"Organization","name":"Talousvahti","logo":{"@type":"ImageObject","url":"https://talousvahti.com/logo.png"}},"datePublished":"2025-12-09","inLanguage":"fi","keywords":"sijoituspäiväkirja,sijoituspäätökset,sijoittaminen,osakesijoittaminen,sijoitusstrategia,riskinhallinta,sijoitusten seuranta,sijoitusjournal,sijoituspsykologia,sijoitusblohgi","description":"Sijoituspäiväkirja – dokumentoi päätökset ja opi sijoittamisesta","mainEntityOfPage":"https://talousvahti.com/sijoituspaivakirja-dokumentoi-paatokset-ja-opi-sijoittamisesta-2025-12-09.html"}</script>
+
+<!-- Fontit ja tyyli -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #0d0d0d;
+  --accent: #0077ff;
+  --text: #1a1a1a;
+  --muted: #666;
+  --bg: #ffffff;
+  --radius: 12px;
+  --shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+body {
+  font-family: 'Inter', Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+  line-height: 1.8;
+}
+
+nav {
+  background: var(--primary);
+  color: #fff;
+  padding: 18px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+nav .nav-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+nav img {
+  height: 38px;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 20px;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+nav a:hover {
+  color: var(--accent);
+}
+
+main {
+  max-width: 820px;
+  margin: 60px auto;
+  background: #fff;
+  padding: 40px 50px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+h1 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+article {
+  font-size: 1.05rem;
+  color: var(--text);
+}
+
+article p {
+  margin-bottom: 1.2rem;
+}
+
+footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-top: 60px;
+  padding: 20px 0;
+  border-top: 1px solid #eee;
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  main {
+    padding: 25px;
+    margin: 30px 10px;
+  }
+  h1 {
+    font-size: 1.7rem;
+  }
+  nav img {
+    height: 32px;
+  }
+}
+
+/* Hamburger valikko */
+.hamburger {
+  font-size: 28px;
+  cursor: pointer;
+  user-select: none;
+  display: block;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  right: 20px;
+  top: 68px;
+  background: var(--primary);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 10px 0;
+  min-width: 190px;
+  z-index: 20;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 10px 20px;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.dropdown-menu a:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+
+
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-left">
+    <img src="https://storage.mlcdn.com/account_image/1738913/3ffITIlb3p17IaYG3RcfwCueUnHxNH6iG0EtEEPU.png" alt="Talousvahti logo">
+    <strong>Talousvahti Blogi</strong>
+  </div>
+
+  <!-- Hamburger ikonit -->
+  <div class="hamburger" onclick="toggleMenu()">
+    ☰
+  </div>
+
+  <!-- Dropdown valikko -->
+  <div id="dropdownMenu" class="dropdown-menu">
+    <a href="https://talousvahti.com/">Talousuutiset</a>
+    <a href="https://talousvahti.com/kurssit.html">Pörssikurssit</a>
+    <a href="https://talousvahti.com/talouskalenteri.html">Talouskalenteri</a>
+    <a href="https://talousvahti.com/Blogi.html">Blogi</a>
+    <a href="https://talousvahti.com/sijoituslaskuri.html">Sijoituslaskuri</a>
+    <a href="https://talousvahti.com/tietoa.html">Tietoa</a>
+  </div>
+</nav>
+
+
+<main>
+  <header>
+    <h1>Sijoituspäiväkirja – dokumentoi päätökset ja opi sijoittamisesta</h1>
+  </header>
+  <article>Sijoittaminen ei ole pelkkää osto- ja myyntinappulan painamista. Parhaat sijoittajat oppivat jatkuvasti omista virheistään ja onnistumisistaan. Yksi yksinkertaisimmista, mutta usein aliarvostetuista työkaluista on sijoituspäiväkirja. Kirjaamalla päätökset ja niiden perustelut opit tunnistamaan toistuvat virheet, hioamaan strategiaasi ja ottamaan tunteet pois sijoituspäätöksistä.<br><br><br><br>Tässä evergreen-opas suomalaiselle sijoittajalle: miksi pitää sijoituspäiväkirjaa, mitä siihen kannattaa kirjata, konkreettisia esimerkkejä ja helppoja malleja, sekä vinkkejä siihen, miten päivittäinen tai kuukausittainen rutiini muuttuu pitkässä juoksussa merkittäväksi kilpailueduksi.<br><br><br><br><h2>Miksi sijoituspäiväkirja kannattaa aloittaa</h2><br><br><br><br>Sijoituspäiväkirjan hyötyjä on monia. Ne eivät ole pelkkää byrokratiaa, vaan systemaattinen tapa parantaa päätöksenteon laatua.<br><br><br><br>- Itsetuntemus ja käyttäytymisen hallinta: Kirjaaminen paljastaa, teetkö impulsiivisia ostoja markkinahuoletusten vuoksi vai pysytkö suunnitelmassasi. Usein erottuu toistuva malli: myyt tappioita liian myöhään ja myyt voittajia liian aikaisin.<br><br>- Oppiminen: Kun perustelut ja odotetut tapahtumat on kirjattu, on helppo myöhemmin arvioida, mistä päätös oikein johtui. Oliko virhe fundamentissa tai oli se pysyvästi väärä aikajänne?<br><br>- Riskinhallinta: Päiväkirja auttaa seuraamaan positiokokoa, stop-loss -tasoa ja portfolion hajautusta. Näin et yllättäen ole yli-altistunut yhdelle sektorille.<br><br>- Systemaattinen kehitys: Kun pidät kirjaa vuosien ajan, voit laskea suorituskyvyn eri strategioilla ja löytää toimivat pelisäännöt.<br><br>- Verotuksen ja dokumentaation helpottuminen: Sijoitustapahtumat ovat tallessa, mikä helpottaa verolaskelmia ja kauppojen perustelemista tarvittaessa.<br><br><br><br><h2>Mitä sijoituspäiväkirjaan kannattaa kirjata (selkeä checklist)</h2><br><br><br><br>Sijoituspäiväkirjan ei tarvitse olla monimutkainen. Tärkeintä on johdonmukaisuus. Tässä perusrunko, joka kattaa olennaisen.<br><br><br><br>Perustiedot<br><br>- Päivämäärä ja aika<br><br>- Markkina tai tili (esim. Osakesalkku, OP, Nordnet)<br><br>- Tapahtuman tyyppi (Osto, Myynti, Lisää, Vähennä, Seuranta)<br><br><br><br>Kaupankäyntitiedot<br><br>- Ticker ja yhtiön nimi (esim. NEEVA, KONE, Sampo)<br><br>- Määrä ja hinta per osake<br><br>- Kokonaisarvo ja osuus salkusta<br><br>- Kaupan kustannukset (välitys, verot yms.)<br><br><br><br>Päätöksen perustelu (tärkein osa)<br><br>- Ostopäätöksen ydin: miksi ostan?<br><br>- Aikajänne: lyhyt (päiviä), keskipitkä (kuukausia) vai pitkä (vuosia)<br><br>- Arvion avainluvut: P/E, kasvunäkymät, kassavirta, kilpailuetu<br><br>- Odotetut katalyydit: tulos, uudet tuotteet, fuusio, makrovaihde<br><br><br><br>Riskinhallinta<br><br>- Stop-loss tai indikaattori myyntiä varten<br><br>- Target-hinta tai tavoiteikkuna<br><br>- Mitä muuttuessa myyn (uusi tieto pitää hyvin määritellä)<br><br><br><br>Tunnekonteksti ja arvio (kriittinen osa)<br><br>- Miltä päätös tuntuu? (vakaalta, pelokkaalta, innostuneelta)<br><br>- Onko päätös analyysin vai tunteen pohjalta?<br><br><br><br>Seuranta ja jälkikatsaus<br><br>- Päiväys, jolloin arvioidaan uudelleen<br><br>- Lopullinen lopputulos ja oppi (kirjataan kun positio suljetaan tai tavoitearvio täyttyy)<br><br><br><br>Esimerkki kirjauksesta (konkreettinen)<br><br>Osto 12.3.2024: Sampo Oyj (SAMPO) - 50 kpl, hinta 36,00 €.<br><br>Perustelu: Hyvä markkina-arvo ja vahva vakuutus- ja pankkikonsernipohja. Osinko 2023 n. 2,8%. Odotan 2–5 vuoden pitoa johtuen osinko- ja vakaasta kassavirrasta.<br><br>Risikirjattu: Stop-loss 30 €, tavoite 45 €. Jos Sampo julkaisee Q2-tulos, jossa vakuutussektorin ei-hyvistävä claim-riski, harkitaan lisäanalyysia.<br><br>Tunne: Tunnekäyrä neutraali, analyysi perustuu fundamentteihin.<br><br><br><br><h2>Helppo ja laajennettava jatkumon mallipohja</h2><br><br><br><br>Aloittelijalle riittää yksinkertainen Excel- tai Google Sheets -taulukko. Kokeneempi sijoittaja voi käyttää Notionia tai erillistä journaling-sovellusta. Tärkeintä on, että malli on toimiva ja siihen tulee merkintä joka kerta.<br><br><br><br>Esimerkki yksinkertaisesta mallista (sarakkeet)<br><br>- Päiväys | Ticker | Osto/Myynti | Määrä | Hinta | Kokonaisarvo | Perustelu | Stop-loss | Tavoite | Arvio (30 pv) | Arvio (12 kk) | Lopputulos<br><br><br><br>Laajennettu malli sisältää vielä:<br><br>- Avainluvut ostohetkellä (P/E, EV/EBIT, velka/oma pääoma)<br><br>- Odotetut katalyytit ja ajankohdat<br><br>- Linkki analyysiin / raporttiin<br><br>- Tunne-mittari (skaalalla 1–5)<br><br><br><br>Käytännön vinkki: tee jokaisesta ostosta oma rivi ja suljetusta positiosta sulkevan rivin yhteyteen lyhyt retrospektiivi: mitä tapahtui ja mikä meni oppimisen arvoisesti pieleen tai oikein.<br><br><br><br><h2>Kuinka arvioida ja mitata menestystä</h2><br><br><br><br>Päiväkirja on hyödyllinen vasta kun sitä myös arvioidaan. Ilman systemaattista jälkikatselua oppiminen jää puutteelliseksi.<br><br><br><br>Aseta tavoitteet<br><br>- Suoritus verrattuna vertailuindeksiin (esim. OMX Helsinki CAP, S&P 500)<br><br>- Tuotto ja volatiliteetti vuodessa<br><br>- Sharpe-suhde tai yksinkertaisempi tuotto/riski-mittari<br><br><br><br>Miten arvioida tradeja<br><br>- Oliko perustelu edelleen voimassa positiota suljettaessa?<br><br>- Sattuiko jotain ennalta-arvaamatonta (esim. regulaatio, konkurssi), jonka olisi pitänyt olla huomattavissa?<br><br>- Oliko päätöksen ajoitus virheellinen vai oli arvion sisältö virheellinen?<br><br><br><br>Kuukausi-/neljännesvuosiarvio<br><br>- Käy läpi kaikki kuukauden aikana tehdyt päätökset: kuinka monta oli suunnitelmallisia vs. impulsiivisia?<br><br>- Laske onnistumisprosentti: voittoa tuoneet kaupat / kaikki kaupat<br><br>- Merkitse oppi: esim. 60% voittajia syntyi, koska noudatin stop-loss -sääntöä<br><br><br><br>Esimerkki mittarista<br><br>- Vuotuinen tuotto salkulle: +8%<br><br>- Vertailuindeksi: OMXH CAP +6%<br><br>- Suoritusero: +2%<br><br>- Opit: liiallinen paino yhdellä osakkeella nosti volatiliteettia; seuraavalla kvartaalilla tavoite hajauttaa vähintään 5 toimialaan.<br><br><br><br><h2>Käytännön esimerkit suomalaissijoittajan arjesta</h2><br><br><br><br>1) Pitkäaikainen ostaja<br><br>- Tilanne: Sijoittaja ostaa Nesteä eko-teeman takia. Ostos 20.6.2023: 30 kpl, hinta 45 €.<br><br>- Perustelu: Pitkäaikainen kysyntä biopolttoaineille ja vahva brändi. Aikajänne 3–5 vuotta.<br><br>- Riskit: Öljyn hintavaihtelut, poliittiset päätökset.<br><br>- Jälkikatsaus 12 kk: Ostos tuotti 15%. Päätös pitää, lisätään volatiliteetin hallitsemiseksi pienempi osto kerran vuodessa tai käytetään ETF-hedgeä.<br><br><br><br>2) Lyhyempi kauppa<br><br>- Tilanne: Teknologiasektori notkahti, sijoittaja tekee swing-traden suomalaisella SaaS-yhtiöllä (esim. kuvitteellinen SaaS Oy).<br><br>- Päätös: Osto 1.4.2024 100 kpl, hinta 12 €.<br><br>- Perustelu: Tulospettymykset yliajettu; tilauskanta ja churn-parannus ennusteissa positiivinen.<br><br>- Stop-loss: 10 €. Tavoite: 16 €.<br><br>- Jälkikatsaus 30 pv: Tavoitteeseen päästiin ja osa myytiin. Opetus: tiukempi stop-loss ja realistisempi tavoite ehkäisevät liian varhaista voittojen realisointia.<br><br><br><br>Käytännön neuvo: seuraa kauppojen prosenttiosuutta salkusta. Esimerkiksi, jos salkku on 50 000 € ja yhden position koko on 10 000 €, positio on 20 % salkusta — liian iso monelle strategiasta riippumatta.<br><br><br><br><h2>Vältä sijoituspsykologian sudenkuopat</h2><br><br><br><br>Monet sijoittajat tietävät teoriassa, mitä pitäisi tehdä, mutta tunteet ohjaavat tekemistä. Päiväkirja toimii peilinä.<br><br><br><br>- Vahvistusharha (confirmation bias): Kirjaa myös vastakkaiset argumentit sijoitukselle. Tämä pakottaa sinut pohtimaan, mitä todellakin voisi mennä pieleen.<br><br>- Tappioiden välttely (loss aversion): Kun olet sitonut perusteet ja stop-lossin kirjoihin, voit palata niihin tunnetilasta riippumatta.<br><br>- Liiallinen itsevarmuus (overconfidence): Pidä kirjaa, kuinka usein alustava näkemys osoittautuu oikeaksi. Jos itsevarmuus on yliarvioitua, pienennä position kokoa.<br><br>- Seuranta ja rutiini vähentävät tunteellisia päätöksiä. Päätä, että teet muutoksia vain kirjallisen analyysin jälkeen.<br><br><br><br><h2>Työkalut ja automaatio suomalaiselle sijoittajalle</h2><br><br><br><br>Tekniikka auttaa pitämään päiväkirjan helposti yllä.<br><br><br><br>Ilmaiset ja yksinkertaiset vaihtoehdot<br><br>- Google Sheets / Excel: Helppo ja tehokas. Sopii kaikille, joilla on vähintään perus Excel-taidot.<br><br>- Notion: Hyvä tekstipainotteisille päiväkirjoille ja linkkien tallentamiseen.<br><br>- Evernote / OneNote: Helppo kirjoittaa pitkät merkinnät ja liittää raportteja.<br><br><br><br>Sijoittajakohtaiset työkalut<br><br>- Nordnetin alustassa on tapahtumahistoria ja omat työkalut; kirjaukset kannattaa silti pitää erillään analyysin vuoksi.<br><br>- Morningstar ja Yahoo Finance auttavat avainlukujen hakuun.<br><br><br><br>Automaatio<br><br>- Aseta Google Sheetsiin kaavat, jotka laskevat päivätuoton, painon salkusta ja vertailun indeksiin.<br><br>- Hyödynnä API:ita (esim. Alpha Vantage, Yahoo) hakemaan reaaliaikaisia hintoja, jos haluat automatisoida tuotonlaskun.<br><br><br><br>Tietoturva<br><br>- Pidä arkaluonteiset tiedot erillään: älä tallenna kirjautumistietoja tai henkilötietoja päiväkirjaan.<br><br>- Tee varmuuskopiot ja käytä salasanalla suojattua tallennusta.<br><br><br><br><h2>Miten aloittaa nyt — 30 päivän haaste</h2><br><br><br><br>Aloittaminen on usein vaikeinta. Tässä helppo 30 päivän haaste, joka juurruttaa rutiinin.<br><br><br><br>Viikko 1: Perusrunko<br><br>- Lataa Google Sheets -pohja tai tee yksinkertainen taulukko.<br><br>- Kirjaa viimeiset 10 kauppaa jälkikäteen: miksi teit ne ja mitä niistä opit.<br><br><br><br>Viikko 2: Osto- ja myyntipäätösten kirjaaminen<br><br>- Kirjaa jokainen uusi osto ja myynti reaaliajassa.<br><br>- Kysy itseltä: mikä olisi 30 päivän tarkistushetken kriteeri?<br><br><br><br>Viikko 3: Kuukausikatsaus<br><br>- Tee lyhyt katsaus kuukauden päätöksistä. Laske prosenttiosuus voitollisista kaupoista.<br><br>- Määrittele yksi sääntö, jota noudatat seuraavalla kuukaudella (esim. max 5 % salkun risk yhdelle osakkeelle).<br><br><br><br>Viikko 4: Analysoi ja säädä<br><br>- Katso, missä oli parannettavaa. Oliko stop-loss liian löysä? Olitko liian luottavainen joihinkin sektoreihin?<br><br>- Päivitä päiväkirjamalli, jos tarpeen. Jatka kahden viikon rutiinilla tai kuukausikatsauksilla.<br><br><br><br>Lopuksi — sijoituspäiväkirja on investointi itseesi<br><br>Päiväkirjan pitäminen ei takaa aina korkeampaa tuottoa, mutta se parantaa oppimista ja päätöksentekoprosessia. Se tekee tunteista näkyviä ja auttaa rakentamaan toistettavaa systeemisiä sääntöjä. Kun palaat vuosien päästä merkintöihisi, näet selvästi, miten olet kehittynyt. Pienillä arjen valinnoilla ja jatkuvalla analyysillä erot onnistuvat epäonnistumisesta.<br><br><br><br>Muista: kirjaa myös onnistumisesi ja miksi ne onnistuivat. Oppiminen ei ole pelkkää virheiden etsimistä, vaan myös onnistumisten mallintamista. Tämä tekee sinusta kurinalaisemman, johdonmukaisemman ja lopulta paremman sijoittajan.<br><br><br><br>Varoitus: Tämä blogi ei ole sijoitusneuvontaa. Kaikki esimerkit ovat informatiivisia. Ennen merkittäviä sijoituspäätöksiä tee oma analyysi tai ota yhteyttä ammattilaiseen.<br><br><br><br>Lähteet:<br><br><a href="https://www.nordnet.fi">https://www.nordnet.fi</a><br><br><a href="https://www.sijoitustieto.fi">https://www.sijoitustieto.fi</a><br><br><a href="https://www.investopedia.com">https://www.investopedia.com</a><br><br><a href="https://www.morningstar.com">https://www.morningstar.com</a><br><br><a href="https://www.op.fi">https://www.op.fi</a><br><br><a href="https://www.finanssivalvonta.fi">https://www.finanssivalvonta.fi</a></article>
+</main>
+
+<footer>
+  <p>© 2025 Talousvahti — kirjoittanut <strong>Jere Järvelä</strong></p>
+</footer>
+
+<script>
+function toggleMenu() {
+  const menu = document.getElementById("dropdownMenu");
+  menu.style.display = (menu.style.display === "block") ? "none" : "block";
+}
+
+document.addEventListener("click", function(e) {
+  const menu = document.getElementById("dropdownMenu");
+  const hamburger = document.querySelector(".hamburger");
+
+  if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+    menu.style.display = "none";
+  }
+});
+</script>
+
+
+</body>
+</html>
