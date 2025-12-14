@@ -1,0 +1,222 @@
+
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alpha vs. Beta: Mittaa salkkusi todellisen lisäarvo oikein</title>
+<meta name="description" content="Alpha vs. Beta: Mittaa salkkusi todellisen lisäarvo oikein – Päivän sijoitusblogi Talousvahdissa.">
+<meta name="keywords" content="alpha, beta, riskikorjattu tuotto, salkun mittaaminen, sijoittaminen, hajautus, passiivinen sijoittaminen, indeksisijoittaminen, Sharpe, tracking error">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2566G3KPHW"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2566G3KPHW');
+</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Alpha vs. Beta: Mittaa salkkusi todellisen lisäarvo oikein","author":{"@type":"Person","name":"Jere Järvelä"},"publisher":{"@type":"Organization","name":"Talousvahti","logo":{"@type":"ImageObject","url":"https://talousvahti.com/logo.png"}},"datePublished":"2025-12-14","inLanguage":"fi","keywords":"alpha, beta, riskikorjattu tuotto, salkun mittaaminen, sijoittaminen, hajautus, passiivinen sijoittaminen, indeksisijoittaminen, Sharpe, tracking error","description":"Alpha vs. Beta: Mittaa salkkusi todellisen lisäarvo oikein","mainEntityOfPage":"https://talousvahti.com/alpha-vs-beta-mittaa-salkkusi-todellisen-lisaarvo-oikein-2025-12-14.html"}</script>
+
+<!-- Fontit ja tyyli -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #0d0d0d;
+  --accent: #0077ff;
+  --text: #1a1a1a;
+  --muted: #666;
+  --bg: #ffffff;
+  --radius: 12px;
+  --shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+body {
+  font-family: 'Inter', Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+  line-height: 1.8;
+}
+
+nav {
+  background: var(--primary);
+  color: #fff;
+  padding: 18px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+nav .nav-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+nav img {
+  height: 38px;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 20px;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+nav a:hover {
+  color: var(--accent);
+}
+
+main {
+  max-width: 820px;
+  margin: 60px auto;
+  background: #fff;
+  padding: 40px 50px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+h1 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+article {
+  font-size: 1.05rem;
+  color: var(--text);
+}
+
+article p {
+  margin-bottom: 1.2rem;
+}
+
+footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-top: 60px;
+  padding: 20px 0;
+  border-top: 1px solid #eee;
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  main {
+    padding: 25px;
+    margin: 30px 10px;
+  }
+  h1 {
+    font-size: 1.7rem;
+  }
+  nav img {
+    height: 32px;
+  }
+}
+
+/* Hamburger valikko */
+.hamburger {
+  font-size: 28px;
+  cursor: pointer;
+  user-select: none;
+  display: block;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  right: 20px;
+  top: 68px;
+  background: var(--primary);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 10px 0;
+  min-width: 190px;
+  z-index: 20;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 10px 20px;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.dropdown-menu a:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+
+
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-left">
+    <img src="https://storage.mlcdn.com/account_image/1738913/3ffITIlb3p17IaYG3RcfwCueUnHxNH6iG0EtEEPU.png" alt="Talousvahti logo">
+    <strong>Talousvahti Blogi</strong>
+  </div>
+
+  <!-- Hamburger ikonit -->
+  <div class="hamburger" onclick="toggleMenu()">
+    ☰
+  </div>
+
+  <!-- Dropdown valikko -->
+  <div id="dropdownMenu" class="dropdown-menu">
+    <a href="https://talousvahti.com/">Talousuutiset</a>
+    <a href="https://talousvahti.com/kurssit.html">Pörssikurssit</a>
+    <a href="https://talousvahti.com/talouskalenteri.html">Talouskalenteri</a>
+    <a href="https://talousvahti.com/Blogi.html">Blogi</a>
+    <a href="https://talousvahti.com/sijoituslaskuri.html">Sijoituslaskuri</a>
+    <a href="https://talousvahti.com/tietoa.html">Tietoa</a>
+  </div>
+</nav>
+
+
+<main>
+  <header>
+    <h1>Alpha vs. Beta: Mittaa salkkusi todellisen lisäarvo oikein</h1>
+  </header>
+  <article>Alpha vs. Beta: Mittaa salkkusi todellisen lisäarvo oikein<br><br><br><br>Sijoittajana törmäät usein termeihin alpha ja beta. Ne kuulostavat teknisiltä, mutta niiden ymmärtäminen on olennainen osa salkun suorituskyvyn arviointia. Monet mittaavat vain tuottoa, mutta tuoton takana on aina riski. Tässä artikkelissa käymme läpi, mitä alpha ja beta tarkoittavat, miten ne lasketaan käytännössä ja miten voit käyttää niitä arvioidaksesi oman salkkusi tai rahastosi todellista lisäarvoa. Lisäksi käymme läpi muita riskikorjattuja mittareita ja annamme konkreettisia vinkkejä suomalaiselle sijoittajalle.<br><br><br><br><h2>Mitä alpha ja beta kertovat?</h2><br><br><br><br>Beta kuvaa systemaattista eli markkinariskiä. Se kertoo, kuinka voimakkaasti sijoituksesi tuotto liikkuu suhteessa markkinaan. Beta = 1 tarkoittaa, että sijoitus liikkuu markkinan mukana. Beta > 1 viittaa korkeampaan volatiliteettiin kuin markkinalla (herkempious), beta < 1 matalampaan. Esimerkiksi jos OMX Helsinki -indeksin beta on 1 ja rahaston beta on 1,2, rahasto on historiallisesti liikuttanut tuottoa 20 % enemmän kuin indeksi: markkinan noustessa 10 % rahasto on noussut noin 12 % ja toisaalta laskussa laskenut 12 %.<br><br><br><br>Alpha puolestaan mittaa aktiivisen sijoittajan tai rahaston kykyä tuottaa tuottoa yli sen, mitä markkinariski ennustaisi. Se on erotus todellisen tuoton ja CAPM- tai muun riskisovitteen tuottovaatimuksen välillä. Positiivinen alpha tarkoittaa, että salkku on tuottanut paremmin kuin markkinariski selittää — se voi kertoa hoitajan taitavuudesta tai onnekkaasta ajoituksesta. Negatiivinen alpha taas viittaa siihen, että sijoitus on alisuoriutunut suhteessa riskiinsä.<br><br><br><br>Miksi molemmat ovat tärkeitä? Pelkkä beta kertoo riskistä, mutta ei siitä, onko riskin ottaminen ollut järkevää. Pelkkä tuotto ei kerro, maksettiinko se korkealla volatiliteetilla. Alpha kertoo lisäarvosta, beta kertoo mistä riskistä tuotto syntyy.<br><br><br><br><h2>Miten laskea alpha ja beta käytännössä — yksinkertainen esimerkki</h2><br><br><br><br>Alpha ja beta lasketaan yleensä regressiolla vertaamalla sijoituksen tuottoja markkinatuottoihin. Käytännössä tarvitset historiallisia tuottoja (päivä-, viikko- tai kuukausitaso), riskittömän koron ja markkinaindeksin (esim. OMX Helsinki, MSCI World).<br><br><br><br>Käytetään yksinkertaista vuosiesimerkkiä:<br><br>- Sijoituksesi vuosituotto: 10 %<br><br>- Markkinan vuosituotto: 7 %<br><br>- Riskitön korko (esim. valtion obligaatio): 1 %<br><br>- Sijoituksesi beta markkinaa vastaan: 1,2<br><br><br><br>CAPM-malli antaa odotetun tuoton:<br><br>Odotettu tuotto = riskitön korko + beta * (markkinatuotto − riskitön korko)<br><br>= 1 % + 1,2 * (7 % − 1 %)<br><br>= 1 % + 1,2 * 6 %<br><br>= 1 % + 7,2 %<br><br>= 8,2 %<br><br><br><br>Alpha = Todellinen tuotto − Odotettu tuotto<br><br>= 10 % − 8,2 %<br><br>= 1,8 %<br><br><br><br>Tässä esimerkissä rahastosi on tuottanut 1,8 prosenttiyksikköä enemmän kuin CAPM ennustaisi. Se on positiivinen alpha — merkki siitä, että aktiivinen hoitaja on lisännyt lisäarvoa (tai on ollut onnellinen). Jos rahaston juoksevat kulut, esimerkiksi 0,8 % hallinnointipalkkio, otetaan huomioon, nett-alpha kutistuu 1,0 %:iin. Tämä korostaa, että kulut syövät helposti alphaa.<br><br><br><br>Konkreettisia huomioita:<br><br>- Lyhyet aikasarjat voivat antaa harhaa. Käytä mielellään 3–5 vuoden kuukausituottoja tai pidempiä.<br><br>- Beta voi muuttua ajan myötä. Siksi kannattaa katsoa useampia jaksoja.<br><br>- CAPM on yksinkertainen malli; monet käyttävät laajempia malleja, jotka huomioivat myös valuutta- tai toimialariskit.<br><br><br><br><h2>Mitä muut riskikorjatut mittarit kertovat? Sharpe, tracking error ja information ratio</h2><br><br><br><br>Alpha ja beta eivät ole ainoat hyödylliset mittarit. Alla muutamia, joita kannattaa seurata.<br><br><br><br>- Sharpe-suhde: Mittaa ylimääräistä tuottoa suhteessa tuoton volatiliteettiin. Sharpe = (salkun tuotto − riskitön korko) / tuoton standardipoikkeama. Korkea Sharpe kertoo, että sijoitus on tuottanut hyvin suhteessa riskiin. Käytännössä hyvä Sharpe riippuu sijoitushorisontista, mutta yli 0,5 pidetään kohtuullisena, yli 1 hyvänä.<br><br><br><br>- Tracking error: Mittaa aktiivisen rahaston tuottojen hajontaa benchmarkista. Mitä pienempi tracking error, sitä lähempänä indeksiä rahaston tuotto on. Esimerkiksi tracking error 2 % tarkoittaa, että rahaston ja indeksin erotuksissa on tyypillisesti 2 %:n volatiliteetti.<br><br><br><br>- Information ratio (IR): Mittaa alphaa suhteessa tracking erroriin. IR = alpha / tracking error. Se kertoo, kuinka paljon aktiivista lisäarvoa (alphaa) saadaan per yksikkö aktiivista riskiä (tracking error). Esimerkissä aiemmin alpha = 1,8 % ja tracking error = 3 % => IR = 0,6. Yli 0,5 voidaan pitää kohtuullisena, yli 1 hyvänä.<br><br><br><br>- Sortino-suhde: Sharpen muunnelma, joka huomioi ainoastaan negatiivisen volatiliteetin. Parempi, jos haluat korostaa tappiohin liittyvää riskiä.<br><br><br><br>Nämä mittarit yhdessä antavat monipuolisemman kuvan. Esimerkiksi rahasto, jolla on korkea alpha mutta myös korkea tracking error, saattaa olla riskiherkempi. Toisaalta rahasto, jolla on pieni alpha mutta erinomainen Sharpe, voi sopia vakaan riskikorjatun tuoton hakijalle.<br><br><br><br><h2>Usein tehtävät virheet ja miten välttää ne</h2><br><br><br><br>1) Katso vain tuottoa:<br><br>Moni sijoittaja valitsee “voitollisen” rahaston ilman, että miettii riskiä. Korkea tuotto voi tulla suuresta riskistä (korkea beta). Arvioi riskikorjattua tuottoa.<br><br><br><br>2) Unohdat hallinnointikulut ja verot:<br><br>Kulut syövät alphaa. Suomessa verotusta ei voi unohtaa: myyntivoittovero vaikuttaa nettotuottoon. Vertaa rahaston nettotuottoja kulujen jälkeen.<br><br><br><br>3) Luotat liian lyhyisiin jaksoihin:<br><br>Yksittäinen vuosituotto tai kvarttaali ei kerro pitkän aikavälin osaamisesta. Katso vähintään 3–5 vuoden aikasarjoja ja useita markkinasyklejä.<br><br><br><br>4) Et ymmärrä benchmarkia:<br><br>Alpha mitataan aina suhteessa johonkin vertailuindeksiin. Väärä benchmark voi johtaa harhaan. Esimerkiksi eurooppalaiselle osakerahastolle sopiva benchmark ei ole maailmanosakeindeksi.<br><br><br><br>5) Et huomioi valuuttariskiä:<br><br>Jos sijoitat ulkomaisiin kohteisiin ilman valuuttasuojattua tuotetta, valuuttakurssit voivat muuttaa alphaa ja beta-arvioita.<br><br><br><br><h2>Konkreettisia vinkkejä suomalaiselle sijoittajalle</h2><br><br><br><br>1) Määritä benchmark oikein<br><br>Jos sijoitat suomalaisiin osakkeisiin, käytä OMX Helsinki -indeksiä tai laajempaa Pohjoismaiden tai Euroopan indeksiä. Kansainvälisiin ETF:iin kannattaa verrata MSCI World- tai FTSE Global -indeksejä.<br><br><br><br>2) Laske alpha nettona kuluista ja veroista<br><br>Jos rahaston bruttoalpha on 2 % mutta kulut ja veroseuraamukset vievät 1,2 %, nettovaikutus on vain 0,8 %. Tämä kertoo, onko aktiivinen työ kannattavaa.<br><br><br><br>3) Käytä ilmaisia työkaluja ja lähteitä<br><br>Monet palvelut tarjoavat valmiita alpha- ja beta-laskureita sekä riskimittareita. Esimerkiksi Morningstar ja Yahoo Finance näyttävät beta-arvoja, ja Excelin LINEST-funktio tai Google Sheetsin REGRESSION voi laskea regressiot helposti.<br><br><br><br>4) Arvioi hoitajan jatkuvuus<br><br>Positiivinen alpha yhdessä vuodessa voi olla sattumaa. Etsi pitkäjänteistä alphaa ja tutki hoitajatiimiä, sijoitusprosessia ja riskienhallintaa.<br><br><br><br>5) Harkitse passiivisen ja aktiivisen yhdistelmää<br><br>Passiivinen indeksisijoittaminen tarjoaa matalat kulut ja tuottaa markkinan beeta-osan. Aktiivinen osa voi pyrkiä tuottamaan alphaa. Selvitä, onko aktiivi-osa tuottanut jatkuvasti alphan kustannukset huomioiden.<br><br><br><br>6) Seuraa information ratioa<br><br>Kun vertailet aktiivisia rahastoja, information ratio kertoo paremmin kuin pelkkä alpha, kuinka tehokkaasti rahastonhoitaja muuttaa aktiivista riskinottoa alfa-sadoksi.<br><br><br><br><h2>Lopuksi: mitä alpha sinulle tarkoittaa?</h2><br><br><br><br>Alpha on sijoittajalle lupaus lisäarvosta, mutta se ei ole taikasanoma. Se kertoo, kuinka paljon rahasto tai sijoitus on historiallisesti ylittänyt odotetun tuoton riskin mukaan. Beta puolestaan kertoo, mistä tuotto pääosin syntyy — markkinasta vai muusta riskistä.<br><br><br><br>Käytä alpha- ja beta-mittareita yhdessä muiden riskikorjattujen mittareiden kanssa. Vertaile nettotuottoja kulujen jälkeen, ota huomioon verotus ja arvioi kestävyys pitkällä aikavälillä. Muista, että mennyt tuotto ei ole tae tulevasta, mutta se kertoo mahdollisesta osaamisesta, joka kannattaa arvioida laajasti.<br><br><br><br>Käytännön esimerkin muistutus:<br><br>- Rahasto A: vuosituotto 10 %, beta 1,2, riskitön korko 1 % → odotettu 8,2 % → alpha 1,8 %. Hallinnointipalkkio 0,9 % → nett-alpha 0,9 %.<br><br>- Rahasto B: vuosituotto 9 %, beta 1,0, riskitön korko 1 % → odotettu 7 % → alpha 2 %. Hallinnointipalkkio 1,0 % → nett-alpha 1,0 %.<br><br>Vaikka Rahasto A tuotti enemmän absoluuttisesti, Rahasto B tarjoaa nettomielessä saman tai paremman lisäarvon suhteessa riskiin ja kuluihin. Tällaiset vertailut kannattaa tehdä aina ennen sijoituspäätöstä.<br><br><br><br>Lopullinen neuvo: mittaa salkkusi todellinen lisäarvo, älä tyydy pelkkään tuottolukuun. Alpha kertoo, oletko saanut "bonus-tuoton" riskin ottamisen lisäksi — mutta selvitä aina, kuka sen on tuottanut, kuinka kestävä se on ja paljonko siitä jäi sinulle nettoon.<br><br><br><br>Lähteet:<br><br><a href="https://www.investopedia.com/terms/a/alpha.asp">https://www.investopedia.com/terms/a/alpha.asp</a><br><br><a href="https://www.investopedia.com/terms/b/beta.asp">https://www.investopedia.com/terms/b/beta.asp</a><br><br><a href="https://www.investopedia.com/terms/c/capm.asp">https://www.investopedia.com/terms/c/capm.asp</a><br><br><a href="https://www.morningstar.com">https://www.morningstar.com</a><br><br><a href="https://www.vanguard.fi">https://www.vanguard.fi</a><br><br><a href="https://www.nordnet.fi">https://www.nordnet.fi</a><br><br><a href="https://www.nasdaq.com/market-activity/indexes/fi">https://www.nasdaq.com/market-activity/indexes/fi</a></article>
+</main>
+
+<footer>
+  <p>© 2025 Talousvahti — kirjoittanut <strong>Jere Järvelä</strong></p>
+</footer>
+
+<script>
+function toggleMenu() {
+  const menu = document.getElementById("dropdownMenu");
+  menu.style.display = (menu.style.display === "block") ? "none" : "block";
+}
+
+document.addEventListener("click", function(e) {
+  const menu = document.getElementById("dropdownMenu");
+  const hamburger = document.querySelector(".hamburger");
+
+  if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+    menu.style.display = "none";
+  }
+});
+</script>
+
+
+</body>
+</html>
