@@ -1,0 +1,222 @@
+
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Volatiliteetin myyminen: Ansaitse rahaa markkinoiden pelosta optioilla</title>
+<meta name="description" content="Volatiliteetin myyminen: Ansaitse rahaa markkinoiden pelosta optioilla – Päivän sijoitusblogi Talousvahdissa.">
+<meta name="keywords" content="volatiliteetin myyminen, optioiden myyminen, implisiittinen volatiliteetti, volatiliteettipreemio, covered call, cash-secured put, short strangle, riskienhallinta, optiostrategiat, optiokauppa">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2566G3KPHW"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2566G3KPHW');
+</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Volatiliteetin myyminen: Ansaitse rahaa markkinoiden pelosta optioilla","author":{"@type":"Person","name":"Jere Järvelä"},"publisher":{"@type":"Organization","name":"Talousvahti","logo":{"@type":"ImageObject","url":"https://talousvahti.com/logo.png"}},"datePublished":"2025-12-14","inLanguage":"fi","keywords":"volatiliteetin myyminen, optioiden myyminen, implisiittinen volatiliteetti, volatiliteettipreemio, covered call, cash-secured put, short strangle, riskienhallinta, optiostrategiat, optiokauppa","description":"Volatiliteetin myyminen: Ansaitse rahaa markkinoiden pelosta optioilla","mainEntityOfPage":"https://talousvahti.com/volatiliteetin-myyminen-ansaitse-rahaa-markkinoiden-pelosta-optioilla-2025-12-14.html"}</script>
+
+<!-- Fontit ja tyyli -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #0d0d0d;
+  --accent: #0077ff;
+  --text: #1a1a1a;
+  --muted: #666;
+  --bg: #ffffff;
+  --radius: 12px;
+  --shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+body {
+  font-family: 'Inter', Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+  line-height: 1.8;
+}
+
+nav {
+  background: var(--primary);
+  color: #fff;
+  padding: 18px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+nav .nav-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+nav img {
+  height: 38px;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 20px;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+nav a:hover {
+  color: var(--accent);
+}
+
+main {
+  max-width: 820px;
+  margin: 60px auto;
+  background: #fff;
+  padding: 40px 50px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+h1 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+article {
+  font-size: 1.05rem;
+  color: var(--text);
+}
+
+article p {
+  margin-bottom: 1.2rem;
+}
+
+footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-top: 60px;
+  padding: 20px 0;
+  border-top: 1px solid #eee;
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  main {
+    padding: 25px;
+    margin: 30px 10px;
+  }
+  h1 {
+    font-size: 1.7rem;
+  }
+  nav img {
+    height: 32px;
+  }
+}
+
+/* Hamburger valikko */
+.hamburger {
+  font-size: 28px;
+  cursor: pointer;
+  user-select: none;
+  display: block;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  right: 20px;
+  top: 68px;
+  background: var(--primary);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 10px 0;
+  min-width: 190px;
+  z-index: 20;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 10px 20px;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.dropdown-menu a:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+
+
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-left">
+    <img src="https://storage.mlcdn.com/account_image/1738913/3ffITIlb3p17IaYG3RcfwCueUnHxNH6iG0EtEEPU.png" alt="Talousvahti logo">
+    <strong>Talousvahti Blogi</strong>
+  </div>
+
+  <!-- Hamburger ikonit -->
+  <div class="hamburger" onclick="toggleMenu()">
+    ☰
+  </div>
+
+  <!-- Dropdown valikko -->
+  <div id="dropdownMenu" class="dropdown-menu">
+    <a href="https://talousvahti.com/">Talousuutiset</a>
+    <a href="https://talousvahti.com/kurssit.html">Pörssikurssit</a>
+    <a href="https://talousvahti.com/talouskalenteri.html">Talouskalenteri</a>
+    <a href="https://talousvahti.com/Blogi.html">Blogi</a>
+    <a href="https://talousvahti.com/sijoituslaskuri.html">Sijoituslaskuri</a>
+    <a href="https://talousvahti.com/tietoa.html">Tietoa</a>
+  </div>
+</nav>
+
+
+<main>
+  <header>
+    <h1>Volatiliteetin myyminen: Ansaitse rahaa markkinoiden pelosta optioilla</h1>
+  </header>
+  <article>Volatiliteetin myyminen on ollut monelle sijoittajalle tapa ansaita tasaisempaa tuottoa markkinoiden pelkotilanteissa. Idea on yksinkertainen: markkinoilla maksetaan usein enemmän vakuutuksesta kuin se lopulta maksaa. Tämä ylimääräinen maksu tunnetaan volatiliteettipreemiona. Optioiden myyminen hyödyntää tätä preemiota. Tässä artikkelissa käyn läpi, mitä volatiliteetin myyminen tarkoittaa, miksi strategia toimii pitkällä aikavälillä, millaisia käytännön strategioita on olemassa ja miten riskit kannattaa hallita.<br><br><br><br><h2>Mitä tarkoittaa volatiliteetin myyminen?</h2><br><br>Volatiliteetin myyminen tarkoittaa käytännössä optiopreemioiden keräämistä myymällä optioita. Optiokaupassa implisiittinen volatiliteetti (IV) määrää pitkälti option hinnan. Kun IV on korkea, optiopreemio on korkea. Sijoittaja, joka myy option, ottaa vastaan preemion ja kantaa riskin isosta hinnanliikkeestä. Vastineeksi hän voi hyötyä ajankulusta (theta) ja odotuksesta, että toteutunut volatiliteetti jää pienemmäksi kuin implisiittinen volatiliteetti.<br><br><br><br>Perusajatukset:<br><br>- Markkinat maksavat usein vakuutuksesta yli sen todellisen hinnan. Tämä on volatiliteettipreemio.<br><br>- Myymällä optioita keräät preemioita, jotka ajan myötä hupenevat, jos mitään dramaattista ei tapahdu.<br><br>- Suuret tappiot voivat kuitenkin tulla yllättävissä markkinashokeissa. Siksi riskienhallinta on keskeistä.<br><br><br><br><h2>Miksi volatiliteetin myyminen toimii — volatiliteettipreemio</h2><br><br>Historiallisesti implisiittinen volatiliteetti on ollut keskimäärin korkeampi kuin toteutunut volatiliteetti. Tämä johtuu monesta syystä:<br><br>- Sijoittajat ostavat vakuutusta pelkästään suojautumistarpeesta, eivät voittomahdollisuudesta. Suoja maksaa.<br><br>- Markkinatoimijat voivat maksaa ylimääräistä suojasta, jolloin myyjät keräävät preemiota.<br><br>- Likviditeetin ja kysynnän epätasapaino nostaa hintoja.<br><br><br><br>Tätä eroa kutsutaan volatiliteettipreemioksi. Käytännössä se tarkoittaa, että myymällä optioita systemaattisesti voi kerätä positiivista tuottoa ajan yli — kunhan tappiot hallitaan. Monet instituutiot käyttävät strategioita, jotka myyvät volatiliteettia, kuten myytyja strangleja tai konsertoitua covered call -strategiaa.<br><br><br><br><h2>Perusstrategiat: miten myydä volatiliteettia käytännössä</h2><br><br>Alla on yleisimmät strategiat, joiden avulla volatiliteettia voi myydä. Selitän kunkin idean yksinkertaisesti ja annan konkreettisen laskuesimerkin.<br><br><br><br>1) Covered call (ostettu osake + myyty osto-optio)<br><br>- Idea: Omistat osakkeen ja myyt samalla osto-option (call). Saat preemion. Jos osake nousee yli toteutushinnan, myyt osakkeet ennalta sovittuun hintaan.<br><br>- Esimerkki: Omistat 100 osaketta yritys A, hinta 20 €/kpl. Myyt yhden 1 kuukauden call-option, strike 22 €, preemio 0,60 €/kpl. Saat 60 € preemiota. Jos osake pysyy alle 22 €, pidät preemion. Jos osake nousee yli 22 €, myyt osakkeet ja olet ansainnut myös kurssivoiton 2 €/kpl + preemion.<br><br>- Hyvä, koska riski on sidottu osakkeen arvonlaskuun. Toisaalta tuotto on rajattu ylöspäin.<br><br><br><br>2) Cash-secured put (rahoilla katettu myyty myyntioptio)<br><br>- Idea: Myyt myyntioption ja pidät vastaavan määrän käteistä tai velkavaroja ostoa varten, jos optio realisoituu.<br><br>- Esimerkki: Yritys B hinta 50 €. Myyt 1 kk putin strike 45 €, preemio 1,20 €. Jos osake putoaa alle 45 €, ostat 100 osaketta hintaan 45 € ja olet maksanut 120 € preemiota, joten efektiivinen ostohinta on 43,80 €. Jos osake pysyy yli 45 €, pidät koko preemion.<br><br><br><br>3) Short strangle / short straddle (avoin penniä riskiä)<br><br>- Idea: Myyt sekä myynti- että osto-option eri tai samoilla strikeilla. Tavoitteena on kerätä suurempi preemio, mutta riskit ovat rajattomat (call-puolella) tai hyvin suuret.<br><br>- Esimerkki short strangle: Underlying 100 €. Myyt 1 kk call 105 € preemio 1,30 € ja myyt put 95 € preemio 1,50 €. Kokonaispreemio = 2,80 €. Jos hinta pysyy välillä 95–105 €, keräät preemion. Jos markkina liikkuu voimakkaasti, tappiot voivat ylittää preemion monta kertaa.<br><br><br><br>4) Iron condor (rajoitettu tappio)<br><br>- Idea: Myydään leveä strangle ja ostetaan samalla suojaavat wingit (suojakaupat kauempana strikeista). Näin rajataan tappiot.<br><br>- Esimerkki: Myyt 1 kk call 105 € ja put 95 €, saat preemion 2,80 €. Ostat suojaksi call 110 € ja put 90 € kustannuksella 0,50 €. Nettopreemio = 2,30 €. Maksimitappio on rajattu, ellei volatiliteetti räjähtäisi hyvin kauas.<br><br><br><br><h2>Riskit ja riskienhallinta — älä anna preemiolle sokaistua</h2><br><br>Volatiliteetin myyminen voi olla tuottoisaa, mutta se ei ole riskitöntä. Tässä tärkeimmät riskit ja miten niitä voit hallita.<br><br><br><br>- Tail risk (harvinainen, suuri liike): Suurin riski on harvinainen mutta iso hinta- tai markkinaliike. Tämä voi aiheuttaa suuret tappiot, etenkin short straddle- ja short call -asemissa. Hallinta: käytä wingejä (esim. iron condor), pidä pienet positiokoot, ja käytä stop-loss-tasoja.<br><br>- Likviditeettiriski: Option likviditeetti voi kadota kriisissä. Silloin on vaikea sulkea asemaa. Hallinta: valitse likvidejä kohteita ja vältä laajaa hajautusta harvoihin erikoisoptioihin.<br><br>- Margin- ja vakuutusvaatimukset: Myyty option pitää usein kattaa pääomalla tai marginaalilla. Hallinta: varmista riittävä pääoma ja ymmärrä marginaalivaatimukset.<br><br>- Implisiittisen volatiliteetin nousu: Jos myyt optioita matalalla IV:llä, et saa hyvää preemiota; jos myyt korkean IV:n aikana, saat preemion mutta riski on, että selkeästi suuri liike tapahtuu. Hyvä lähestymistapa: myy volatiliteettia useilla maturiteeteilla ja strikeilla sekä ajoita kaupat silloin, kun IV on selkeästi yli historiallisen keskiarvon.<br><br><br><br>Riskienhallinnan konkreettisia keinoja:<br><br>- Rajaa position koko suhteessa tilin kokoon (esim. max 1–2 % tilin arvosta per riski).<br><br>- Käytä suojalaskuja (ostetaan kauempana olevat option wingit).<br><br>- Harkitse ostoehtoista stop-lossia tai delta-neutraaleja säätöjä.<br><br>- Diversifioi strategioita eri kohde-etuuksiin ja maturiteetteihin.<br><br><br><br><h2>Konkreettinen pitkäaikainen esimerkki: kuukausittaiset covered callit</h2><br><br>Monet yksityissijoittajat aloittavat volatiliteetin myymisen covered call -strategiasta. Se on helppo ja suhteellisen turvallinen tapa kerätä preemioita.<br><br><br><br>Oletetaan tilanne:<br><br>- Tilin koko: 50 000 €<br><br>- Sijoitat 10 000 € osakkeisiin, ostaen 500 osaketta hintaan 20 €/kpl.<br><br>- Joka kuukausi myyt yhden call-option 1 kuukauden maturiteetilla strike +10 % (22 €) ja saat preemion 0,60 €/kpl → 300 € per kuukausi.<br><br><br><br>Laskelma:<br><br>- Kuukausipreemio 300 € vastaa 3,0 % tuottoa sijoitetulle 10 000 €:lle kuukaudessa, mikä vuositasolle konvertoituna (enkä korostamatta compounding) olisi noin 36 % per vuosi ennen laskettua riskiä ja veroja. Todellisuudessa efektiivinen tuotto on alhaisempi, koska osake voi laskea, tai joutua myymään osakkeet isolla ylösliikkeellä ja menettää mahdollisen voiton.<br><br>- Tärkeää on ymmärtää: saat preemion riippumatta osakkeen liikkeistä, mutta iso lasku osakkeessa voi syödä preemion. Siksi käytä tätä strategiaa vain, jos hyväksyt osakkeeseen sidotun riskin.<br><br><br><br>Tämä esimerkki havainnollistaa perusmekanismia: keräät pieniä, toistuvia preemioita. Pitkällä aikavälillä tämä voi johtaa vakaampaan tuottoon kuin pelkkä osakesijoitus, mutta ei poista markkinariskiä.<br><br><br><br><h2>Kuka hyötyy ja kenelle strategia ei sovi?</h2><br><br>Hyväksy tämä realistinen arvio:<br><br>- Sopii niille, jotka haluavat lisätä tuottoa olemassa oleville positioille. Esimerkiksi osakkeiden omistajat, jotka eivät odota dramaattista nousua lyhyellä aikavälillä, voivat lisätä tuottoa myymällä call-optioita.<br><br>- Sopii myös spekulantille, joka haluaa systemaattisesti kerätä volatiliteettipreemioita, mutta ymmärtää ja hallitsee suuria tappioriskejä.<br><br>- Ei sovi sijoittajalle, joka ei halua tai kykene kantamaan rajattomia tai suuria tappioita. Myös sijoittajat ilman riittävää pääomaa ja marginaalikykyä voivat kohdata vakavia ongelmia.<br><br><br><br>Muista verotus: optiokaupan verokohtelu voi poiketa osakkeista. Ota selvää paikallisesta verotuksesta tai kysy neuvoa veroneuvojalta.<br><br><br><br><h2>Viimeiset käytännön vinkit ja checklist</h2><br><br>- Aloita pienestä ja kokeile simulaattorilla tai paperikaupalla.<br><br>- Seuraa implisiittistä volatiliteettia (IV) ja vertaile sitä historialliseen toteutuneeseen volatiliteettiin.<br><br>- Vältä myymästä optioita juuri ennen tulo- tai tulosraportteja tai suuria talousuutisia, ellei se ole osa suunniteltua strategiaa.<br><br>- Pidä riittävä käteispuskuri marginaalivaatimuksia varten.<br><br>- Kirjaa kaikki kaupat ja analysoi suoriutumista säännöllisesti. Pidä kirjaa realize-tuotoista vs. unrealized.<br><br>- Harkitse automaattisia työkaluja ja kaupankäyntialustoja, jotka näyttävät realisoituvat riskit ja marginaalit reaaliaikaisesti.<br><br><br><br>Lopuksi: volatiliteetin myyminen voi olla tehokas tapa ansaita tuottoa markkinoiden pelosta. Se ei ole helppoa tai riskitöntä, mutta systemaattisesti ja kurinalaisesti harjoitettuna se tarjoaa keinoja parantaa tuotto/riskisuhdetta. Avain menestykseen on ymmärrys implisiittisestä volatiliteetista, hyvä riskienhallinta ja realistinen odotus siitä, että tappiot tapahtuvat joskus — ja silloin pitää pystyä kestämään ne tai rajoittamaan ne etukäteen.<br><br><br><br>Huomautus: Tämä artikkeli on yleisluontoinen ja ei muodostaa sijoitusneuvontaa. Ennen suurten positioiden ottamista selvitä verotus, marginaalivaatimukset ja konsultoi tarvittaessa finanssialan ammattilaista.<br><br><br><br>Lähteet:<br><br><a href="https://www.investopedia.com/terms/v/volatilityriskpremium.asp">https://www.investopedia.com/terms/v/volatilityriskpremium.asp</a><br><br><a href="https://www.investopedia.com/terms/i/impliedvolatility.asp">https://www.investopedia.com/terms/i/impliedvolatility.asp</a><br><br><a href="https://www.cboe.com">https://www.cboe.com</a><br><br><a href="https://en.wikipedia.org/wiki/Black%E2%80%93Scholes_model">https://en.wikipedia.org/wiki/Black%E2%80%93Scholes_model</a><br><br><a href="https://www.tastytrade.com">https://www.tastytrade.com</a><br><br><a href="https://www.nasdaq.com/solutions/options-calculators">https://www.nasdaq.com/solutions/options-calculators</a></article>
+</main>
+
+<footer>
+  <p>© 2025 Talousvahti — kirjoittanut <strong>Jere Järvelä</strong></p>
+</footer>
+
+<script>
+function toggleMenu() {
+  const menu = document.getElementById("dropdownMenu");
+  menu.style.display = (menu.style.display === "block") ? "none" : "block";
+}
+
+document.addEventListener("click", function(e) {
+  const menu = document.getElementById("dropdownMenu");
+  const hamburger = document.querySelector(".hamburger");
+
+  if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+    menu.style.display = "none";
+  }
+});
+</script>
+
+
+</body>
+</html>
