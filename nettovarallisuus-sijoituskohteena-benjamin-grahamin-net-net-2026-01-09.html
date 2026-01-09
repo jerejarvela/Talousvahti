@@ -1,0 +1,222 @@
+
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nettovarallisuus sijoituskohteena – Benjamin Grahamin net‑net</title>
+<meta name="description" content="Nettovarallisuus sijoituskohteena – Benjamin Grahamin net‑net – Päivän sijoitusblogi Talousvahdissa.">
+<meta name="keywords" content="nettovarallisuus, net-net, Benjamin Graham, NCAV, arvostus, aliarvostetut osakkeet, margin of safety, osakesijoittaminen, kirjanpitoarvo">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2566G3KPHW"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2566G3KPHW');
+</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Nettovarallisuus sijoituskohteena – Benjamin Grahamin net‑net","author":{"@type":"Person","name":"Jere Järvelä"},"publisher":{"@type":"Organization","name":"Talousvahti","logo":{"@type":"ImageObject","url":"https://talousvahti.com/logo.png"}},"datePublished":"2026-01-09","inLanguage":"fi","keywords":"nettovarallisuus, net-net, Benjamin Graham, NCAV, arvostus, aliarvostetut osakkeet, margin of safety, osakesijoittaminen, kirjanpitoarvo","description":"Nettovarallisuus sijoituskohteena – Benjamin Grahamin net‑net","mainEntityOfPage":"https://talousvahti.com/nettovarallisuus-sijoituskohteena-benjamin-grahamin-net-net-2026-01-09.html"}</script>
+
+<!-- Fontit ja tyyli -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #0d0d0d;
+  --accent: #0077ff;
+  --text: #1a1a1a;
+  --muted: #666;
+  --bg: #ffffff;
+  --radius: 12px;
+  --shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+body {
+  font-family: 'Inter', Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+  line-height: 1.8;
+}
+
+nav {
+  background: var(--primary);
+  color: #fff;
+  padding: 18px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+nav .nav-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+nav img {
+  height: 38px;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 20px;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+nav a:hover {
+  color: var(--accent);
+}
+
+main {
+  max-width: 820px;
+  margin: 60px auto;
+  background: #fff;
+  padding: 40px 50px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+h1 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+article {
+  font-size: 1.05rem;
+  color: var(--text);
+}
+
+article p {
+  margin-bottom: 1.2rem;
+}
+
+footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-top: 60px;
+  padding: 20px 0;
+  border-top: 1px solid #eee;
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  main {
+    padding: 25px;
+    margin: 30px 10px;
+  }
+  h1 {
+    font-size: 1.7rem;
+  }
+  nav img {
+    height: 32px;
+  }
+}
+
+/* Hamburger valikko */
+.hamburger {
+  font-size: 28px;
+  cursor: pointer;
+  user-select: none;
+  display: block;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  right: 20px;
+  top: 68px;
+  background: var(--primary);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 10px 0;
+  min-width: 190px;
+  z-index: 20;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 10px 20px;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.dropdown-menu a:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+
+
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-left">
+    <img src="https://storage.mlcdn.com/account_image/1738913/3ffITIlb3p17IaYG3RcfwCueUnHxNH6iG0EtEEPU.png" alt="Talousvahti logo">
+    <strong>Talousvahti Blogi</strong>
+  </div>
+
+  <!-- Hamburger ikonit -->
+  <div class="hamburger" onclick="toggleMenu()">
+    ☰
+  </div>
+
+  <!-- Dropdown valikko -->
+  <div id="dropdownMenu" class="dropdown-menu">
+    <a href="https://talousvahti.com/">Talousuutiset</a>
+    <a href="https://talousvahti.com/kurssit.html">Pörssikurssit</a>
+    <a href="https://talousvahti.com/talouskalenteri.html">Talouskalenteri</a>
+    <a href="https://talousvahti.com/Blogi.html">Blogi</a>
+    <a href="https://talousvahti.com/sijoituslaskuri.html">Sijoituslaskuri</a>
+    <a href="https://talousvahti.com/tietoa.html">Tietoa</a>
+  </div>
+</nav>
+
+
+<main>
+  <header>
+    <h1>Nettovarallisuus sijoituskohteena – Benjamin Grahamin net‑net</h1>
+  </header>
+  <article>Nettovarallisuus sijoituskohteena (Net‑Net Investing): Benjamin Grahamin unohdettu strategia<br><br><br><br>Benjamin Grahamin perusajatus oli yksinkertainen: osta yrityksiä, joiden markkina‑arvo on selvästi pienempi kuin niiden välittömät varat miinus velat. Tätä kutsutaan nettovarallisuudeksi tai englanniksi net‑net tai NCAV (net current asset value). Vaikka strategia syntyi 1930–40‑luvuilla, se on yhä kiinnostava erityisesti suomalaisille sijoittajille, jotka etsivät aliarvostettuja osakkeita ja kaupan tarjoamaa suojaa. Tässä artikkelissa selitän, miten net‑net toimii, miksi se toimi historiallisisesti, millaiset riskit siihen liittyvät ja miten suomalainen sijoittaja voi käytännössä etsiä näitä kohteita.<br><br><br><br><h2>Mitä nettovarallisuus (net‑net / NCAV) tarkoittaa?</h2><br><br><br><br>Nettovarallisuus tarkoittaa yksinkertaista laskelmaa: yrityksen lyhytaikaiset varat (current assets) miinus kokonaisvelat (total liabilities). Benjamin Grahamin alkuperäinen sääntö oli etsiä yrityksiä, joiden markkina‑arvo (market cap) on alle 2/3 osaa tästä nettovarallisuudesta. Nykyisin moni käyttää tiukempaa ehtoa: markkina‑arvo alle NCAV‑arvon.<br><br><br><br>Peruslaskelma:<br><br>- NCAV = Current assets − Total liabilities<br><br>- Ehdot (esimerkki): Market cap < 2/3 × NCAV tai Market cap < NCAV<br><br><br><br>Käytännössä current assets sisältää käteisen, myyntisaamiset ja vaihto‑omaisuuden. Monet sijoittajat jättävät pois varat, joiden realisointi voi olla epävarmaa (esim. myyntisaamisten suuri osuus tai vanhentunut varasto). Tavoite on löytää yritys, jonka markkina‑hinta on alhaisempi kuin varojen realistinen realisointiarvo.<br><br><br><br><h2>Miksi net‑net toimi historiallisisesti?</h2><br><br><br><br>Net‑net‑strategian voima perustuu kolmeen tekijään:<br><br>1. Ylireaktio markkinoilla. Pienet ja epäkiinnostavat yritykset usein hinnoitellaan liikaa alaspäin huolten tai uutisten seurauksena.<br><br>2. Turvamarginaali (margin of safety). Kun hinta on selvästi pienempi kuin realisoitavat varat, sijoittaja saa puskurin virheellisiä arvioita vastaan.<br><br>3. Ennakoiva ostotapa. Graham osti usein "roska‑osakkeita", odotti että markkina huomaa arvon tai että yritys realisoi varoja (myynti, sulautuminen, konkurssi jossa arvot jaetaan).<br><br><br><br>Empiiriset tutkimukset ja sijoittajatarinat näyttävät, että net‑net‑strategia on historiallisesti tuottanut hyvää ylituottoa, erityisesti lyhyellä ja keskipitkällä aikavälillä. Syynä on usein osakkeiden aliarvostus ja se, että suuri osa net‑net‑yrityksistä on pieniä ja likvideetiltään heikkoja — piirteitä, joista markkina rankaisee liikaa.<br><br><br><br><h2>Konkretiikkaa: esimerkki laskelmasta</h2><br><br><br><br>Kuvitellaan suomalainen pienyritys Yritys A, jonka tase näyttää seuraavalta:<br><br>- Käteinen ja pankkisaamiset: 1 000 000 €<br><br>- Myyntisaamiset: 2 000 000 €<br><br>- Vaihto‑omaisuus: 3 000 000 €<br><br>- Lyhytaikaiset varat yhteensä (Current assets): 6 000 000 €<br><br>- Kokonaisvelat (short‑ + long‑term liabilities): 4 000 000 €<br><br><br><br>NCAV = 6 000 000 − 4 000 000 = 2 000 000 €<br><br><br><br>Jos Yritys A:n markkina‑arvo (osakkeiden nykyinen arvo) on esimerkiksi 1 200 000 €, se täyttää Grahamin vaatimuksen Market cap < 2/3 × NCAV, koska 2/3 × NCAV = 1 333 333 €. Tässä tapauksessa sijoittaja ostaa yhtiötä markkinahintaan 1,2 M€, jonka taakse jää 2 M€:n nettovarallisuus. Teoreettisesti tämä antaa suojaa, sillä jos yritys asetettaisiin konkurssiin ja varat realisoitaisiin, niitä pitäisi olla enemmän kuin markkina‑arvo.<br><br><br><br>Tärkeä lisähuomio: realisointiarvo harvoin on täsmälleen tasearvo. Vaihto‑omaisuus voi olla vanhentunutta, myyntisaamisia ei saa täyttä määrää, ja varojen myynti vie aikaa. Siksi monet sijoittajat soveltavat varovaisuusperiaatetta: laske NCAV konservatiivisesti, esimerkiksi vähentämällä vaihto‑omaisuuden arvoa 20–50 % ja huomioimalla luottotappiot.<br><br><br><br><h2>Missä tilanteissa net‑net ei toimi — riskit ja sudenkuopat</h2><br><br><br><br>Net‑net voi tarjota houkuttelevan ostohinnan, mutta siihen liittyy myös riskejä:<br><br><br><br>- Likviditeetti: monet net‑net‑yritykset ovat pieniä ja vaihdetaan vähän. Osakkeita voi olla vaikea ostaa tai myydä ilman merkittävää hintavaikutusta.<br><br>- Kirjanpitoriskit: taseen varat voivat olla yliarvostettuja. Tämä on erityistä, jos yrityksellä on paljon vanhentunutta varastoa, epävarmoja saatavia tai vaikeasti realisoitavia aineettomia hyödykkeitä.<br><br>- Toimialan rapautuminen: yritys voi toimia toimialalla, joka on katoamassa. Tällöin varat eivät todennäköisesti säilytä arvoaan.<br><br>- Corporate governance ja minoriteettiriski: pienissä yrityksissä johdon etu voi olla ristiriidassa osakkeenomistajien kanssa. Konkurssit ja sisäpiirikaupat ovat mahdollisia.<br><br>- Verotus ja transaktiokustannukset: realisointi voi olla verotuksellisesti epäsuotuisaa ja myynnistä aiheutuu kuluja.<br><br>- Ajan arvo: markkinat voivat pitää arvoa piilossa pitkään. Net‑net‑strategia vaatii kärsivällisyyttä.<br><br><br><br>Siksi net‑net on osaava työkalu, mutta ei universaali ratkaisu. Parhaat tulokset syntyvät, kun net‑net yhditetään laajaan analyysiin: tarkasta tase, johdon historia, toimiala, kassavirrat ja mahdolliset transaktiot varojen realisoimiseksi.<br><br><br><br><h2>Kuinka etsiä nettovarallisuuskohteita Suomessa — käytännön opas</h2><br><br><br><br>1. Käytä screenera: Monet ulkomaiset ja suomalaiset osake‑screenerit sallivat hakea yrityksiä NCAV‑periaatteella. Etsi hakuehtoja kuten "current assets", "total liabilities", "market cap", tai valmiita NCAV‑suodattimia.<br><br>2. Laske konservatiivinen NCAV: ota current assets, vähennä epärealistiset erät (osittain vanhentunut varasto, epävarmat myyntisaamiset) ja vähennä sitten kaikki velat.<br><br>3. Vertaa markkina‑arvoon: laske suhde Market cap / NCAV. Hyvä lähtökohta on alle 0,66 (2/3) tai alle 1.0 jos haluat tiukemman vaatimuksen.<br><br>4. Tarkista likviditeetti: katso kaupankäyntivolyymi. Jos trading‑päiviä ilman vaihtoa on paljon, tee pieni testierä ostoksesta.<br><br>5. Analysoi johto ja läpinäkyvyys: tutki tilinpäätöksiä, johdon kommentteja sekä mahdollisia poikkeuksellisia eriä. Pieni yritys voi olla hyvä, mutta jos johtaminen on epäluotettavaa se on suuri riskitekijä.<br><br>6. Arvioi realisointistrategia: voisiko yritys myydä kiinteistöjä, varastoja tai muuta omaisuutta? Onko merkittävää likvidoitavaa omaisuutta?<br><br>7. Hajauta: älä laita kaikkia varoja yhteen net‑net‑löytöön. Usein net‑net‑strategia voi vaatia monta asemaa ja kärsivällisyyttä.<br><br><br><br>Konkreettinen esimerkki suodattimesta: etsi suomalaisia yhtiöitä, joiden Market cap < 0,66 × (cash + receivables + inventory − total liabilities). Tämän jälkeen poista yhtiöt, joiden suurin osa varoista on taseen ulkopuolisia tai joiden liiketoiminta on nopeasti kutistumassa.<br><br><br><br><h2>Miksi net‑net sopii osaksi arvo‑sijoittajan työkalupakkia?</h2><br><br><br><br>Nettovarallisuus on puhdas arvosäännön muoto. Se ei vaadi monimutkaisia kassavirtaennusteita ja se käyttää tilinpäätön luvut suoraan. Se toimii hyvin markkina‑poikkeamien hyödyntämisessä ja tarjoaa selkeän turvamarginaalin. Lisäksi net‑net‑sijoittaminen opettaa kurinalaisuutta: vain äärettömän alhaisen hinnan kohdalla mennään mukaan.<br><br><br><br>Monet modernit arvosijoittajat yhdistävät net‑netin muihin mittareihin, kuten P/B (price to book), P/E ja kassavirta‑analyysiin. Säännönmukainen seuranta ja varovaisuus auttavat välttämään sudenkuoppia.<br><br><br><br>Lopuksi: vaikka net‑net on tehokas työkalu, se ei ole helppo tapa rikastua nopeasti. Se vaatii aikaa, kärsivällisyyttä ja kykyä erottaa todellinen arvovaranto kirjanpidon teknisestä arvosta. Suomessa voi löytyä net‑net‑kohteita etenkin pienistä yhtiöistä tai aliarvostetuista toimialoista, mutta hyvä due diligence on välttämätöntä.<br><br><br><br>Lähteet ja lisälukemista:<br><br><a href="https://www.investopedia.com/terms/n/net-net.asp">https://www.investopedia.com/terms/n/net-net.asp</a><br><br><a href="https://en.wikipedia.org/wiki/Benjamin_Graham">https://en.wikipedia.org/wiki/Benjamin_Graham</a><br><br><a href="https://www.penguinrandomhouse.com/books/560076/the-intelligent-investor-by-benjamin-graham/">https://www.penguinrandomhouse.com/books/560076/the-intelligent-investor-by-benjamin-graham/</a><br><br><a href="https://www.gurufocus.com/term/ncav/NCAV">https://www.gurufocus.com/term/ncav/NCAV</a><br><br><a href="https://www.wiley.com/en-us/Value+Investing%3A+From+Graham+to+Buffett+and+Beyond-p-9780470540588">https://www.wiley.com/en-us/Value+Investing%3A+From+Graham+to+Buffett+and+Beyond-p-9780470540588</a><br><br><a href="https://www.sijoitustieto.fi">https://www.sijoitustieto.fi</a><br><br><a href="https://www.nordnet.fi/fi/blogi">https://www.nordnet.fi/fi/blogi</a><br><br><br><br>--- <br><br><br><br>Muistiinpanot: tämä artikkeli on luonteeltaan yleistä tietoa eikä sijoitusneuvontaa. Ennen sijoituspäätöstä tee oma analyysi tai kysy ammattilaiselta neuvoa.</article>
+</main>
+
+<footer>
+  <p>© 2025 Talousvahti — kirjoittanut <strong>Jere Järvelä</strong></p>
+</footer>
+
+<script>
+function toggleMenu() {
+  const menu = document.getElementById("dropdownMenu");
+  menu.style.display = (menu.style.display === "block") ? "none" : "block";
+}
+
+document.addEventListener("click", function(e) {
+  const menu = document.getElementById("dropdownMenu");
+  const hamburger = document.querySelector(".hamburger");
+
+  if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+    menu.style.display = "none";
+  }
+});
+</script>
+
+
+</body>
+</html>
