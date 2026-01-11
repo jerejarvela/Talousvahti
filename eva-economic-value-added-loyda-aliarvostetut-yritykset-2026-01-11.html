@@ -1,0 +1,222 @@
+
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EVA (Economic Value Added) – Löydä aliarvostetut yritykset</title>
+<meta name="description" content="EVA (Economic Value Added) – Löydä aliarvostetut yritykset – Päivän sijoitusblogi Talousvahdissa.">
+<meta name="keywords" content="EVA, Economic Value Added, aliarvostus, osakkeet, sijoittaminen, yritysarvo, ROIC, WACC, pääoman kustannus, fundamenttianalyysi, kassavirta">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2566G3KPHW"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2566G3KPHW');
+</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"EVA (Economic Value Added) – Löydä aliarvostetut yritykset","author":{"@type":"Person","name":"Jere Järvelä"},"publisher":{"@type":"Organization","name":"Talousvahti","logo":{"@type":"ImageObject","url":"https://talousvahti.com/logo.png"}},"datePublished":"2026-01-11","inLanguage":"fi","keywords":"EVA, Economic Value Added, aliarvostus, osakkeet, sijoittaminen, yritysarvo, ROIC, WACC, pääoman kustannus, fundamenttianalyysi, kassavirta","description":"EVA (Economic Value Added) – Löydä aliarvostetut yritykset","mainEntityOfPage":"https://talousvahti.com/eva-economic-value-added-loyda-aliarvostetut-yritykset-2026-01-11.html"}</script>
+
+<!-- Fontit ja tyyli -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #0d0d0d;
+  --accent: #0077ff;
+  --text: #1a1a1a;
+  --muted: #666;
+  --bg: #ffffff;
+  --radius: 12px;
+  --shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+body {
+  font-family: 'Inter', Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+  line-height: 1.8;
+}
+
+nav {
+  background: var(--primary);
+  color: #fff;
+  padding: 18px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+nav .nav-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+nav img {
+  height: 38px;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 20px;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+nav a:hover {
+  color: var(--accent);
+}
+
+main {
+  max-width: 820px;
+  margin: 60px auto;
+  background: #fff;
+  padding: 40px 50px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+h1 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+article {
+  font-size: 1.05rem;
+  color: var(--text);
+}
+
+article p {
+  margin-bottom: 1.2rem;
+}
+
+footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-top: 60px;
+  padding: 20px 0;
+  border-top: 1px solid #eee;
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  main {
+    padding: 25px;
+    margin: 30px 10px;
+  }
+  h1 {
+    font-size: 1.7rem;
+  }
+  nav img {
+    height: 32px;
+  }
+}
+
+/* Hamburger valikko */
+.hamburger {
+  font-size: 28px;
+  cursor: pointer;
+  user-select: none;
+  display: block;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  right: 20px;
+  top: 68px;
+  background: var(--primary);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 10px 0;
+  min-width: 190px;
+  z-index: 20;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 10px 20px;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.dropdown-menu a:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+
+
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-left">
+    <img src="https://storage.mlcdn.com/account_image/1738913/3ffITIlb3p17IaYG3RcfwCueUnHxNH6iG0EtEEPU.png" alt="Talousvahti logo">
+    <strong>Talousvahti Blogi</strong>
+  </div>
+
+  <!-- Hamburger ikonit -->
+  <div class="hamburger" onclick="toggleMenu()">
+    ☰
+  </div>
+
+  <!-- Dropdown valikko -->
+  <div id="dropdownMenu" class="dropdown-menu">
+    <a href="https://talousvahti.com/">Talousuutiset</a>
+    <a href="https://talousvahti.com/kurssit.html">Pörssikurssit</a>
+    <a href="https://talousvahti.com/talouskalenteri.html">Talouskalenteri</a>
+    <a href="https://talousvahti.com/Blogi.html">Blogi</a>
+    <a href="https://talousvahti.com/sijoituslaskuri.html">Sijoituslaskuri</a>
+    <a href="https://talousvahti.com/tietoa.html">Tietoa</a>
+  </div>
+</nav>
+
+
+<main>
+  <header>
+    <h1>EVA (Economic Value Added) – Löydä aliarvostetut yritykset</h1>
+  </header>
+  <article>Mikä on EVA ja miksi suomalaisen sijoittajan kannattaa tuntea se?<br><br><br><br>EVA eli Economic Value Added on yksi käytännöllisimmistä välineistä, kun haluat selvittää, luoko yritys arvoa omistajilleen vai syökö se pääomaa. Lyhyesti: EVA mittaa liiketoiminnan tulosta suhteessa yrityksen pääoman kustannukseen. Positiivinen EVA kertoo, että yritys tuottaa enemmän kuin omistajat ja velkojat odottavat; negatiivinen EVA taas kertoo arvon tuhoutumisesta.<br><br><br><br>Suomalaisille sijoittajille EVA on hyödyllinen, koska se yhdistää tuloksen ja pääoman käytön. Moni osake näyttäytyy houkuttelevalta pelkän tuloksen tai P/E-luvun perusteella, mutta EVA auttaa näkemään, onko hyvä tulos syntynyt tehokkaasta pääoman käytöstä vai vain suuresta velkakuormasta tai kertaluonteisista eristä. Tämä tekee siitä arvokkaan työkalun aliarvostettujen yritysten etsimiseen.<br><br><br><br>Miten EVA lasketaan — yksinkertainen kaava ja esimerkki<br><br><br><br>Peruskaava on selkeä:<br><br>EVA = NOPAT - (Invested Capital × WACC)<br><br><br><br>Selitykset:<br><br>- NOPAT (Net Operating Profit After Taxes): yrityksen liiketoiminnan operatiivinen voitto verojen jälkeen. Tämä on voitto ilman rahoituseriä ja kertaluonteisia eriä.<br><br>- Invested Capital: yritykseen sidottu pääoma (oma pääoma + korollinen vieras pääoma - likvidit varat). Käytännössä pääoman määrä, joka työllistää liiketoimintaa.<br><br>- WACC (Weighted Average Cost of Capital): painotettu keskimääräinen pääoman hinta, joka kertoo, minkä tuoton yrityksen on tuotettava, jotta se kattaa sekä oman että vieraan pääoman kustannukset.<br><br><br><br>Konkreettinen esimerkki:<br><br>Yritys A:<br><br>- Liiketoiminnan tulos ennen veroja: 10 M€<br><br>- Veroprosentti oletetaan 20 % → NOPAT = 8 M€<br><br>- Invested Capital = 80 M€<br><br>- WACC = 8 %<br><br><br><br>EVA = 8 M€ - (80 M€ × 0,08) = 8 M€ - 6,4 M€ = 1,6 M€<br><br><br><br>Tässä tapauksessa Yritys A luo 1,6 M€ lisäarvoa sijoitetulle pääomalle — se tuottaa yli sen, mitä pääoma maksaa. Tämä on positiivinen signaali.<br><br><br><br>Vertailu: Yritys B samassa toimialassa<br><br>- NOPAT = 8 M€<br><br>- Invested Capital = 120 M€<br><br>- WACC = 8 %<br><br><br><br>EVA = 8 M€ - (120 M€ × 0,08) = 8 M€ - 9,6 M€ = -1,6 M€<br><br><br><br>Vaikka molemmilla yrityksillä on sama NOPAT, Yritys B tuhoaa arvoa suurimman pääoman vuoksi. EVA paljastaa eron tehokkuudessa, jota pelkkä tulosluku ei näytä.<br><br><br><br>Mistä luvut saa ja miten niitä säädetään käytännössä?<br><br><br><br>EVA:n laskeminen edellyttää tilinpäätöstietoja. Peruselementit löytyvät tuloslaskelmasta ja taseesta, mutta käytännössä tarvitaan pieniä oikaisuja:<br><br>- Rahoituserät ja kertaluonteiset tuotot/vahingot poistetaan, jotta saadaan puhdas operatiivinen tulos (NOPAT).<br><br>- R&D-menot, markkinointikulut tai kysynnästä riippuvat pitkäaikaiset menot saattavat olla mielestäsi investointeja, jotka kannattaa pääomittaa (lisätä investoituneeseen pääomaan) sen sijaan että ne poistaisit välittömästi kuluna.<br><br>- Vuokrasopimukset/IFRS16: pitkäaikaiset vuokrasitoumukset voidaan lisätä investoituneeseen pääomaan ja WACC voidaan säätää vastaavasti.<br><br>- Liikearvo ja muut aineettomat erät: joissain EVA-laskelmissa osa aineettomista hyödykkeistä voidaan käsitellä eri tavalla.<br><br><br><br>Nämä oikaisut tekevät EVA:sta hieman subjektiivisen työkalun — mutta juuri siksi se on tehokas: voit kertoa numerolle tarinan ja arvioida johtamisen laatua sekä pitkän aikavälin arvonluontia.<br><br><br><br>EVA osana sijoitusprosessia: miten etsiä aliarvostettuja yrityksiä<br><br><br><br>1) Etsi yrityksiä, joilla on systemaattisesti positiivinen EVA<br><br>Yritykset, jotka tuottavat EVA:ta vuosittain, ovat todennäköisesti kyenneet rakentamaan kilpailuedun (moat). Pitkäjänteinen positiivinen EVA viestii, että johto osaa allokoida pääomaa hyvin.<br><br><br><br>2) Vertaile EVA:ta markkina-arvoon<br><br>Yksi tapa löytää aliarvostuksia on katsoa EVA:n ja yrityksen markkina-arvon suhdetta. Jos markkina ei hinnoittele tulevaa EVA-tuottoa oikein, voi syntyä tilaisuus. Esimerkiksi yritys, jolla on viimeisten vuosien aikana kasvava EVA mutta alhainen P/E ja pieni markkina-arvo suhteessa sidottuun pääomaan, saattaa olla aliarvostettu.<br><br><br><br>3) Katso EVA:n trendi eikä vain sen tasoa<br><br>Kertaluonteinen positiivinen EVA voi johtua suotuisasta markkinatilanteesta. Trendin nousu kertoo paremmasta johtamisesta ja kilpailuedusta. Laske EVA useammalta vuodelta ja muodosta trendikuva.<br><br><br><br>4) Yhdistä EVA muihin mittareihin<br><br>EVA ei korvaa kaikkea. Yhdistä se ROIC:iin (return on invested capital), vapaaseen kassavirtaan (free cash flow) ja velkaisuuden tarkasteluun. Esimerkiksi korkea EVA mutta heikko kassavirta voi viitata kirjanpidollisiin häiriöihin.<br><br><br><br>Käytännön esimerkki suomalaisesta kontekstista (hypoteettinen)<br><br><br><br>Kuvitellaan kaksi suomalaista valmistusyritystä, Suora Oy ja Kestävä Oy:<br><br>- Suora Oy on investoinut paljon tuotantokapasiteettiin ja kertoo korkean myynnin. Kuitenkin sen WACC on 9 % ja investoitu pääoma on kasvanut nopeasti.<br><br>- Kestävä Oy on investoinut maltillisemmin, ja sen ROIC on korkea. Kestävä tuottaa positiivista EVA:ta kolmatta vuotta peräkkäin.<br><br><br><br>Jos markkinat ovat huolissaan Suora Oy:n kasvusta ja hinnoittelevat sen alhaisesti (alhainen markkina-arvo), mutta EVA on negatiivinen, yhtiö ei välttämättä ole hyvä arvosijoitus. Vastaavasti Kestävä Oy, jonka EVA on tasaisesti positiivinen mutta markkina ei ole huomioinut tätä ja kurssi on matalahko, voi olla aliarvostettu tapaus.<br><br><br><br>Vinkit EVA:n käyttöön arjen sijoituspäätöksissä<br><br><br><br>- Käytä julkisia raportteja ja analyytikoiden laskelmia lähtöpisteenä, mutta tee omat oikaisut. Älä luota sokeasti valmiisiin EVA-lukuihin.<br><br>- Laske WACC huolellisesti: oman pääoman kustannus voidaan arvioida CAPM:n avulla, mutta pienet erot diskonttokorossa muuttavat EVA:ta paljon. Pienissä yhtiöissä oman pääoman riski on yleensä isompi.<br><br>- Huomioi toimialan luonne: pääomaintensiivisessä teollisuudessa pienet positiiviset EVA-luvut ovat jo hyviä; teknologiayhtiöissä, joissa tarvitsee vähän sidottua pääomaa, EVA voi olla eri mittakaavassa.<br><br>- Katso johdon päätöksiä: investointien tuottoprosentit, yritysostojen laatu ja pääoman palautus (osingot, osakeosto) kertovat pitkän aikavälin suunnitelmasta. Johdon, joka jatkuvasti lyö pääoman tuottotason alle, kannattaa olla varovainen.<br><br>- Käytä EVA:ta osana arvonmääritystä, ei ainoana totuutena: diskonttaa odotettu tuleva EVA osakkeiden arvoa laskiessasi.<br><br><br><br>EVA:n heikkoudet ja sudenkuopat — mitä varoa<br><br><br><br>- Subjektiiviset oikaisut: R&D:n kapitalisointi, vuokrasopimusten käsittely tai kertaluonteisten eriä käsittelevät päätökset tekevät EVA:sta riippuvaisen laskijan näkemyksestä.<br><br>- Cyclical industries: suhdannevaihtelut voivat heikentää EVA:n näyttämää luotettavuutta lyhyellä aikavälillä. Esimerkiksi metsäteollisuus ja kaivosala reagoivat suhdanteisiin voimakkaasti.<br><br>- Pääoman kustannuksen arviointi: WACC on arvio, ja sen virheen vaikutus EVA:an voi olla suuri. Aliarvioitu WACC kaunistaa EVA:ta.<br><br>- Tilinpäätöksen manipulointi: yritykset voivat ajoittaa myyntiä, viivyttää kuluja tai tehdä muita kirjanpidollisia ratkaisuja, jotka vaikuttavat NOPAT:iin. Tästä syystä vapaana kassavirta ja vieraan pääoman taso ovat tärkeitä tarkistuslukuja.<br><br><br><br>Kuinka käyttää EVA:ta osakepoiminnassa — askel-askeleelta<br><br><br><br>1) Tee laaja skannaus: etsi toimialoja ja yrityksiä, joilla EVA on positiivinen ainakin 3–5 vuotta peräkkäin.<br><br>2) Tarkista trendi: nouseva EVA on parempi kuin satunnainen positiivinen vuosiluku.<br><br>3) Laske EVA suhteessa markkina-arvoon ja investoituneeseen pääomaan. Etsi yrityksiä, joiden markkina ei huomioi tulevaa EVA-tuottoa.<br><br>4) Arvioi WACC: käytä realistisia oletuksia oman pääoman kustannuksesta ja velan hinnasta.<br><br>5) Tarkista kassavirrat: varmista, että positiivinen EVA heijastuu myös vapaaseen kassavirtaan pitkällä aikavälillä.<br><br>6) Arvioi riskit: toimiala-, tuotanto- ja johdon riskit; onko kilpailu kiristymässä, entä teknologiariskit?<br><br>7) Muodosta hajautettu portfoliostrategia: EVA voi valikoida hyviä ehdokkaita, mutta riski kannattaa hajauttaa.<br><br><br><br>Miten suomalainen sijoittaja saa datan?<br><br><br><br>Useimmat tarvittavat luvut löytyvät julkisista tilinpäätöksistä ja yritysraporteista. Monet kaupalliset palvelut (Bloomberg, FactSet, Morningstar) tarjoavat valmiita EVA-laskelmia ja komponentteja. Ilmaisemmilla työkaluilla (yhtiöiden vuosikertomukset, Kauppalehden Palvelut, Mercurius) pääsee pitkälle. Pörssiyhtiöiden kvartaaliraportit ja vuosikertomukset ovat lähdeaineistoa NOPAT:in ja investoidun pääoman laskemiseen.<br><br><br><br>Yhteenveto — miksi EVA kannattaa ottaa työkalupakkiin?<br><br><br><br>EVA yhdistää voiton ja pääoman kustannuksen. Se paljastaa, luoko yritys aitoa arvoa omistajilleen vai onko hyväksi näytetty tulos vain pääoman liikkeen tulos. Käyttämällä EVA:ta yhdessä ROICin, kassavirran ja perinteisten tunnuslukujen kanssa sijoittaja saa monipuolisemman kuvan yrityksen todellisesta taloudellisesta suorituskyvystä.<br><br><br><br>Käytännöllinen neuvo: aloita laskemalla EVA muutamalle kiinnostavalle yhtiölle, vertaile tuloksia toimialan keskiarvoihin ja seuraa trendiä. Kun harjoittelet, oikeat oikaisut ja pienet yksityiskohdat jäävät paremmin mieleen — ja EVA voi olla juuri se mittari, joka auttaa löytämään seuraavan aliarvostetun suomalaisen osakkeen.<br><br><br><br>Lähteet:<br><br><a href="https://www.investopedia.com/terms/e/economicvalueadded.asp">https://www.investopedia.com/terms/e/economicvalueadded.asp</a><br><br><a href="https://en.wikipedia.org/wiki/Economic_value_added">https://en.wikipedia.org/wiki/Economic_value_added</a><br><br><a href="https://sternstewart.com">https://sternstewart.com</a><br><br><a href="https://corporatefinanceinstitute.com/resources/valuation/economic-value-added-eva/">https://corporatefinanceinstitute.com/resources/valuation/economic-value-added-eva/</a><br><br><a href="https://blogs.cfainstitute.org/investor/2013/11/12/economic-value-added-does-it-add-value/">https://blogs.cfainstitute.org/investor/2013/11/12/economic-value-added-does-it-add-value/</a><br><br><a href="https://www.morningstar.com/articles">https://www.morningstar.com/articles</a></article>
+</main>
+
+<footer>
+  <p>© 2025 Talousvahti — kirjoittanut <strong>Jere Järvelä</strong></p>
+</footer>
+
+<script>
+function toggleMenu() {
+  const menu = document.getElementById("dropdownMenu");
+  menu.style.display = (menu.style.display === "block") ? "none" : "block";
+}
+
+document.addEventListener("click", function(e) {
+  const menu = document.getElementById("dropdownMenu");
+  const hamburger = document.querySelector(".hamburger");
+
+  if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+    menu.style.display = "none";
+  }
+});
+</script>
+
+
+</body>
+</html>
