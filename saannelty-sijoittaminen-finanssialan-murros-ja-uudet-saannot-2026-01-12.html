@@ -1,0 +1,222 @@
+
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Säännelty sijoittaminen: Finanssialan murros ja uudet säännöt</title>
+<meta name="description" content="Säännelty sijoittaminen: Finanssialan murros ja uudet säännöt – Päivän sijoitusblogi Talousvahdissa.">
+<meta name="keywords" content="säännelty sijoittaminen, regulated investing, finanssialan murros, MiFID II, PRIIPs, SFDR, MiCA, sijoitusneuvonta, sijoittajan suoja, ESG-säännöt, kriipto­sääntely">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2566G3KPHW"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2566G3KPHW');
+</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Säännelty sijoittaminen: Finanssialan murros ja uudet säännöt","author":{"@type":"Person","name":"Jere Järvelä"},"publisher":{"@type":"Organization","name":"Talousvahti","logo":{"@type":"ImageObject","url":"https://talousvahti.com/logo.png"}},"datePublished":"2026-01-12","inLanguage":"fi","keywords":"säännelty sijoittaminen, regulated investing, finanssialan murros, MiFID II, PRIIPs, SFDR, MiCA, sijoitusneuvonta, sijoittajan suoja, ESG-säännöt, kriipto­sääntely","description":"Säännelty sijoittaminen: Finanssialan murros ja uudet säännöt","mainEntityOfPage":"https://talousvahti.com/saannelty-sijoittaminen-finanssialan-murros-ja-uudet-saannot-2026-01-12.html"}</script>
+
+<!-- Fontit ja tyyli -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #0d0d0d;
+  --accent: #0077ff;
+  --text: #1a1a1a;
+  --muted: #666;
+  --bg: #ffffff;
+  --radius: 12px;
+  --shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+body {
+  font-family: 'Inter', Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+  line-height: 1.8;
+}
+
+nav {
+  background: var(--primary);
+  color: #fff;
+  padding: 18px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+nav .nav-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+nav img {
+  height: 38px;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 20px;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+nav a:hover {
+  color: var(--accent);
+}
+
+main {
+  max-width: 820px;
+  margin: 60px auto;
+  background: #fff;
+  padding: 40px 50px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+h1 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+article {
+  font-size: 1.05rem;
+  color: var(--text);
+}
+
+article p {
+  margin-bottom: 1.2rem;
+}
+
+footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-top: 60px;
+  padding: 20px 0;
+  border-top: 1px solid #eee;
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  main {
+    padding: 25px;
+    margin: 30px 10px;
+  }
+  h1 {
+    font-size: 1.7rem;
+  }
+  nav img {
+    height: 32px;
+  }
+}
+
+/* Hamburger valikko */
+.hamburger {
+  font-size: 28px;
+  cursor: pointer;
+  user-select: none;
+  display: block;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  right: 20px;
+  top: 68px;
+  background: var(--primary);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 10px 0;
+  min-width: 190px;
+  z-index: 20;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 10px 20px;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.dropdown-menu a:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+
+
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-left">
+    <img src="https://storage.mlcdn.com/account_image/1738913/3ffITIlb3p17IaYG3RcfwCueUnHxNH6iG0EtEEPU.png" alt="Talousvahti logo">
+    <strong>Talousvahti Blogi</strong>
+  </div>
+
+  <!-- Hamburger ikonit -->
+  <div class="hamburger" onclick="toggleMenu()">
+    ☰
+  </div>
+
+  <!-- Dropdown valikko -->
+  <div id="dropdownMenu" class="dropdown-menu">
+    <a href="https://talousvahti.com/">Talousuutiset</a>
+    <a href="https://talousvahti.com/kurssit.html">Pörssikurssit</a>
+    <a href="https://talousvahti.com/talouskalenteri.html">Talouskalenteri</a>
+    <a href="https://talousvahti.com/Blogi.html">Blogi</a>
+    <a href="https://talousvahti.com/sijoituslaskuri.html">Sijoituslaskuri</a>
+    <a href="https://talousvahti.com/tietoa.html">Tietoa</a>
+  </div>
+</nav>
+
+
+<main>
+  <header>
+    <h1>Säännelty sijoittaminen: Finanssialan murros ja uudet säännöt</h1>
+  </header>
+  <article>Säännelty sijoittaminen (Regulated Investing): Finanssialan murros ja uudet säännöt<br><br><br><br>Sijoitusmaailma muuttuu nopeasti. Lainsäätäjät EU:ssa ja Suomessa kiristävät vaatimuksia, jotta sijoittajien suoja, läpinäkyvyys ja vastuullisuus paranevat. Samalla teknologia, kuten tokenisaatio ja tekoälypohjaiset neuvonantopalvelut, luovat uusia tuotteita ja toimintamalleja. Tämä artikkeli selkeyttää, mitä säännelty sijoittaminen tarkoittaa käytännössä suomalaiselle sijoittajalle, mitkä uudet säännöt vaikuttavat sijoituksiin ja miten toimia turvallisesti murroksessa.<br><br><br><br><h2>Mitä säännelty sijoittaminen tarkoittaa?</h2><br><br><br><br>Säännelty sijoittaminen tarkoittaa sitä, että sijoitustuotteet ja sijoituspalvelut toimivat lain ja viranomaissäännösten puitteissa. Sääntely voi koskea esimerkiksi:<br><br>- tuotteiden markkinointia ja tiedonantovelvollisuutta,<br><br>- sijoitusneuvonnan laatua ja soveltuvuutta asiakkaalle,<br><br>- kustannusten ja palkkioiden läpinäkyvyyttä,<br><br>- ympäristöön ja vastuullisuuteen liittyviä vaatimuksia (ESG),<br><br>- rahanpesun estämistä (KYC/AML) sekä<br><br>- uusissa alueissa kuten kryptovaluutat, tokenit ja alustapohjaiset sijoitukset.<br><br><br><br>Käytännössä se näkyy esimerkiksi niin, että sijoituspalveluyrityksen on selvitettävä asiakkaan sijoitustavoitteet ja riskinsietokyky (suitability), esitettävä sijoitustuotteesta yksinkertainen ja yhtenäinen tuote-esite (Key Information Document, KID) ja ilmoitettava kaikki kustannukset selkeästi.<br><br><br><br>Esimerkki: Olet avaamassa arvo-osuustiliä pankissa. Nykyään pankki pyytää sinulta tietoja sijoitushorisontista ja riskinsietokyvystä, tarjoaa tuoteryhmiä vastaavan neuvonnan ja näyttää arvioidut kulut euroina sekä prosentteina – ei vain prosentteina tuottoprosentista.<br><br><br><br><h2>Keskeiset uudet säännöt ja niiden vaikutus</h2><br><br><br><br>Tässä ovat tärkeimmät säännökset, jotka ovat muovanneet ja yhä muovaavat sijoitusmarkkinoita:<br><br><br><br>- MiFID II (Markets in Financial Instruments Directive II): Tämä laaja direktiivi paransi sijoituspalveluiden läpinäkyvyyttä ja sijoittajansuojan tasoa. Se velvoittaa muun muassa tiedonantoon, raportointiin ja "best execution" -periaatteen noudattamiseen. MiFID II on vaikuttanut suoraan siihen, miten pankit ja sijoituspalveluyritykset tarjoavat neuvontaa ja raportteja.<br><br><br><br>- PRIIPs (Packaged Retail and Insurance-based Investment Products): PRIIPs-vaatimus tarkoittaa, että monimutkaisista tuotteista pitää laatia lyhyt ja selkeä avaintietoasiakirja (KID), jossa kuvataan riskit, kulut ja tuotto-odotukset ymmärrettävästi. Tämä auttaa vertailussa.<br><br><br><br>- SFDR (Sustainable Finance Disclosure Regulation): SFDR vaatii rahastoja ja sijoituspalveluyrityksiä ilmoittamaan, miten ne huomioivat ympäristö- ja sosiaaliset riskit sekä ilmastovaikutukset. Tämä hillitsee "greenwashingia" eli vastuullisuuden liioittelua.<br><br><br><br>- MiCA (Markets in Crypto-Assets Regulation): MiCA luo EU-tason sääntelyn kryptovaroille. Se velvoittaa esimerkiksi kryptopalveluntarjoajia hakemaan hyväksyntää ja noudattamaan sijoittajansuojaa ja raportointivaatimuksia. Kryptomarkkinat siis tulevat asteittain "säännellyiksi".<br><br><br><br>- AMLD ja KYC-vaatimukset: Rahanpesun estämistä koskevat määräykset tiukentuvat, jolloin alustojen ja pankkien täytyy tunnistaa asiakkaansa, seurata maksuliikennettä ja raportoida epäilyttävästä toiminnasta.<br><br><br><br>Esimerkki: Rahasto, joka mainostaa vastuullisuutta, ei enää voi jättää julkisia tietoja ESG-kriteereistään puutteellisiksi. SFDR:n mukainen luokitus kertoo, onko rahasto "vähimmäisriskin huomioiva" vai aktiivisesti ympäristövaikutuksia edistävä.<br><br><br><br><h2>Mitä sääntely muuttaa kotisijoittajan arjessa?</h2><br><br><br><br>Sääntely näkyy arjessa konkreettisesti. Alla muutamia käytännön vaikutuksia ja esimerkkejä suomalaiselle sijoittajalle.<br><br><br><br>- Parempi kustannusten näkyvyys: Kun ostat ETF:n tai sijoitusrahaston, näet nyt kuluarvion selkeämmin. Esimerkiksi sijoituspalvelulta saadussa raportissa kulut voidaan esittää euroina vuositasolla. Tämä auttaa vertailemaan aktiivista rahastoa ja passiivista ETF:ää realistisemmin.<br><br><br><br>- Tiukempi neuvonta: Sijoitusneuvojan on dokumentoitava, miksi tietty tuote sopii sinulle. Jos robo-neuvoja suosittelee riskiä korkeampaa salkkua, sen täytyy perustella se käyttäjäprofiilisi perusteella.<br><br><br><br>- Kryptovaluutat: Suorat kryptokaupat voivat muuttua turvallisemmiksi, jos vaihtoalusta toimii lisenssin alla. Tämä antaa myös mahdollisuuden oikeusturvaan ja valvontaan, jos jotain menee pieleen.<br><br><br><br>- ESG-tiedot: Kun haluat sijoittaa “vihreisiin” rahastoihin, löydät nyt vertailukelpoista tietoa rahastojen hiilijalanjäljestä ja sosiaalisista vaikutuksista.<br><br><br><br>- Uudet tuote-esitteet: PRIIPs KID on lyhyt, yhden A4:n kaltainen yhteenveto. Se auttaa ehkäisemään väärinymmärryksiä monimutkaisista tuotteista.<br><br><br><br>Konkreettinen esimerkki: Harkitset sijoitusrahastoa, joka lupaa 8 % tuottoa. KID-asiakirja näyttää, kuinka paljon kuluja peritään vuosittain ja millainen on worst-case-skenaario 1, 5 ja 10 vuoden ajalta. Näin et jää tuijottamaan vain historiallista tuottoa.<br><br><br><br><h2>Turvallinen toimintatapa: käytännön checklist sijoittajalle</h2><br><br><br><br>Kun sääntelyä on paljon ja tuotteita tarjolla entistä enemmän, käytännön ohjeet auttavat. Tässä helppo checklist:<br><br><br><br>1. Tarkista toimilupa<br><br>- Varmista palveluntarjoajan toimilupa Finanssivalvonnan (Fiva) tai EU-viranomaisen rekisteristä.<br><br>- Esimerkki: etsi palveluntarjoajan nimi Finanssivalvonnan verkkosivulta.<br><br><br><br>2. Lue KID / tuote-esite<br><br>- Pyydä PRIIPs-asiakirjat ja rahaston avaintiedot. Jos et ymmärrä kuluja, kysy selvennystä.<br><br><br><br>3. Selvitä kulut euro- tai prosenttimääräisenä<br><br>- Pyydä arvio kokonaiskustannuksista 1, 5 ja 10 vuoden ajalle. Selvitä piilokulut, kuten säilytys- tai vaihto­kulut.<br><br><br><br>4. Kysy sijoitusneuvojan perustelut<br><br>- Miksi juuri tämä tuote sopii sinulle? Pyydä dokumentti, jossa on riskiprofiilisi ja suosituksen perusteet.<br><br><br><br>5. Tarkista ESG-väitteet<br><br>- Onko rahasto luokiteltu SFDR:n alaisesti (esim. Artikel 6, 8 tai 9)? Mitä indeksejä ja poissulkukriteerejä käytetään?<br><br><br><br>6. Varmista KYC/AML-prosessi<br><br>- Anna vaadittavat tiedot, mutta ole varuillasi, jos palvelu pyytää tarpeettomia tietoja tai rahansiirtoja epäilyttävälle tilille.<br><br><br><br>7. Diversifioi ja pidä pitkäjänteisyys mielessä<br><br>- Sääntely parantaa tiedonkulkua, mutta ei poista riskejä. Hajauta sekä maantieteellisesti että omaisuuslajikohtaisesti.<br><br><br><br>Käytännön esimerkki: Jos käytät uuden startup-alustan tokenisoitujen osakkeiden ostamiseen, varmista että alusta toimii rekisteröidyn välittäjän tai pankin kautta ja tarjoa sinulle selkeän säilytysratkaisun. Jos säilytys jää epäselväksi, siirry turvallisempaan vaihtoehtoon.<br><br><br><br><h2>Tulevaisuuden trendit: teknologia kohtaa sääntelyn</h2><br><br><br><br>Sääntely ei pysäytä innovaatioita. Se muuttaa niiden muotoa ja suuntaa. Tässä muutama megatrendi, joita kannattaa seurata:<br><br><br><br>- Tokenisaatio ja digitaaliset arvopaperit: Omaisuuserien muuttaminen token-muotoon helpottaa likviditeettiä ja pienempiä minimisijoituksia. Sääntely tulee määrittämään, milloin token lasketaan arvopaperiksi ja mitä säilytysvälineitä tarvitaan.<br><br><br><br>- Robo-advisors ja algoritmit: Automaattiset neuvontapalvelut yleistyvät. Niiden täytyy noudattaa samoja suitability-vaatimuksia kuin ihmiskonsultit. Tämä lisää läpinäkyvyyttä siitä, miten suosituksia syntyy.<br><br><br><br>- RegTech ja compliance-työkalut: Yritykset panostavat sääntelyn noudattamiseen teknologialla. Tämä parantaa raportointia ja nopeuttaa poikkeamien havaitsemista.<br><br><br><br>- Kryptosääntely ja vakaus: MiCA tuo selkeyttä kryptopalvelujen toimintaan, mutta markkina pysyy riskipitoisena. Sääntely lisää luottamusta, mutta ei poista volatiliteettia.<br><br><br><br>- ESG-integraatio: Yritysten ja rahastojen vastuullisuusraportointi paranee. Tämä helpottaa vertailemista, mutta aktiivinen sijoittaja tekee jatkossakin oman due diligence -tutkimuksensa.<br><br><br><br>Konkreettinen skenaario: Vuonna 2028 voit ostaa pienen osuuden kiinteistöstä tokenin muodossa ja myydä sen pörssiperusteisesti digitaalisella markkinapaikalla. Säilytys ja omistusoikeus todennetaan lohkoketjussa, mutta lainsäädäntö määrää, miten verotus ja sijoittajansuoja toimivat.<br><br><br><br><h2>Miten valmistautua ja pysyä ajantasalla?</h2><br><br><br><br>Sääntely muuttuu jatkuvasti. Tässä keinoja pysyä kartalla ja suojata omaa sijoitustoimintaa:<br><br><br><br>- Seuraa viranomaisia: Finanssivalvonta (Fiva), Euroopan arvopaperimarkkinaviranomainen (ESMA) ja Euroopan komissio julkaisevat ohjeita. Tilaa niiden uutiskirjeet.<br><br><br><br>- Kouluta itseäsi: Opi lukemaan KID:it, vertaile ESR- ja SFDR-luokkia ja ymmärrä kulujen vaikutus pitkällä aikavälillä.<br><br><br><br>- Kysy ja vaadi läpinäkyvyyttä: Hyvä palveluntarjoaja vastaa kysymyksiisi ja tarjoaa dokumentit helposti.<br><br><br><br>- Käytä luotettavia alustoja: Valitse palveluntarjoajia, joilla on toimilupa ja joihin voit tarvittaessa tehdä valituksen tai hakea korvausta.<br><br><br><br>- Pidä kirjaa: Säilytä sopimukset, tuote-esitteet ja neuvontaraportit. Ne ovat tarvittaessa tärkeitä todisteita.<br><br><br><br>Esimerkki: Jos seuraat SFDR-luokitusta, näet, miten eri rahastot asettuvat vastuullisuuden mittarissa. Tämä auttaa löytämään rahaston, joka vastaa arvojasi eikä vain markkinointisloganeja.<br><br><br><br>Lopuksi: sääntely on sijoittajan ystävä — mutta ei korvaus huolelliselle harkinnalle<br><br><br><br>Säännelty sijoittaminen ei poista riskejä. Sen tavoite on tehdä markkinoista reilumpia ja läpinäkyvämpiä. Uudet säännöt tarjoavat suomalaiselle sijoittajalle enemmän tietoa, paremmat keinot verrata tuotteita ja vahvemman oikeusturvan. Samalla teknologia avaa ovia uusiin sijoitusmahdollisuuksiin, mutta niiden turvallisuus riippuu usein siitä, miten hyvin ne ovat lain ja viranomaisten valvonnan piirissä.<br><br><br><br>Toimi näin:<br><br>- Varaa aikaa dokumenttien lukemiseen (KID, rahaston säännöt, asiakassopimus).<br><br>- Kysy suosituksen perusteet ja pyydä kululaskelma.<br><br>- Varmista toimilupa viranomaisrekisteristä.<br><br>- Hajauta ja pidä sijoitushorisontti mielessäsi.<br><br>- Seuraa sääntelyä ja päivitä sijoitusstrategiaasi tarvittaessa.<br><br><br><br>Säännelty sijoittaminen on enemmän kuin sana — se on työkalu, joka auttaa rakentamaan kestävämpää ja läpinäkyvämpää sijoituspolkua. Ota se käyttöön arjessasi, mutta älä unohda omaa harkintakykyäsi.<br><br><br><br>Lähteet:<br><br><a href="https://www.finanssivalvonta.fi">https://www.finanssivalvonta.fi</a><br><br><a href="https://ec.europa.eu/info/business-economy-euro/banking-and-finance/securities-markets/mifid-ii-and-mifir_en">https://ec.europa.eu/info/business-economy-euro/banking-and-finance/securities-markets/mifid-ii-and-mifir_en</a><br><br><a href="https://ec.europa.eu/info/business-economy-euro/banking-and-finance/securities-markets/priips_en">https://ec.europa.eu/info/business-economy-euro/banking-and-finance/securities-markets/priips_en</a><br><br><a href="https://finance.ec.europa.eu/sustainable-finance/tools-and-standards/sfdr_en">https://finance.ec.europa.eu/sustainable-finance/tools-and-standards/sfdr_en</a><br><br><a href="https://finance.ec.europa.eu/publications/markets-crypto-assets-regulation-mica_en">https://finance.ec.europa.eu/publications/markets-crypto-assets-regulation-mica_en</a><br><br><a href="https://www.esma.europa.eu">https://www.esma.europa.eu</a></article>
+</main>
+
+<footer>
+  <p>© 2025 Talousvahti — kirjoittanut <strong>Jere Järvelä</strong></p>
+</footer>
+
+<script>
+function toggleMenu() {
+  const menu = document.getElementById("dropdownMenu");
+  menu.style.display = (menu.style.display === "block") ? "none" : "block";
+}
+
+document.addEventListener("click", function(e) {
+  const menu = document.getElementById("dropdownMenu");
+  const hamburger = document.querySelector(".hamburger");
+
+  if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+    menu.style.display = "none";
+  }
+});
+</script>
+
+
+</body>
+</html>
