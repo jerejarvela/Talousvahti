@@ -1240,6 +1240,13 @@
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <url>
+    <loc>https://talousvahti.com/uusiutuvan-energian-ppa-sopimukset-sijoita-suoraan-energian-tuotantoon-2026-01-19.html</loc>
+    <lastmod>2026-01-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
 
 
