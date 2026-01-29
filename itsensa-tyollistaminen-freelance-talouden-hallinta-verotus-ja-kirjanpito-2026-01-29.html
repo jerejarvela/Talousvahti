@@ -1,0 +1,222 @@
+
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Itsensä työllistäminen (freelance): Talouden hallinta, verotus ja kirjanpito</title>
+<meta name="description" content="Itsensä työllistäminen (freelance): Talouden hallinta, verotus ja kirjanpito – Päivän sijoitusblogi Talousvahdissa.">
+<meta name="keywords" content="itsensä työllistäminen, freelance, verotus, kirjanpito, YEL, ennakkoverot, ALV, toiminimi, osakeyhtiö, kevytyrittäjä, hinnoittelu, budjetointi">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2566G3KPHW"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2566G3KPHW');
+</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Itsensä työllistäminen (freelance): Talouden hallinta, verotus ja kirjanpito","author":{"@type":"Person","name":"Jere Järvelä"},"publisher":{"@type":"Organization","name":"Talousvahti","logo":{"@type":"ImageObject","url":"https://talousvahti.com/logo.png"}},"datePublished":"2026-01-29","inLanguage":"fi","keywords":"itsensä työllistäminen, freelance, verotus, kirjanpito, YEL, ennakkoverot, ALV, toiminimi, osakeyhtiö, kevytyrittäjä, hinnoittelu, budjetointi","description":"Itsensä työllistäminen (freelance): Talouden hallinta, verotus ja kirjanpito","mainEntityOfPage":"https://talousvahti.com/itsensa-tyollistaminen-freelance-talouden-hallinta-verotus-ja-kirjanpito-2026-01-29.html"}</script>
+
+<!-- Fontit ja tyyli -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #0d0d0d;
+  --accent: #0077ff;
+  --text: #1a1a1a;
+  --muted: #666;
+  --bg: #ffffff;
+  --radius: 12px;
+  --shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+body {
+  font-family: 'Inter', Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+  line-height: 1.8;
+}
+
+nav {
+  background: var(--primary);
+  color: #fff;
+  padding: 18px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+nav .nav-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+nav img {
+  height: 38px;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 20px;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+nav a:hover {
+  color: var(--accent);
+}
+
+main {
+  max-width: 820px;
+  margin: 60px auto;
+  background: #fff;
+  padding: 40px 50px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+h1 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+article {
+  font-size: 1.05rem;
+  color: var(--text);
+}
+
+article p {
+  margin-bottom: 1.2rem;
+}
+
+footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-top: 60px;
+  padding: 20px 0;
+  border-top: 1px solid #eee;
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  main {
+    padding: 25px;
+    margin: 30px 10px;
+  }
+  h1 {
+    font-size: 1.7rem;
+  }
+  nav img {
+    height: 32px;
+  }
+}
+
+/* Hamburger valikko */
+.hamburger {
+  font-size: 28px;
+  cursor: pointer;
+  user-select: none;
+  display: block;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  right: 20px;
+  top: 68px;
+  background: var(--primary);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 10px 0;
+  min-width: 190px;
+  z-index: 20;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 10px 20px;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.dropdown-menu a:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+
+
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-left">
+    <img src="https://storage.mlcdn.com/account_image/1738913/3ffITIlb3p17IaYG3RcfwCueUnHxNH6iG0EtEEPU.png" alt="Talousvahti logo">
+    <strong>Talousvahti Blogi</strong>
+  </div>
+
+  <!-- Hamburger ikonit -->
+  <div class="hamburger" onclick="toggleMenu()">
+    ☰
+  </div>
+
+  <!-- Dropdown valikko -->
+  <div id="dropdownMenu" class="dropdown-menu">
+    <a href="https://talousvahti.com/">Talousuutiset</a>
+    <a href="https://talousvahti.com/kurssit.html">Pörssikurssit</a>
+    <a href="https://talousvahti.com/talouskalenteri.html">Talouskalenteri</a>
+    <a href="https://talousvahti.com/Blogi.html">Blogi</a>
+    <a href="https://talousvahti.com/sijoituslaskuri.html">Sijoituslaskuri</a>
+    <a href="https://talousvahti.com/tietoa.html">Tietoa</a>
+  </div>
+</nav>
+
+
+<main>
+  <header>
+    <h1>Itsensä työllistäminen (freelance): Talouden hallinta, verotus ja kirjanpito</h1>
+  </header>
+  <article>Itsensä työllistäminen on monelle mahdollisuus vapautta, työn mielekkyyttä ja parempaa kontrollia omasta ajasta. Samaan aikaan se tuo mukanaan vastuun talouden hallinnasta, verotuksesta ja kirjanpidosta. Tämä artikkeli on tarkoitettu suomalaisille, jotka pohtivat freelancen aloittamista tai haluavat parantaa toiminnastaan saatavaa taloudellista hyötyä. Kerron selkeästi ja konkreettisesti, mitä pitää ottaa huomioon — hinnoittelusta kassavirtaan, verovähennyksistä kirjanpitokäytäntöihin. Artikeli on evergreen: periaatteet pätevät pitkään, vaikka luvut ja säännöt päivittyvät vuosittain.<br><br><br><br><h2>Miten valita yritysmuoto: toiminimi, osakeyhtiö vai kevytyrittäjyys?</h2><br><br><br><br>Ensimmäinen käytännön valinta on yritysmuoto. Suomessa yleisimmät vaihtoehdot freelancereille ovat toiminimi (yksityinen elinkeinonharjoittaja), osakeyhtiö (Oy) ja erilaiset laskutus- tai kevytyrittäjäpalvelut.<br><br><br><br>- Toiminimi: helppo ja edullinen perustaa. Yrityksen tulos verotetaan yrittäjän henkilökohtaisena tulona. Toiminimellä toimiva maksaa myös yrittäjän eläkevakuutusta (YEL) jos työskentely on säännöllistä ja tulot ovat riittävät. Kustannukset ovat usein pienemmät kuin osakeyhtiössä, mutta henkilökohtainen vastuu veloista on suurin.<br><br>- Osakeyhtiö: sopii, jos liikevaihto kasvaa tai haluat rajoittaa henkilökohtaista vastuuta. Palkka- ja osinkojärjestelyillä voi tehdä verotehokkaampaa tulonjakoa, mutta yhtiön hallinto ja kirjanpito ovat monimutkaisempia ja kalliimpia.<br><br>- Kevytyrittäjyys/laskutuspalvelu: helppo tapa aloittaa ilman omaa yritystä. Palvelu laskuttaa asiakkaalta ja hoitaa kirjanpidon sekä verotuksen puolestasi. Saat palkan ilman vaivaa, mutta palvelumaksu pienentää tuottoasi.<br><br><br><br>Konkretiikka: jos aloitat pienimuotoisesti ja haluat testata markkinoita, kevytyrittäjyys on hyvä vaihtoehto. Kun tulot vakioituvat ja haluat pienentää verorasitetta pitkällä tähtäimellä, toiminimi tai osakeyhtiö voivat tulla kysymykseen.<br><br><br><br><h2>Talouden hallinta: budjetointi, hinnoittelu ja kassavirta</h2><br><br><br><br>Talouden hallinta on freelancelle alfa ja omega. Ilman tarkkaa lukujen seuraamista työ voi tuottaa vähemmän kuin toivotaan. Keskity kolmeen asiaan: budjetointi, hinnoittelu ja kassavirran hallinta.<br><br><br><br>- Budjetointi: laske kuukausittaiset kiinteät menot (vuokra, netti, vakuutukset, YEL, puhelin) ja arvioi muuttuvat kulut (materiaalit, matkakulut). Lisää vararahasto yllättäviä pätkiä varten. Hyvä tavoite on 3–6 kuukauden kiinteiden kulujen suuruinen puskurirahasto.<br><br>- Hinnoittelu: määritä tuntihinta tai projektihinta siten, että katat paitsi oman työsi myös yrityksen kulut ja säästöt. Muista huomioida myös laskutuksen epävarmuus — kaikkia tunteja ei laskuteta. Yksinkertainen laskentakaava tuntihinnoitteluun:<br><br>  - Haluttu bruttopalkka vuodessa + arvion mukaiset kulut + YEL + säästöt ja verot jaetaan laskutettaviin tunteihin vuodessa.<br><br>  - Esimerkki: tavoittelet 40 000 € nettotuloa ennen veroja ja haluat kattaa 10 000 € kuluja vuodessa. Jos laskutat 1200 tuntia vuodessa, tuntihinta = (40 000 + 10 000) / 1200 = ~41,7 €/h. Tähän lisätään arvonlisävero ja mahdolliset muut marginaalit.<br><br>- Kassavirta: ennakkoverot ja laskutusaikataulut voivat aiheuttaa käteisvikaa. Pyri laskuttamaan säännöllisesti ja lyhyellä maksuajalla, käytä osamaksua isoihin projekteihin ja määritä selkeät perintäkäytännöt viivästyneille laskuille.<br><br><br><br>Pienimuotoinen esimerkki hinnoittelusta:<br><br>Asiakas tilaa kerran kuukaudessa sisällöntuotantopaketin, joka vie 10 tuntia. Haluat vuoden aikana 36 000 € käteen (ennen veroja) ja arvioit kulujesi olevan 9 000 €. Laskutettavia tunteja arviona 1000/vuosi. Tuntihinta = (36 000 + 9 000) / 1000 = 45 €/h. Paketti hinnoitellaan 450 € + ALV.<br><br><br><br><h2>Verotus: ennakkoverot, verovähennykset ja YEL</h2><br><br><br><br>Verotus on usein freelancereille se pelottavin osio, mutta se on hallittavissa. Suomessa yrittäjän verotus eroaa palkansaajan verotuksesta siinä, että yrittäjä maksaa itse ennakkoveroja ja huolehtii sosiaaliturvasta pääosin YEL-maksujen kautta.<br><br><br><br>- Ennakkoverot: Verohallinto määrää yrittäjälle ennakkoverot perustuen arvioituun vuosituloon. Ne maksetaan useassa erässä tai haetaan verokortilla. Jos arvio osoittautuu selvästi alakanttiin, voi joutua maksamaan korotettua veroa ja viivästyskorkoja. Siksi kannattaa olla realistinen ja päivittää arvio tarvittaessa.<br><br>- Verovähennykset: yrittäjän verotuksessa hyväksytään kulut, jotka liittyvät tulonhankintaan. Tyypillisiä vähennyksiä ovat työhuonevähennys (jos työ tehdään kotona ja täyttää ehdot), matkakulut, laitteet, koulutus (ammattitaidon ylläpito), markkinointi ja työvälineet. Pidä kuitit ja dokumentoi kulujen yhteys liiketoimintaan.<br><br>- YEL (yrittäjän eläkevakuutus): YEL on sekä eläketurva että sosiaaliturvan peruspilari yrittäjälle. Jos yrittäjän työpanos on merkittävä ja tulot ylittävät virallisen rajan, YEL-vakuutus on pakollinen. YEL:n perusteella määräytyy tuleva eläke, sairauspäiväraha ja muut sosiaalietuudet. Pienikin aliarviointi palkkatasossa vaikuttaa eläke- ja sosiaaliturvaan, joten kannattaa miettiä YEL-työtulon optimaalista tasoa.<br><br>- Arvonlisävero (ALV): palveluista ja tuotteista peritään yleensä ALV. Rekisteröityminen ALV-velvolliseksi tapahtuu Verohallinnolle. ALV:n suhteen on erityissääntöjä, esim. käännetty verovelvollisuus tietyillä aloilla ja raja-arvot pienyrityksille. ALV vaikuttaa hinnoitteluun ja kassavirtaan — sinun pitää periä ALV asiakkaalta ja tilittää se verottajalle.<br><br><br><br>Esimerkki ennakkoverosta ja verovähennyksistä:<br><br>Olet arvioinut verotettavan tuloksesi 30 000 € vuodelle. Veroprosenttisi ennakkoveroarviossa on 25 % (esimerkki). Ennakkoverosi vuodessa olisivat siis noin 7 500 € maksuissa jaettuna. Jos olet käyttänyt 3 000 € työvälineisiin ja 2 000 € koulutukseen (kumpikin vähennyskelpoista), verotettava tulos pienenee ja ennakkoverot kannattaa päivittää Verohallintoon.<br><br><br><br>Muista: esimerkit ovat yksinkertaistuksia. Tarkat veroprosentit ja vähennyskelpoisuudet riippuvat henkilökohtaisesta tilanteesta, joten tee laskelmat yhdessä tilitoimiston tai veroneuvojan kanssa.<br><br><br><br><h2>Kirjanpito käytännössä: mitä seurata ja miten hoitaa</h2><br><br><br><br>Kirjanpito ei ole pelkkää pakollisuutta; se on työkalu, joka kertoo liiketoimintasi tilan. Hyvin pidetty kirjanpito helpottaa verojen maksamista, rahoituksen hakemista ja päätöksentekoa.<br><br><br><br>- Kirjanpitovelvollisuus: toiminimen ja osakeyhtiön tulee pitää kirjanpitoa. Kevytyrittäjän kohdalla palvelu hoitaa sen puolestasi. Kirjanpidon laajuus riippuu yrityksen koosta ja toiminnasta. Pidä erillinen yritystili ja kortti — selkeys säästää aikaa.<br><br>- Kirjausperiaatteet: tuloja ja menoja kirjataan asianmukaisesti. Usein freelanceri käyttää kuukausittaista kirjanpitoa tai kirjaa laskut ja kulut kun ne syntyvät (suoriteperusteinen) tai maksuperusteinen kirjanpito pienemmissä yrityksissä.<br><br>- Ohjelmistot ja tilitoimisto: nykyaikaiset kirjanpito-ohjelmat automatisoivat laskutusta, ALV-laskelmia ja raportteja. Pienellä volyymilla voit hoitaa paljon itse, mutta kasvun myötä kannattaa ulkoistaa tilitoimistolle, joka varmistaa oikeellisuuden ja ajantasaisuuden.<br><br>- Säilytys ja dokumentaatio: säilytä kuitit ja sopimukset vähintään verotuksen edellyttämän ajan. Skannaa ja tallenna dokumentit sähköisesti.<br><br><br><br>Käytännön vinkkejä kirjanpitoon:<br><br>- Tee kuukausittainen tiliöinti: näin vältät ison kertatöryn vuoden lopussa.<br><br>- Hyödynnä automaattista kirjanpitoa: pankkiyhteydet ja laskutusohjelmat vähentävät manuaalista työtä.<br><br>- Kysy apua, jos epäilyttää: pieni auktorisoitu tilitoimisto voi säästää rahaa ja hermoja pitkällä aikavälillä.<br><br><br><br><h3>Esimerkki yksinkertaisesta kuukausikirjauksesta</h3><br><br>Kuukausi: maaliskuu. Laskutit 3 projektia yhteensä 6 000 € + ALV. Sait palkkatulon sijaan yritystuloa. Kuukauden kulut: kotitoimiston osuuden käyttöä 200 €, ohjelmistot 50 €, matkakulut 100 €, laitehankinta 500 € (poistoa voi joutua tekemään). Kirjaa tulot ja kulut, laske verottajalle menevä arvio ja pidä rahaa ennakkoveroja varten.<br><br><br><br><h2>Vähennykset, optimointi ja riskien hallinta</h2><br><br><br><br>Vähennysten optimoiminen ja riskien hallinta tekevät freelancesta kestävän ammatin.<br><br><br><br>- Verovähennykset: pidä kirjaa kaikista liiketoimintaan liittyvistä kuluista. Kysy verottajalta tai tilitoimistolta, mikä on vähennyskelpoista. Työhuonevähennys, koulutus- ja matkamenoissa sekä työvälineissä on usein mahdollista vähentää.<br><br>- Sosiaaliturva: huolehdi YEL:stä — liian alhainen YEL vähentää tulevaa eläkettä ja sairasajan tuloa. Toisaalta liian korkea YEL lisää kuluja lyhyellä tähtäimellä. Tasapaino on tärkeä.<br><br>- Vakuutukset: hanki yritysvakuutus ja vastuuvakuutus. Freelancereilla on riski maksuviiveistä ja vahinkotilanteista — nämä vakuutukset suojaavat talouttasi.<br><br>- Säästä pahan päivän varalle: tee hätärahasto yrityksen käyttöön. Yrittäjyydessä tulo voi vaihdella paljon; varaudu hiljaisempiin jaksoihin.<br><br><br><br><h3>Esimerkkilaskelma: paljonko pitää laskuttaa kattaaksesi kaiken?</h3><br><br>Tavoittelet henkilökohtaista nettotuloa (ennen veroja) 35 000 €/vuosi. Kiinteät kulut 8 000 €, YEL ja vakuutukset 4 000 €. Arvioitu veroprosentti yhteensä 25 %. Jos laskutat 1 000 tuntia vuodessa, tarvittava tuntihinta = (35 000 + 8 000 + 4 000) / 1 000 = 47 €/h. Verot ja ALV päälle. Kapasiteetti ja todelliset laskutettavat tunnit vaikuttavat hinnoitteluun — jos laskutettavia tunteja on vain 700, tuntihinta nousee 67 €/h.<br><br><br><br>Lopuksi: itsensä työllistäminen on taloudellinen johtamistehtävä. Mitä paremmin ymmärrät verot, kirjanpidon ja kassavirran, sitä kestävämmäksi ja kannattavammaksi freelancer-urasi muodostuu. Aloita yksinkertaisesti: tee budjetti, laske tuntihinta, varmista YEL ja ennakkoverot ja valitse yritysmuoto, joka tukee tavoitteitasi. Kun kasvua tulee, päivitä järjestelmät ja harkitse ammattilaisen apua kirjanpitoon ja verosuunnitteluun.<br><br><br><br>Lisäksi suosittelen pysymään ajan tasalla viranomaisten ohjeista ja hyödyntämään verkon opastusta. Alla muutama hyödyllinen lähde jatkolukemiseksi ja virallisiksi tiedonlähteiksi.<br><br><br><br>Lähteet:<br><br><a href="https://www.vero.fi">https://www.vero.fi</a><br><br><a href="https://www.ytj.fi">https://www.ytj.fi</a><br><br><a href="https://www.kela.fi">https://www.kela.fi</a><br><br><a href="https://tela.fi">https://tela.fi</a><br><br><a href="https://www.yrittajat.fi">https://www.yrittajat.fi</a></article>
+</main>
+
+<footer>
+  <p>© 2025 Talousvahti — kirjoittanut <strong>Jere Järvelä</strong></p>
+</footer>
+
+<script>
+function toggleMenu() {
+  const menu = document.getElementById("dropdownMenu");
+  menu.style.display = (menu.style.display === "block") ? "none" : "block";
+}
+
+document.addEventListener("click", function(e) {
+  const menu = document.getElementById("dropdownMenu");
+  const hamburger = document.querySelector(".hamburger");
+
+  if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+    menu.style.display = "none";
+  }
+});
+</script>
+
+
+</body>
+</html>
