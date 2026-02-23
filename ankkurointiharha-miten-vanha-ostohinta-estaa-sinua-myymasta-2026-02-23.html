@@ -1,0 +1,222 @@
+
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ankkurointiharha: Miten vanha ostohinta estää sinua myymästä?</title>
+<meta name="description" content="Ankkurointiharha: Miten vanha ostohinta estää sinua myymästä? – Päivän sijoitusblogi Talousvahdissa.">
+<meta name="keywords" content="ankkurointiharha, anchoring bias, ostohinta, sijoittaminen, sijoituspsykologia, myyntipäätös, verotus, stop-loss, portfolio, tunteet sijoittamisessa">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2566G3KPHW"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2566G3KPHW');
+</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Ankkurointiharha: Miten vanha ostohinta estää sinua myymästä?","author":{"@type":"Person","name":"Jere Järvelä"},"publisher":{"@type":"Organization","name":"Talousvahti","logo":{"@type":"ImageObject","url":"https://talousvahti.com/logo.png"}},"datePublished":"2026-02-23","inLanguage":"fi","keywords":"ankkurointiharha, anchoring bias, ostohinta, sijoittaminen, sijoituspsykologia, myyntipäätös, verotus, stop-loss, portfolio, tunteet sijoittamisessa","description":"Ankkurointiharha: Miten vanha ostohinta estää sinua myymästä?","mainEntityOfPage":"https://talousvahti.com/ankkurointiharha-miten-vanha-ostohinta-estaa-sinua-myymasta-2026-02-23.html"}</script>
+
+<!-- Fontit ja tyyli -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #0d0d0d;
+  --accent: #0077ff;
+  --text: #1a1a1a;
+  --muted: #666;
+  --bg: #ffffff;
+  --radius: 12px;
+  --shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+body {
+  font-family: 'Inter', Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+  line-height: 1.8;
+}
+
+nav {
+  background: var(--primary);
+  color: #fff;
+  padding: 18px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+nav .nav-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+nav img {
+  height: 38px;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 20px;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+nav a:hover {
+  color: var(--accent);
+}
+
+main {
+  max-width: 820px;
+  margin: 60px auto;
+  background: #fff;
+  padding: 40px 50px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+h1 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+article {
+  font-size: 1.05rem;
+  color: var(--text);
+}
+
+article p {
+  margin-bottom: 1.2rem;
+}
+
+footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-top: 60px;
+  padding: 20px 0;
+  border-top: 1px solid #eee;
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  main {
+    padding: 25px;
+    margin: 30px 10px;
+  }
+  h1 {
+    font-size: 1.7rem;
+  }
+  nav img {
+    height: 32px;
+  }
+}
+
+/* Hamburger valikko */
+.hamburger {
+  font-size: 28px;
+  cursor: pointer;
+  user-select: none;
+  display: block;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  right: 20px;
+  top: 68px;
+  background: var(--primary);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 10px 0;
+  min-width: 190px;
+  z-index: 20;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 10px 20px;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.dropdown-menu a:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+
+
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-left">
+    <img src="https://storage.mlcdn.com/account_image/1738913/3ffITIlb3p17IaYG3RcfwCueUnHxNH6iG0EtEEPU.png" alt="Talousvahti logo">
+    <strong>Talousvahti Blogi</strong>
+  </div>
+
+  <!-- Hamburger ikonit -->
+  <div class="hamburger" onclick="toggleMenu()">
+    ☰
+  </div>
+
+  <!-- Dropdown valikko -->
+  <div id="dropdownMenu" class="dropdown-menu">
+    <a href="https://talousvahti.com/">Talousuutiset</a>
+    <a href="https://talousvahti.com/kurssit.html">Pörssikurssit</a>
+    <a href="https://talousvahti.com/talouskalenteri.html">Talouskalenteri</a>
+    <a href="https://talousvahti.com/Blogi.html">Blogi</a>
+    <a href="https://talousvahti.com/sijoituslaskuri.html">Sijoituslaskuri</a>
+    <a href="https://talousvahti.com/tietoa.html">Tietoa</a>
+  </div>
+</nav>
+
+
+<main>
+  <header>
+    <h1>Ankkurointiharha: Miten vanha ostohinta estää sinua myymästä?</h1>
+  </header>
+  <article>Ankkurointiharha eli anchoring bias on yksi kustannustehokkaimmin sijoittajan tuottoa syövistä psykologisista ansoista. Kun jonkin osakkeen, indeksirahaston tai krypton alkuperäinen ostohinta jää referenssiksi, päätöksenteko voi jumittaa siihen. Tämä estää myymästä, vaikka markkinatilanne, yhtiön fundamentit tai paremmat sijoitusvaihtoehdot puhuisivat toista. Tässä artikkelissa käydään läpi, mitä ankkurointiharha tarkoittaa käytännössä, annetaan konkreettisia esimerkkejä suomalaisesta sijoittajasta ja tarjotaan käytännöllisiä keinoja, joilla vapautat itsesi ostohinnan kahleista.<br><br><br><br><h2>Mitä ankkurointiharha on ja miksi se vaikuttaa sijoittamiseen?</h2><br><br><br><br>Ankkurointiharha tarkoittaa taipumusta antaa liikaa painoarvoa ensimmäiselle saamallemme numerolle tai tiedolle päätöstä tehdessä. Sijoittamisessa tämä ensimmäinen numero on usein ostohinta. Kun näemme portfoliomme voitto- tai tappioprosentin, aivomme vertaavat sitä herkästi alkuperäiseen hintaan. Tuloksena voi olla epäloogista käyttäytymistä: emme halua realisoida tappiota (koska se vahvistaa “väärän” ostopäätöksen), emmekä halua realisoida voittoa, jos ostohinta oli tuntuvasti korkeampi kuin nykyinen markkinahinta, koska mielessämme “menetämme” mahdollisen nousun.<br><br><br><br>Miksi näin tapahtuu? Ihminen säästää kognitiivista energiaa. Ensimmäinen tieto toimii ankkurina, jonka ympärille muut tulkinnat rakentuvat. Tversky ja Kahneman kuvasivat ankkurointiharhan jo 1970-luvulla, ja myöhemmät tutkimukset ovat toistuvasti näyttäneet, kuinka voimakas vaikutus tällä heuristiikalla on taloudellisissa päätöksissä. Sijoittajalle tämä tarkoittaa usein sekä menetettyjä tuottoja että ylimääräistä stressiä.<br><br><br><br>Konkreettinen seuranta on usein heikosti sidottu markkina- tai yhtiöanalyysiin. Moni seuraa portfoliota prosentteina ostohinnasta, eikä mieti, mitä sijoituksen myyminen vapauttaisi: pääomaa parempaan kohteeseen, vähemmän riskiä tai verotukseen liittyviä mahdollisuuksia.<br><br><br><br><h2>Konkreettisia esimerkkejä suomalaisesta sijoittajasta</h2><br><br><br><br>Esimerkki 1 — Osake, joka ei täyttänyt odotuksia<br><br>Kuvitellaan Pekka, joka osti suomalaisen teknologiayhtiön osakkeita hintaan 30 euroa vuonna 2018. Vuoden 2020 jälkeen yritys ei saavuttanut odotettua kasvua. Osake on nyt 18 euroa. Pekka pitää kiinni ostohinnasta ja kokee myymisen tappiona. Samaan aikaan hän pitää rahaa sidottuna, vaikka olisi vaihtoehtoja: osakkeita, joissa kasvu ja arvonmuodostus näyttävät todennäköisemmiltä.<br><br><br><br>Mikä olisi rationaalista? Arvioida yhtiön nykyiset ja tulevat näkymät. Jos fundamentit ovat muuttuneet pysyvästi heikkoihin, tappion realisoiminen ja sijoitusvarallisuuden uudelleenallokointi voi parantaa pitkän aikavälin tuottoa. Jos yhtiön näkymät ovat edelleen vahvat, ostohinnan merkityksen voi jättää oman onnensa nojaan ja keskittyä tulevaan tuottopotentiaaliin.<br><br><br><br>Esimerkki 2 — Voittopositio, josta on vaikea luopua<br><br>Sari osti pieniä määriä ulkomaista kulutustavarakonsernia hintaan 40 euroa per osake. Osake nousi vauhdilla 120 euroon. Nykyinen hinta on 90 euroa. Sari muistaa ostohinnan 40 euroa ja kokee, että myymällä hän “luovuttaa” mahdollisen nousun, koska hän vertaa aina nykyistä hintaa siihen, mitä maksoi alun perin. Tuloksena hän ei myy ja menettää mahdollisuuden realisoida voittoja ja pienentää riskiä ennen markkinalaskua.<br><br><br><br>Rationaalinen lähestymistapa olisi asettaa myyntisyy tai tavoite: esimerkiksi myydä osa positiosta, kun osuus portfoliosta ylittää tietyn tason, tai myydä voittoja säännöllisesti uudelleensijoittamista varten.<br><br><br><br>Esimerkki 3 — Verot ja tappioiden realisointi (tax-loss harvesting)<br><br>Moni suomalainen sijoittaja unohtaa verotuksen mahdollisuudet. Jos sijoitus on tappiolla, sen myyminen voi laskea verotettavaa pääomatuloa myöhemmin realisoiduista voitoista. Ankkuroituminen ostohintaan saa monet lykkäämään tappioiden realisointia, vaikka verohyödyt voisivat parantaa nettotuottoa pitkällä aikavälillä.<br><br><br><br><h2>Miten tunnistat ankkurointiharhan omassa toiminnassasi?</h2><br><br><br><br>- Huomaat vertaavasi kaikkia sijoituspäätöksiäsi aina alkuperäiseen ostohintaan.<br><br>- Viivyttelet myymistä ja perusteleet sen sillä, että “jos vain paluisi ostohintaan, en olisi hävittänyt mitään”.<br><br>- Sijoitus ei sovi enää strategiaasi, mutta pidät siitä kiinni tunnesyistä.<br><br>- Pidät tappiollisia sijoituksia ajatellen, että olet oikeassa koska “ostohinta oli parempi”.<br><br>- Et kirjoita syitä myydä tai ostaa ennen päätöstä, vaan päätös syntyy tunteen perusteella.<br><br><br><br>Itsearvioinnissa on hyvä käyttää sijoituspäiväkirjaa. Kirjaa aina ostohinta, sijoituksen tarkoitus, aikahorisontti ja myyntiehdot heti oston yhteydessä. Tämä yksinkertainen käytäntö paljastaa nopeasti, oletko ankkuroitunut vai teetkö rationaalisia päätöksiä.<br><br><br><br><h2>Keinoja välttää ankkurointiharha — konkreettiset ja käytännölliset</h2><br><br><br><br>1) Aseta ennakkoon selkeät säännöt<br><br>- Määrittele osto- ja myyntiperusteet ennen ostoa: tavoitehinta, stop-loss-taso, aikahorisontti ja fundamentit, jotka muuttavat näkemystä.<br><br>- Esimerkki: “Myyn 50 % positiosta, jos osake nousee 40 % kolmen vuoden sisällä. Myyn kaikki, jos liikevoittomarginaali laskee alle 5 % pysyvästi.”<br><br><br><br>2) Käytä stop-loss- ja take-profit-työkaluja<br><br>- Ne eivät poista riskiä, mutta vähentävät tunteiden vaikutusta. Stop-loss asettaa automaattisen myyntitason, joka suojaa suurilta tappioilta.<br><br>- Muista asettaa ne järkevästi, jotta satunnainen volatiliteetti ei aja ulos tarpeettomasti.<br><br><br><br>3) Hajauta ja painota uudelleen systemaattisesti<br><br>- Rebalansointi pakottaa myymään voittajia ja ostamaan tappiollisia sijaan. Painojen tarkistus esimerkiksi vuosittain tai kun tietty rajapyykki ylittyy auttaa voittajia realisoimaan automaattisesti.<br><br>- Esimerkki: Jos osakesalkun tavoite on 70/30 osakkeet/korot ja osakkeet nousevat 80 %:n osuuteen, myy 10 % ja osta korkoja.<br><br><br><br>4) Käytä “objective checklist” -menetelmää<br><br>- Ennen myyntiä käy läpi muutama objektiivinen kysymys: ovatko yhtiön fundamentit heikentyneet? Onko parempaa käyttökohdetta pääomalle? Muuttuuko verotilanne edullisemmaksi realisoimalla voitto/tappio?<br><br>- Jos vastaat kyllä yhteen, harkitse myyntiä.<br><br><br><br>5) Hyödynnä verosuunnittelua<br><br>- Suomessa voit vähentää luovutustappiota verotuksessa. Jos sinulla on verotettavia voittoja tulevaisuudessa, voit hyödyntää tappion realisointia niiden vähentämiseen.<br><br>- Tietyissä tapauksissa kannattaa myydä ja ostaa samanlainen instrumentti takaisin heti, mutta huomioi verotus- ja transaktiokustannukset sekä mahdolliset säännöt osakkeiden takaisinostosta (on eri käsite kuin esimerkiksi Yhdysvaltain wash sale -säännös).<br><br><br><br>6) Pyydä ulkopuolista mielipidettä<br><br>- Neutraali sijoitusneuvoja tai kokenut sijoituskaveri voi auttaa näkökulman saamisessa.<br><br>- Yksinkertainen kysymys “Mitä tekisit, jos et olisi maksanut tästä mitään?” voi paljastaa ankkuroituneisuuden.<br><br><br><br>7) Pidä sijoituspäiväkirja<br><br>- Kirjaa oston ja myynnin syyt, tunteet ja päätökset. Muutaman vuoden päästä näet selvästi, kuinka usein olet pitänyt kiinni ostohinnasta turhaan.<br><br>- Tämä käytäntö vahvistaa oppimista ja vähentää toistuvien virheiden tekemistä.<br><br><br><br><h2>Myyntipäätös: mitä tarkistaa käytännössä</h2><br><br><br><br>Ennen myyntipäätöstä käy läpi lyhyt check-list:<br><br>- Perusteko: Onko fundamentti muuttunut? (liikevaihto, kannattavuus, markkina-asema)<br><br>- Parempi vaihtoehto: Onko pääomalla parempi käyttöpaikka muualla?<br><br>- Verovaikutus: Hyödyntääkö myynti verotuksellisesti?<br><br>- Salkun tasapaino: Ylittääkö positio tavoitepainon?<br><br>- Tunteet: Teenkö tämän, koska tunnekytkin sanoo “en halua hävitä”? Jos kyllä, harkitse siirtymistä objektiiviseen säännöstöön.<br><br><br><br>Esimerkki käytännöstä: Anna myyntiehdot kirjattuna. Jos yhtiön osuus salkusta kasvaa yli 10 prosenttiyksikköä tavoitepainosta, myy automaattisesti osa. Näin et vertaa joka hetki ostohintaan, vaan noudatat etukäteen laadittua sääntöä.<br><br><br><br><h2>Mitä ankkurointiharha ei tarkoita — hyvät syyt pitää sijoitusta</h2><br><br><br><br>On olemassa hyviä syitä olla myymättä sijoitusta vaikka verossa näkyisi tappiota. Pitkäaikainen verotuksellinen suunnittelu, dividendistrategia tai odotettavissa oleva fundamentaalinen elpyminen voivat olla perusteltuja syitä pitää positioita. Erona on tietoisuus: pidätkö sijotusta analyyttisistä syistä vai koska et halua hyväksyä alinta käykäistä ostohintaa? Kun päätös tehdään tietoisesti, se ei ole ankkuroitumista.<br><br><br><br><h2>Yhteenveto — vapauta itsesi ostohinnan ikeestä</h2><br><br><br><br>Ankkurointiharha on helposti tunnistettavissa ja sitä vastaan voi taistella järjestelmällisillä toimilla. Ennakkoon laaditut säännöt, rebalansointi, verotuksen tunteminen ja sijoituspäiväkirjan pitäminen auttavat tekemään myyntipäätöksiä rationaalisesti. Muista, että olet sijoittajana vastuussa varallisuutesi kasvattamisesta, ei ostohinnan puolustamisesta. Ostohinta on menneisyyttä — tärkeintä on, mitä sijoitus voi tehdä tulevaisuudessa ja miten se sopii kokonaisstrategiaasi.<br><br><br><br>Aloita pienin askelin: tee lista sijoituksista, joihin tunnet ankkuroituneisuutta, ja sovella yllä olevia check-listoja yhteen kerrallaan. Usein juuri pieni muutos päätöksentekoprosessissa parantaa nettotuottoa ja vähentää päätöksenteon aiheuttamaa stressiä.<br><br><br><br>Lähteet:<br><br><a href="https://www.investopedia.com/terms/a/anchoring-bias.asp">https://www.investopedia.com/terms/a/anchoring-bias.asp</a><br><br><a href="https://www.nobelprize.org/prizes/economic-sciences/2002/kahneman/lecture/">https://www.nobelprize.org/prizes/economic-sciences/2002/kahneman/lecture/</a><br><br><a href="https://www.cfainstitute.org/en/research/foundation/2017/behavioral-finance">https://www.cfainstitute.org/en/research/foundation/2017/behavioral-finance</a><br><br><a href="https://hbr.org/2008/01/the-hidden-traps-in-decision-making">https://hbr.org/2008/01/the-hidden-traps-in-decision-making</a><br><br><a href="https://www.nordnet.fi/fi/info/sijoittamisen-perusteet">https://www.nordnet.fi/fi/info/sijoittamisen-perusteet</a><br><br><a href="https://www.vero.fi/henkiloasiakkaat/omaisuus/myynti-ja-luovutusvoitto/">https://www.vero.fi/henkiloasiakkaat/omaisuus/myynti-ja-luovutusvoitto/</a></article>
+</main>
+
+<footer>
+  <p>© 2025 Talousvahti — kirjoittanut <strong>Jere Järvelä</strong></p>
+</footer>
+
+<script>
+function toggleMenu() {
+  const menu = document.getElementById("dropdownMenu");
+  menu.style.display = (menu.style.display === "block") ? "none" : "block";
+}
+
+document.addEventListener("click", function(e) {
+  const menu = document.getElementById("dropdownMenu");
+  const hamburger = document.querySelector(".hamburger");
+
+  if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+    menu.style.display = "none";
+  }
+});
+</script>
+
+
+</body>
+</html>
