@@ -1,0 +1,222 @@
+
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tappioherkkyys (loss aversion): Miksi myyt voittajat liian aikaisin?</title>
+<meta name="description" content="Tappioherkkyys (loss aversion): Miksi myyt voittajat liian aikaisin? – Päivän sijoitusblogi Talousvahdissa.">
+<meta name="keywords" content="loss aversion,tappioiden välttäminen,tappioherkkyys,sijoituspsykologia,voittajien myyminen,disposition effect,sijoittaminen,stop loss,portfolion uudelleentasapainotus,behavioral finance">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2566G3KPHW"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2566G3KPHW');
+</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Tappioherkkyys (loss aversion): Miksi myyt voittajat liian aikaisin?","author":{"@type":"Person","name":"Jere Järvelä"},"publisher":{"@type":"Organization","name":"Talousvahti","logo":{"@type":"ImageObject","url":"https://talousvahti.com/logo.png"}},"datePublished":"2026-02-25","inLanguage":"fi","keywords":"loss aversion,tappioiden välttäminen,tappioherkkyys,sijoituspsykologia,voittajien myyminen,disposition effect,sijoittaminen,stop loss,portfolion uudelleentasapainotus,behavioral finance","description":"Tappioherkkyys (loss aversion): Miksi myyt voittajat liian aikaisin?","mainEntityOfPage":"https://talousvahti.com/tappioherkkyys-loss-aversion-miksi-myyt-voittajat-liian-aikaisin-2026-02-25.html"}</script>
+
+<!-- Fontit ja tyyli -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #0d0d0d;
+  --accent: #0077ff;
+  --text: #1a1a1a;
+  --muted: #666;
+  --bg: #ffffff;
+  --radius: 12px;
+  --shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+body {
+  font-family: 'Inter', Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+  line-height: 1.8;
+}
+
+nav {
+  background: var(--primary);
+  color: #fff;
+  padding: 18px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+nav .nav-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+nav img {
+  height: 38px;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 20px;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+nav a:hover {
+  color: var(--accent);
+}
+
+main {
+  max-width: 820px;
+  margin: 60px auto;
+  background: #fff;
+  padding: 40px 50px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+h1 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+article {
+  font-size: 1.05rem;
+  color: var(--text);
+}
+
+article p {
+  margin-bottom: 1.2rem;
+}
+
+footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-top: 60px;
+  padding: 20px 0;
+  border-top: 1px solid #eee;
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  main {
+    padding: 25px;
+    margin: 30px 10px;
+  }
+  h1 {
+    font-size: 1.7rem;
+  }
+  nav img {
+    height: 32px;
+  }
+}
+
+/* Hamburger valikko */
+.hamburger {
+  font-size: 28px;
+  cursor: pointer;
+  user-select: none;
+  display: block;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  right: 20px;
+  top: 68px;
+  background: var(--primary);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 10px 0;
+  min-width: 190px;
+  z-index: 20;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 10px 20px;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.dropdown-menu a:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+
+
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-left">
+    <img src="https://storage.mlcdn.com/account_image/1738913/3ffITIlb3p17IaYG3RcfwCueUnHxNH6iG0EtEEPU.png" alt="Talousvahti logo">
+    <strong>Talousvahti Blogi</strong>
+  </div>
+
+  <!-- Hamburger ikonit -->
+  <div class="hamburger" onclick="toggleMenu()">
+    ☰
+  </div>
+
+  <!-- Dropdown valikko -->
+  <div id="dropdownMenu" class="dropdown-menu">
+    <a href="https://talousvahti.com/">Talousuutiset</a>
+    <a href="https://talousvahti.com/kurssit.html">Pörssikurssit</a>
+    <a href="https://talousvahti.com/talouskalenteri.html">Talouskalenteri</a>
+    <a href="https://talousvahti.com/Blogi.html">Blogi</a>
+    <a href="https://talousvahti.com/sijoituslaskuri.html">Sijoituslaskuri</a>
+    <a href="https://talousvahti.com/tietoa.html">Tietoa</a>
+  </div>
+</nav>
+
+
+<main>
+  <header>
+    <h1>Tappioherkkyys (loss aversion): Miksi myyt voittajat liian aikaisin?</h1>
+  </header>
+  <article>Tappioiden välttäminen (loss aversion) on yksi voimakkaimmista psykologisista vinoumista, joka vaikuttaa sijoittajien päätöksiin. Moni suomalainen sijoittaja tunnistaa itsessään ilmiön: pidät lujasti tappiollista osaketta ja myyt nopeasti voittajan, jotta se ei muutu tappioksi. Tämä käytös voi heikentää tuottoja pitkällä aikavälillä. Tässä artikkelissa selitän, miksi näin tapahtuu, annan konkreettisia esimerkkejä ja käytännön työkaluja voittajien liian aikaisen myynnin välttämiseen.<br><br><br><br><h2>Mitä tappioherkkyys (loss aversion) tarkoittaa?</h2><br><br><br><br>Tappioherkkyys tarkoittaa sitä, että ihmiset kokevat tappion voimakkaammin kuin saman suuruista voittoa. Kahneman ja Tverskyn prospektiteoria (prospect theory) kuvasi tämän ilmiön: 100 euron tappio sattuu enemmän kuin 100 euron voitto tuottaa mielihyvää. Sijoittamisessa tämä näkyy usein kahdella tavalla:<br><br>- Sijoittaja pitää kiinni tappiollisista positioista toivoen palautumista (losses are held).<br><br>- Sijoittaja myy voittajia liian aikaisin lukitakseen voiton ja välttääkseen mahdollisen takaiskun (winners are sold).<br><br><br><br>Tämä käyttäytymismalli tunnetaan myös nimellä disposition effect — taipumus myydä voittoa tuottavat sijoitukset liian aikaisin ja pitää tappiollisia sijoituksia liian pitkään.<br><br><br><br><h2>Miksi myyt voittajat liian aikaisin? Selkeät psykologiset mekanismit</h2><br><br><br><br>Tässä muutama syy, miksi voittajat lähtevät liian aikaisin:<br><br><br><br>1) Tappion pelko ja voiton säilyttäminen<br><br>- Sijoittaja haluaa "varmistaa" voitetun summan. Myymällä heti hän saa pienen, konkreettisen voiton, jonka aivo tulkitsee menestykseksi. Tämä tuo välitöntä mielihyvää ja vähentää ahdistusta.<br><br><br><br>2) Ankkurointi ja referenssipisteet<br><br>- Kun ostat osakkeen hintaan 10 €, hinta 12 € tuntuu hyvältä. Ankkuroit ostoarvoon: voiton hetkellä mieli vertaa hintaa ostoon, ja pieni voitto varmistetaan mieluummin kuin seurataan lisänousua.<br><br><br><br>3) Itsekontrollin palkitseminen<br><br>- Lyhyen aikavälin palkinnon hakeminen voittaa usein pitkän aikavälin suunnitelman, varsinkin jos markkina on ailahteleva.<br><br><br><br>4) Sosiaalinen ja kulttuurinen paine<br><br>- On helpompi kertoa onnistuneesta pikavoitosta kuin odottaa vuosia kestävää sijoitusta. Tämä voi vaikuttaa etenkin aktiivisiin sijoittajiin ja some-aktiiveihin.<br><br><br><br>Konkreettinen esimerkki:<br><br>Kuvitellaan, että ostat 100 osaketta hintaan 10 € (kokonaisuus 1000 €). Osake nousee 15 €:oon — eli olet 500 € voitolla. Heti seuraavana päivänä osake laskee takaisin 12 €:oon. Reaktio voi olla: "Myyn 100 osaketta nyt, saan 200 € voittoa, enkä anna tilaisuuden kääntyä tappioksi." Jos olisit pitänyt osaketta, se olisi voinut nousta 25 €:oon ja tuotto olisi 1500 €. Voiton varmistaminen on siis voinut estää suuremman hyödyn.<br><br><br><br><h2>Mittaaminen ja seuranta: miten tappioherkkyys paljastuu portfoliosta</h2><br><br><br><br>Useat mittarit ja toimintatavat paljastavat tappioherkkyyden sijoittajassa:<br><br>- Monissa tileissä löytyy korkea kaupankäyntitahti juuri nousseissa sijoituksissa (trading in winners).<br><br>- Sinulla on paljon avoimia tappiollisia positioita ja vähän historiassa pitkiä voittoja.<br><br>- Portfoliosi volatiliteetti on pienempi kuin markkinan keskimääräinen, koska myyt nousut pois ennen suurta vaihtelua.<br><br><br><br>Katso esimerkkejä käytännössä:<br><br>- Sijoittaja A ostaa kolme osaketta: A, B ja C. A ja B nousevat nopeasti; A myydään heti 20 % nousun jälkeen, B pidetään vain vähän pidempään; C, joka on -30 %, pidetään useita vuosia. Pitkällä aikavälillä A:n myynti tuottaa vähemmän kokonaisuuteen verrattuna, jos A olisi noussut jatkossa merkittävästi.<br><br><br><br>Seuranta ja datan tarkastelu auttavat. Jos huomaat, että voitollisia positioita myydään keskimäärin viikkojen sisällä kun taas tappiollisia pidetään kuukausia tai vuosia, todennäköisesti kärsit disposition effectistä.<br><br><br><br><h2>Kuinka estää voittajien liian aikainen myynti: käytännön strategiat</h2><br><br><br><br>Alla konkreettisia keinoja, joilla voit vaikuttaa käyttäytymiseesi ja parantaa tuottoa:<br><br><br><br>1) Tee etukäteen toimintasuunnitelma (investment plan)<br><br>- Määrittele sijoitushorisontti, tavoitehinta ja myyntisäännöt ennen sijoitusta. Esimerkiksi: "Pidän tätä pitkäaikaisena osakkeena, myyn vain rebalanssin yhteydessä tai jos fundamentit muuttuvat."<br><br><br><br>2) Käytä määrämuotoisia myyntisääntöjä (rules-based selling)<br><br>- Aseta prosenttiperusteisia sääntöjä: myy 20 % position arvosta kun osake nousee 30 %, mutta jos fundamentit pysyvät vahvoina, pidä loput. Vaihtoehtoisesti käytä osittaista myyntiä: ota voitot asteittain (esim. 25 % kerrallaan).<br><br><br><br>3) Portfolion uudelleentasapainotus (rebalancing)<br><br>- Rebalanssi pakottaa myymään ylituotetut sijoitukset tasapainon palauttamiseksi. Tämä on suunnitelmallista voittojen realisointia eikä tunnepohjaista myyntiä.<br><br><br><br>4) Aseta stop loss ja take profit -tilaukset järkevästi<br><br>- Älä aseta liian kireitä stoppeja, jotka saavat sinut ulos heti markkinajyrähdyksestä. Käytä laajempia prosenttiarvoja tai volatiliteettiin sidottuja stoppitasoja.<br><br><br><br>5) Automaatio ja ulkopuolinen apu<br><br>- Sijoitustilit, indeksirahastot ja robovälittäjät vähentävät tunteiden vaikutusta. Käytä tarvittaessa sijoitusneuvojaa, joka noudattaa sääntöjä eikä reagoi impulsiivisesti.<br><br><br><br>6) Kirjaa päätökset päiväkirjaan<br><br>- Kirjaa miksi ostat ja miksi myyt. Kun päätökset tehdään paperille, impulsiiviset myynnit vähenevät.<br><br><br><br>7) Katso veroseuraamukset<br><br>- Suomessa luovutusvoitot ja -tappiot vaikuttavat verotukseen. Harjoita verosuunnittelua: pieni voitto tänään voi olla verohyödyllisempi jos voit hyödyntää tämän vuoden tappiot.<br><br><br><br>Konkreettinen tapaus:<br><br>Olet ostanut ETF:iä pitkäaikaiseen salkkuun ja yksi sektori nousee voimakkaasti. Asetat rebalanssisäännön, joka myy automaattisesti 10 % positiota, jos sektori ylittää 15 % salkun painosta. Näin et myy kaikkea heti nousun jälkeen, mutta realisoit osan voitoista systemaattisesti.<br><br><br><br><h2>Esimerkkejä ja laskelma: miksi pitkä pito usein palkitsee</h2><br><br><br><br>Vertailu: myy heti vai pidä<br><br>- Skenaario 1: Myyt nousun jälkeen. Olet ostanut 100 osaketta hintaan 10 €. Osake nousee 30 % (13 €), myyt kaiken ja saat 300 € voittoa.<br><br>- Skenaario 2: Pidät position. Osakkeen vuotuinen kasvu seuraavien vuosien aikana on 12 %. Kolmen vuoden kuluttua arvo on 13 € * 1.12^3 ≈ 20.5 €, eli kokonaisarvo olisi 2050 € ja voitto 1050 €.<br><br><br><br>Tämä yksinkertainen laskelma osoittaa, ettei pieni voitto välttämättä ole paras päätös pitkän aikavälin tuoton kannalta. Tietenkään kaikki voitot eivät jatku, mutta säännöllinen voittojen myyminen voi rajoittaa upsidea merkittävästi.<br><br><br><br><h2>Mitä tutkijat sanovat — lyhyt katsaus tutkimukseen</h2><br><br><br><br>Behavioral finance -kirjallisuus on pitkään dokumentoinut disposition effectin. Kahneman & Tverskyn prospektiteoria kuvasi tappioherkkyyden jo 1970–80-luvuilla. Shefrin ja Statman (1985) olivat ensimmäisiä, jotka loivat käsitteen "disposition effect" osakemarkkinoilla — heidän havaintonsa vahvistettiin myöhemmissä tutkimuksissa eri markkinoilla.<br><br><br><br>Käytännön tutkimukset osoittavat, että järjestelmällinen, sääntöihin perustuva lähestyminen parantaa sijoittajan lopputulosta verrattuna impulsiiviseen myyntiin. Myös instituutiot, kuten sijoitusrahastot, käyttävät säännönmukaista rebalanssia estääkseen emotionaalisia päätöksiä.<br><br><br><br>Lähdeviitteitä ja syventävää lukemista löydät artikkelin lopussa.<br><br><br><br><h2>Käytännön checklist: toimintaohjeet sijoittajalle</h2><br><br><br><br>Tee jäljempänä oleva lista itsellesi käyttöön:<br><br>- Määrittele sijoitushorisontti jokaiselle sijoitukselle (lyhyt/keskipitkä/pitkä).<br><br>- Aseta etukäteen myyntisäännöt ja dokumentoi ne.<br><br>- Käytä portfolion rebalanssia 6–12 kuukauden välein.<br><br>- Hyödynnä osittaisia myyntejä (take-profit-asteikot).<br><br>- Älä aseta liian kireitä stop-loss -tasoa; mieti volatiliteettia.<br><br>- Pidä sijoituspäiväkirjaa ja reflektoi kuukauden lopussa.<br><br>- Pyydä tarvittaessa ulkopuolista neuvoa tai käytä indeksirahastoja.<br><br><br><br><h2>Loppusanat: tee päätöksistäsi energiatehokkaita</h2><br><br><br><br>Tappioherkkyys on luonnollinen, mutta voit hallita sen vaikutuksia. Parhaat sijoitusratkaisut eivät perustu tunteisiin vaan prosesseihin. Kun määrittelet säännöt etukäteen, automatisoit toimintoja ja seuraat käyttäytymistäsi datalla, voit päästä irti tavasta myydä voittajat liian aikaisin. Pienet muutokset käyttäytymisessä voivat kasvattaa pitkän aikavälin tuottoa merkittävästi.<br><br><br><br>Aloita yhdellä selkeällä toimenpiteellä tänään: valitse yksi sijoitus, tee sille dokumentoitu myyntisuunnitelma ja noudata sitä. Kun onnistut yhdessä, voit lisätä järjestelmällisyyttä muualle salkkuun.<br><br><br><br>Lähteet:<br><br><a href="https://www.nobelprize.org/prizes/economic-sciences/2002/kahneman/biographical/">https://www.nobelprize.org/prizes/economic-sciences/2002/kahneman/biographical/</a><br><br><a href="https://en.wikipedia.org/wiki/Prospect_theory">https://en.wikipedia.org/wiki/Prospect_theory</a><br><br><a href="https://www.cfainstitute.org/en/research/financial-analysts-journal">https://www.cfainstitute.org/en/research/financial-analysts-journal</a><br><br><a href="https://www.investopedia.com/terms/d/dispositioneffect.asp">https://www.investopedia.com/terms/d/dispositioneffect.asp</a><br><br><a href="https://www.finra.org/investors/learn-to-invest/types-investments/behavioral-finance">https://www.finra.org/investors/learn-to-invest/types-investments/behavioral-finance</a><br><br><a href="https://advisors.vanguard.com/insights/article/behavioral-finance-101">https://advisors.vanguard.com/insights/article/behavioral-finance-101</a></article>
+</main>
+
+<footer>
+  <p>© 2025 Talousvahti — kirjoittanut <strong>Jere Järvelä</strong></p>
+</footer>
+
+<script>
+function toggleMenu() {
+  const menu = document.getElementById("dropdownMenu");
+  menu.style.display = (menu.style.display === "block") ? "none" : "block";
+}
+
+document.addEventListener("click", function(e) {
+  const menu = document.getElementById("dropdownMenu");
+  const hamburger = document.querySelector(".hamburger");
+
+  if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+    menu.style.display = "none";
+  }
+});
+</script>
+
+
+</body>
+</html>
