@@ -1,0 +1,222 @@
+
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Regret aversion – miksi välttelet hyviä sijoituksia katumuksen pelossa?</title>
+<meta name="description" content="Regret aversion – miksi välttelet hyviä sijoituksia katumuksen pelossa? – Päivän sijoitusblogi Talousvahdissa.">
+<meta name="keywords" content="regret aversion, katumuksen pelko, sijoittaminen, sijoituspäätökset, käyttäytymispsykologia, sijoitusvirheet, riskinhallinta, emotionaalinen sijoittaminen, päätöksenteko">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2566G3KPHW"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2566G3KPHW');
+</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Regret aversion – miksi välttelet hyviä sijoituksia katumuksen pelossa?","author":{"@type":"Person","name":"Jere Järvelä"},"publisher":{"@type":"Organization","name":"Talousvahti","logo":{"@type":"ImageObject","url":"https://talousvahti.com/logo.png"}},"datePublished":"2026-03-08","inLanguage":"fi","keywords":"regret aversion, katumuksen pelko, sijoittaminen, sijoituspäätökset, käyttäytymispsykologia, sijoitusvirheet, riskinhallinta, emotionaalinen sijoittaminen, päätöksenteko","description":"Regret aversion – miksi välttelet hyviä sijoituksia katumuksen pelossa?","mainEntityOfPage":"https://talousvahti.com/regret-aversion-miksi-valttelet-hyvia-sijoituksia-katumuksen-pelossa-2026-03-08.html"}</script>
+
+<!-- Fontit ja tyyli -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #0d0d0d;
+  --accent: #0077ff;
+  --text: #1a1a1a;
+  --muted: #666;
+  --bg: #ffffff;
+  --radius: 12px;
+  --shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+body {
+  font-family: 'Inter', Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+  line-height: 1.8;
+}
+
+nav {
+  background: var(--primary);
+  color: #fff;
+  padding: 18px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+nav .nav-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+nav img {
+  height: 38px;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 20px;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+nav a:hover {
+  color: var(--accent);
+}
+
+main {
+  max-width: 820px;
+  margin: 60px auto;
+  background: #fff;
+  padding: 40px 50px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+h1 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+article {
+  font-size: 1.05rem;
+  color: var(--text);
+}
+
+article p {
+  margin-bottom: 1.2rem;
+}
+
+footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-top: 60px;
+  padding: 20px 0;
+  border-top: 1px solid #eee;
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  main {
+    padding: 25px;
+    margin: 30px 10px;
+  }
+  h1 {
+    font-size: 1.7rem;
+  }
+  nav img {
+    height: 32px;
+  }
+}
+
+/* Hamburger valikko */
+.hamburger {
+  font-size: 28px;
+  cursor: pointer;
+  user-select: none;
+  display: block;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  right: 20px;
+  top: 68px;
+  background: var(--primary);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 10px 0;
+  min-width: 190px;
+  z-index: 20;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 10px 20px;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.dropdown-menu a:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+
+
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-left">
+    <img src="https://storage.mlcdn.com/account_image/1738913/3ffITIlb3p17IaYG3RcfwCueUnHxNH6iG0EtEEPU.png" alt="Talousvahti logo">
+    <strong>Talousvahti Blogi</strong>
+  </div>
+
+  <!-- Hamburger ikonit -->
+  <div class="hamburger" onclick="toggleMenu()">
+    ☰
+  </div>
+
+  <!-- Dropdown valikko -->
+  <div id="dropdownMenu" class="dropdown-menu">
+    <a href="https://talousvahti.com/">Talousuutiset</a>
+    <a href="https://talousvahti.com/kurssit.html">Pörssikurssit</a>
+    <a href="https://talousvahti.com/talouskalenteri.html">Talouskalenteri</a>
+    <a href="https://talousvahti.com/Blogi.html">Blogi</a>
+    <a href="https://talousvahti.com/sijoituslaskuri.html">Sijoituslaskuri</a>
+    <a href="https://talousvahti.com/tietoa.html">Tietoa</a>
+  </div>
+</nav>
+
+
+<main>
+  <header>
+    <h1>Regret aversion – miksi välttelet hyviä sijoituksia katumuksen pelossa?</h1>
+  </header>
+  <article>Regret aversion eli katumuksen pelko on yksi yleisimmistä ja samalla aliarvostetuimmista syistä, miksi sijoittajat jättävät mahdollisuuksia käyttämättä. Se ei ole pelkkä tunnehetki — se on järjestelmä, joka muuttaa tapaa, jolla ajat ja teet päätöksiä rahasta. Tässä artikkelissa selvitän, mitä regret aversion tarkoittaa, miten se näkyy suomalaisen sijoittajan arjessa ja mitä konkreettisia keinoja voit käyttää, jotta se ei estä sinua tekemästä järkeviä sijoituspäätöksiä.<br><br><br><br>Mitä regret aversion tarkoittaa?<br><br>Regret aversion on psykologinen vinouma, jossa odotettu katumus vaikuttaa päätöksiimme enemmän kuin saavutettavat hyödyt. Toisin sanoen et halua tehdä valintaa, josta voisit myöhemmin katua — jopa silloin, kun vaihtoehto olisi todennäköisesti tuottavampi. Tämä johtaa usein passiivisuuteen, liian varovaiseen käyttäytymiseen tai päätöksiin, jotka auttavat välttämään katumusta pikemmällä aikavälillä mutta heikentävät tuottoa pitkällä aikavälillä.<br><br><br><br>Kuvittele tilanne: osakkeen hinta on laskenut 20 % viime kuukauden aikana. Se näyttää halvalta, mutta pelkäät, että se laskee vielä enemmän. Et osta. Seuraavan kuukauden aikana osake nousee 40 %. Nyt katumuksesi on kaksinkertainen — paitsi et hyötynyt noususta, myös olet kokenut “miltä olisi tuntunut” -aiheen, joka kuormittaa mieltä. Tämä odotettu katumus voi estää sinua tekemästä järkeviä päätöksiä alhaisen hinnan hyödyntämiseksi.<br><br><br><br><h2>Miten katumuksen pelko näkyy käytännössä sijoittajalla?</h2><br><br><br><br>Katumuksen pelko voi näkyä monella tavalla. Tässä selkeitä esimerkkejä, joita suomalaiset sijoittajat tunnistavat helposti:<br><br><br><br>- Jättää ostamatta nousun jälkeen: Kun osakkeesta on vasta syntynyt nousu, moni ajattelee “jos nousu kääntyy, minä jään tappiolle”. Pelko siitä, että ostat huipulta ja näet arvon laskevan, estää ostamisen — vaikka trendi olisi pitkäjänteisesti vahva.<br><br><br><br>- Jättää ostamatta laskun jälkeen: Laskun aikaan ostaminen vaatii rohkeutta. Monet jättävät ostot tekemättä, koska pelkäävät “että se on vasta alkua”. Sitoutumattomuus alentaa ostohintojen keskiarvoa ja usein heikentää pitkän aikavälin tuottoa.<br><br><br><br>- Myydä liian aikaisin: Voit myydä voitollisen position liian ajoissa peläten tulevaa palautusta. Esimerkki: myyt osakkeen, joka on kasvanut paljon, koska et halua menettää voittoja — ja sitten se nousee vieläkin enemmän.<br><br><br><br>- Älä tee aloittavia kokeiluja: Et kokeile uusia sijoitusluokkia tai strategioita, koska saatat katua kokeilua, jos se epäonnistuu. Tämä estää oppimista ja hajauttamista.<br><br><br><br>- Overdiversification eli liiallinen hajautus: Säilytät satoja pieniä positioita, jotta yhdestä epäonnistumisesta ei koidu katumusta — mutta hajautus on niin laajaa, että mahdollinen tuotto jää vaisuksi.<br><br><br><br>Usein katumuksen pelko liittyy myös sosiaaliseen katumukseen: ajatus siitä, että ystävät tai seuraajat kritisoivat päätöstäsi, jos se epäonnistuu. Mediassa korostetut menestystarinat ja “kenellä meni paremmin” -vertailu lisäävät tätä painetta.<br><br><br><br><h2>Miksi aivot reagoivat näin? — taustalla käyttäytymispsykologia</h2><br><br><br><br>Katumuksen pelko rakentuu usean psykologisen mekanismin varaan:<br><br><br><br>- Ennakoitu katumus: Et vain pelkää todellista katumusta — sinä kuvittelet sen etukäteen. Tämä “mielessä esitytetty” tunnekokemus voi olla voimakkaampi kuin järkiperusteiset laskelmat.<br><br><br><br>- Counterfactual thinking (vertailu vaihtoehtoiseen maailmaan): Kuvailet mielessäsi tilanteen, jossa olisit toiminut toisin ja saavuttanut paremman lopputuloksen. Tämä vertailu aiheuttaa katumusta, joka tuntuu konkreettiselta.<br><br><br><br>- Loss aversion (tappioherkkyys): Tutkimukset kuten Kahneman ja Tverskyn työt osoittavat, että ihmiset kokevat tappion kipuna, joka on suurempi kuin voiton iloa samassa suhteessa. Regret aversion voi yhdistyä tähän ja korostaa tappion pelkoa.<br><br><br><br>- Status quo bias: Moni mieluummin pitää nykytilanteen (käteinen, vanhat positionit) kuin riskin kanssa muuttaa. Muutoksen mahdollinen epäonnistuminen koetaan painavampana kuin saman muutoksen myönteiset seuraukset.<br><br><br><br>Nämä mekanismit eivät ole merkki heikkoudesta tai typeryydestä — ne ovat evolutiivisia selviytymispiirteitä. Silti sijoittamisessa ne voivat maksaa paljon. Kun teet päätöksiä, aivosi punnitsevat tunteita ja laskelmia samanaikaisesti, eikä tunne ole aina oikeassa.<br><br><br><br><h2>Kuinka välttää katumuksen ansa — konkreettiset keinot</h2><br><br><br><br>Katumuksen pelon vähentäminen ei tapahdu yhdellä tempulla. Se vaatii sekä ajattelutavan muutosta että käytännöllisiä työkaluja. Alla käytännön lista, jonka voit ottaa heti käyttöön.<br><br><br><br>1) Tee päätös etukäteen (precommitment)<br><br>- Kirjoita sijoitussuunnitelma: määrittele riskitaso, sijoitushorisontti, tavoiteallokaatio ja ostojen ehto. Kun markkinat poukkoilevat, palaa suunnitelmaan.<br><br>- Esimerkki: Päätä, että ostat 1 000 euroa kuukaudessa indeksiin automaattisesti. Automaatio poistaa hetken epäröinnin.<br><br><br><br>2) Käytä checklistejä ja sääntöjä<br><br>- Tee “ostotarkistuslista”: Onko osake halventunut syystä, onko fundamentit kunnossa, mitä tapahtuu jos hinta laskee 30 % lisää?<br><br>- Säännöt auttavat erottelemaan hetken tunteen rationaalisesta harkinnasta.<br><br><br><br>3) Pienet kokeiluerät ja testipositionit<br><br>- Testaa uusia strategioita pienellä pääomalla. Esimerkiksi aloita 2-5 % salkusta uuteen sijoitukseen. Näin katumus on hallittavissa, ja saat kokemusta.<br><br><br><br>4) Aikaperspektiivin laajentaminen<br><br>- Katso sijoituksia 3–5 vuoden horisontilla. Lyhyen aikavälin heilunta aiheuttaa katumusta, pitkän aikavälin trendi usein ratkaisee tuoton.<br><br><br><br>5) Probabilistinen ajattelu ja odotusarvo<br><br>- Laske vaihtoehtojen odotusarvo: jos 60 % todennäköisyydellä sijoitus tuottaa +20 % ja 40 % todennäköisyydellä -20 %, odotusarvo on positiivinen. Usein järkevät probabilistiset laskelmat vähentävät tunnepohjaista pelkoa.<br><br><br><br>6) Kognitiivinen reframing — uudelleenkehystä ajattelu<br><br>- Pohdi kysymystä: mitä olisi pahempaa kuin nyt? Usein vastaukseksi tulee, että suurin riski on olla tekemättä mitään. Aseta epäonnistuminen kontekstiin.<br><br><br><br>7) Automatisoitu rebalanssi ja säännöllinen ostaminen<br><br>- Hyödynnä kuukausisäästämistä ja automaattista tasapainotusta. Näin vältät tunteillisesti raskaat ajoitukset. DCA (dollar-cost averaging) tai tasaerät toimivat myös eurona.<br><br><br><br>8) Päätöspäiväkirja ja postmortem<br><br>- Kirjoita ylös miksi teit päätöksen. Arvioi puoli vuotta myöhemmin: oliko päätös järkevä rationaalisista syistä? Oppiminen vähentää toistuvia virheitä.<br><br><br><br>9) Hae ulkopuolista näkökulmaa<br><br>- Keskustele isommasta kuvasta ystävän tai sijoitusneuvojan kanssa. Ulkopuolinen voi kyseenalaistaa tunteelliset perustelut.<br><br><br><br>10) Hyväksy, että katumus on osa sijoittamista<br><br>- Ei ole mahdollista välttää kaikkia virheitä. Hyvä sijoittaja hyväksyy tappiot pieninä oppimiskustannuksina, jotka mahdollistavat suuremmat voitot.<br><br><br><br><h2>Harjoituksia, jotka auttavat vähentämään katumuksen pelkoa</h2><br><br><br><br>Tässä kolme käytännön harjoitusta, joita voit kokeilla viikoittain.<br><br><br><br>Harjoitus 1: Kirjoita pahin skenaario ja sen todennäköisyys<br><br>- Valitse sijoitus, jota olet empinyt ostaa. Kirjoita ylös pahin mahdollinen lopputulos (esim. 80 % arvonalennus), arvioi todennäköisyys (esim. 5 %) ja mitä tekisit silloin (hold, lisäosto, myynti). Usein pahin skenaario on hyvin epätodennäköinen.<br><br><br><br>Harjoitus 2: 30 päivän “pieni betsi” -koe<br><br>- Sijoita pieni summa (esim. 1–2 % salkusta) uuteen hegemoniaan. Seuraa 30 päivää ilman reagoimista jokaiseen uutiseen. Päätöksesi arvo selviää ajan myötä, eikä yhden uutispaniikin tarvitse määrittää käytöstäsi.<br><br><br><br>Harjoitus 3: Päätöspäiväkirja ja kuuden kuukauden analyysi<br><br>- Pidä kirjaa kaikista ostoista/myynneistä: syy, tunnekokemus, odotusarvo. Kuuden kuukauden jälkeen lue ja luokittele: oliko päätös rationaalinen? Tämä auttaa erottamaan tunnekäyttäytymisen ja tarkoituksenmukaisen riskinottojen.<br><br><br><br>Konkreettinen esimerkki:<br><br>Olet harkitsemassa ostavasi firman X osakkeita. Hinta laski 25 % viime kuukausina. Epäröit. Käytät check-listaa: 1) Onko liiketoiminta edelleen kannattava? 2) Onko velka hallinnassa? 3) Onko lasku perusteltu vai ylireagointi? Lisäksi päätät ostaa ensin 1 000 euron testierän ja asettaa automaattisen lisäoston, jos hinta laskee vielä 15 %. Kuuden kuukauden jälkeen analysoit ja säädät sääntöjäsi. Näin et tee suurta päätöstä tunteen vallassa.<br><br><br><br>Mitä hyvä sijoituskäyttäytyminen vaatii?<br><br>Hyvä sijoituskäyttäytyminen ei tarkoita tunteettomuutta — se tarkoittaa tunteiden tunnistamista ja niiden hyödyntämistä. Kun ymmärrät, että katumus on ennakoitavissa ja hallittavissa oleva reaktio, voit rakentaa mekanismeja sen ympärille. Usein paras suoja on yksinkertainen: suunnitelma, automaatio, pienet kokeilut ja oppiminen.<br><br><br><br>Yhteenveto — miksi sinä et saa antaa katumuksen estää tekemistä<br><br>Regret aversion voi säästää sinut yhdeltä ikävältä päätökseltä, mutta useimmiten se maksaa enemmän pitkällä aikavälillä. Sijoittaminen on toistuvien päätösten sarja, ei yksittäisten hetken tunteiden peli. Käytä check-listoja, sääntöjä, automaatiota ja pieniä kokeiluja. Kirjaa päätöksesi ylös ja reflektoi. Kun hoidat katumuksen ennalta, annat tilaa järkevälle riskinotolle — ja paremmille sijoitustuloksille.<br><br><br><br>Lopuksi muistutus: tunnetilasi ei ole totta markkinoista. Se on vain yksi signaali, jota pitää kuunnella, mutta ei noudattaa sokeasti. Tee suunnitelma, sitoudu siihen ja anna ajan tehdä työtään.<br><br><br><br>Lähteet:<br><br><a href="https://www.investopedia.com/terms/r/regret-aversion.asp">https://www.investopedia.com/terms/r/regret-aversion.asp</a><br><br><a href="https://en.wikipedia.org/wiki/Regret_aversion">https://en.wikipedia.org/wiki/Regret_aversion</a><br><br><a href="https://www.nobelprize.org/prizes/economic-sciences/2002/kahneman/biographical/">https://www.nobelprize.org/prizes/economic-sciences/2002/kahneman/biographical/</a><br><br><a href="https://www.cfainstitute.org/en/research/foundation/2015/behavioral-finance">https://www.cfainstitute.org/en/research/foundation/2015/behavioral-finance</a><br><br><a href="https://www.nordnet.fi/fi/oppimiskeskus/sijoittajantyokalut/psykologia">https://www.nordnet.fi/fi/oppimiskeskus/sijoittajantyokalut/psykologia</a><br><br><a href="https://www.sijoitustieto.fi/">https://www.sijoitustieto.fi/</a><br><br><a href="https://hbr.org/2009/11/the-hidden-traps-in-decision-making">https://hbr.org/2009/11/the-hidden-traps-in-decision-making</a></article>
+</main>
+
+<footer>
+  <p>© 2025 Talousvahti — kirjoittanut <strong>Jere Järvelä</strong></p>
+</footer>
+
+<script>
+function toggleMenu() {
+  const menu = document.getElementById("dropdownMenu");
+  menu.style.display = (menu.style.display === "block") ? "none" : "block";
+}
+
+document.addEventListener("click", function(e) {
+  const menu = document.getElementById("dropdownMenu");
+  const hamburger = document.querySelector(".hamburger");
+
+  if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+    menu.style.display = "none";
+  }
+});
+</script>
+
+
+</body>
+</html>
