@@ -1,0 +1,222 @@
+
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mental Accounting: Älä jaa rahojasi turhaan eri lokeroihin</title>
+<meta name="description" content="Mental Accounting: Älä jaa rahojasi turhaan eri lokeroihin – Päivän sijoitusblogi Talousvahdissa.">
+<meta name="keywords" content="mental accounting, henkinen kirjanpito, sijoittaminen, behavioral finance, rahankäyttö, budjetointi, sijoituspsykologia, varallisuudenhallinta">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2566G3KPHW"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2566G3KPHW');
+</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Mental Accounting: Älä jaa rahojasi turhaan eri lokeroihin","author":{"@type":"Person","name":"Jere Järvelä"},"publisher":{"@type":"Organization","name":"Talousvahti","logo":{"@type":"ImageObject","url":"https://talousvahti.com/logo.png"}},"datePublished":"2026-03-09","inLanguage":"fi","keywords":"mental accounting, henkinen kirjanpito, sijoittaminen, behavioral finance, rahankäyttö, budjetointi, sijoituspsykologia, varallisuudenhallinta","description":"Mental Accounting: Älä jaa rahojasi turhaan eri lokeroihin","mainEntityOfPage":"https://talousvahti.com/mental-accounting-ala-jaa-rahojasi-turhaan-eri-lokeroihin-2026-03-09.html"}</script>
+
+<!-- Fontit ja tyyli -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #0d0d0d;
+  --accent: #0077ff;
+  --text: #1a1a1a;
+  --muted: #666;
+  --bg: #ffffff;
+  --radius: 12px;
+  --shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+body {
+  font-family: 'Inter', Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+  line-height: 1.8;
+}
+
+nav {
+  background: var(--primary);
+  color: #fff;
+  padding: 18px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+nav .nav-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+nav img {
+  height: 38px;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 20px;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+nav a:hover {
+  color: var(--accent);
+}
+
+main {
+  max-width: 820px;
+  margin: 60px auto;
+  background: #fff;
+  padding: 40px 50px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+h1 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+article {
+  font-size: 1.05rem;
+  color: var(--text);
+}
+
+article p {
+  margin-bottom: 1.2rem;
+}
+
+footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-top: 60px;
+  padding: 20px 0;
+  border-top: 1px solid #eee;
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  main {
+    padding: 25px;
+    margin: 30px 10px;
+  }
+  h1 {
+    font-size: 1.7rem;
+  }
+  nav img {
+    height: 32px;
+  }
+}
+
+/* Hamburger valikko */
+.hamburger {
+  font-size: 28px;
+  cursor: pointer;
+  user-select: none;
+  display: block;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  right: 20px;
+  top: 68px;
+  background: var(--primary);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 10px 0;
+  min-width: 190px;
+  z-index: 20;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 10px 20px;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.dropdown-menu a:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+
+
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-left">
+    <img src="https://storage.mlcdn.com/account_image/1738913/3ffITIlb3p17IaYG3RcfwCueUnHxNH6iG0EtEEPU.png" alt="Talousvahti logo">
+    <strong>Talousvahti Blogi</strong>
+  </div>
+
+  <!-- Hamburger ikonit -->
+  <div class="hamburger" onclick="toggleMenu()">
+    ☰
+  </div>
+
+  <!-- Dropdown valikko -->
+  <div id="dropdownMenu" class="dropdown-menu">
+    <a href="https://talousvahti.com/">Talousuutiset</a>
+    <a href="https://talousvahti.com/kurssit.html">Pörssikurssit</a>
+    <a href="https://talousvahti.com/talouskalenteri.html">Talouskalenteri</a>
+    <a href="https://talousvahti.com/Blogi.html">Blogi</a>
+    <a href="https://talousvahti.com/sijoituslaskuri.html">Sijoituslaskuri</a>
+    <a href="https://talousvahti.com/tietoa.html">Tietoa</a>
+  </div>
+</nav>
+
+
+<main>
+  <header>
+    <h1>Mental Accounting: Älä jaa rahojasi turhaan eri lokeroihin</h1>
+  </header>
+  <article>Mental accounting eli henkinen kirjanpito on käyttäytymistaloustieteen käsite, joka kuvaa tapaa, jolla ihmiset jakavat rahansa eri "lokeroihin" mielessään. Vaikka lokeroiden tekeminen auttaa järjestämään arkea — esimerkiksi erottelemalla laskut, lomarahat ja sijoitussäästöt — liian tarkka tai epäjohdonmukainen lokeroiden käyttö voi heikentää sijoitustuottoja ja aiheuttaa tarpeetonta taloudellista tehottomuutta. Tässä artikkelissa käyn läpi, mitä mental accounting on, miten se näkyy suomalaisen sijoittajan arjessa, ja miten voit käyttää tätä tietoa järkevästi – ilman että menetät kurinalaisuuden tuomia etuja.<br><br><br><br><h2>Mitä on mental accounting?</h2><br><br><br><br>Mental accounting tarkoittaa sitä, että ihmiset käsittelevät eri rahamääriä eri tavalla sen mukaan, mihin ne on mielessään "merkattu". Esimerkiksi veronpalautus saatetaan mieltää "ylimääräiseksi rahaksi", jolloin se käytetään herkemmin kulutukseen kuin palkasta irrotettu säästö. Saman rahan kohdalla päätös voi vaihdella riippuen siitä, onko se kirjattu lomakassaan, arjen kuluihin vai sijoitusrahastoon.<br><br><br><br>Käytännössä tämä näkyy monella tavalla:<br><br>- Earmarking: rahaa varataan tiettyyn tarkoitukseen, vaikka se olisi taloudellisesti huonompi ratkaisu (esim. säilytät suuren määrän käteistä matkasalkussa, vaikka osakkeisiin sijoittaminen toisi paremman pitkän aikavälin tuoton).<br><br>- Sijoitusten "lokeroiminen": sijoitat eri säästöihin eri riskeillä, mutta et näe portfolion kokonaistilannetta, mikä voi johtaa huonoon allokaatioon.<br><br>- Windfall bias: kertaluonteisten tulojen (bonukset, veronpalautukset) kuluttaminen sen sijaan, että ne sijoitettaisiin korkeaa tuottoa tavoitteleviin kohteisiin.<br><br><br><br>Mental accounting ei ole pelkästään väärin. Se voi auttaa pysymään budjetissa ja saavuttamaan säästötavoitteita. Ongelmia syntyy, kun lokeroiden hallinta estää taloudellisesti järkeviä päätöksiä, kuten verotehokkaan sijoittelun tai riskin hajauttamisen.<br><br><br><br><h2>Mental accounting suomalaisen sijoittajan arjessa: konkreettisia esimerkkejä</h2><br><br><br><br>Seuraavassa kolme yleistä tilannetta, joissa mental accounting näkyy usein suomalaisissa sijoitusvalinnoissa.<br><br><br><br>Esimerkki 1: Veronpalautus ja lomabudjetti<br><br>Moni saa veronpalautuksen keväällä ja varaa sen lomaan. Lomaan varattu summa pidetään erillään sijoitussalkusta ja käytetään mieluiten kulutukseen. Taloudellisesti parempi valinta olisi käyttää osa palautuksesta sijoituksiin, erityisesti jos markkinat ovat edulliset. Mental accounting tekee veronpalautuksesta "erillisen" rahan, joka koetaan helpommin kulutettavaksi.<br><br><br><br>Esimerkki 2: Sijoitusten lokeroiminen ilman kokonaissuunnitelmaa<br><br>Henkilö A pitää osakesijoitukset yhdellä tilillä, säilyttää korkorahaston toisella ja käyttää erillistä pörssilistattua rahastoa lasten opintojen varalle. Kukin lokero tuottaa itsenäisesti, mutta henkilö ei koskaan katso kokonaissalkun riskiprofiilia. Kun osakemarkkinat laskevat, hän myy paniikissa osakkeet, mutta pitäytyy korkorahastoissa, vaikka kokonaisuus olisi edelleen sopiva pitkän aikavälin tavoitteille.<br><br><br><br>Esimerkki 3: Erottelu "likvidiin" ja "turvamarginaaliin" ilman optimaalista käyttöä<br><br>Joku voi pitää suuren osan varallisuudestaan helposti saatavilla olevassa tilissä "turvamarginaalina", vaikka osa siitä voisi olla sijoitettuna tuottavampaan, mutta edelleen melko likvidiin instrumenttiin (esim. ETF-tili tai korkean laadun ETFit). Tämä johtaa matalampaan tuottoon pitkällä aikavälillä.<br><br><br><br>Nämä esimerkit havainnollistavat, miten mental accounting voi aiheuttaa alituottoa, verotehokkuuden puutetta ja turhia kauppoja.<br><br><br><br><h2>Miksi mental accounting on riski sijoittajalle?</h2><br><br><br><br>Mental accounting voi heikentää sijoitustuloksia monella tavalla:<br><br><br><br>- Hajautuksen puute: Kun rahat pidetään eri lokeroissa, niiden yhteisvaikutus ja kokonaisriski jäävät huomaamatta. Tämä johtaa joko yli- tai aliriskisyyteen suhteessa tavoitteisiin.<br><br>- Verotehokkuuden menettäminen: Erillisiin lokeroihin sijoittaminen voi estää optimaalisen verosuunnittelun, esimerkiksi verotettavan voiton ja tappioiden yhteensovittamisen.<br><br>- Epäjohdonmukaiset päätökset: Erityisesti laskukausina sijoittajat myyvät lokeroita, jotka pitäisivät olla pitkällä aikavälillä, ja säilyttävät muita kuin rationaalisia syitä.<br><br>- Kustannukset ja rutiinit: Useat tilit ja tuotteet voivat tarkoittaa korkeampia kuluja ja monimutkaista hallintaa, mikä pienentää nettotuottoa.<br><br><br><br>Käytännössä kyse on rahan ei-fungibelisuudesta mielessä: vaikka euro on aina euro, mentaaliset lokeroinnit saavat meidät toimimaan kuin eri eurot olisivat eri arvoisia. Tämä on psykologinen vinouma, ei logiikka.<br><br><br><br><h2>Kuinka hyödyntää mental accountingia järkevästi? Käytännön strategiat</h2><br><br><br><br>Mental accountingia ei tarvitse hävittää — sitä voi ohjata. Alla konkreettiset toimenpiteet, joita suomalainen sijoittaja voi ottaa käyttöön.<br><br><br><br>1) Tee kokonaiskuva ensin, lokeroi vasta sen jälkeen<br><br>- Laske ensin kokonaisvarallisuutesi ja arvioi haluamasi riskitaso. Määrittele sijoitushorisontti ja tavoitteet. Vasta tämän jälkeen päätä, kannattaako osa varoista laittaa "turvaan" ja kuinka suuri osa laitetaan kasvuun.<br><br><br><br>2) Käytä "funktioita", älä irrallisia tilejä<br><br>- Sen sijaan että sinulla olisi kymmenen eri lokeron tilejä ilman yhteistä logiikkaa, nimeä tilejä tavoitteiden mukaan: hätärahasto (3–6 kk kulut), eläkesäästö (pitkä), korkean kasvun salkku (riskipääoma). Näin lokeroiden tarkoitus on selkeä ja sijoitukset voidaan valita tarkoituksenmukaisesti.<br><br><br><br>3) Automatisoi ja tee säännöistä jämeriä<br><br>- Aseta automaattisiirrot palkasta eri tileille. Jos veronpalautus tulee, ohjaa automaattisesti tietty prosentti sijoituksiin. Automaatio vähentää tunneperäisiä päätöksiä.<br><br><br><br>4) Laske kaikki kulut ja verot yhteen<br><br>- Kun vertailet sijoitusvaihtoehtoja, huomioi kaikki kulut, verovaikutukset ja likviditeetti. Esimerkiksi korkokuponki tai matalakuluisen ETF:n tuotto saattaa olla parempi pitkällä aikavälillä, vaikka se ei sovi jokaiseen lokeroon.<br><br><br><br>5) Hyväksy rajatun hetken lokerointi, mutta älä anna sen määrittää kaikkea<br><br>- On hyödyllistä pitää pieni osa varoista "hauskanpitoa" tai erikoisprojekteja varten. Pidä kuitenkin prosentti realistisena (esim. 5–10 %). Suuri osa rahoista kannattaa pitää alttiina markkinoiden tuotoille.<br><br><br><br>6) Harkitse verotehokkuutta<br><br>- Suomessa verotus vaikuttaa hajautukseen: osakesäästötili, arvo-osuustili ja osinkoverotus kannattaa huomioida. Suunnittele, missä verotuksellisesti järkevintä pitää osinkoa tuovat instrumentit ja missä kasvuun tähtäävät sijoitukset.<br><br><br><br>7) Testaa "vasemmasta taskusta" -lähestymistapa - mutta rationaalisesti<br><br>- Jos haluat lyödä vetoa riskisellä sijoituksella, tee se varoilla, joiden menettäminen ei vaaranna tavoitteita. Tämä on järkevä tapa käyttää mental accountingin edut ilman haittoja.<br><br><br><br>8) Arvioi lokeroiden tuotto-odotukset realistisesti<br><br>- Älä ajattele, että "turvarahasto" antaa 0 % tuottoa. Etsi maltillisesti tuottavia ja turvallisia vaihtoehtoja (korkealaatuiset yrityslainat, lyhyet ETFit), jotta myös turvalokerosi tekee töitä.<br><br><br><br>9) Katso salkun kokonaisriskiä, älä yksittäisiä tilejä<br><br>- Käytä työkaluja tai pankin palvelua nähdäksesi koko portfolion volatiliteetin ja korrelaatiot. Tämä auttaa välttämään tilanteita, joissa kaikki lokerit romahtavat samanaikaisesti.<br><br><br><br>10) Kouluta itseäsi ja käytä ulkopuolista neuvoa tarvittaessa<br><br>- Käyttäytymistaloustiede ja sijoituspsykologia ovat täynnä yllättäviä havaintoja. Yksinkertaiset säännöt ja ammattimainen neuvonta auttavat pitämään rationaalisuuden yllä.<br><br><br><br><h2>Miten tunnistat oman henkisen kirjanpitosi sudenkuopat?</h2><br><br><br><br>Voit tehdä pienen itsearvioinnin. Vastaa rehellisesti seuraaviin kysymyksiin:<br><br><br><br>- Pidätkö useita tilejä, joita et ole yhdistänyt yhdeksi edullisemmaksi ratkaisuksi?<br><br>- Koetko kertaluonteiset tulot automaattisesti "turvarahaksi" tai "vapaa rahaksi"?<br><br>- Myytkö sijoituksia tunnepohjaisesti laskujen jälkeen tai kurssien laskiessa?<br><br>- Onko sinulla useita säästötilejä, joilla on erilainen tuotto-odotus ilman selkeää syytä?<br><br><br><br>Jos vastaat kyllä moneen, mental accounting todennäköisesti ohjaa valintojasi enemmän kuin pitäisi. Hyvin mietityt sääntömuutokset ja automatisointi tuovat usein suurimman hyödyn.<br><br><br><br><h2>Miten toimia käytännössä — esimerkkistrategia suomalaiselle sijoittajalle</h2><br><br><br><br>Seuraava malli sopii pitkän aikavälin sijoittajalle, joka haluaa vähentää mental accountingin haittoja mutta säilyttää käytännöllisyyden.<br><br><br><br>1) Laske kuukausikulusi ja aseta hätärahasto 3–6 kuukaudeksi<br><br>- Hätärahasto pidetään erillisellä tilillä, mutta pyri valitsemaan tuottoa antava vaihtoehto (esim. korkea-korotettu säästötili tai lyhyet korkorahastot).<br><br><br><br>2) Aloita eläkesäästö heti verotehokkaasti<br><br>- Hyödynnä mahdollisuuksia kuten osakesäästötili tai pitkäaikaissäästömuodot. Erota selkeästi eläkkeelle tähtäävät sijoitukset muista.<br><br><br><br>3) Aseta kuukausittainen automatiikka sijoituksiin<br><br>- Valitse arvo-osuustiliin kuukausisäästö ETF:iin ja hajoita riskin mukaan (esim. 70/30 osakkeet/korko alle 40-vuotiaalle).<br><br><br><br>4) Pidä "hauska-lokero" pienenä<br><br>- Anna esim. 5 % varallisuudesta olla vapaa "korkean riskin" sijoituksiin tai sijoitusharrastukseen.<br><br><br><br>5) Tarkista kokonaisriskiprofiili vuosittain<br><br>- Yhdistä kaikki tilit ja laske allokaatio. Tee korjausliikkeet automaattisesti esimerkiksi siirtämällä ylimääräistä rahaa alialokaatioon.<br><br><br><br>Näin mental accounting muuttuu työkaluksi, ei ankkuriksi, joka estää järkevän päätöksenteon.<br><br><br><br><h2>Yhteenveto: mielen lokeroista hyötyä ilman haittoja</h2><br><br><br><br>Mental accounting on luonnollinen tapa jäsentää rahaa ja tehdä arjesta hallittavampaa. Ongelmia syntyy, kun lokeroiden käyttö estää rationaalisen optimoinnin: huono hajautus, verotehokkuuden menettäminen ja tunnepohjaiset myynnit syövät pitkän aikavälin tuottoa. Ratkaisu ei ole lokeroiden kieltäminen, vaan niiden järkeistäminen. Tee kokonaiskuva ensin, määrittele selkeät funktiot tileille, automatisoi siirrot ja seuraa salkun kokonaistilaa säännöllisesti.<br><br><br><br>Pienet muutokset – kuten veronpalautuksen ohjaaminen osaan sijoituksiin, turvalokeron sijoittaminen hieman tuottavampiin instrumentteihin ja kuukausisäästön automatisointi – voivat pitkällä aikavälillä kasvattaa varallisuuden kehitystä merkittävästi. Käyttäytymistaloustiede kertoo meille, että inhimilliset vinoumat ovat pysyvä osa päätöksentekoa. Parasta on käyttää tätä tietoa hyväksi: suunnittele lokeroiden käyttö niin, että ne palvelevat tavoitteitasi eivätkä estä niitä.<br><br><br><br>Lopuksi pieni harjoitus: tänään avaa taulukko kaikista tileistäsi ja tee yksinkertainen allokaatioanalyysi. Onko salkkusi yhtenäinen? Jos ei, valitse yksi muutos, esim. automaatio veronpalautukselle, ja kokeile sitä seuraavan 12 kuukauden aikana. Tulokset voivat yllättää.<br><br><br><br>Lähteet:<br><br><a href="https://www.nobelprize.org/prizes/economic-sciences/2017/thaler/facts/">https://www.nobelprize.org/prizes/economic-sciences/2017/thaler/facts/</a><br><br><a href="https://www.investopedia.com/terms/m/mentalaccounting.asp">https://www.investopedia.com/terms/m/mentalaccounting.asp</a><br><br><a href="https://en.wikipedia.org/wiki/Mental_accounting">https://en.wikipedia.org/wiki/Mental_accounting</a><br><br><a href="https://www.behavioraleconomics.com/resources/mini-encyclopedia-of-be/mental-accounting/">https://www.behavioraleconomics.com/resources/mini-encyclopedia-of-be/mental-accounting/</a><br><br><a href="https://www.jstor.org/stable/1830395">https://www.jstor.org/stable/1830395</a><br><br><a href="https://www.vanguard.fi/">https://www.vanguard.fi/</a></article>
+</main>
+
+<footer>
+  <p>© 2025 Talousvahti — kirjoittanut <strong>Jere Järvelä</strong></p>
+</footer>
+
+<script>
+function toggleMenu() {
+  const menu = document.getElementById("dropdownMenu");
+  menu.style.display = (menu.style.display === "block") ? "none" : "block";
+}
+
+document.addEventListener("click", function(e) {
+  const menu = document.getElementById("dropdownMenu");
+  const hamburger = document.querySelector(".hamburger");
+
+  if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+    menu.style.display = "none";
+  }
+});
+</script>
+
+
+</body>
+</html>
