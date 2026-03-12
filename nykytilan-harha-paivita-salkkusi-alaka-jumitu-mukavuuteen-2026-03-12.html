@@ -1,0 +1,222 @@
+
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nykytilan harha: päivitä salkkusi äläkä jumitu mukavuuteen</title>
+<meta name="description" content="Nykytilan harha: päivitä salkkusi äläkä jumitu mukavuuteen – Päivän sijoitusblogi Talousvahdissa.">
+<meta name="keywords" content="nykytilan harha, status quo bias, sijoittaminen, salkun päivitys, rebalanssi, sijoitusstrategia, ETF, kustannukset, verot, sijoittajan psykologia">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2566G3KPHW"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2566G3KPHW');
+</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Nykytilan harha: päivitä salkkusi äläkä jumitu mukavuuteen","author":{"@type":"Person","name":"Jere Järvelä"},"publisher":{"@type":"Organization","name":"Talousvahti","logo":{"@type":"ImageObject","url":"https://talousvahti.com/logo.png"}},"datePublished":"2026-03-12","inLanguage":"fi","keywords":"nykytilan harha, status quo bias, sijoittaminen, salkun päivitys, rebalanssi, sijoitusstrategia, ETF, kustannukset, verot, sijoittajan psykologia","description":"Nykytilan harha: päivitä salkkusi äläkä jumitu mukavuuteen","mainEntityOfPage":"https://talousvahti.com/nykytilan-harha-paivita-salkkusi-alaka-jumitu-mukavuuteen-2026-03-12.html"}</script>
+
+<!-- Fontit ja tyyli -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #0d0d0d;
+  --accent: #0077ff;
+  --text: #1a1a1a;
+  --muted: #666;
+  --bg: #ffffff;
+  --radius: 12px;
+  --shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+body {
+  font-family: 'Inter', Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+  line-height: 1.8;
+}
+
+nav {
+  background: var(--primary);
+  color: #fff;
+  padding: 18px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+nav .nav-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+nav img {
+  height: 38px;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 20px;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+nav a:hover {
+  color: var(--accent);
+}
+
+main {
+  max-width: 820px;
+  margin: 60px auto;
+  background: #fff;
+  padding: 40px 50px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+h1 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+article {
+  font-size: 1.05rem;
+  color: var(--text);
+}
+
+article p {
+  margin-bottom: 1.2rem;
+}
+
+footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-top: 60px;
+  padding: 20px 0;
+  border-top: 1px solid #eee;
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  main {
+    padding: 25px;
+    margin: 30px 10px;
+  }
+  h1 {
+    font-size: 1.7rem;
+  }
+  nav img {
+    height: 32px;
+  }
+}
+
+/* Hamburger valikko */
+.hamburger {
+  font-size: 28px;
+  cursor: pointer;
+  user-select: none;
+  display: block;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  right: 20px;
+  top: 68px;
+  background: var(--primary);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 10px 0;
+  min-width: 190px;
+  z-index: 20;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 10px 20px;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.dropdown-menu a:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+
+
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-left">
+    <img src="https://storage.mlcdn.com/account_image/1738913/3ffITIlb3p17IaYG3RcfwCueUnHxNH6iG0EtEEPU.png" alt="Talousvahti logo">
+    <strong>Talousvahti Blogi</strong>
+  </div>
+
+  <!-- Hamburger ikonit -->
+  <div class="hamburger" onclick="toggleMenu()">
+    ☰
+  </div>
+
+  <!-- Dropdown valikko -->
+  <div id="dropdownMenu" class="dropdown-menu">
+    <a href="https://talousvahti.com/">Talousuutiset</a>
+    <a href="https://talousvahti.com/kurssit.html">Pörssikurssit</a>
+    <a href="https://talousvahti.com/talouskalenteri.html">Talouskalenteri</a>
+    <a href="https://talousvahti.com/Blogi.html">Blogi</a>
+    <a href="https://talousvahti.com/sijoituslaskuri.html">Sijoituslaskuri</a>
+    <a href="https://talousvahti.com/tietoa.html">Tietoa</a>
+  </div>
+</nav>
+
+
+<main>
+  <header>
+    <h1>Nykytilan harha: päivitä salkkusi äläkä jumitu mukavuuteen</h1>
+  </header>
+  <article>Nykytilan harha (status quo bias) voi olla yksi hiljaisimmista, mutta tehokkaimmista tuhoajista sijoittajan pitkän aikavälin tuotoille. Se on halu pitää asiat ennallaan, vaikka olosuhteet muuttuvat ja paremmista vaihtoehdoista voisi olla selkeä hyötyä. Tässä artikkelissa selitän, mitä nykytilan harha tarkoittaa sijoittamisessa, miksi se kannattaa tunnistaa ja miten toimia käytännössä — konkreettisin askelin ja esimerkein, jotka suomalainen sijoittaja voi ottaa heti käyttöön.<br><br><br><br><h2>Mitä nykytilan harha tarkoittaa sijoittajalle?</h2><br><br><br><br>Nykytilan harha on psykologinen ilmiö: ihmiset suosivat olemassa olevaa tilaa ja kokevat muutoksen kustannuksena. Sijoittamisessa se näkyy useimmiten näin:<br><br>- Et tee muutoksia salkkuun, vaikka markkinat, oma elämäntilanne tai verotuskäytännöt muuttuvat.<br><br>- Jäät pitämään huonosti suoriutuvia rahastoja tai osakkeita, koska niiden myyminen tuntuu "luovuttamiselta".<br><br>- Et vertaile kustannuksia tai siirry edullisempiin ETF:iin, koska nykyiset palvelut ja rutiinit tuntuvat helpommilta.<br><br><br><br>Nykytilan harhan seurauksena sijoitusportfolio voi jäädä suboptimaaliseksi: riskiprofiili vääristyy, kustannukset nousevat ja verotehokkuus heikkenee. Kaikki nämä vaikuttavat nettotuottoon—se on arjen käytännön vaikutus: pienet valinnat toistuvat vuosikymmeniä.<br><br><br><br><h2>Miksi harhasta kannattaa välittömästi välttää? Konkreettiset haitat</h2><br><br><br><br>Aivan kuten kiinteät tottumukset talouden hoidossa, nykytilan harha kerryttää tappioita ajan myötä.<br><br><br><br>1) Riskin siirtyminen: Esimerkki<br><br>Kuvitellaan sijoittaja, joka aloitti 60/40-salkulla (60 % osakkeita, 40 % korkoja). Viiden menestyvän osakevuoden jälkeen osakkeet nousevat suhteessa ja salkku onkin 80/20. Jos sijoittaja ei rebalance- eli oikaise osuuksia takaisin 60/40:ään, hän kantaa nyt enemmän markkinariskiä. Yksi syvä lasku voi pudottaa salkun arvoa paljon enemmän. Toisaalta säännöllinen rebalanssi myy voittajia ja ostaa tappiolla olevia — käytännössä pakottaa myymään korkealta ja ostamaan matalalta.<br><br><br><br>2) Kustannusten kertyminen: Esimerkki<br><br>Oletetaan, että pidät vanhaa aktiivrahastoa, jonka kulusuhde on 1,5 % vuodessa. Siirryt edulliseen ETF:ään, jonka kulusuhde on 0,15 %. 30 vuoden aikana ero kasautuvien kulujen vuoksi voi olla merkittävä — useita prosenttiyksiköitä vuotuisesta tuotosta. Pienikin ero kulutasossa murentaa pitkän ajan tuottoja.<br><br><br><br>3) Verot ja transaktiot: Esimerkki<br><br>Jos pidät arvopapereita väärässä kotiosoitteessa tai väärässä sijoitustilissä, saatat maksaa enemmän veroja tai menettää verotehokkaita etuja. Suomen verotuskäytännöt muuttuvat ajoittain; jos et reagoi muutoksiin, maksat turhaan.<br><br><br><br>4) Teknologian ja tuotteiden kehitys<br><br>Markkinat tarjoavat jatkuvasti uusia tuotteita, kuten laaja-alaiset ETFit, automaattiset salkunhoitoratkaisut ja alhaisemmat välityspalkkiot. Nykytilan harha pitää sinut vanhoissa ratkaisuissa, vaikka vaihtoehto olisi yksinkertaisempi ja halvempi.<br><br><br><br><h2>Kuinka tunnistaa nykytilan harha omassa salkussa</h2><br><br><br><br>Seuraavat merkit kertovat, että salkkusi saattaa olla jumissa nykytilassa:<br><br><br><br>- Et ole muokannut salkkusi allokaatiota yli kahteen vuoteen.<br><br>- Omistat rahastoja tai osakkeita, joita et edes seuraa aktiivisesti.<br><br>- Salkkusi riskiprofiili muuttuu vuosien aikana (esim. vähemmän korkoja) ilman että oma riskinsietokykysi on muuttunut.<br><br>- Et vertaa palveluiden hintoja, vaikka markkinat tarjoavat halvempaa toimintaa.<br><br>- Sinulla on monta samanlaista tuotetta, jotka vain lisäävät hallinnollista byrokratiaa.<br><br><br><br>Käytännön tapa tarkistaa: tee yksinkertainen "salkkutarkastus" nyt. Listaa kaikki omistuksesi, niiden kulut, viimeisten 5 vuoden tuotto ja painot salkussa. Jos voit nimetä yli kolme tuotetta, joita et halua pitää strategisesti, kyseessä voi olla nykytilan harha.<br><br><br><br><h2>Miten päivität salkun ilman ylihermosta tai impulsiivisuutta</h2><br><br><br><br>Muutoksen ei tarvitse olla radikaali. Tärkeintä on järjestelmällisyys ja selvät säännöt. Seuraava prosessi auttaa poistamaan tunteet päätöksenteosta.<br><br><br><br>1) Pidä sijoitusstrategia kirjallisena<br><br>Määritä tavoitteet, aikahorisontti, riskitaso ja verosuunnitelma. Kirjoita säännöt, milloin teet muutoksia (esim. vuosittainen rebalanssi tai merkittävä elämänmuutos). Kun strategia on kirjattu, päivität salkkua sen mukaan etkä mielihalujen.<br><br><br><br>2) Tee vuosittainen tai puolivuosittainen rebalanssi<br><br>Rebalanssi palauttaa tavoiteallokaation. Se voi olla ajastettu (esim. kerran vuodessa) tai tapahtua, kun osuudet poikkeavat määritellystä rajasta (esim. +/-5 prosenttiyksikköä). Tämä automaatio vähentää tarvetta arvailla, milloin "on oikea hetki".<br><br><br><br>3) Vertaa kulut ja vaihda tarvittaessa<br><br>Tee vertailu eri vaihtoehdoista. Kuinka paljon maksat rahastomaksuja, tilinhoitopalkkioita ja välityspalkkioita? Pieni siirto edullisempaan tuotteeseen voi nostaa vuotuista nettotuottoasi huomattavasti. Muista huomioida kaupan kustannukset ja mahdollinen realisoitujen voittojen verotus, ennen kuin teet siirtoja.<br><br><br><br>4) Käytä verotehokkaita tilejä<br><br>Suomessa osakesäästötili (OST) ja arvo-osuustili tarjoavat erilaisia verokohteluja. OST:iin voi tehdä jatkuvia sijoituksia ilman myyntivoittojen veroseuraamuksia ennen nostoa. Rakennettu verosuunnitelma voi mahdollistaa salkun päivittämisen useammin ilman ylimääräisiä verohaittoja.<br><br><br><br>5) Hyödynnä automaatiota ja työvälineitä<br><br>Monet palvelut tarjoavat automaattista rebalanssia, kuukausisäästösuunnitelmia ja alusta-verteilemistä. Automatisaatio poistaa tunteet ja tekee päivityksistä rutiinia.<br><br><br><br><h3>Tarkistuslista salkun päivittämiseen</h3><br><br>- Onko sijoitusstrategiasi yhä ajankohtainen? (Kyllä/Ei)<br><br>- Onko nykyinen allokaatio tavoitetasolla? (Kyllä/Ei)<br><br>- Maksaako jokin sijoituksesi yli 1 % kulusuhdetta? (Listaa)<br><br>- Voisitko käyttää verotehokkaampaa tiliä? (Kyllä/Ei)<br><br>- Onko salkussasi tuotteita, joita et ymmärrä? (Listaa)<br><br>- Onko rebalanssi aikataulutettu? (Kyllä/Ei)<br><br><br><br>Vastaa näihin rehellisesti ja toimi askel kerrallaan.<br><br><br><br><h2>Konkreettiset esimerkit ja laskelmat — miten pieni muutos vaikuttaa</h2><br><br><br><br>Esimerkki 1: Kulujen ero<br><br>Oletetaan 100 000 euron salkku ja keskimääräinen vuosituotto ennen kuluja 6 %. Jos maksat kuluja 1,5 % vuodessa, nettotuotto on 4,5 %. Jos pystyt alentamaan kulut 0,2 %:iin, nettotuotto nousee 5,8 %. 30 vuodessa ero kerryttää merkittävän varallisuuseron. Vaikka prosentit vaikuttavat pieniltä, korkoa korolle -efekti tekee niiden vaikutuksesta merkittävän.<br><br><br><br>Esimerkki 2: Rebalanssi ja volatiliteetti<br><br>Aloitat 60/40-salkulla. Osakkeet nousevat ja salkku siirtyy 80/20:een. Et rebalance. Kolmen vuoden syvä lasku pudottaa osakkeet 50 %. Salkku putoaa 40 % arvostaan. Jos taas olisit rebalance-tyylisesti myynyt osan osakkeista ylähuipulla ja ostanut korkoja, pudotus olisi ollut lievempi. Rebalanssi laskee salkun kokonaisvolatiliteettia pitkällä aikavälillä.<br><br><br><br>Nämä esimerkit eivät ole teoreettisia niksejä — ne kertovat miksi pieni, säännöllinen ylläpito voi suojata pääomaa ja parantaa tuottoa.<br><br><br><br><h2>Miten muutosvastarinta voitettavissa: käytännön taktiikat</h2><br><br><br><br>1) Tee muutos pienin askelin<br><br>Et tarvitse suurta remonttia kerralla. Pienet siirrot, esimerkiksi 10–20 % salkusta kustannustehokkaampiin tuotteisiin vuosittain, voivat olla tehokkaita ja veroneutraaleja.<br><br><br><br>2) Aikatauluta päätökset<br><br>Päätä etukäteen, milloin arvioit salkun (esim. tammikuun ensimmäinen viikko). Kun aika tulee, tee työtä kuin rutiininomainen ylläpito — älä anna hetken tunteille vallan.<br><br><br><br>3) Käytä "pre-commitment"-sääntöjä<br><br>Kirjaa säännöt etukäteen: esimerkiksi "vaihdan kaikki aktiivirahastot, joiden kulut ylittävät 0,8 %, seuraavan 12 kuukauden aikana". Ennakkositoumus estää vatvomisen.<br><br><br><br>4) Hanki toisen mielipide<br><br>Keskustele riippumattoman neuvonantajan tai luotettavan sijoituskumppanin kanssa. Ulkopuolinen voi huomata nykytilan harhan merkit, joita et itse näe.<br><br><br><br>5) Seuraa metrikoita, ei tunteita<br><br>Konkreettiset mittarit kuten kulusuhde, sharpe-suhde, volatiliteetti ja allokaation poikkeama auttavat tekemään rationaalisia päätöksiä.<br><br><br><br><h2>Lopuksi — muutos on sijoittajan arkea</h2><br><br><br><br>Nykytilan harha on luonnollinen, mutta ei pakollinen osa sijoittamista. Menestyvä sijoittaja ei katso muutosta pelkästään epävarmuutena, vaan myös mahdollisuutena optimoida. Pienet, mietityt muutokset, säännöllinen rebalanssi, kustannustehokkuus ja verosuunnittelu voivat kasvattaa nettotuottoasi merkittävästi pitkällä aikavälillä.<br><br><br><br>Toimi näin heti:<br><br>- Kirjoita ja päivitä sijoitusstrategiasi.<br><br>- Tee kertaluonteinen salkkutarkastus: listaa kulut ja tuotteet, joita et halua.<br><br>- Aikatauluta rebalanssi ja ota käyttöön automatiikka.<br><br>- Vertaa kulut ja vaihda edullisempaan vaihtoehtoon, kun se on verotehokasta.<br><br>- Tarkista verotukselliset edut kuten osakesäästötili ja käytä niitä järkevästi.<br><br><br><br>Muista: mukavuus ja nykytila voivat tuntua turvallisilta, mutta ne eivät aina tuota parasta pitkän aikavälin tulosta. Pienillä, järjestelmällisillä päätöksillä estät suurimmat sudenkuopat ja annat salkullesi mahdollisuuden kasvaa suunnitelmasi mukaan.<br><br><br><br>Lähteet:<br><br><a href="https://en.wikipedia.org/wiki/Status_quo_bias">https://en.wikipedia.org/wiki/Status_quo_bias</a><br><br><a href="https://www.investopedia.com/terms/s/status-quo-bias.asp">https://www.investopedia.com/terms/s/status-quo-bias.asp</a><br><br><a href="https://www.sijoitustieto.fi">https://www.sijoitustieto.fi</a><br><br><a href="https://www.suomenpankki.fi">https://www.suomenpankki.fi</a><br><br><a href="https://www.nordnet.fi">https://www.nordnet.fi</a><br><br><a href="https://www.kauppalehti.fi">https://www.kauppalehti.fi</a></article>
+</main>
+
+<footer>
+  <p>© 2025 Talousvahti — kirjoittanut <strong>Jere Järvelä</strong></p>
+</footer>
+
+<script>
+function toggleMenu() {
+  const menu = document.getElementById("dropdownMenu");
+  menu.style.display = (menu.style.display === "block") ? "none" : "block";
+}
+
+document.addEventListener("click", function(e) {
+  const menu = document.getElementById("dropdownMenu");
+  const hamburger = document.querySelector(".hamburger");
+
+  if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+    menu.style.display = "none";
+  }
+});
+</script>
+
+
+</body>
+</html>
