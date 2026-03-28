@@ -1,0 +1,222 @@
+
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Likviditeettikriisi: 5 tapaa testata osakkeen myytävyys</title>
+<meta name="description" content="Likviditeettikriisi: 5 tapaa testata osakkeen myytävyys – Päivän sijoitusblogi Talousvahdissa.">
+<meta name="keywords" content="likviditeetti, likviditeettikriisi, osakkeen myytävyys, kaupankäyntivolyymi, bid-ask spread, order book, markkinavaikutus, pörssi, likviditeettiriski, block trade, ETF, OMX Helsinki">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2566G3KPHW"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2566G3KPHW');
+</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Likviditeettikriisi: 5 tapaa testata osakkeen myytävyys","author":{"@type":"Person","name":"Jere Järvelä"},"publisher":{"@type":"Organization","name":"Talousvahti","logo":{"@type":"ImageObject","url":"https://talousvahti.com/logo.png"}},"datePublished":"2026-03-28","inLanguage":"fi","keywords":"likviditeetti, likviditeettikriisi, osakkeen myytävyys, kaupankäyntivolyymi, bid-ask spread, order book, markkinavaikutus, pörssi, likviditeettiriski, block trade, ETF, OMX Helsinki","description":"Likviditeettikriisi: 5 tapaa testata osakkeen myytävyys","mainEntityOfPage":"https://talousvahti.com/likviditeettikriisi-5-tapaa-testata-osakkeen-myytavyys-2026-03-28.html"}</script>
+
+<!-- Fontit ja tyyli -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #0d0d0d;
+  --accent: #0077ff;
+  --text: #1a1a1a;
+  --muted: #666;
+  --bg: #ffffff;
+  --radius: 12px;
+  --shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+body {
+  font-family: 'Inter', Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+  line-height: 1.8;
+}
+
+nav {
+  background: var(--primary);
+  color: #fff;
+  padding: 18px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+nav .nav-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+nav img {
+  height: 38px;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 20px;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+nav a:hover {
+  color: var(--accent);
+}
+
+main {
+  max-width: 820px;
+  margin: 60px auto;
+  background: #fff;
+  padding: 40px 50px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+h1 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+article {
+  font-size: 1.05rem;
+  color: var(--text);
+}
+
+article p {
+  margin-bottom: 1.2rem;
+}
+
+footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-top: 60px;
+  padding: 20px 0;
+  border-top: 1px solid #eee;
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  main {
+    padding: 25px;
+    margin: 30px 10px;
+  }
+  h1 {
+    font-size: 1.7rem;
+  }
+  nav img {
+    height: 32px;
+  }
+}
+
+/* Hamburger valikko */
+.hamburger {
+  font-size: 28px;
+  cursor: pointer;
+  user-select: none;
+  display: block;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  right: 20px;
+  top: 68px;
+  background: var(--primary);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 10px 0;
+  min-width: 190px;
+  z-index: 20;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 10px 20px;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.dropdown-menu a:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+
+
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-left">
+    <img src="https://storage.mlcdn.com/account_image/1738913/3ffITIlb3p17IaYG3RcfwCueUnHxNH6iG0EtEEPU.png" alt="Talousvahti logo">
+    <strong>Talousvahti Blogi</strong>
+  </div>
+
+  <!-- Hamburger ikonit -->
+  <div class="hamburger" onclick="toggleMenu()">
+    ☰
+  </div>
+
+  <!-- Dropdown valikko -->
+  <div id="dropdownMenu" class="dropdown-menu">
+    <a href="https://talousvahti.com/">Talousuutiset</a>
+    <a href="https://talousvahti.com/kurssit.html">Pörssikurssit</a>
+    <a href="https://talousvahti.com/talouskalenteri.html">Talouskalenteri</a>
+    <a href="https://talousvahti.com/Blogi.html">Blogi</a>
+    <a href="https://talousvahti.com/sijoituslaskuri.html">Sijoituslaskuri</a>
+    <a href="https://talousvahti.com/tietoa.html">Tietoa</a>
+  </div>
+</nav>
+
+
+<main>
+  <header>
+    <h1>Likviditeettikriisi: 5 tapaa testata osakkeen myytävyys</h1>
+  </header>
+  <article>Likviditeettikriisi voi yllättää sijoittajan nopeasti. Kun markkinat jyrkästi laskevat tai kaupankäynti tyrehtyy, voi olla vaikeaa myydä isoa osakepositiota ilman suurta hinnanmuutosta. Tässä artikkelissa käyn läpi viisi konkreettista ja helposti toteutettavaa tapaa testata, kuinka nopeasti ja millä kustannuksella voit myydä tietyn osakkeen. Kirjoitus on tarkoitettu suomalaisille sijoittajille ja se sopii niin pitkän aikavälin omistajalle kuin aktiiviselle treidaajalle. Pidä mielessä, että likviditeetti tarkoittaa aina sekä volyymia että sitä, miten kaukana tarjottu hinta on (bid-ask spread) — molemmat vaikuttavat myyvän osan kustannuksiin.<br><br><br><br><h2>Miksi osakkeen myötävyys (liquidity) kannattaa testata?</h2><br><br>Likviditeetti vaikuttaa suoraan sijoituksesi jälkimarkkina-arvoon. Huono likviditeetti tarkoittaa isompaa kustannusta myynnissä, pidempää myyntiaikaa ja suurempaa riskiä, että häviät tilaisuuden reagoida markkinamuutoksiin. Erityisesti likviditeettikriisissä — esimerkiksi markkinakaaoksen, myyntiaaltojen tai yhtiökohtaisen uutistulvan aikana — pienikin positio voi siirtää hintaa huomattavasti.<br><br><br><br>Käytännössä sijoittajan kannattaa testata myytävyys etenkin silloin kun:<br><br>- haluat myydä suuremman blokin (satoja tuhansia euroja tai enemmän),<br><br>- omistat pienen yhtiön osakkeita (low-cap tai micro-cap),<br><br>- markkinat ovat erittäin volatiilit,<br><br>- osake on saanut äkillisen negatiivisen uutispurskeen.<br><br><br><br>Seuraavat viisi testiä auttavat arvioimaan myytävyyttä ennen oikeaa myyntipäätöstä.<br><br><br><br><h2>1) Tarkista kaupankäyntivolyymi ja suhteellinen koko (ADV ja % of float)</h2><br><br>Yksi yksinkertaisimmista tavoista arvioida likviditeettiä on katsoa osakkeen Average Daily Volume (ADV) eli keskimääräinen päivittäinen kaupankäyntivolyymi. Esimerkiksi jos osakkeella käydään keskimäärin läpi 100 000 osaketta päivässä ja haluat myydä 50 000 osaketta, se on 50 % ADV — suuri osuus, joka todennäköisesti liikuttaa hintaa.<br><br><br><br>Konkreettinen nyrkkisääntö:<br><br>- Alle 1–2 % ADV: todennäköisesti helppo myydä päivän aikana ilman merkittävää pelkoa hinnanromahtamisesta.<br><br>- 5–10 % ADV: jo huomattava markkinavaikutus, kannattaa hajauttaa myyntiä tai käyttää algoritmeja (esim. VWAP).<br><br>- Yli 10–20 % ADV: usein vaatii block trade -neuvottelua tai usean päivän myyntiä.<br><br><br><br>Toinen tärkeä mittari on float eli vapaasti vaihdettavissa olevien osakkeiden määrä. Jos yrityksen float on pieni, suhteellisen pieni myyntierä voi olla suuri prosenttiosuus flotista ja siksi vaikea myydä. Esimerkki: pienen cap-yhtiön osakkeita voi käydä vain muutama tuhat kappaletta päivässä — tällöin 10 000 osakkeen myynti on merkittävä.<br><br><br><br>Miten mitata:<br><br>- Katso viimeisen 30 päivän tai 90 päivän ADV pörssistä tai kaupankäyntialustasta.<br><br>- Laske myyntimäärä / ADV ja myyntimäärä / float. Kumpikin kertoo riskistä.<br><br><br><br><h2>2) Mittaa bid-ask spread ja volatiliteetti</h2><br><br>Bid-ask spread eli osto- ja myyntitarjousten välinen ero kertoo nopeasti, kuinka kallista nopea kaupankäynti on. Kapea spread on merkki likvidistä osakkeesta. Leveä spread kertoo epälikviditeetistä: myyjä ja ostaja eivät kohtaa lähellä samaa hintaa.<br><br><br><br>Sääntöjä:<br><br>- Absoluuttinen spread: euroissa tai senteissä; arvokkailla osakkeilla spread voi olla alle 0,01–0,05 €.<br><br>- Relatiivinen spread = spread / osakehinta. Jos tämä on alle 0,1 % (esim. suuryrityksissä), osake on hyvin likvidi. Jos spread on yli 0,5–1 %, se on jo merkki epälikviditeetistä.<br><br><br><br>Esimerkki:<br><br>- Suuryrityksen osake A: hinta 50 €, bid 49,99 €, ask 50,01 € -> spread 0,02 € (0,04 %) — erittäin likvidi.<br><br>- Pienemmän yhtiön osake B: hinta 2 €, bid 1,90 €, ask 2,10 € -> spread 0,20 € (10 %) — vaikea myydä nopeasti ilman tappioita.<br><br><br><br>Volatiliteetti vaikuttaa myös: korkea volatiliteetti kasvattaa todennäköisyyttä, että hintatasot vaihtuvat nopeasti. Yhdistämällä spreadin ja volatiliteetin saat paremman käsityksen siitä, mitä myynti maksaisi markkinatilanteessa.<br><br><br><br><h2>3) Katso order bookin (tilaustasku) syvyys ja hintatasot</h2><br><br>Pelkkä spread ei kerro kaikkea. Order book näyttää, kuinka monta osaketta on tarjolla eri hintatasoilla. Syvä order book — paljon tarjouksia lähellä markkinahintaa — on merkki hyvästä likviditeetistä.<br><br><br><br>Miten lukea:<br><br>- Katso top 5–10 tasoa molemmilta puolilta (bid ja ask). Laske kuinka monta osaketta on saatavilla esim. 1 %, 2 % ja 5 % alennuksilla nykyisestä hinnasta.<br><br>- Jos 1 % alennuksella on ostajia vain 100 osakkeelle mutta haluat myydä 10 000, markkinahäiriö voi olla suuri.<br><br><br><br>Käytännöllinen testi:<br><br>- Tarkista order book hetken ajan eri kelloajoilla (auktio, aamun avaus, iltapäivä). Likviditeetti vaihtelee päivän mukaan.<br><br>- Kiinnitä huomiota sudden gaps eli hintahypyt, joissa seuraavat ostotaso ovat paljon alhaisemmat kuin paras bid.<br><br><br><br>Esimerkki:<br><br>- OMX Helsinki suuret yhtiöt: usein top-10 tasolla tuhansia osakkeita.  <br><br>- Pienyhtiöt: voi olla vain muutamia satoja osakkeita top-tasoilla.<br><br><br><br><h2>4) Tee "pieni testi" käytännössä: limit-tilit ja porrastettu myynti</h2><br><br>Paras tapa arvioida myytävyyttä on tehdä pieni kokeilu oikealla rahalla, mutta hallitusti. Käytä limit-ordereita ja pienempiä erämyyntejä. Näin saat dataa ilman että aiheutat suurta hintavaikutusta.<br><br><br><br>Käytännön esimerkki:<br><br>- Jos olet myymässä 20 000 osaketta, voit ensin laittaa 2–5 limit-myyntiä, joiden koko on kukin 1 000–2 500 osaketta eri hintatasoilla. Näet, miten nopeasti tarjoukset täyttyvät ja mihin hintaan.<br><br>- Vaihtoehtoisesti käytä "iceberg"-orderia, joka näyttää markkinalle vain osan kokonaismäärästä (riippuu välittäjästä).<br><br><br><br>Arvioitavat asiat:<br><br>- Kuinka monta erää täyttyi ensimmäisen tunnin aikana?<br><br>- Kuinka paljon hintaa piti laskea ennen täyttymistä?<br><br>- Syntyykö merkittävä signaali markkinoille (esim. alkamassa oleva myyntiaalto)?<br><br><br><br>Muista kustannukset: pienet testimyynnit voivat silti vaikuttaa verotukseen ja välityspalkkioihin. Mutta tieto on arvokasta — usein parempaa kuin olettamukset.<br><br><br><br><h2>5) Selvitä likviditeetin lähteet: markkinatakaajat, ETF- ja institutionaalinen kiinnostus</h2><br><br>Ei riitä tietää, että nykyisellä hetkellä näkyy ostajia. Kannattaa ymmärtää, mistä likviditeetti tulee. Onko kyse päivittäisistä treidaajista, vakio-ETF:stä, markkinatakaajasta vai yksittäisistä instituutioista?<br><br><br><br>Tarkista:<br><br>- Onko osakkeella aktiivista markkinatakausta? Markkinatakaajat pitävät tarjouksia ja ostotarjouksia auki ja pienentävät spreadiä. Suuremmilla yhtiöillä markkinatakaajia on yleensä enemmän.<br><br>- Onko osake osa ETF:iä tai indeksiä? Indeksin tai ETF:n osakkeet saavat usein korkeampaa likviditeettiä, koska arbitraasitoimijat tasapainottavat kysyntää.<br><br>- Onko yhtiöllä suuria omistajia, jotka myyvät tai ostavat ajoittain? Isot institutionaaliset omistajat voivat luoda tai poistaa likviditeettiä.<br><br><br><br>Esimerkki:<br><br>- Jos suomalainen pörssiyhtiö on osa laajempaa indeksiä, kuten OMX Helsinki 25, ETF-rahastot ja indeksiin sidotut algoritmit pitävät osakkeen likvidimpänä.  <br><br>- Pienellä yrityksellä voikin olla vain muutama vakiokauppias, jolloin likviditeetti katoaa äkillisesti uutistilanteessa.<br><br><br><br>Lisäksi ota huomioon off-exchange-liikenne (block trades, OTC), jotka eivät näy julkisessa order bookissa. Isoja block-tapahtumia voidaan sopia suoraan pankin tai välittäjän kautta, mutta niissäkin on kustannus (alennus markkinahinnasta tai toteutushinta).<br><br><br><br><h2>Miten toimia, jos testi osoittaa heikon likviditeetin?</h2><br><br>1) Hajattele myynti — älä myy koko positiota kerralla.  <br><br>2) Käytä limit-ordeja tai aikaperusteisia algoritmeja (VWAP, TWAP) vähentääksesi markkinavaikutusta.  <br><br>3) Neuvottele block-tapahtuma välittäjän kautta, jos kyse on suuresta summasta.  <br><br>4) Harkitse ETF:ää tai jäljellä olevien sijoitusten myyntiä eri kanavissa: joskus pienehkön ETF:n myynti on helpompaa kuin yksittäisen microcap-yhtiön.  <br><br>5) Pidä hätäraha- tai likviditeettipuolustus valmiina, jotta et ole pakotettu myymään kriisitilanteessa.<br><br><br><br><h2>Esimerkkejä käytännöstä — mitä eri tilanteissa voi odottaa</h2><br><br>- Suuri yhtiö (kuten KONE tai Nokia): yleensä kapea spread, suuri ADV, syvä order book. Voit usein myydä suurempia eriä suhteellisen nopeasti, mutta suuren markkinashokkiin myynti voi silti romahduttaa hinnan tilapäisesti.  <br><br>- Keskisuuri yhtiö: spread voi olla laajempi, order book kapeampi. Haja- ja porrastettu myynti suositeltavaa.  <br><br>- Pieni yhtiö/microcap: usein leveä spread ja niukka syvyys. Pieni testi ensin, block trade tai mietitty exit-strategia suositeltava.<br><br><br><br><h2>Yhteenveto ja checklist ennen myyntiä</h2><br><br>Ennen myyntipäätöstä käy nopeasti läpi seuraava checklist:<br><br>- ADV ja myyntimäärä suhteessa siihen (eikä yli ~5–10 % ADV ilman erityisjärjestelyjä).  <br><br>- Bid-ask spread ja sen suhteellisuus osakehintaan.  <br><br>- Order bookin syvyys 1–5 % hintamuutoksilla.  <br><br>- Pieni testimyynnin tulos limit-ordrein tai icebergilla.  <br><br>- Onko likviditeettiä takana (markkinatakaajat, ETF, instituutiot) ja mahdollisuudet block tradeen.<br><br><br><br>Käyttämällä näitä viittä testimenetelmää voit vähentää epämiellyttäviä yllätyksiä likviditeettikriisissä. Muista, että likviditeetti on tilapäinen ominaisuus — se voi kadota yhdessä yöunessa markkinakriisin tai yritysuutisen seurauksena. Ennakoimalla ja harjoittelemalla testejä etenee varmemmin kuin luottamalla pelkkään mutuun.<br><br><br><br>Lopuksi: likviditeetin testaaminen on osa vastuullista sijoittamista. Se ei vie paljon aikaa, mutta voi säästää suuria summia kustannuksina ja estää tarpeettomia tappioita.<br><br><br><br>Lähteet:<br><br><a href="https://www.nasdaq.com/solutions/nasdaq-helsinki">https://www.nasdaq.com/solutions/nasdaq-helsinki</a>  <br><br><a href="https://www.investopedia.com/terms/l/liquidity.asp">https://www.investopedia.com/terms/l/liquidity.asp</a>  <br><br><a href="https://www.bankofengland.co.uk/knowledgebank/what-is-market-liquidity">https://www.bankofengland.co.uk/knowledgebank/what-is-market-liquidity</a>  <br><br><a href="https://www.esma.europa.eu/">https://www.esma.europa.eu/</a>  <br><br><a href="https://www.finanssivalvonta.fi/en/">https://www.finanssivalvonta.fi/en/</a>  <br><br><a href="https://www.investopedia.com/terms/b/bid-askspread.asp">https://www.investopedia.com/terms/b/bid-askspread.asp</a></article>
+</main>
+
+<footer>
+  <p>© 2025 Talousvahti — kirjoittanut <strong>Jere Järvelä</strong></p>
+</footer>
+
+<script>
+function toggleMenu() {
+  const menu = document.getElementById("dropdownMenu");
+  menu.style.display = (menu.style.display === "block") ? "none" : "block";
+}
+
+document.addEventListener("click", function(e) {
+  const menu = document.getElementById("dropdownMenu");
+  const hamburger = document.querySelector(".hamburger");
+
+  if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+    menu.style.display = "none";
+  }
+});
+</script>
+
+
+</body>
+</html>
