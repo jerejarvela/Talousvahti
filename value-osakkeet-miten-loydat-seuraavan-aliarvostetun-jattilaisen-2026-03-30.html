@@ -1,0 +1,222 @@
+
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Value-osakkeet: Miten löydät seuraavan aliarvostetun jättiläisen?</title>
+<meta name="description" content="Value-osakkeet: Miten löydät seuraavan aliarvostetun jättiläisen? – Päivän sijoitusblogi Talousvahdissa.">
+<meta name="keywords" content="value-osakkeet, aliarvostetut osakkeet, fundamenttianalyysi, osakesijoittaminen, arvonmääritys, margin of safety, P/E, P/B, vapaa kassavirta, Nasdaq Helsinki, sijoitusstrategia">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2566G3KPHW"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2566G3KPHW');
+</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Value-osakkeet: Miten löydät seuraavan aliarvostetun jättiläisen?","author":{"@type":"Person","name":"Jere Järvelä"},"publisher":{"@type":"Organization","name":"Talousvahti","logo":{"@type":"ImageObject","url":"https://talousvahti.com/logo.png"}},"datePublished":"2026-03-30","inLanguage":"fi","keywords":"value-osakkeet, aliarvostetut osakkeet, fundamenttianalyysi, osakesijoittaminen, arvonmääritys, margin of safety, P/E, P/B, vapaa kassavirta, Nasdaq Helsinki, sijoitusstrategia","description":"Value-osakkeet: Miten löydät seuraavan aliarvostetun jättiläisen?","mainEntityOfPage":"https://talousvahti.com/value-osakkeet-miten-loydat-seuraavan-aliarvostetun-jattilaisen-2026-03-30.html"}</script>
+
+<!-- Fontit ja tyyli -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #0d0d0d;
+  --accent: #0077ff;
+  --text: #1a1a1a;
+  --muted: #666;
+  --bg: #ffffff;
+  --radius: 12px;
+  --shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+body {
+  font-family: 'Inter', Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+  line-height: 1.8;
+}
+
+nav {
+  background: var(--primary);
+  color: #fff;
+  padding: 18px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+nav .nav-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+nav img {
+  height: 38px;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 20px;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+nav a:hover {
+  color: var(--accent);
+}
+
+main {
+  max-width: 820px;
+  margin: 60px auto;
+  background: #fff;
+  padding: 40px 50px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+h1 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+article {
+  font-size: 1.05rem;
+  color: var(--text);
+}
+
+article p {
+  margin-bottom: 1.2rem;
+}
+
+footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-top: 60px;
+  padding: 20px 0;
+  border-top: 1px solid #eee;
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  main {
+    padding: 25px;
+    margin: 30px 10px;
+  }
+  h1 {
+    font-size: 1.7rem;
+  }
+  nav img {
+    height: 32px;
+  }
+}
+
+/* Hamburger valikko */
+.hamburger {
+  font-size: 28px;
+  cursor: pointer;
+  user-select: none;
+  display: block;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  right: 20px;
+  top: 68px;
+  background: var(--primary);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 10px 0;
+  min-width: 190px;
+  z-index: 20;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 10px 20px;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.dropdown-menu a:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+
+
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-left">
+    <img src="https://storage.mlcdn.com/account_image/1738913/3ffITIlb3p17IaYG3RcfwCueUnHxNH6iG0EtEEPU.png" alt="Talousvahti logo">
+    <strong>Talousvahti Blogi</strong>
+  </div>
+
+  <!-- Hamburger ikonit -->
+  <div class="hamburger" onclick="toggleMenu()">
+    ☰
+  </div>
+
+  <!-- Dropdown valikko -->
+  <div id="dropdownMenu" class="dropdown-menu">
+    <a href="https://talousvahti.com/">Talousuutiset</a>
+    <a href="https://talousvahti.com/kurssit.html">Pörssikurssit</a>
+    <a href="https://talousvahti.com/talouskalenteri.html">Talouskalenteri</a>
+    <a href="https://talousvahti.com/Blogi.html">Blogi</a>
+    <a href="https://talousvahti.com/sijoituslaskuri.html">Sijoituslaskuri</a>
+    <a href="https://talousvahti.com/tietoa.html">Tietoa</a>
+  </div>
+</nav>
+
+
+<main>
+  <header>
+    <h1>Value-osakkeet: Miten löydät seuraavan aliarvostetun jättiläisen?</h1>
+  </header>
+  <article>Value-osakkeet kiinnostavat sijoittajia, jotka tavoittelevat pitkäaikaista tuottoa ostamalla yrityksiä, joiden markkinahinta ei heijasta niiden todellista arvoa. Monet menestyneet sijoittajat – kuten Benjamin Graham ja Warren Buffett – ovat rakentaneet varallisuutensa juuri tällä lähestymistavalla. Mutta miten tavallinen suomalainen sijoittaja löytää "seuraavan aliarvostetun jättiläisen"? Tämä artikkeli antaa selkeät, käytännössä testatut työkalut ja esimerkit, joiden avulla pystyt seulomaan, arvioimaan ja päättämään järkevästi.<br><br><br><br><h2>Mitä tarkoittaa value-osake käytännössä?</h2><br><br><br><br>Value-osake on yritys, jonka osakkeen hinta on mielestäsi markkinoiden arvioitua alhaisempi suhteessa yrityksen taloudelliseen arvoon. Arvon määrittely voi perustua useisiin mittareihin:<br><br>- P/E (hinta/voitto) – alhainen suhteessa toimialan mediaaniin voi viitata aliarvostukseen.<br><br>- P/B (hinta/kirjanpitoarvo) – alle 1 voi viitata markkinan epäluottamukseen tasearvoa kohtaan.<br><br>- FCF-yield (vapaa kassavirta suhteessa markkina-arvoon) – korkea luku kertoo kassavirran tuottavuudesta.<br><br>- ROE ja velkaantuneisuus – hyvä tuotto omalle pääomalle yhdistettynä hallittuun velkaan on plussaa.<br><br>- Kestävät kilpailuedut (economic moat) ja resurssit sopeutua murroksiin.<br><br><br><br>Tärkeää: aliarvostus ei ole sama asia kuin halpa. Halpa voi olla halpa hintalaatu-suhde (cheap), mutta value-osake on halpa suhteessa odotettavissa olevaan arvoon.<br><br><br><br><h2>Seulonta: mistä aloitat etsiessäsi ehdokkaita?</h2><br><br><br><br>Aloita laajalla seulonnalla. Näin säästät aikaa ja keskityt vain lupaavimpiin kypsiin yrityksiin. Käytä suodattimia seuraavilla kriteereillä:<br><br>- P/E alle sektorin mediaanin (esim. alle 12–15 monilla perinteisillä aloilla).<br><br>- P/B alle 1,2 (poikkeuksia laadukkailla yrityksillä).<br><br>- FCF-yield yli 5–8 %.<br><br>- Velkaantuneisuus kohtuullinen: velka/EBITDA alle 3.<br><br>- Vakaa osinkohistoria tai selkeä osingonmaksukyky.<br><br><br><br>Esimerkki: Käytännössä voit hakea Nasdaq Helsinki -listalta yrityksiä, joiden P/E < 12 ja FCF-yield > 6 %. Tällainen haku antaa kourallisen nimiä, joita lähdet analysoimaan tarkemmin.<br><br><br><br>Työkaluja seulontaan:<br><br>- Inderes ja Kauppalehti (suomalaiset preferenssit).<br><br>- Morningstar ja Yahoo Finance (globaalit tiedot ja tunnusluvut).<br><br>- Screenerit kuten Finviz (globaalit) tai pörssien omat työkalut.<br><br><br><br>Muista: seulonta on vain lähtökohta. Lista sisältää sekä kultakimpaleita että ansoja.<br><br><br><br><h2>Syväluotaus: miten arvioit yrityksen fundamentit?</h2><br><br><br><br>Kun olet löytänyt muutaman mielenkiintoisen ehdokkaan, tee systemaattinen fundamenttianalyysi. Keskity seuraaviin osa-alueisiin:<br><br><br><br>1. Liikevaihdon ja tuloksen laatu<br><br>- Onko kasvu orgaanista vai kertaluonteista? Esimerkiksi yritys, joka myy yhtiön omaisuutta tuloksen nostamiseksi, ei ole sama asia kuin kasvava liiketoiminta.<br><br>- Katso myös katteiden kehittymistä: ovatko marginaalit vakaat vai alttiita laskulle?<br><br><br><br>2. Kassavirta ja tase<br><br>- Vapaa kassavirta (Free Cash Flow) kertoo, paljonko yritys voi käyttää investointeihin, osinkoihin tai velkojen takaisinmaksuun.<br><br>- Selvitä taseen vahvuus: riittääkö rahavarat ja likviditeetti suhdannetta kestävään toimintaan?<br><br><br><br>3. Johto ja omistusrakenne<br><br>- Onko johdolla kannustimet omistaja-arvon kasvattamiseen (osakepalkkiot, omistajuus)?<br><br>- Onko hallituksessa riippumattomia jäseniä? Onko historiassa hallinnollisia epäselvyyksiä?<br><br><br><br>4. Kilpailuedun kestävyys (moat)<br><br>- Onko yrityksellä brändiä, kustannusedun, verkostovaikutuksen tai regulaation suomaa etua?<br><br>- Esimerkiksi vahva jakeluverkosto tai mittakaavaetu voi suojella voittoja kilpailulta.<br><br><br><br>5. Toimialan suhdanneherkkyys ja riskit<br><br>- Syyllisyys sykliseen alaan (esim. metsäteollisuus, autot) voi vaatia matalampaa arvostusta, koska tulos heilahtelee.<br><br>- Teknologinen disruptio on erityisen tärkeä nykyään. Nokia on hyvä oppitunti: aikanaan jättiläinen, mutta kilpailun ja teknologian muutos romahdutti markkina-aseman.<br><br><br><br>Konkreettinen esimerkki analyysistä:<br><br>Kuvitellaan yritys "Yritys X":<br><br>- P/E 8, P/B 0,9, FCF-yield 7 %.<br><br>- Liikevaihto kasvanut 2 %/vuosi viimeiset 3 vuotta, EBITDA-marginaali 18 %.<br><br>- Velka/EBITDA = 1,8 (terve).<br><br>- Johdolla suurin osa henkilökohtaisesta varallisuudesta sidottu yhtiöön.<br><br>Arvio: luvut näyttävät hyviltä, mutta kysytään: Miksi markkinahinta on alhainen? Usein syyt löytyvät kasvuodotuksista, suhdanneriskistä tai epäluotettavasta johdosta. Jos syy on suhdanteessa (esim. tilapäinen kysynnän heikkeneminen) ja perussuureet kunnossa, potentiaalinen value-ostos voi löytyä.<br><br><br><br><h2>Arvonmääritys käytännössä: yksinkertainen DCF ja vertailuluvut</h2><br><br><br><br>Arvonmääritys ei tarvitse monimutkaista matematiikkaa. Kahden tavan yhdistelmä riittää useimmiten: diskontattu kassavirta (DCF) ja vertailuarvostus.<br><br><br><br>Perus-DCF (yksinkertaistettu):<br><br>1. Ota viimeisin FCF (esim. 100 miljoonaa).<br><br>2. Arvioi realistinen kasvuprosentti (esim. 3–5 % vakaan yrityksen kohdalla).<br><br>3. Diskonttaa kassavirrat 5 vuoden ajalta WACC:lla (esim. 8 %).<br><br>4. Laske terminaaliarvo (perpetuity growth) vaikkapa 2 %:n pitkän aikavälin kasvulla.<br><br>5. Summaa diskontatut kassavirrat ja vähennä netto velka -> tulos = yrityksen arvo.<br><br><br><br>Esimerkkilaskelma, yksinkertaistettuna:<br><br>- FCF nyt = 100<br><br>- Kasvu 4 % 5 vuotta, WACC 8 %<br><br>- Diskontattu summa ~ 100*(1+0,04)/(0,08-0,04) ja muista diskonttaus -> perustasolla yritysarvo voisi olla ~1300 (yksinkertainen esimerkki, ei tarkka).<br><br>- Jaetaan osakkeiden lukumäärällä saat arvo per osake. Jos markkinahinta on selvästi tätä alhaisempi, löytyy margin of safety.<br><br><br><br>Vertailuindikaattorit:<br><br>- Vertaa P/E ja EV/EBITDA toimialan vastaaviin. Jos yritys on selvästi halvempi, selvitä miksi.<br><br>- Esimerkiksi toimialalla EV/EBITDA keskiarvo 8 ja kohdeyritys 5 — tämä voi olla tilaisuus tai merkki riskistä.<br><br><br><br>Marginaali turvaksi:<br><br>- Harkitse 20–40 % margin of safety -varmuusmarginaalia laskelmissasi. Tämä suojaa tilapäisiä laskelmaeroja ja huonoja skenaarioita vastaan.<br><br><br><br><h2>Ostopäätös, ajoitus ja riskienhallinta</h2><br><br><br><br>Ajoitus: Value-sijoittaja ei yritä ajoittaa markkinaa täydellisesti. Usein parempi lähestymistapa on dollar-cost averaging: ostaminen osissa alkaen, kun arvostus vastaa laskelmaasi.<br><br><br><br>Position sizing:<br><br>- Älä laita liikaa pääomaa yhteen lapaan. Perussääntö: riskiä voi hallita hajauttamalla ja rajoittamalla yksittäisen position osuutta salkusta (esim. 3–7 %).<br><br>- Jos olet erittäin varma (hyvin dokumentoitu fundamentti ja suuri margin of safety), position voi olla suurempi, mutta harvoin yli 10 %.<br><br><br><br>Stop-loss ja exit-strategia:<br><br>- Value-sijoittajalle stop-lossit eivät ole yhtä hyödyllisiä kuin esimerkiksi swing-traderille. Mutta exit-criteria kannattaa määrittää etukäteen: esim. kun hinta nousee yli oma arvioitu intrinsic value tai liiketoiminnan fundamentit heikkenevät.<br><br>- Seuraa johdon ilmoituksia, markkinatilannetta ja kilpailuetujen pysyvyyttä.<br><br><br><br>Riskit, joihin varauduttava:<br><br>- Toimialamurros: vanha bisnes voi menettää arvonsa nopeasti (teknologinen disruptio).<br><br>- Johtamisriskit ja väärinkäytökset.<br><br>- Likviditeettiriski pienissä yhtiöissä: et välttämättä saa myytyä isoa positioasi nopeasti ilman kurssivaikutusta.<br><br>- Systemaattinen markkinariski, joka voi laskea myös hyvän yrityksen kurssia pitkään.<br><br><br><br><h2>Esimerkkejä ja opit käytännöstä</h2><br><br><br><br>1. Sampo (oppitunti pitkäjänteisestä arvonluonnista)<br><br>- Sampo on suomalainen esimerkki pitkän tähtäimen arvon kerryttämisestä vakuutus- ja sijoitustoiminnalla. Sellaiset yritykset voivat pysyä aliarvostettuina, kun markkinat eivät huomioi taseen arvoa kokonaan.<br><br><br><br>2. Nokia (oppitunti kilpailuriskistä)<br><br>- Nokia osoittaa, että markkina voi rankaista yritystä, joka ei kykene sopeutumaan teknologiamuutokseen. Tämä muistuttaa, että fundamentit ja kilpailuetu pitää arvioida realistisesti.<br><br><br><br>3. Kuvitteellinen "yritys X" (konkreettinen analyysi)<br><br>- Kun yritys X:n tunnusluvut näyttävät hyville, mutta kurssi on laskenut lyhyellä aikavälillä kysynnän laskun takia, voit laskea DCF:n, arvioida riskit ja ostaa pienin erä kerrallaan, jos fundamentit pysyvät vahvoina.<br><br><br><br><h2>Checklist — miten löydät aliarvostetun jättiläisen askel askeleelta</h2><br><br><br><br>1. Seulonta: P/E, P/B, FCF-yield ja velkaantuneisuus.<br><br>2. Ensianalyysi: tutki tulos, kassavirta, johto ja tase.<br><br>3. Arvonmääritys: yksinkertainen DCF + vertailuluvut.<br><br>4. Margin of safety: pyri 20–40 % varaukseen.<br><br>5. Osta vaiheittain: aloita pieni erä, lisää jos fundamentit pitävät.<br><br>6. Seuraa jatkuvasti: mitä tapahtuu bisnekselle, johto pysyy rehellisenä ja kilpailuetu säilyy?<br><br><br><br>Lopuksi — kärsivällisyys on valttia. Value-sijoittaminen on usein tylsää ja vaatii hermoja, koska markkinat voivat pysyä epärationaalisina pitkään. Jos olet valmis tutkimaan yrityksiä huolellisesti, hyväksymään tilapäiset tappiot ja pitämään kiinni loogisesta arvostuksesta, mahdollisuudet löytää seuraava aliarvostettu jättiläinen ovat hyvät.<br><br><br><br>Lähteet:<br><br><a href="https://www.investopedia.com/terms/v/valueinvesting.asp">https://www.investopedia.com/terms/v/valueinvesting.asp</a><br><br><a href="https://www.morningstar.com/articles">https://www.morningstar.com/articles</a><br><br><a href="https://www.inderes.fi">https://www.inderes.fi</a><br><br><a href="https://www.nasdaq.com/solutions/nasdaq-helsinki">https://www.nasdaq.com/solutions/nasdaq-helsinki</a><br><br><a href="https://fi.yahoo.com/finance">https://fi.yahoo.com/finance</a><br><br><a href="https://en.wikipedia.org/wiki/The_Intelligent_Investor">https://en.wikipedia.org/wiki/The_Intelligent_Investor</a></article>
+</main>
+
+<footer>
+  <p>© 2025 Talousvahti — kirjoittanut <strong>Jere Järvelä</strong></p>
+</footer>
+
+<script>
+function toggleMenu() {
+  const menu = document.getElementById("dropdownMenu");
+  menu.style.display = (menu.style.display === "block") ? "none" : "block";
+}
+
+document.addEventListener("click", function(e) {
+  const menu = document.getElementById("dropdownMenu");
+  const hamburger = document.querySelector(".hamburger");
+
+  if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+    menu.style.display = "none";
+  }
+});
+</script>
+
+
+</body>
+</html>
