@@ -1730,6 +1730,13 @@
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <url>
+    <loc>https://talousvahti.com/tekninen-analyysi-3-kaavaa-joilla-ennustat-lyhyen-nousun-2026-03-31.html</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
 
 
