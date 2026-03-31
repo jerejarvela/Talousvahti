@@ -1,0 +1,222 @@
+
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tekninen analyysi: 3 kaavaa, joilla ennustat lyhyen nousun</title>
+<meta name="description" content="Tekninen analyysi: 3 kaavaa, joilla ennustat lyhyen nousun – Päivän sijoitusblogi Talousvahdissa.">
+<meta name="keywords" content="tekninen analyysi, lyhyen aikavälin nousu, EMA crossover, MACD, RSI, osakesijoittaminen, day trading, swing trading, tekniset indikaattorit, kaupankäynti, sijoittajat">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2566G3KPHW"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2566G3KPHW');
+</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Tekninen analyysi: 3 kaavaa, joilla ennustat lyhyen nousun","author":{"@type":"Person","name":"Jere Järvelä"},"publisher":{"@type":"Organization","name":"Talousvahti","logo":{"@type":"ImageObject","url":"https://talousvahti.com/logo.png"}},"datePublished":"2026-03-31","inLanguage":"fi","keywords":"tekninen analyysi, lyhyen aikavälin nousu, EMA crossover, MACD, RSI, osakesijoittaminen, day trading, swing trading, tekniset indikaattorit, kaupankäynti, sijoittajat","description":"Tekninen analyysi: 3 kaavaa, joilla ennustat lyhyen nousun","mainEntityOfPage":"https://talousvahti.com/tekninen-analyysi-3-kaavaa-joilla-ennustat-lyhyen-nousun-2026-03-31.html"}</script>
+
+<!-- Fontit ja tyyli -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #0d0d0d;
+  --accent: #0077ff;
+  --text: #1a1a1a;
+  --muted: #666;
+  --bg: #ffffff;
+  --radius: 12px;
+  --shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+body {
+  font-family: 'Inter', Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+  line-height: 1.8;
+}
+
+nav {
+  background: var(--primary);
+  color: #fff;
+  padding: 18px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+nav .nav-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+nav img {
+  height: 38px;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 20px;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+nav a:hover {
+  color: var(--accent);
+}
+
+main {
+  max-width: 820px;
+  margin: 60px auto;
+  background: #fff;
+  padding: 40px 50px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+h1 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+article {
+  font-size: 1.05rem;
+  color: var(--text);
+}
+
+article p {
+  margin-bottom: 1.2rem;
+}
+
+footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-top: 60px;
+  padding: 20px 0;
+  border-top: 1px solid #eee;
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  main {
+    padding: 25px;
+    margin: 30px 10px;
+  }
+  h1 {
+    font-size: 1.7rem;
+  }
+  nav img {
+    height: 32px;
+  }
+}
+
+/* Hamburger valikko */
+.hamburger {
+  font-size: 28px;
+  cursor: pointer;
+  user-select: none;
+  display: block;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  right: 20px;
+  top: 68px;
+  background: var(--primary);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 10px 0;
+  min-width: 190px;
+  z-index: 20;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 10px 20px;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.dropdown-menu a:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+
+
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-left">
+    <img src="https://storage.mlcdn.com/account_image/1738913/3ffITIlb3p17IaYG3RcfwCueUnHxNH6iG0EtEEPU.png" alt="Talousvahti logo">
+    <strong>Talousvahti Blogi</strong>
+  </div>
+
+  <!-- Hamburger ikonit -->
+  <div class="hamburger" onclick="toggleMenu()">
+    ☰
+  </div>
+
+  <!-- Dropdown valikko -->
+  <div id="dropdownMenu" class="dropdown-menu">
+    <a href="https://talousvahti.com/">Talousuutiset</a>
+    <a href="https://talousvahti.com/kurssit.html">Pörssikurssit</a>
+    <a href="https://talousvahti.com/talouskalenteri.html">Talouskalenteri</a>
+    <a href="https://talousvahti.com/Blogi.html">Blogi</a>
+    <a href="https://talousvahti.com/sijoituslaskuri.html">Sijoituslaskuri</a>
+    <a href="https://talousvahti.com/tietoa.html">Tietoa</a>
+  </div>
+</nav>
+
+
+<main>
+  <header>
+    <h1>Tekninen analyysi: 3 kaavaa, joilla ennustat lyhyen nousun</h1>
+  </header>
+  <article>Tekninen analyysi voi auttaa sijoittajaa löytämään todennäköisiä lyhyen aikavälin nousuja. Tässä artikkelissa esittelen kolme selkeää ja käytännöllistä kaavaa, jotka voit ottaa osaksi kaupankäynti- tai sijoitusstrategiaasi. Ne ovat ajattomia: toimivat eri markkinaympäristöissä, kun niille antaa riittävän selkeät käyttöohjeet ja riskinhallinnan.<br><br><br><br>Tavoitteena ei ole luvata varmaa voittoa. Sen sijaan annan kolmen teknisen indikaattorin matemaattiset perusteet, konkreettiset signaalit ja esimerkit. Näin voit itse testata ja soveltaa niitä osakkeisiin, ETF:iin tai muihin instrumentteihin.<br><br><br><br><h2>1) EMA-crossover: lyhyen ja pitkän EMA:n risti</h2><br><br><br><br>Mikä se on?<br><br>Liukuvat keskiarvot suodattavat hinnan sattumanvaraisuutta. Erityisesti eksponentiaaliset liukuvat keskiarvot (EMA) painottavat uutta dataa, joten ne reagoivat nopeammin kuin yksinkertaiset keskiarvot (SMA). EMA-crossover on yksinkertainen käsky: kun lyhyempi EMA nousee yli pidemmän EMA:n, se voi indikoida lyhytaikaista nousua.<br><br><br><br>Kaava (perus):<br><br>EMA_n = (P_t × k) + (EMA_{t-1} × (1 − k))<br><br>missä k = 2 / (n + 1)<br><br>- P_t = viimeisin hinta<br><br>- n = jakson pituus (esim. 9, 12, 20, 50)<br><br><br><br>Käytännön esimerkki:<br><br>- Valitse EMA(9) ja EMA(26) lyhyen aikavälin kaupankäyntiin.<br><br>- Lasketaan EMA(9) ja EMA(26) edellisen päivän sulkemishinnoista.<br><br>- Signaali: kun EMA(9) ylittää EMA(26) alhaalta ylöspäin, avaa pitkän position tai harkitse ostoa. Kun EMA(9) risteää alas, sulje position.<br><br><br><br>Numeroilla:<br><br>Oletetaan sulkemishinnat viimeisille 26 päivälle; EMA(9) reagoisi terävämmin viimeisiin muutoksiin kuin EMA(26). Jos EMA(9) oli eilen 10,00 ja EMA(26) 9,80, ja tänään EMA(9) 10,10 ja EMA(26) 9,82, risti on tapahtunut tai käynnistymässä. Tämä kertoo nousupainetta.<br><br><br><br>Miksi tämä toimii?<br><br>Lyhyt EMA reagoi nopeasti hinnanmuutoksiin. Kun se ylittää pidemmän EMA:n, markkinan momentum on usein noususuuntainen. Tämä toimii erityisen hyvin trendikkäillä markkinoilla ja volatiliteetin kasvaessa.<br><br><br><br>Vinkkejä:<br><br>- Käytä stop-lossia esimerkiksi EMA(9):n alle tai prosenttitappiorajaa.<br><br>- Vältä signaaleja, kun markkina sivuttaisliikkuu; risti voi antaa "valesignaaleja".<br><br>- Testaa eri EMA-pituuksia instrumentin volatiliteetin mukaan (esim. 5/20 scalpingissa, 9/26 swing-kaupassa).<br><br><br><br><h2>2) MACD: ero kahden EMA:n välillä</h2><br><br><br><br>Mikä se on?<br><br>MACD (Moving Average Convergence Divergence) on suosittu indikaattori, joka mittaa kahden EMA:n välistä eroa ja käyttää tätä momentumin osoittamiseen. MACD:stä saa usein luotettavamman signaalin kuin pelkällä crossoverilla, koska siihen sisältyy signaaliviiva ja histogrammi.<br><br><br><br>Kaavat:<br><br>- MACD = EMA(12) − EMA(26)<br><br>- Signaali = EMA(9) (MACD:stä)<br><br>- Histogrammi = MACD − Signaali<br><br><br><br>Käytännön esimerkki:<br><br>- Lasketaan EMA(12) ja EMA(26) sulkemishinnoista.<br><br>- MACD on niiden erotus.<br><br>- Signaalina pidetään hetkeä, kun MACD ylittää signaaliviivan alhaalta ylöspäin: se voi ennustaa lyhyen nousun alkamista.<br><br><br><br>Numeroilla:<br><br>- Oletetaan EMA(12) = 11,20 ja EMA(26) = 10,80 → MACD = 0,40.<br><br>- Edellinen MACD saattoi olla 0,10 ja signaali 0,20. Jos MACD tänään nousee 0,50 ja signaali 0,30, MACD on ylittänyt signaaliviivan. Histogrammi kasvaa positiiviseksi (0,50−0,30 = 0,20), mikä vahvistaa nousevan momentumin.<br><br><br><br>Miksi tämä toimii?<br><br>MACD yhdistää trendin ja momentumin. Se näyttää paitsi, että lyhyenajan EMA nousee yli pitkänajan EMA:n, myös kuinka nopeasti ero kasvaa tai pienenee. Histogrammin muutos voi antaa varhaisen varoituksen momentumin vahvistumisesta.<br><br><br><br>Käyttöehdot:<br><br>- Hyvä yhdistää muuhun analyysiin, kuten tukitasoihin tai volyymiin.<br><br>- Etsi konvergenssi- tai divergenssitilanteita: jos hinta tekee uusia pohjia, mutta MACD ei, seurauksena voi olla nousu (bullish divergence).<br><br>- Pidä stop-loss järkevällä tasolla ja päätä tavoiteetu realistisesti (esim. riskin ja palkkion suhde 1:2).<br><br><br><br><h2>3) RSI: suhteellinen vahvuusindeksi ja bullish divergence</h2><br><br><br><br>Mikä se on?<br><br>RSI (Relative Strength Index) mittaa hintojen nousujen ja laskujen voimakkuutta. Se ilmoitetaan arvona 0–100. Perinteisesti RSI:n alapuolella 30 pidetään ylimyyntinä (ostomahdollisuus) ja yläpuolella 70 yliostettuna (myyntivaroitus).<br><br><br><br>Kaavat:<br><br>- RS = (keskiarvo nousuista) / (keskiarvo laskuista)<br><br>- RSI = 100 − (100 / (1 + RS))<br><br><br><br>Käytännön laskenta lyhyesti:<br><br>- Lasketaan esimerkiksi 14 päivän jaksolla keskimääräinen päivittäinen nousu ja lasku.<br><br>- RS = keskim. nousu / keskim. lasku.<br><br>- Sijoitetaan RS RSI-kaavaan.<br><br><br><br>Konkreettinen esimerkki:<br><br>- Viimeiset 14 päivää: yhteinen nousu keskimäärin 0,6 %/päivä, keskimääräinen lasku 0,4 %/päivä.<br><br>- RS = 0,6 / 0,4 = 1,5<br><br>- RSI = 100 − (100 / (1 + 1,5)) = 100 − (100 / 2,5) = 100 − 40 = 60<br><br>- RSI 60 kertoo positiivisesta momentumista, muttei yliostetusta tilanteesta.<br><br><br><br>Bullish divergence (nouseva divergenssi)<br><br>- Hinta tekee alempia pohjia, mutta RSI tekee korkeampia pohjia. Tämä kertoo, että lasku on hiipumassa ja nousu voi alkaa pian.<br><br>- Divergenssi on erittäin käyttökelpoinen lyhyen nousun ennusteessa, sillä se osoittaa momentumin kääntyvän ennen hintakäännettä.<br><br><br><br>Käyttövinkit:<br><br>- Etsi dividenssi yhdistettynä tukitasoon tai vahvistavaan volyymiin.<br><br>- RSI:n ylittäessä 30 tai 50 voi olla signaali nousun alusta riippuen markkinatilanteesta.<br><br>- Käytä RSI:tä yhdessä EMA/crossover- tai MACD-signaalin kanssa; useampi indikaattori vahvistaa signaalia.<br><br><br><br><h2>Kuinka yhdistää kolme kaavaa käytännön strategiaksi</h2><br><br><br><br>Ei ole yhtä täydellistä indikaattoria. Paras tulos syntyy, kun yhdistät useamman signaalin. Tässä yksinkertainen strategiakehys lyhyen nousun löytämiseen:<br><br><br><br>1) Perusehdot:<br><br>- EMA(9) ylittää EMA(26) → perussignaali nousulle.<br><br>- MACD ylittää signaaliviivan ja histogrammi kääntyy positiiviseksi → momentum vahvistuu.<br><br>- RSI osoittaa bullish divergence tai nousee yli 40–50 → momentum vahvistuu lisää.<br><br><br><br>2) Ajoitus:<br><br>- Odota sulkeutuvaa kynttilää signaalin muodostumisjakson jälkeen. Esimerkiksi odota päivän tai 4h kynttilän sulkeutuminen, mikä vahvistaa signaalin falskistumista.<br><br><br><br>3) Riskinhallinta:<br><br>- Aseta stop-loss esimerkiksi EMA(26):n alle tai viimeisimmän swing-low:n alle.<br><br>- Riskeeraa vain pieni osa pääomasta per kauppa (esim. 1–2 %).<br><br>- Määrittele tavoiteetu (take-profit) etukäteen, esimerkiksi riskin ja tuoton suhde 1:2 tai 1:3.<br><br><br><br>4) Esimerkkitapaus:<br><br>- Osake A: EMA(9) ylittää EMA(26) 13.3.<br><br>- MACD ylittää signaaliviivan 14.3, histogrammi kasvaa.<br><br>- RSI 14-day näyttää bullish divergence ja nousee 45:een.<br><br>- Päätös: avataan 1 % portfolion pozitiosta 15.3. Stop-loss asetetaan 3 % alle ostohinnan tai EMA(26):n alle. Take-profit asetetaan 6 % päähän (1:2 suhde). Kauppa suljetaan, jos MACD risteää alas tai RSI laskee alle 40.<br><br><br><br><h2>Miksi luottaa näihin kaavoihin? Haitat ja rajoitukset</h2><br><br><br><br>Tekniset indikaattorit eivät ole taikatemppuja. Ne toimivat tilastollisesti paremmin tietyissä markkinatilanteissa. Tässä realistinen kuva:<br><br><br><br>Plussat:<br><br>- Automaattiset säännöt poistavat tunteet.<br><br>- Hyödynnettäviä eri aikajänteillä: scalp-, day- ja swing-trading.<br><br>- Helppo testata historiallisesti (backtesting).<br><br><br><br>Miinukset:<br><br>- Valesignaalit: erityisesti sivuttaisliikkeessä EMA-ristit ja MACD voivat antaa vääriä signaaleja.<br><br>- Viive: monet indikaattorit laskennallisesti jäljessä (esimerkiksi EMA tarvitsee hintahistoriaa).<br><br>- Ei huomioi fundamentteja: yllättävät uutiset voivat rikkoa teknisen signaalin nopeasti.<br><br><br><br>Miten vähentää haittoja:<br><br>- Yhdistä eri indikaattoreita ja volyymi-tarkistuksia.<br><br>- Käytä suodattimia: älä tee kauppoja ennen markkinan tärkeää uutista.<br><br>- Backtestaa strategia valitsemillasi instrumenteilla ja aikajaksoilla ennen live-kauppaa.<br><br><br><br><h2>Praktiikka: miten aloitat ja opit nopeasti</h2><br><br><br><br>1) Valitse instrumentti ja aikajänne:<br><br>- Osakkeisiin sopii swing-kauppaan 4h tai päiväkaavio. Scalping vaatii 1–15 min aikajänteitä.<br><br>- Johda parametrit instrumentin volatiliteetin mukaan: kryptot tarvitsevat lyhyempiä EMA:ita, blue-chip osakkeet pidempiä.<br><br><br><br>2) Aseta kaupankäyntialusta:<br><br>- Käytä TradingViewtä, MetaTraderia tai alustaa, joka laskee EMA, MACD ja RSI automaattisesti.<br><br>- Visualisoi ehdot: EMA(9), EMA(26), MACD(12,26,9), RSI(14).<br><br><br><br>3) Testaa paperikaupalla:<br><br>- Tee vähintään 50–100 paperikauppaa tai käytä vähintään 6–12 kuukauden historiallista dataa backtestingissä.<br><br>- Analysoi voittosuhdetta ja keskimääräistä riskin ja tuoton suhdetta.<br><br><br><br>4) Kirjaa ja kehitä:<br><br>- Pidä kauppapäiväkirjaa: milloin sisään, miksi, stop-loss, lopputulos.<br><br>- Opit merkittävästi enemmän dataan perustuen kuin yksittäisten onnistumisten.<br><br><br><br>Lopuksi — yhdistä järki ja järjestelmä<br><br>Tekninen analyysi tarjoaa toimivan työkalupakin lyhyen aikavälin nousujen ennustamiseen. EMA-crossover, MACD ja RSI ovat kolmen kerman yhdistelmä: yksinkertaisia matematiikoiltaan, mutta tehokkaita käytännössä, kun niille antaa selkeät säännöt. Muista aina riskinhallinta, markkinatilanteen huomiointi ja systemaattinen backtesting.<br><br><br><br>Tekniikka ei korvaa hyvää kaupankäyntipsykologiaa. Pienet tappiot suojataan stop-lossilla, ja voitot kasvatetaan maltillisesti, kun signaalit vahvistuvat.<br><br><br><br>Lähteet ja jatkolukemista:<br><br><a href="https://www.investopedia.com/terms/e/ema.asp">https://www.investopedia.com/terms/e/ema.asp</a><br><br><a href="https://www.investopedia.com/terms/m/macd.asp">https://www.investopedia.com/terms/m/macd.asp</a><br><br><a href="https://www.investopedia.com/terms/r/rsi.asp">https://www.investopedia.com/terms/r/rsi.asp</a><br><br><a href="https://www.tradingview.com">https://www.tradingview.com</a><br><br><a href="https://www.nordnet.fi">https://www.nordnet.fi</a><br><br><a href="https://www.sijoitustieto.fi">https://www.sijoitustieto.fi</a></article>
+</main>
+
+<footer>
+  <p>© 2025 Talousvahti — kirjoittanut <strong>Jere Järvelä</strong></p>
+</footer>
+
+<script>
+function toggleMenu() {
+  const menu = document.getElementById("dropdownMenu");
+  menu.style.display = (menu.style.display === "block") ? "none" : "block";
+}
+
+document.addEventListener("click", function(e) {
+  const menu = document.getElementById("dropdownMenu");
+  const hamburger = document.querySelector(".hamburger");
+
+  if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+    menu.style.display = "none";
+  }
+});
+</script>
+
+
+</body>
+</html>
