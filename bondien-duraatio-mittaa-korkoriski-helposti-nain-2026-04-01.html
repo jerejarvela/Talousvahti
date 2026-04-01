@@ -1,0 +1,222 @@
+
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bondien duraatio: Mittaa korkoriski helposti näin</title>
+<meta name="description" content="Bondien duraatio: Mittaa korkoriski helposti näin – Päivän sijoitusblogi Talousvahdissa.">
+<meta name="keywords" content="duraati,o, bondien duraatio, korkoriski, modified duration, Macaulay-duraatio, joukkovelkakirjat, korkotason muutokset, korkosuojaus, korkosalkku, duraatio laskeminen, bond ETF">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2566G3KPHW"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2566G3KPHW');
+</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Bondien duraatio: Mittaa korkoriski helposti näin","author":{"@type":"Person","name":"Jere Järvelä"},"publisher":{"@type":"Organization","name":"Talousvahti","logo":{"@type":"ImageObject","url":"https://talousvahti.com/logo.png"}},"datePublished":"2026-04-01","inLanguage":"fi","keywords":"duraati,o, bondien duraatio, korkoriski, modified duration, Macaulay-duraatio, joukkovelkakirjat, korkotason muutokset, korkosuojaus, korkosalkku, duraatio laskeminen, bond ETF","description":"Bondien duraatio: Mittaa korkoriski helposti näin","mainEntityOfPage":"https://talousvahti.com/bondien-duraatio-mittaa-korkoriski-helposti-nain-2026-04-01.html"}</script>
+
+<!-- Fontit ja tyyli -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #0d0d0d;
+  --accent: #0077ff;
+  --text: #1a1a1a;
+  --muted: #666;
+  --bg: #ffffff;
+  --radius: 12px;
+  --shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+body {
+  font-family: 'Inter', Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+  line-height: 1.8;
+}
+
+nav {
+  background: var(--primary);
+  color: #fff;
+  padding: 18px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+nav .nav-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+nav img {
+  height: 38px;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 20px;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+nav a:hover {
+  color: var(--accent);
+}
+
+main {
+  max-width: 820px;
+  margin: 60px auto;
+  background: #fff;
+  padding: 40px 50px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+h1 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+article {
+  font-size: 1.05rem;
+  color: var(--text);
+}
+
+article p {
+  margin-bottom: 1.2rem;
+}
+
+footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-top: 60px;
+  padding: 20px 0;
+  border-top: 1px solid #eee;
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  main {
+    padding: 25px;
+    margin: 30px 10px;
+  }
+  h1 {
+    font-size: 1.7rem;
+  }
+  nav img {
+    height: 32px;
+  }
+}
+
+/* Hamburger valikko */
+.hamburger {
+  font-size: 28px;
+  cursor: pointer;
+  user-select: none;
+  display: block;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  right: 20px;
+  top: 68px;
+  background: var(--primary);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 10px 0;
+  min-width: 190px;
+  z-index: 20;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 10px 20px;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.dropdown-menu a:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+
+
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-left">
+    <img src="https://storage.mlcdn.com/account_image/1738913/3ffITIlb3p17IaYG3RcfwCueUnHxNH6iG0EtEEPU.png" alt="Talousvahti logo">
+    <strong>Talousvahti Blogi</strong>
+  </div>
+
+  <!-- Hamburger ikonit -->
+  <div class="hamburger" onclick="toggleMenu()">
+    ☰
+  </div>
+
+  <!-- Dropdown valikko -->
+  <div id="dropdownMenu" class="dropdown-menu">
+    <a href="https://talousvahti.com/">Talousuutiset</a>
+    <a href="https://talousvahti.com/kurssit.html">Pörssikurssit</a>
+    <a href="https://talousvahti.com/talouskalenteri.html">Talouskalenteri</a>
+    <a href="https://talousvahti.com/Blogi.html">Blogi</a>
+    <a href="https://talousvahti.com/sijoituslaskuri.html">Sijoituslaskuri</a>
+    <a href="https://talousvahti.com/tietoa.html">Tietoa</a>
+  </div>
+</nav>
+
+
+<main>
+  <header>
+    <h1>Bondien duraatio: Mittaa korkoriski helposti näin</h1>
+  </header>
+  <article>Korkotason muutokset ovat yksi tärkeimmistä riskeistä joukkovelkakirjasijoittajalle. Duraatio on työkalu, joka auttaa ymmärtämään ja mittaamaan tätä riskiä yksinkertaisella, käytännöllisellä tavalla. Tässä artikkelissa selitän, mitä duraatiolla tarkoitetaan, miten sitä lasketaan ja miten suomalainen sijoittaja voi käyttää sitä päätöksenteossa. Kerron myös käytännön esimerkkien avulla, miten duraatio vaikuttaa bondin hintaan ja miten se toimii osana sijoitussalkkua.<br><br><br><br><h2>Mikä on duraatio — yksinkertainen määritelmä</h2><br><br>Duraatio kertoo, kuinka herkkä joukkovelkakirja on korkotason muutoksille. Yksinkertaisesti sanoen se ilmaistaan vuosina ja kuvaa sitä ajallista painotettua keskiarvoa, jolloin sijoittaja saa takaisin sijoittamansa rahat korkoja ja pääomaa vastaan. Kaksi tärkeintä duraatiomittaa ovat Macaulay-duraatio ja modified (muokattu) duraati o.<br><br><br><br>- Macaulay-duraatio kertoo painotetun keskimääräisen takaisinmaksuajan vuosissa.<br><br>- Modified-duraatio kertoo, kuinka paljon bondin hinta muuttuu prosentteina, kun markkinakorko muuttuu yhdellä prosenttiyksiköllä (yleensä desimaaleina, esim. 0,01 = 1 %).<br><br><br><br>Käytännön nyrkkisääntö: hinnan prosenttimuutos ≈ −(modified-duraatio) × (muutos korkotasossa). Esimerkiksi modified-duraatio 5 tarkoittaa noin 5 % hinnan alenemista, jos korot nousevat yhdellä prosenttiyksiköllä.<br><br><br><br>Miksi duraatiosta on hyötyä? Se antaa yhden numeron korkoriskin suuruudesta. Kun vertailet kahden eri bondin riskiä, voit katsoa niiden duraatiot: korkeampi duraatio = suurempi herkkyys korkoihin.<br><br><br><br><h2>Kuinka duraatio lasketaan käytännössä (konkreettiset esimerkit)</h2><br><br>Duraation laskeminen voi näyttää aluksi matemaattiselta, mutta perusajatuksen saa nopeasti kiinni. Käytän tässä yksinkertaisia esimerkkejä.<br><br><br><br>Esimerkki 1 — nollakuponkivelkakirja:<br><br>- Nollakuponkibondissa ei makseta korkoja matkan varrella, vaan koko tuotto maksetaan eräpäivänä. Siten Macaulay-duraatio on yhtä kuin bondin maturiteetti.<br><br>- Jos ostat 5 vuoden nollakuponkin, Macaulay-duraatio = 5 vuotta.<br><br>- Modified-duraatio = Macaulay / (1 + yld). Jos markkinakorko (yield) on 2 % (= 0,02), modified-duraatio ≈ 5 / 1,02 ≈ 4,90. Tämän antaa arvion hinnan muutoksesta: jos korot nousevat 1 prosenttiyksikköä, hinta laskee noin 4,9 %.<br><br><br><br>Esimerkki 2 — vuosittainen kuponkibondi:<br><br>- Oletetaan 5 vuoden bondi, nimellisarvo 1 000 €, vuotuinen kuponki 30 € (3 %) ja nykyinen yield 3 % (eli bondi kauppaa lähellä nimellisarvoa).<br><br>- Tässä bondissa osittaisia takaisinmaksuja tulee korkojen muodossa vuosittain ja lopussa pääoma. Macaulay-duraatio on tällöin hieman alle maturiteetin, koska osa kassavirroista tulee ennen viimeistä vuotta.<br><br>- Ilman että mennään syvään kaavoihin, tällaisen 5 vuoden 3 % bondin Macaulay-duraatio on tyypillisesti ~4,5 vuotta, ja modified-duraatio = 4,5 / 1,03 ≈ 4,37.<br><br>- Jos korot nousevat 0,5 prosenttiyksikköä (0,005), hinnan muutos ≈ −4,37 × 0,005 = −0,02185 → ≈ −2,19 %. Eli 1 000 € bondista katoaisi noin 21,90 € arvoa.<br><br><br><br>Portfolioesimerkki — painotettu duraatio:<br><br>Salkun duraatio on kunkin sijoituksen painotettu duraatio. Esimerkiksi:<br><br>- Bondi A: arvo 60 000 €, duraati o 6<br><br>- Bondi B: arvo 40 000 €, duraati o 3<br><br>Salkun duraatio = 0,6 × 6 + 0,4 × 3 = 3,6 + 1,2 = 4,8 vuotta.<br><br><br><br>Tämä tarkoittaa, että koko salkun hinnan muutos on noin −4,8 % per yhden prosenttiyksikön nousu koroissa.<br><br><br><br><h2>Mitä duraatiosta ei kerro — rajat ja lisätekniset tekijät</h2><br><br>Duraatio on hyödyllinen, mutta se ei ole täydellinen työkalu. Tässä tärkeimmät rajoitukset:<br><br><br><br>1. Oletus: pienet ja paralleelit korkomuutokset<br><br>- Dur aatio toimii parhaiten, kun markkinakorkokäyrä muuttuu vähän ja samansuuntaisesti kaikilla maturiteeteilla. Todellisuudessa koronmuutokset voivat olla suuria ja eri maturiteetit käyttäytyvät eri tavoin.<br><br><br><br>2. Convexity (kaarevuus)<br><br>- Hinnan ja koron suhde ei ole täysin lineaarinen. Convexity kertoo, kuinka hyvin duraatio-arvio vastaa todellista muutosta. Jos muutos on suuri, convexity-termillä on merkitystä.<br><br>- Esimerkiksi modified-duraatio 5 ja convexity 30 → jos Δy = 1 % (0,01), hinta-arvio ≈ −5 % + 0,5 × 30 × (0,01)^2 = −5 % + 0,15 % = −4,85 %. Ilman convexityä arvio olisi hieman pessimistinen tai optimistinen tilanteesta riippuen.<br><br><br><br>3. Luottoriski ja takaisinostosopimukset<br><br>- Duraatio mittaa korkoriskiä, ei luottoriskiä. Yrityslainassa luottoriskin muutos (esim. yhtiön velkaongelmat) voi aiheuttaa hinnan muutoksia, joita duraatio ei selitä.<br><br>- Lisäksi kutsuttavat (callable) tai putattavat bondit käyttäytyvät eri tavalla ja niiden duraatio voi muuttua, kun korkotaso muuttuu.<br><br><br><br>4. Uudelleensijoitusriski<br><br>- Korkojen ja kassavirtojen uudelleensijoitus voi vaikuttaa todelliseen tuottoon. Duraatio ei mittaa suoraan tätä riskiä.<br><br><br><br>Siksi käytännön sijoituspäätöksissä kannattaa käyttää duraatiota yhdessä muiden mittareiden, kuten convexityn, krediittiluokitusten ja likviditeetin kanssa.<br><br><br><br><h2>Käytännön strategiat suomalaiselle sijoittajalle</h2><br><br>Miten duraatio sitten näkyy konkreettisesti suomalaisen sijoittajan arjessa? Tässä toimivia strategioita ja vinkkejä.<br><br><br><br>1. Määritä sijoitushorisonttisi ja riskinsietosi<br><br>- Jos tarvitset rahoja lähitulevaisuudessa (1–3 vuotta), valitse matala duraatio (esim. 0–3 vuotta), jotta koronmuutokset eivät heiluta arvoa paljon.<br><br>- Pitkälle sijoitushorisontille voi kestää korkeampaakin duraatioriskiä, mutta pitkät korko-odotukset kannattaa arvioida uudelleen ajoittain.<br><br><br><br>2. Korkosuojaus ja immunisointi<br><br>- Yritykset ja instituutiot käyttävät immunisointia, eli pyrkivät vastaamaan velvoitteidensa duraatioilla varojen duraatiota vastaan. Yksityissijoittaja voi soveltaa samaa: jos tiedät tarvitsevasi 100 000 € viiden vuoden kuluttua, rakentamalla salkun, jonka duraatio on 5 ja arvo 100 000 €, voit suojata sijoitustasi korkotason muutoksilta oletuksenmukaisissa olosuhteissa.<br><br>- Käytännössä tämä voi tarkoittaa lyhyempien ja pidempien erien yhdistämistä tai durationin ostamista/salentamista johdannaisilla (swapit, futuurit). Johdannaisten käyttö vaatii osaamista ja kustannusten huomiointia.<br><br><br><br>3. Ladderointi (portaikko)<br><br>- Ladderointi tarkoittaa eri maturiteettien bondien ostamista hajauttaaksesi maturiteettiriskin. Esimerkiksi 1-, 3-, 5-, 7- ja 10-vuotiset erät tuovat tasaisemmin korkotuottoa ja helpottavat uudelleensijoitusriskiä.<br><br>- Tällä menetelmällä saat pienemmän durationin kuin yksittäisellä pitkällä bondilla, mutta paremmat tuottomahdollisuudet kuin kokonaan lyhyellä salkulla.<br><br><br><br>4. Bond-ETF:t ja rahastot — helppous ja läpinäkyvyys<br><br>- Moni suomalainen sijoittaja käyttää bond-ETF:iä tai rahastoja. Niissä duraatio ja modified-duraatio löytyvät yleensä rahaston tiedoista (factsheet).<br><br>- Valitse rahasto, joka vastaa tavoitteitasi: lyhyt, keskipitkä vai pitkä duraatio; korkean vai matalan kredittiriskin lainat; yritys- vs. valtiolainat.<br><br><br><br>5. Odotatko korkojen nousevan? Lyhennä durationia<br><br>- Jos markkinanäkemyksesi on korkojen nousun puolella, voit pienentää korkoriskiasi myymällä pitkiä bondiosuuksia ja ostamalla lyhyempiä tai likvidejä korkotuotteita. Toinen vaihtoehto on lisätä käteistä.<br><br><br><br>6. Inflaatiosuojaus<br><br>- Reaalikorot ja inflaatio vaikuttavat velkakirjoihin. Inflaatiosidonnaiset obligaatiot (esim. EU- tai valtiotasoiset inflaatiosidonnaiset tuotteet) voivat sopia, jos pelkäät ostovoiman heikkenemistä.<br><br><br><br><h2>Usein kysytyt käytännön kysymykset</h2><br><br>- Kuinka usein duraatio muuttuu? Duraatio muuttuu ajan myötä (kun maturiteetti lyhenee) ja kun markkinakorot muuttuvat. Korkojen ja hintojen muutokset vaikuttavat pesoihin, joten on hyvä seurata duraatioita vähintään kvartaalitasolla tai kun teet merkittäviä siirtoja.<br><br><br><br>- Löytyykö duraatio helposti bondin tiedoista? Kyllä. Rahastot, ETF:t ja suurimmat bondinvälittäjät julkaisevat yleensä modiﬁed-duraation ja usein myös convexityn. Pörssinoteerattujen bondien tiedoista saat usein YTM:n (yield to maturity) ja maturiteetin.<br><br><br><br>- Voiko duraatiossa luottaa täysin? Ei. Se on erinomainen ensimmäinen mittari, mutta käytä myös convexityä ja arvioi kredit- ja likviditeettiriski. Erityisesti callable-bondit ja high-yield -lainat vaativat tarkempaa analyysiä.<br><br><br><br><h2>Yhteenveto — miten aloittaa käytännössä</h2><br><br>Duraatio on yksinkertainen ja tehokas tapa mitata korkoriskiä. Se sopii vertailuun, riskin hallintaan ja salkun suunnitteluun. Aloita näin:<br><br><br><br>1. Selvitä kunkin sijoituksesi modified-duraatio ja laske salkun painotettu keskiarvo.<br><br>2. Arvioi oma sijoitushorisontti ja riskinsietokyky — valitse sopiva keskimääräinen duraatio.<br><br>3. Hyödynnä ladderointia tai rahastoja, jos haluat hajautusta ilman yksittäisten lainojen hallintaa.<br><br>4. Muista convexity ja muut rajaukset — käytä duraatioita osana laajempaa riskianalyysiä.<br><br>5. Jos käytät johdannaisia korkoriskin hallintaan, varmista että ymmärrät kulut ja riskit.<br><br><br><br>Duraatiosta tulee nopeasti käytännöllinen työkalu: se auttaa tiedostamaan, kuinka suuri vaikutus korkopolitiikalla ja markkinakoroilla on sijoitustesi arvoon. Kun yhdistät tämän tiedon muihin mittareihin, kuten krediittiluokituksiin ja likviditeettiin, saat kokonaisvaltaisen kuvan korkosijoituksesi riskistä ja mahdollisuuksista.<br><br><br><br>Lähteet:<br><br><a href="https://www.investopedia.com/terms/d/duration.asp">https://www.investopedia.com/terms/d/duration.asp</a><br><br><a href="https://www.investopedia.com/terms/m/modifiedduration.asp">https://www.investopedia.com/terms/m/modifiedduration.asp</a><br><br><a href="https://www.investopedia.com/terms/c/convexity.asp">https://www.investopedia.com/terms/c/convexity.asp</a><br><br><a href="https://www.suomenpankki.fi">https://www.suomenpankki.fi</a><br><br><a href="https://www.finanssivalvonta.fi">https://www.finanssivalvonta.fi</a><br><br><a href="https://www.ecb.europa.eu">https://www.ecb.europa.eu</a></article>
+</main>
+
+<footer>
+  <p>© 2025 Talousvahti — kirjoittanut <strong>Jere Järvelä</strong></p>
+</footer>
+
+<script>
+function toggleMenu() {
+  const menu = document.getElementById("dropdownMenu");
+  menu.style.display = (menu.style.display === "block") ? "none" : "block";
+}
+
+document.addEventListener("click", function(e) {
+  const menu = document.getElementById("dropdownMenu");
+  const hamburger = document.querySelector(".hamburger");
+
+  if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+    menu.style.display = "none";
+  }
+});
+</script>
+
+
+</body>
+</html>
