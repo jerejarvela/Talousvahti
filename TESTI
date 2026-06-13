@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talousvahti Premium</title>
+
+    <script src="https://talousvahti.kit.com/commerce.js" async defer></script>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f5f7fa;
+            color: #1f2937;
+        }
+
+        .hero {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #003366;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: #4b5563;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 50px 0;
+            justify-content: center;
+        }
+
+        .feature {
+            background: white;
+            padding: 25px;
+            border-radius: 16px;
+            width: 250px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .feature h3 {
+            margin-top: 0;
+            color: #003366;
+        }
+
+        .cta {
+            margin-top: 50px;
+        }
+
+        .convertkit-button {
+            display: inline-block;
+            background: #0066cc;
+            color: white !important;
+            text-decoration: none;
+            padding: 18px 40px;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .convertkit-button:hover {
+            background: #0052a3;
+            transform: translateY(-2px);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #6b7280;
+        }
+    </style>
+</head>
+<body>
+
+<div class="hero">
+    <h1>Talousvahti Premium</h1>
+
+    <p class="subtitle">
+        Saat markkinakatsaukset, sijoitusideat, osakeanalyysit ja tärkeimmät talousuutiset
+        suoraan sähköpostiisi.
+    </p>
+
+    <div class="features">
+        <div class="feature">
+            <h3>📈 Markkinakatsaus</h3>
+            <p>Päivittäinen yhteenveto markkinoiden tärkeimmistä tapahtumista.</p>
+        </div>
+
+        <div class="feature">
+            <h3>💡 Sijoitusideat</h3>
+            <p>Mielenkiintoisia osakkeita ja ETF:iä seurattavaksi.</p>
+        </div>
+
+        <div class="feature">
+            <h3>📰 Talousuutiset</h3>
+            <p>Ole ajan tasalla ilman että seuraat uutisia koko päivää.</p>
+        </div>
+    </div>
+
+    <div class="cta">
+        <a class="convertkit-button"
+           href="https://talousvahti.kit.com/products/maksullinen-talousvahti"
+           data-commerce>
+            Tilaa Talousvahti Premium
+        </a>
+    </div>
+</div>
+
+<footer>
+    © 2026 Talousvahti
+</footer>
+
+</body>
+</html>
